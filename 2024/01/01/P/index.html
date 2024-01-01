@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>P | 2008verser</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="$$\clubsuit\bigstar\blacksquare\maltese\blacklozenge\spadesuit$$ arc162_f Montage分讨可以先把题目限制转化为任意一个子矩形，若它的左上和右下都是 1，则它的左下和右上必须是 1。 我一开始想的是不断把一些矩形的四个角的 1 “按”上去，但是很难处理两个矩形端点形成的矩形是否合法。 然后想着“挖”一些零。如果挖一个零，则">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"2008verser.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="$$\clubsuit\bigstar\blacksquare\maltese\blacklozenge\spadesuit$$ arc162_f Montage分讨可以先把题目限制转化为任意一个子矩形，若它的左上和右下都是 1，则它的左下和右上必须是 1。 我一开始想的是不断把一些矩形的四个角的 1 “按”上去，但是很难处理两个矩形端点形成的矩形是否合法。 然后想着“挖”一些零。如果挖一个零，则">
 <meta property="og:type" content="article">
 <meta property="og:title" content="P">
 <meta property="og:url" content="https://2008verser.github.io/2024/01/01/P/index.html">
@@ -28,95 +41,182 @@
 <meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pic.imgdb.cn/item/65571eb4c458853aefc87fcf.png">
-  
-    <link rel="alternate" href="/atom.xml" title="2008verser" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="canonical" href="https://2008verser.github.io/2024/01/01/P/">
 
-  
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">2008verser</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Welcome to my blog!</a>
-        </h2>
-      
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://2008verser.github.io/2024/01/01/P/","path":"2024/01/01/P/","title":"P"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>P | 2008verser</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">2008verser</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Welcome to my blog!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://2008verser.github.io"></form>
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#arc162-f-Montage"><span class="nav-number">1.</span> <span class="nav-text">arc162_f Montage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1830-b"><span class="nav-number">2.</span> <span class="nav-text">cf1830_b</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abc269-g"><span class="nav-number">3.</span> <span class="nav-text">abc269_g</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abc215-g"><span class="nav-number">4.</span> <span class="nav-text">abc215_g</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abc319-g"><span class="nav-number">5.</span> <span class="nav-text">abc319_g</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6078-CEOI2004"><span class="nav-number">6.</span> <span class="nav-text">P6078 [CEOI2004]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2797-cf626-e"><span class="nav-number">7.</span> <span class="nav-text">P2797 &amp; cf626_e</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5923-IOI2004"><span class="nav-number">8.</span> <span class="nav-text">P5923 [IOI2004]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1120-c"><span class="nav-number">9.</span> <span class="nav-text">cf1120_c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf520-c"><span class="nav-number">10.</span> <span class="nav-text">cf520_c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf519-e"><span class="nav-number">11.</span> <span class="nav-text">cf519_e</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf768-d"><span class="nav-number">12.</span> <span class="nav-text">cf768_d</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf856-c"><span class="nav-number">13.</span> <span class="nav-text">cf856_c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#arc068-c"><span class="nav-number">14.</span> <span class="nav-text">arc068_c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf853-c"><span class="nav-number">15.</span> <span class="nav-text">cf853_c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf785-d"><span class="nav-number">16.</span> <span class="nav-text">cf785_d</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abc331-g"><span class="nav-number">17.</span> <span class="nav-text">abc331_g</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abc325-g"><span class="nav-number">18.</span> <span class="nav-text">abc325_g</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abc326-e"><span class="nav-number">19.</span> <span class="nav-text">abc326_e</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1365"><span class="nav-number">20.</span> <span class="nav-text">P1365</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf858-f"><span class="nav-number">21.</span> <span class="nav-text">cf858_f</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abc332-g"><span class="nav-number">22.</span> <span class="nav-text">abc332_g</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#arc125-e"><span class="nav-number">23.</span> <span class="nav-text">arc125_e</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abc311-g"><span class="nav-number">24.</span> <span class="nav-text">abc311_g</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1292-b"><span class="nav-number">25.</span> <span class="nav-text">cf1292_b</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1304-c"><span class="nav-number">26.</span> <span class="nav-text">cf1304_c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1313-d"><span class="nav-number">27.</span> <span class="nav-text">cf1313_d</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1322-b"><span class="nav-number">28.</span> <span class="nav-text">cf1322_b</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1322-c"><span class="nav-number">29.</span> <span class="nav-text">cf1322_c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1325-d"><span class="nav-number">30.</span> <span class="nav-text">cf1325_d</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1338-b"><span class="nav-number">31.</span> <span class="nav-text">cf1338_b</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1338-c"><span class="nav-number">32.</span> <span class="nav-text">cf1338_c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1349-b"><span class="nav-number">33.</span> <span class="nav-text">cf1349_b</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">2008verser</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
       </div>
     </div>
-  </div>
-</header>
 
-      <div class="outer">
-        <section id="main"><article id="post-P" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/01/01/P/" class="article-date">
-  <time class="dt-published" datetime="2024-01-01T06:30:00.000Z" itemprop="datePublished">2024-01-01</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/OI/">OI</a>
-  </div>
+  </aside>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      P
-    </h1>
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
   
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://2008verser.github.io/2024/01/01/P/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2008verser">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2008verser">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="P | 2008verser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          P
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-        <p>$$<br>\clubsuit\bigstar\blacksquare\maltese\blacklozenge\spadesuit<br>$$</p>
+
+      <time title="创建时间：2024-01-01 14:30:00 / 修改时间：14:31:56" itemprop="dateCreated datePublished" datetime="2024-01-01T14:30:00+08:00">2024-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/OI/" itemprop="url" rel="index"><span itemprop="name">OI</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>$$<br>\clubsuit\bigstar\blacksquare\maltese\blacklozenge\spadesuit<br>$$</p>
 <h2 id="arc162-f-Montage"><a href="#arc162-f-Montage" class="headerlink" title="arc162_f Montage"></a>arc162_f Montage</h2><p>分讨可以先把题目限制转化为任意一个子矩形，若它的左上和右下都是 1，则它的左下和右上必须是 1。</p>
 <p>我一开始想的是不断把一些矩形的四个角的 1 “按”上去，但是很难处理两个矩形端点形成的矩形是否合法。</p>
 <p>然后想着“挖”一些零。如果挖一个零，则它向上和向右必须有一个全都是 0，向左和向下同理。</p>
@@ -688,157 +788,93 @@
 <p>所以只需判断是否存在相邻两个 $\geq k$ 的数相隔不超过 1 个 $\lt k$ 的数即可。还有一些边界要注意。</p>
 <p>时间 $O(\sum n)$。</p>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="https://2008verser.github.io/2024/01/01/P/" data-id="clqukbyxo000a2wfe1j1x3cuh" data-title="P" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
 
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/" rel="prev" title="线性基">
+                  <i class="fa fa-angle-left"></i> 线性基
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/01/01/CF856C%20Eleventh%20Birthday%20%E9%A2%98%E8%A7%A3/" rel="next" title="CF856C Eleventh Birthday 题解">
+                  CF856C Eleventh Birthday 题解 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">2008verser</span>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2024/01/01/CF856C%20Eleventh%20Birthday%20%E9%A2%98%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">前一篇</strong>
-      <div class="article-nav-title">
-        
-          CF856C Eleventh Birthday 题解
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">线性基</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/">OI</a></li></ul>
-    </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%94%E8%B5%9B%E7%9B%B8%E5%85%B3/" rel="tag">比赛相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">知识点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/%E6%AF%94%E8%B5%9B%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">比赛相关</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">知识点</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2024/01/01/CF856C%20Eleventh%20Birthday%20%E9%A2%98%E8%A7%A3/">CF856C Eleventh Birthday 题解</a>
-          </li>
-        
-          <li>
-            <a href="/2024/01/01/P/">P</a>
-          </li>
-        
-          <li>
-            <a href="/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/">线性基</a>
-          </li>
-        
-          <li>
-            <a href="/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/">ABC311G One More Grid Task 题解</a>
-          </li>
-        
-          <li>
-            <a href="/2023/12/15/ABC332G%20Not%20Too%20Many%20Balls%20%E9%A2%98%E8%A7%A3/">ABC332G Not Too Many Balls 题解</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2024 2008verser<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
 
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
+  </footer>
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
 </body>
 </html>

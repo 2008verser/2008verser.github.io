@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>线性基 | 2008verser</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="在 cnblogs 中阅读。 【少图预警！】【需要结合其他文章食用！】  ？声明？这里不对线性代数相关概念和异或线性基做最基本的概述。 上网搜大概可以搜到三篇高质的讲解线性基的博客： 线性基小记 - command_block 的博客 - 洛谷博客 (luogu.com.cn) 线性基学习笔记 - 拜傅里叶教总部 - 洛谷博客 (luogu.com.cn) 线性基学习笔记 | Menci’s OI">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"2008verser.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在 cnblogs 中阅读。 【少图预警！】【需要结合其他文章食用！】  ？声明？这里不对线性代数相关概念和异或线性基做最基本的概述。 上网搜大概可以搜到三篇高质的讲解线性基的博客： 线性基小记 - command_block 的博客 - 洛谷博客 (luogu.com.cn) 线性基学习笔记 - 拜傅里叶教总部 - 洛谷博客 (luogu.com.cn) 线性基学习笔记 | Menci’s OI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性基">
 <meta property="og:url" content="https://2008verser.github.io/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/index.html">
@@ -22,95 +35,188 @@
 <meta property="article:tag" content="知识点">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pic.imgdb.cn/item/659121b9c458853aef77f4a6.png">
-  
-    <link rel="alternate" href="/atom.xml" title="2008verser" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="canonical" href="https://2008verser.github.io/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/">
 
-  
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">2008verser</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Welcome to my blog!</a>
-        </h2>
-      
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://2008verser.github.io/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/","path":"2023/12/31/线性基/","title":"线性基"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>线性基 | 2008verser</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">2008verser</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Welcome to my blog!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://2008verser.github.io"></form>
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%9F%E5%A3%B0%E6%98%8E%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">？声明？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%9AP3812-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E7%BA%BF%E6%80%A7%E5%9F%BA"><span class="nav-number">2.</span> <span class="nav-text">模板线性基：P3812 【模板】线性基</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P3857-TJOI2008-%E5%BD%A9%E7%81%AF"><span class="nav-number">3.</span> <span class="nav-text">P3857 [TJOI2008] 彩灯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P4301-CQOI2013-%E6%96%B0Nim%E6%B8%B8%E6%88%8F"><span class="nav-number">4.</span> <span class="nav-text">P4301 [CQOI2013] 新Nim游戏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P4570-BJWC2011-%E5%85%83%E7%B4%A0"><span class="nav-number">5.</span> <span class="nav-text">P4570 [BJWC2011] 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P3292-SCOI2016-%E5%B9%B8%E8%BF%90%E6%95%B0%E5%AD%97"><span class="nav-number">6.</span> <span class="nav-text">P3292 [SCOI2016] 幸运数字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P4151-WC2011-%E6%9C%80%E5%A4%A7XOR%E5%92%8C%E8%B7%AF%E5%BE%84"><span class="nav-number">7.</span> <span class="nav-text">P4151 [WC2011] 最大XOR和路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%9ACF1100F-Ivan-and-Burgers"><span class="nav-number">8.</span> <span class="nav-text">前缀线性基：CF1100F Ivan and Burgers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CF845G-Shortest-Path-Problem"><span class="nav-number">9.</span> <span class="nav-text">CF845G Shortest Path Problem?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E6%95%B0%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%9AP3265-JLOI2015-%E8%A3%85%E5%A4%87%E8%B4%AD%E4%B9%B0"><span class="nav-number">10.</span> <span class="nav-text">实数线性基：P3265 [JLOI2015] 装备购买</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P5556-%E5%9C%A3%E5%89%91%E6%8A%A4%E7%AC%A6"><span class="nav-number">11.</span> <span class="nav-text">P5556 圣剑护符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CF724G-Xor-matic-Number-of-the-Graph"><span class="nav-number">12.</span> <span class="nav-text">CF724G Xor-matic Number of the Graph</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CF895C-Square-Subsets"><span class="nav-number">13.</span> <span class="nav-text">CF895C Square Subsets</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-number">13.1.</span> <span class="nav-text">解法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-number">13.2.</span> <span class="nav-text">解法二</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CF1163E-Magical-Permutation"><span class="nav-number">14.</span> <span class="nav-text">CF1163E Magical Permutation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P4869-albus%E5%B0%B1%E6%98%AF%E8%A6%81%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%87%BA%E5%9C%BA"><span class="nav-number">15.</span> <span class="nav-text">P4869 albus就是要第一个出场</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P4839-P-%E5%93%A5%E7%9A%84%E6%A1%B6"><span class="nav-number">16.</span> <span class="nav-text">P4839 P 哥的桶</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P5607-Ynoi2013-%E6%97%A0%E5%8A%9B%E5%9B%9E%E5%A4%A9-NOI2017"><span class="nav-number">17.</span> <span class="nav-text">P5607 [Ynoi2013] 无力回天 NOI2017</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CF959F-Mahmoud-and-Ehab-and-yet-another-xor-task"><span class="nav-number">18.</span> <span class="nav-text">CF959F Mahmoud and Ehab and yet another xor task</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">2008verser</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
       </div>
     </div>
-  </div>
-</header>
 
-      <div class="outer">
-        <section id="main"><article id="post-线性基" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/" class="article-date">
-  <time class="dt-published" datetime="2023-12-31T08:00:03.000Z" itemprop="datePublished">2023-12-31</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/OI/">OI</a>
-  </div>
+  </aside>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      线性基
-    </h1>
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
   
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://2008verser.github.io/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2008verser">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2008verser">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="线性基 | 2008verser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          线性基
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-31 16:00:03" itemprop="dateCreated datePublished" datetime="2023-12-31T16:00:03+08:00">2023-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-01 14:17:39" itemprop="dateModified" datetime="2024-01-01T14:17:39+08:00">2024-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/OI/" itemprop="url" rel="index"><span itemprop="name">OI</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
       </header>
+
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>在 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/2008verser/p/17937609">cnblogs</a> 中阅读。</p>
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/2008verser/p/17937609">cnblogs</a> 中阅读。</p>
 <p>【少图预警！】【需要结合其他文章食用！】</p>
 <hr>
 <h1 id="？声明？"><a href="#？声明？" class="headerlink" title="？声明？"></a>？声明？</h1><p>这里不对线性代数相关概念和<strong>异或</strong>线性基做最基本的概述。</p>
@@ -368,157 +474,93 @@
 <h1 id="P5607-Ynoi2013-无力回天-NOI2017"><a href="#P5607-Ynoi2013-无力回天-NOI2017" class="headerlink" title="P5607 [Ynoi2013] 无力回天 NOI2017"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5607">P5607 [Ynoi2013] 无力回天 NOI2017</a></h1><hr>
 <h1 id="CF959F-Mahmoud-and-Ehab-and-yet-another-xor-task"><a href="#CF959F-Mahmoud-and-Ehab-and-yet-another-xor-task" class="headerlink" title="CF959F Mahmoud and Ehab and yet another xor task"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF959F">CF959F Mahmoud and Ehab and yet another xor task</a></h1><hr>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="https://2008verser.github.io/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/" data-id="clqukbyxr000h2wfef6jm5giu" data-title="线性基" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">知识点</a></li></ul>
 
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag"># 知识点</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/" rel="prev" title="ABC311G One More Grid Task 题解">
+                  <i class="fa fa-angle-left"></i> ABC311G One More Grid Task 题解
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/01/01/P/" rel="next" title="P">
+                  P <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">2008verser</span>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2024/01/01/P/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">前一篇</strong>
-      <div class="article-nav-title">
-        
-          P
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">ABC311G One More Grid Task 题解</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/">OI</a></li></ul>
-    </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%94%E8%B5%9B%E7%9B%B8%E5%85%B3/" rel="tag">比赛相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">知识点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/%E6%AF%94%E8%B5%9B%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">比赛相关</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">知识点</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2024/01/01/CF856C%20Eleventh%20Birthday%20%E9%A2%98%E8%A7%A3/">CF856C Eleventh Birthday 题解</a>
-          </li>
-        
-          <li>
-            <a href="/2024/01/01/P/">P</a>
-          </li>
-        
-          <li>
-            <a href="/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/">线性基</a>
-          </li>
-        
-          <li>
-            <a href="/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/">ABC311G One More Grid Task 题解</a>
-          </li>
-        
-          <li>
-            <a href="/2023/12/15/ABC332G%20Not%20Too%20Many%20Balls%20%E9%A2%98%E8%A7%A3/">ABC332G Not Too Many Balls 题解</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2024 2008verser<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
 
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
+  </footer>
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
 </body>
 </html>
