@@ -17,17 +17,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"2008verser.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"2008verser.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="给出 $n\times m$ 的矩阵 $a$。求权值最大子矩形的权值。 一个矩形的权值定义为它里面全部数的和乘上最小值。 $n,m\leq 300,0\leq a_{i,j}\leq 300$。  枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。 这些矩形不好枚举，也难以计算究竟有多少个。 考虑添加一些限制。 枚举上下边界。那">
+    <meta name="description" content="给出 $n\times m$ 的矩阵 $a$。求权值最大子矩形的权值。 一个矩形的权值定义为它里面全部数的和乘上最小值。 $n,m\leq 300,0\leq a_{i,j}\leq 300$。  枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ABC311G One More Grid Task 题解">
 <meta property="og:url" content="https://2008verser.github.io/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="2008verser">
-<meta property="og:description" content="给出 $n\times m$ 的矩阵 $a$。求权值最大子矩形的权值。 一个矩形的权值定义为它里面全部数的和乘上最小值。 $n,m\leq 300,0\leq a_{i,j}\leq 300$。  枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。 这些矩形不好枚举，也难以计算究竟有多少个。 考虑添加一些限制。 枚举上下边界。那">
+<meta property="og:description" content="给出 $n\times m$ 的矩阵 $a$。求权值最大子矩形的权值。 一个矩形的权值定义为它里面全部数的和乘上最小值。 $n,m\leq 300,0\leq a_{i,j}\leq 300$。  枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-16T11:27:30.000Z">
-<meta property="article:modified_time" content="2024-01-01T06:34:04.654Z">
+<meta property="article:modified_time" content="2024-01-01T08:01:14.345Z">
 <meta property="article:author" content="2008verser">
 <meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-01 14:34:04" itemprop="dateModified" datetime="2024-01-01T14:34:04+08:00">2024-01-01</time>
+      <time title="修改时间：2024-01-01 16:01:14" itemprop="dateModified" datetime="2024-01-01T16:01:14+08:00">2024-01-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -235,6 +235,28 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
 </div>
 
         </div>
@@ -249,6 +271,8 @@
 <p>$n,m\leq 300,0\leq a_{i,j}\leq 300$。</p>
 </blockquote>
 <p>枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。</p>
+<span id="more"></span>
+
 <p>这些矩形不好枚举，也难以计算究竟有多少个。</p>
 <p>考虑添加一些限制。</p>
 <p>枚举上下边界。那么我们枚举列，以这一列的最小值为待定矩形的最小值，然后向左右拓展为一个极大的矩形。</p>
@@ -309,19 +333,32 @@
     </span>
     <span class="author" itemprop="copyrightHolder">2008verser</span>
   </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">
+   <!--由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动 -->
   </div>
 
     </div>
   </footer>
 
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -334,7 +371,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.20.0/algoliasearch-lite.umd.js" integrity="sha256-DABVk+hYj0mdUzo+7ViJC6cwLahQIejFvC+my2M/wfM=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.60.0/instantsearch.production.min.js" integrity="sha256-9242vN47QUX50UG5Gf5XDO1YREWCEJRyXHofh5fsl24=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
@@ -346,8 +383,15 @@
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

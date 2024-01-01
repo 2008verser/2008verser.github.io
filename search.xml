@@ -9,6 +9,8 @@
 <p>$n,m\leq 300,0\leq a_{i,j}\leq 300$。</p>
 </blockquote>
 <p>枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。</p>
+<span id="more"></span>
+
 <p>这些矩形不好枚举，也难以计算究竟有多少个。</p>
 <p>考虑添加一些限制。</p>
 <p>枚举上下边界。那么我们枚举列，以这一列的最小值为待定矩形的最小值，然后向左右拓展为一个极大的矩形。</p>
@@ -37,6 +39,8 @@
 <p>输出这个最小长度。$1\leq n,k\leq 300$。</p>
 </blockquote>
 <p>做完以后感觉很简单。但是做的时候绕了个大大大大大的弯。</p>
+<span id="more"></span>
+
 <p>观察最终局面。在原字符串中的表现就是有若干连续段被删除。</p>
 <p><img src="https://pic.imgdb.cn/item/656f2e69c458853aef8426d9.png" alt="8"></p>
 <p>设 $F(l,r)$ 为子串 $[l,r]$ 的答案。</p>
@@ -75,6 +79,8 @@
 <p>对 $998244353$ 取模。</p>
 <p>$1\leq n,m\leq 2e5,c_i\gt0$。</p>
 </blockquote>
+<span id="more"></span>
+
 <p>首先观察到，对于任意终止局面，最后取出的卡片的种类，一定是第一次被取出。</p>
 <p>那么我们只需要知道每种卡片第一次被取出的时间 $S_i$，剩下每个空位置都可以选前面任意一种卡片。</p>
 <p>这个思路是行不通的。</p>
@@ -87,7 +93,7 @@
 <p>进行一次实验，这个独立事件发生的概率显然是 $\dfrac{\sum_{i\in T} c_i}{n}$。</p>
 <blockquote>
 <p>独立事件发生概率为 $p$，第一次发生期望次数 $E&#x3D;\frac{1}{p}$。</p>
-<p>证明：<br>$$<br>\begin{aligned}<br>q&amp;&#x3D;1-p\<br>E&amp;&#x3D;\sum_{i&#x3D;1}^\inf iq^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf (i-1+1)q^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf(i-1)q^{i-1}p+\sum_{i&#x3D;1}^\inf q^{i-1}p\<br>&amp;&#x3D;(\sum_{i&#x3D;1}^\inf iq^ip)+1&#x3D;(q\sum_{i&#x3D;1}^\inf iq^{i-1}p)+1&#x3D;qE+1&#x3D;(1-p)E+1\<br>&amp;\because E&#x3D;(1-p)E+1\<br>&amp;\therefore E&#x3D;\frac{1}{p}(p\neq 0)<br>\end{aligned}<br>$$</p>
+<p>证明：<br>$$<br>\begin{align}<br>q&amp;&#x3D;1-p\<br>E&amp;&#x3D;\sum_{i&#x3D;1}^\inf iq^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf (i-1+1)q^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf(i-1)q^{i-1}p+\sum_{i&#x3D;1}^\inf q^{i-1}p\<br>&amp;&#x3D;(\sum_{i&#x3D;1}^\inf iq^ip)+1&#x3D;(q\sum_{i&#x3D;1}^\inf iq^{i-1}p)+1&#x3D;qE+1&#x3D;(1-p)E+1\<br>&amp;\because E&#x3D;(1-p)E+1\<br>&amp;\therefore E&#x3D;\frac{1}{p}(p\neq 0)\<br>\end{align}<br>$$</p>
 </blockquote>
 <p>期望就是<br>$$<br>\dfrac{n}{\sum_{i\in T} c_i}<br>$$</p>
 <p>我们的式子变成了<br>$$<br>E(\max_{i\in U} S_i)&#x3D;\sum_{T\subseteq U}(-1)^{|T|-1}\times\dfrac{n}{\sum_{i\in T} c_i}<br>$$<br>使用一个常见的拆贡献方法，设 $\sum_{i\in T} c_i&#x3D;x$，则原式变为<br>$$<br>\sum_{x&#x3D;1}^n F(x)\times\frac{n}{x}<br>$$<br>$F(x)$ 是一个负或正的整数。因为原式中全部 $\frac{n}{x}$ 相等的项可以合并同类项。$F(x)$ 就是合并完以后他们的系数。</p>
@@ -127,6 +133,8 @@
 <p>问所有箱子放的球数最多是多少。</p>
 <p>$1\leq n\leq 500,1\leq m\leq 5e5,0\leq a_i,b_i\leq 1e12$。</p>
 </blockquote>
+<span id="more"></span>
+
 <p>很容易建出网络流模型。从上至下依次有 $1,n,m,1$ 个点。但是图实在太大了。</p>
 <p>考虑求最小割。那就是要把上下共 $n+m$ 个点划分为两类。</p>
 <p>将它表示出来。设上下的全集分别为 $X&#x3D;{1,2,…,n},Y&#x3D;{1,2,…,m}$。</p>
@@ -157,6 +165,8 @@
 <p>$1\leq T\leq 100,1\leq n\leq 2000,1\leq a_i\leq 10^9,\sum n\leq 2000$。</p>
 </blockquote>
 <p>如果一个数是 11 的倍数，当它的<strong>奇数数位上的数字之和</strong>与<strong>偶数位上的数字之和</strong>之差（奇偶差）是 11 的整数倍。</p>
+<span id="more"></span>
+
 <p>那么我们关注的只是每个数的奇偶差，以及每个数的最高位在序列中算作奇数数位还是偶数数位（记作最高奇偶性）。</p>
 <p>奇偶差可以在输入的时候求出。记 $a_i$ 是第 $i$ 个数字奇数位减偶数位的值。</p>
 <p><strong>我们可以根据最高奇偶性和 $a_i$ 算序列的奇偶差。</strong>这是后面的前提。</p>
@@ -214,6 +224,8 @@
 <p>但游记性质的东西还是要写的。</p>
 <p>管他呢，OI，感觉自己很不像一个 OIer。</p>
 <h2 id="11-17"><a href="#11-17" class="headerlink" title="11.17"></a>11.17</h2><p>两个质数组成的日子。总是感觉有重要的事情要发生。</p>
+<span id="more"></span>
+
 <p>但还是挺平常的，白天比平时多做了几道题，也没复习什么玩意，晚上机房有些亢奋。</p>
 <p>下午打牌去了……没打球……算挺不寻常的罢。</p>
 <p>晚上秋秋有锅盔，尝了一点，管他会不会拉肚子。</p>
@@ -289,6 +301,8 @@
 <h2 id="arc162-f-Montage"><a href="#arc162-f-Montage" class="headerlink" title="arc162_f Montage"></a>arc162_f Montage</h2><p>分讨可以先把题目限制转化为任意一个子矩形，若它的左上和右下都是 1，则它的左下和右上必须是 1。</p>
 <p>我一开始想的是不断把一些矩形的四个角的 1 “按”上去，但是很难处理两个矩形端点形成的矩形是否合法。</p>
 <p>然后想着“挖”一些零。如果挖一个零，则它向上和向右必须有一个全都是 0，向左和向下同理。</p>
+<span id="more"></span>
+
 <p>但是，这一些全都是 0 的部分也会产生不合法。感受一下，是有一对 1 在这一行或列导致的非法。</p>
 <p>所以应该把以这个 0 为中心的十字都变成 0。</p>
 <p>那么现在就是要不断放一些矩形上来，每个矩形都是通过全 1 矩形用上述规则挖 0 得出的。</p>
@@ -874,6 +888,8 @@
 <p>上网搜大概可以搜到三篇高质的讲解线性基的博客：</p>
 <p><a href="https://www.luogu.com.cn/blog/command-block/xian-xing-ji-xiao-ji">线性基小记 - command_block 的博客 - 洛谷博客 (luogu.com.cn)</a></p>
 <p><a href="https://www.luogu.com.cn/blog/Troverld/xian-xing-ji-xue-xi-bi-ji">线性基学习笔记 - 拜傅里叶教总部 - 洛谷博客 (luogu.com.cn)</a></p>
+<span id="more"></span>
+
 <p><a href="https://oi.men.ci/linear-basis-notes/">线性基学习笔记 | Menci’s OI Blog</a></p>
 <p>下面两篇适合入门。上面那个没点线性代数基础感觉看不太懂。</p>
 <p>最下面这一篇介绍的线性基构建方法比较麻烦。</p>
