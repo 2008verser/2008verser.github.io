@@ -173,8 +173,8 @@ template {
   display: none;
 }
 ::selection {
-  background: #262a30;
-  color: #eee;
+  background: #d8bfd8;
+  color: #fffafa;
 }
 html,
 body {
@@ -301,10 +301,10 @@ td {
   border-bottom-width: 1px;
 }
 .btn {
-  background: var(--btn-default-bg);
-  border: 2px solid var(--btn-default-border-color);
+  background: #d8bfd8;
+  border: 2px solid #d8bfd8;
   border-radius: 2px;
-  color: var(--btn-default-color);
+  color: #fffafa;
   display: inline-block;
   font-size: 0.875em;
   line-height: 2;
@@ -312,9 +312,9 @@ td {
   transition: background-color 0.2s ease-in-out;
 }
 .btn:hover {
-  background: var(--btn-default-hover-bg);
-  border-color: var(--btn-default-hover-border-color);
-  color: var(--btn-default-hover-color);
+  background: #dda0dd;
+  border-color: #dda0dd;
+  color: #fdf5e6;
 }
 .btn + .btn {
   margin: 0 0 8px 8px;
@@ -1099,7 +1099,7 @@ pre code {
   margin: 0;
 }
 .site-subtitle {
-  color: #ddd;
+  color: #fffafa;
   font-size: 0.8125em;
   margin: 10px 10px 0;
 }
@@ -1531,12 +1531,12 @@ pre code {
 }
 @media (min-width: 1200px) {
   .footer-inner {
-    width: 1160px;
+    width: 70em;
   }
 }
 @media (min-width: 1600px) {
   .footer-inner {
-    width: 73%;
+    width: 77%;
   }
 }
 .use-motion .footer {
@@ -1646,7 +1646,14 @@ pre code {
   margin-top: 40px;
   text-align: center;
 }
-.use-motion .post-block,
+.use-motion .post-block {
+  visibility: hidden;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px #cacbcb;
+  -moz-box-shadow: 0 0 5px #cacbcc;
+}
 .use-motion .pagination,
 .use-motion .comments {
   visibility: hidden;
@@ -2019,9 +2026,6 @@ pre code {
 }
 .post-eof {
   background: #ccc;
-  height: 1px;
-  margin: 80px auto 60px;
-  width: 8%;
 }
 .post-block:last-of-type .post-eof {
   display: none;
@@ -2456,12 +2460,12 @@ header.header {
 }
 @media (min-width: 1200px) {
   .main {
-    width: 1160px;
+    width: 70em;
   }
 }
 @media (min-width: 1600px) {
   .main {
-    width: 73%;
+    width: 77%;
   }
 }
 @media (max-width: 991px) {
@@ -2500,7 +2504,7 @@ header.header {
   }
 }
 .site-brand-container {
-  background: var(--theme-color);
+  background: #d8bfd8;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {

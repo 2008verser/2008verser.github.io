@@ -31,46 +31,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ABC325G offence 题解</title>
-    <url>/2023/12/05/ABC325G%20offence%20%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<blockquote>
-<p>给出一个长为 $n$ 的字符串和非负整数 $k$。你可以进行以下操作若干次，使得最终字符串长度最小。</p>
-<p>选择一个字串 <code>of</code>。然后删掉 <code>of</code> 以及这之后的 $i$ 个字符。$i$ 由你决定，但要满足 $0\leq i\leq k$。</p>
-<p>输出这个最小长度。$1\leq n,k\leq 300$。</p>
-</blockquote>
-<p>做完以后感觉很简单。但是做的时候绕了个大大大大大的弯。</p>
-<span id="more"></span>
-
-<p>观察最终局面。在原字符串中的表现就是有若干连续段被删除。</p>
-<p><img src="https://pic.imgdb.cn/item/656f2e69c458853aef8426d9.png" alt="8"></p>
-<p>设 $F(l,r)$ 为子串 $[l,r]$ 的答案。</p>
-<p>如果 $F(l,r)$ 不能全部被删完（也就是有黑色部分），则一定存在一个 $i$，$F(l,r)&#x3D;F(l,i)+F(i+1,r)$。</p>
-<p>那做法就很显然了：</p>
-<ul>
-<li>判断 $[l,r]$ 能否被删完。若能，$F(l,r)&#x3D;0$。</li>
-<li>否则，$F(l,r)&#x3D;\min{F(l,i)+F(i+1,r)}$。</li>
-</ul>
-<p>然后我一开始将这两个视作完全独立的问题。结果试了很久都没有试出咋判断。</p>
-<p><del>后来啊，我有些绝望了。直到那一秒，我灵光一现。</del></p>
-<p>我现在要找到对于可以完全删完的串的必要条件。观察 $l$，它一定要是 ‘o’。</p>
-<p>后面要有一个 ‘f’ 与它匹配。设第 $i(a_i&#x3D;f)$ 位与 $l$ 匹配。</p>
-<p>那么 $[l+1,i-1]$ 需要删完。$[i+1,r]$ 里有一些是这一次匹配顺便删的，剩下要删完。</p>
-<p>想到这里我才明白。</p>
-<p>第一个条件意味 $F(l+1,i-1)&#x3D;0$。第二个意味 $F(i+1,r)\leq k$。</p>
-<blockquote>
-<p>本来我使用了一个新的函数描述能否删干净。完全没有想到用第二个 $\leq k$ 这个东西。</p>
-</blockquote>
-<p>判断的方法已经很显然了。枚举 $i$，然后判断 $F$。</p>
-<p>时间 $O(n^3)$。我一开始的尝试写的是记忆化，后来干脆全写记忆化了。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> epb emplace_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> getc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> putc putchar</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">putc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">305</span>;</span><br><span class="line"><span class="type">int</span> n,k,f[N][N],ans=<span class="number">10000</span>;</span><br><span class="line"><span class="type">char</span> a[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">F</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(f[l][r]!=<span class="number">100000</span>) <span class="keyword">return</span> f[l][r];</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> ret=<span class="number">0</span>;</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(l&gt;r) ret=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(r-l+<span class="number">1</span>==<span class="number">1</span>||a[l]!=<span class="string">&#x27;o&#x27;</span>) ret=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(a[l+<span class="number">1</span>]==<span class="string">&#x27;f&#x27;</span>&amp;&amp;<span class="built_in">F</span>(l+<span class="number">2</span>,r)&lt;=k) &#123;</span><br><span class="line">				ret=<span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> i=l+<span class="number">1</span>;i&lt;=r;i++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(a[i]==<span class="string">&#x27;f&#x27;</span>&amp;&amp;<span class="built_in">F</span>(i+<span class="number">1</span>,r)&lt;=k&amp;&amp;<span class="built_in">F</span>(l+<span class="number">1</span>,i<span class="number">-1</span>)==<span class="number">0</span>) &#123;</span><br><span class="line">						ret=<span class="number">1</span>;</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ret) <span class="keyword">return</span> f[l][r]=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=l;i&lt;r;i++) f[l][r]=<span class="built_in">min</span>(f[l][r],<span class="built_in">F</span>(l,i)+<span class="built_in">F</span>(i+<span class="number">1</span>,r));</span><br><span class="line">	<span class="keyword">return</span> f[l][r];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;.in&quot;,&quot;r&quot;,stdin),freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,a+<span class="number">1</span>);</span><br><span class="line">	n=<span class="built_in">strlen</span>(a+<span class="number">1</span>);k=<span class="built_in">re</span>();</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">for</span>(<span class="type">int</span> j=i;j&lt;=n;j++) f[i][j]=i==j?<span class="number">1</span>:<span class="number">100000</span>;</span><br><span class="line">	<span class="built_in">wt</span>(<span class="built_in">F</span>(<span class="number">1</span>,n));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>OI</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ABC331G Collect Them All 题解</title>
     <url>/2023/12/04/ABC331G%20Collect%20Them%20All%20%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<h2 id="abc331-g"><a href="#abc331-g" class="headerlink" title="abc331_g"></a>abc331_g</h2><blockquote>
@@ -116,6 +76,46 @@
 <p>最终的多项式就是要求的 $F(x)$。</p>
 <p>时间 $O(n\log^2n)$。</p>
 ]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ABC325G offence 题解</title>
+    <url>/2023/12/05/ABC325G%20offence%20%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<blockquote>
+<p>给出一个长为 $n$ 的字符串和非负整数 $k$。你可以进行以下操作若干次，使得最终字符串长度最小。</p>
+<p>选择一个字串 <code>of</code>。然后删掉 <code>of</code> 以及这之后的 $i$ 个字符。$i$ 由你决定，但要满足 $0\leq i\leq k$。</p>
+<p>输出这个最小长度。$1\leq n,k\leq 300$。</p>
+</blockquote>
+<p>做完以后感觉很简单。但是做的时候绕了个大大大大大的弯。</p>
+<span id="more"></span>
+
+<p>观察最终局面。在原字符串中的表现就是有若干连续段被删除。</p>
+<p><img src="https://pic.imgdb.cn/item/656f2e69c458853aef8426d9.png" alt="8"></p>
+<p>设 $F(l,r)$ 为子串 $[l,r]$ 的答案。</p>
+<p>如果 $F(l,r)$ 不能全部被删完（也就是有黑色部分），则一定存在一个 $i$，$F(l,r)&#x3D;F(l,i)+F(i+1,r)$。</p>
+<p>那做法就很显然了：</p>
+<ul>
+<li>判断 $[l,r]$ 能否被删完。若能，$F(l,r)&#x3D;0$。</li>
+<li>否则，$F(l,r)&#x3D;\min{F(l,i)+F(i+1,r)}$。</li>
+</ul>
+<p>然后我一开始将这两个视作完全独立的问题。结果试了很久都没有试出咋判断。</p>
+<p><del>后来啊，我有些绝望了。直到那一秒，我灵光一现。</del></p>
+<p>我现在要找到对于可以完全删完的串的必要条件。观察 $l$，它一定要是 ‘o’。</p>
+<p>后面要有一个 ‘f’ 与它匹配。设第 $i(a_i&#x3D;f)$ 位与 $l$ 匹配。</p>
+<p>那么 $[l+1,i-1]$ 需要删完。$[i+1,r]$ 里有一些是这一次匹配顺便删的，剩下要删完。</p>
+<p>想到这里我才明白。</p>
+<p>第一个条件意味 $F(l+1,i-1)&#x3D;0$。第二个意味 $F(i+1,r)\leq k$。</p>
+<blockquote>
+<p>本来我使用了一个新的函数描述能否删干净。完全没有想到用第二个 $\leq k$ 这个东西。</p>
+</blockquote>
+<p>判断的方法已经很显然了。枚举 $i$，然后判断 $F$。</p>
+<p>时间 $O(n^3)$。我一开始的尝试写的是记忆化，后来干脆全写记忆化了。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> epb emplace_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> getc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> putc putchar</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">putc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">305</span>;</span><br><span class="line"><span class="type">int</span> n,k,f[N][N],ans=<span class="number">10000</span>;</span><br><span class="line"><span class="type">char</span> a[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">F</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(f[l][r]!=<span class="number">100000</span>) <span class="keyword">return</span> f[l][r];</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> ret=<span class="number">0</span>;</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(l&gt;r) ret=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(r-l+<span class="number">1</span>==<span class="number">1</span>||a[l]!=<span class="string">&#x27;o&#x27;</span>) ret=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(a[l+<span class="number">1</span>]==<span class="string">&#x27;f&#x27;</span>&amp;&amp;<span class="built_in">F</span>(l+<span class="number">2</span>,r)&lt;=k) &#123;</span><br><span class="line">				ret=<span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> i=l+<span class="number">1</span>;i&lt;=r;i++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(a[i]==<span class="string">&#x27;f&#x27;</span>&amp;&amp;<span class="built_in">F</span>(i+<span class="number">1</span>,r)&lt;=k&amp;&amp;<span class="built_in">F</span>(l+<span class="number">1</span>,i<span class="number">-1</span>)==<span class="number">0</span>) &#123;</span><br><span class="line">						ret=<span class="number">1</span>;</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ret) <span class="keyword">return</span> f[l][r]=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=l;i&lt;r;i++) f[l][r]=<span class="built_in">min</span>(f[l][r],<span class="built_in">F</span>(l,i)+<span class="built_in">F</span>(i+<span class="number">1</span>,r));</span><br><span class="line">	<span class="keyword">return</span> f[l][r];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;.in&quot;,&quot;r&quot;,stdin),freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,a+<span class="number">1</span>);</span><br><span class="line">	n=<span class="built_in">strlen</span>(a+<span class="number">1</span>);k=<span class="built_in">re</span>();</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">for</span>(<span class="type">int</span> j=i;j&lt;=n;j++) f[i][j]=i==j?<span class="number">1</span>:<span class="number">100000</span>;</span><br><span class="line">	<span class="built_in">wt</span>(<span class="built_in">F</span>(<span class="number">1</span>,n));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>OI</category>
       </categories>
