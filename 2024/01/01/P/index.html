@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>P | 2008verser</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="$$\clubsuit\bigstar\blacksquare\maltese\blacklozenge\spadesuit$$ arc162_f Montage分讨可以先把题目限制转化为任意一个子矩形，若它的左上和右下都是 1，则它的左下和右上必须是 1。 我一开始想的是不断把一些矩形的四个角的 1 “按”上去，但是很难处理两个矩形端点形成的矩形是否合法。 然后想着“挖”一些零。如果挖一个零，则">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P">
+<meta property="og:url" content="https://2008verser.github.io/2024/01/01/P/index.html">
+<meta property="og:site_name" content="2008verser">
+<meta property="og:description" content="$$\clubsuit\bigstar\blacksquare\maltese\blacklozenge\spadesuit$$ arc162_f Montage分讨可以先把题目限制转化为任意一个子矩形，若它的左上和右下都是 1，则它的左下和右上必须是 1。 我一开始想的是不断把一些矩形的四个角的 1 “按”上去，但是很难处理两个矩形端点形成的矩形是否合法。 然后想着“挖”一些零。如果挖一个零，则">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65571eb4c458853aefc87fcf.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65571eb4c458853aefc88077.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65571e75c458853aefc7a51b.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65571e76c458853aefc7a940.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65571e76c458853aefc7a9ee.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65571e76c458853aefc7aab4.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656f2e69c458853aef8426d9.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6582f2c8c458853aef13c06a.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6584c612c458853aef1fb1a4.png">
+<meta property="article:published_time" content="2024-01-01T06:30:00.000Z">
+<meta property="article:modified_time" content="2024-01-01T06:31:56.609Z">
+<meta property="article:author" content="2008verser">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/65571eb4c458853aefc87fcf.png">
+  
+    <link rel="alternate" href="/atom.xml" title="2008verser" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">2008verser</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Welcome to my blog!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://2008verser.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-P" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/01/P/" class="article-date">
+  <time class="dt-published" datetime="2024-01-01T06:30:00.000Z" itemprop="datePublished">2024-01-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OI/">OI</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      P
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>$$<br>\clubsuit\bigstar\blacksquare\maltese\blacklozenge\spadesuit<br>$$</p>
+<h2 id="arc162-f-Montage"><a href="#arc162-f-Montage" class="headerlink" title="arc162_f Montage"></a>arc162_f Montage</h2><p>分讨可以先把题目限制转化为任意一个子矩形，若它的左上和右下都是 1，则它的左下和右上必须是 1。</p>
+<p>我一开始想的是不断把一些矩形的四个角的 1 “按”上去，但是很难处理两个矩形端点形成的矩形是否合法。</p>
+<p>然后想着“挖”一些零。如果挖一个零，则它向上和向右必须有一个全都是 0，向左和向下同理。</p>
+<p>但是，这一些全都是 0 的部分也会产生不合法。感受一下，是有一对 1 在这一行或列导致的非法。</p>
+<p>所以应该把以这个 0 为中心的十字都变成 0。</p>
+<p>那么现在就是要不断放一些矩形上来，每个矩形都是通过全 1 矩形用上述规则挖 0 得出的。</p>
+<p>矩阵与矩阵之间的合法性好办，让一个矩阵上边的另一个矩阵不能到这个矩阵的左边就好了（大概意思）。</p>
+<p>然后这样就会得到从右上到左下的一溜矩阵。发现每行至多有一个连续段，所以直接 dp。</p>
+<p>设 $f_{i,l,r}$ 表示第 $i$ 行的连续段是 $[l,r]$，$1\to i$ 行合法的方案数。</p>
+<p>空行呢？不 dp 空行，用每个状态 $f_{i,l,r}$，把 $n-i$ 个空行和 $l-1$ 个空列插进去的方案数做系数贡献答案。</p>
+<p>这个系数相当于 $n$ 行选 $i$ 行和 $m$ 列选 $m-l+1$ 列。</p>
+<hr>
+<h2 id="cf1830-b"><a href="#cf1830-b" class="headerlink" title="cf1830_b"></a>cf1830_b</h2><blockquote>
+<p>给出两个长度为 $n$ 的序列 $a,b$。</p>
+<p>求有序数对 $(i,j)$ 的数量满足 $a_i\times a_j&#x3D;b_i+b_j$。</p>
+<p>$1\leq n\leq2e5,1\leq a_i,b_i\leq n$。</p>
+</blockquote>
+<p>既然 $a_i,b_i\leq n$，所以 $a_i\times a_j&#x3D;b_i+b_j\leq2n$。</p>
+<p>观察一下这个等式的大小 $s$，$a_i$ 和 $a_j$ 相乘是 $s$，$a_i$ 和 $a_j$ 都是 $s$ 的因数。</p>
+<p>一开始想到 $O(n)$ 枚举 $s$，$O(\sqrt n)$ 枚举因数。但是没办法 $O(1)$ 去计算出 $a_i$ 和 $a_j$ 为某个已知值时合法的 $(i,j)$ 数量。</p>
+<p>那换方法。观察到 $a_i$ 和 $a_j$ 要么同时小于 $\sqrt n$，要么一个大于 $\sqrt n$ 一个小于 $\sqrt n$。</p>
+<p>那么枚举一个 $i$，如果 $a_i$ 大于 $\sqrt n$，那么枚举变量 $aj\leq\sqrt n$ 且 $a_i\times aj\leq 2n$，此时要求 $a_j&#x3D;aj$ 时 $b_j&#x3D;a_i\times aj-b_i$ 的 $j$ 的数量。</p>
+<p>这个想办法预处理就好。</p>
+<p>如果 $a_i$ 小于 $\sqrt n$，其实可以也只枚举 $aj\leq\sqrt n$。因为大于 $\sqrt n$ 的会在 $a_{i’}&#x3D;aj$ 时统计。</p>
+<p>思路已经很明朗了：$a_i$ 和 $a_j$ 都小于 $\sqrt n$ 的 $(i,j)$ 数对，会在 $i$ 统计一次 $j$ 统计一次，算重一次（最终除以 2）。</p>
+<p>$a_i$ 和 $a_j$ 一个小于一个大于 $\sqrt n$ 的，会在大于 $\sqrt n$ 那里统计一次。</p>
+<p>还要留意把自己和自己匹配这一种多余情况。</p>
+<p>时间 $O(n\sqrt n)$。</p>
+<hr>
+<h2 id="abc269-g"><a href="#abc269-g" class="headerlink" title="abc269_g"></a>abc269_g</h2><blockquote>
+<p>给出 $n$ 张卡牌和一个数字 $m$。第 $i$ 张正面写着 $a_i$，背面写着 $b_i$。$\sum(a_i+b_i)&#x3D;m$。</p>
+<p>初始牌都是正面朝上。你可以把某些牌翻面。</p>
+<p>记 $s$ 为每张牌朝上的面的数字之和。输出 $m+1$ 行，第 $i$ 行表示 $s&#x3D;i-1$ 时最小翻面次数。</p>
+<p>$1\leq n\leq2e5,0\leq m\leq 2e5,0\leq a_i,b_i$。</p>
+</blockquote>
+<p>一开始想的是判定性。把全部牌的较小值翻到上面。那么最小的 $s$ 就是此时上面数字之和。</p>
+<p>接下来再翻的话，意义就是在 $s$ 的基础上加一个非负数。翻第 $i$ 张加的就是 $|a_i-b_i|$。</p>
+<p>这个玩意不可能很快做出来。观察一下性质：既然和为 $m$，那 $\sum|a_i-b_i|\leq m$。</p>
+<p>不同的 $|a_i-b_i|$ 不超过 $\sqrt m$ 个。可以用单调队列优化（多重背包）或二进制拆分优化。</p>
+<p>加上最小翻牌次数的话，一开始全翻上去了，$ans_0&#x3D;\sum[a_i&gt;b_i]$。</p>
+<p>如果要翻一个牌，如果一开始就是小在上，代价就是 1。</p>
+<p>否则，相当于翻成较小的面又翻回来了，代价是 -1（因为在 $ans_0$ 里加了一个 1）。</p>
+<p>这样固然可以做。但不如……</p>
+<p>每个 $i$，可以用 $1$ 的代价加上 $b_i-a_i$。</p>
+<p>然后直接单调队列优化 dp。时间 $O(n\sqrt m)$。</p>
+<hr>
+<h2 id="abc215-g"><a href="#abc215-g" class="headerlink" title="abc215_g"></a>abc215_g</h2><blockquote>
+<p>给一个长度为 $n$ 的序列 $a$。输出 $n$ 行，</p>
+<p>第 $k$ 行表示等概率随机在 $a$ 中取一个长度为 $k$ 的子序列，序列里面值不同的元素个数的期望。</p>
+</blockquote>
+<p>遇到期望题，先列式子，然后拆贡献，然后优化。</p>
+<p>这个第 $k$ 行就是 $\dfrac{\sum_{每一种子序列}值不同的元素个数}{C_n^k}$。考虑求上边的这玩意。</p>
+<p>有两种拆贡献方法：一是算出算出对于每个“……个数”有多少种子序列满足是这个个数。这个完全看起来不可做。</p>
+<p>二是观察一个子序列的“值不同的元素个数”是包括好多种元素的，有多少种元素就是几。好多子序列的“值不同的元素个数”之和是包括好多种元素，每种元素有好多次。</p>
+<p>求出对于第 $i$ 种元素，在全部子序列中它会被计算多少次。也就是有多少个子序列，第 $i$ 种元素出现在这个子序列里。</p>
+<p>容斥。设第 $i$ 种元素出现了 $a_i$ 次。</p>
+<p>若要求有多少个子序列，这种元素不出现在这个子序列里，当然是 $C_{n-a_i}^k$。那么它就出现在剩余的 $C_n^k-C_{n-a_i}^k$ 里。</p>
+<p>前面写的上边那玩意（设有 $m$ 种元素）就是 $\sum_{i&#x3D;1}^m C_n^k-C_{n-a_i}^k$。</p>
+<p>考虑优化。如果两种元素出现次数相等（$a_i&#x3D;a_j$），那他们上边这玩意是一样的，可以算一次用两次。</p>
+<p>那到底要算几次？$a$ 有多少个不同就算几次。</p>
+<p>又因为 $a$ 所表示的是原序列每种元素的出现次数（$\sum a_i&#x3D;n$），所以不同的 $a$ 最多有 $\sqrt n$ 种。</p>
+<p>剩下就很简单了。时间 $O(n\sqrt n)$。</p>
+<hr>
+<h2 id="abc319-g"><a href="#abc319-g" class="headerlink" title="abc319_g"></a>abc319_g</h2><blockquote>
+<p>一个 $n$ 阶无向完全图删掉 $m$ 条给定边。问 $1\to n$ 最短路数量。</p>
+<p>$n,m\leq2e5$。</p>
+</blockquote>
+<p>首先考虑朴素暴力。bfs 求出 $dis[x]$ 表示 $1\to x$ 的最短长度。</p>
+<p>然后求出 $f[x]$ 表示 $1\to x$ 最短路数量。是 $f[x]&#x3D;\sum_{dis[y]+1&#x3D;dis[x]}f[y]$。</p>
+<p>分别优化。观察第一部分，第一个优化是维护一个没到达的点集 $uv$，每次在这里找新点。</p>
+<p>接着对于每个想要扩张的点 $x$，不可能去遍历真图上的边，于是遍历删掉的边 $(x,y)$，此时要加入队列的就是全部不与 $x$ 相连、属于 $uv$ 的点。</p>
+<p>那可以先把全部与 $x$ 相连、属于 $uv$ 的点从 $uv$ 里取出，然后遍历 $uv$，清空 $uv$，加回去。不难发现这样是 $(n+m)\log n$ 的。</p>
+<p>第二部分类似，画个分层图然后每个点就是上一层全部点的 $f$ 之和减去一些 $f$。好办。</p>
+<p>这道题的核心就是因为不可能遍历真图边，然后就遍历删的边，再想对策。时间 $O((n+m)\log n)$。</p>
+<hr>
+<h2 id="P6078-CEOI2004"><a href="#P6078-CEOI2004" class="headerlink" title="P6078 [CEOI2004]"></a>P6078 [CEOI2004]</h2><blockquote>
+<p>$n$ 种糖果，第 $i$ 种有 $m_i$ 个。问有多少种吃糖方案，满足吃掉的糖果数属于 $[a,b]$？</p>
+<p>$1\leq n\leq 10,1\leq m_i\leq 1e6,1\leq a,b\leq 1e7$。时限 $0.1s$。</p>
+</blockquote>
+<p>记号：多项式 $F(x)$ 里 $x^i$ 的系数是 $[x^i]F(x)$。</p>
+<p>首先可以构造 $n$ 个多项式，第 $i$ 个多项式 $x^0\to x^{m_i}$ 的系数都是 1，其余系数是 0。</p>
+<p>那么全部卷起来，结果多项式里 $x^i$ 的系数就是吃 $i$ 个糖果的方案数。</p>
+<p>时间肯定过不去。用生成函数凑一凑。设普通型生成函数 $F_i(x)&#x3D;1+x+x^2+…+x^{m_i}$。</p>
+<p>可以得到 $F_i(x)$ 的封闭形式<br>$$<br>F_i(x)&#x3D;\frac{1-x^{m_i+1}}{1-x}<br>$$</p>
+<p>全部乘起来<br>$$<br>\frac{\Pi(1-x^{m_i+1})}{(1-x)^n}&#x3D;(1-x)^{-n}\Pi(1-x^{m_i+1})<br>$$<br>记 $\Pi(1-x^{m_i+1})$ 的结果为多项式 $G(x)$。虽然它的最高次数很大，但是项数很少，不超过 $2^n$ 个，可以 dfs 求出 $G(x)$。</p>
+<p>定义广义组合数<br>$$<br>{n\choose m}&#x3D;\frac{n(n-1)…(n-m+1)}{m!}<br>$$<br>根据牛顿二项式定理把 $(1-x)^{-n}$ 展开<br>$$<br>\begin{aligned}<br>(1-x)^{-n}&amp;&#x3D;\sum_{i&#x3D;0}^{\infty}{-n\choose i}(-x)^i\<br>&amp;&#x3D;\sum_{i&#x3D;0}^{\infty}\frac{(-n)(-n-1)…(-n-i+1)}{i!}(-x)^i<br>\end{aligned}<br>$$<br>分子里可以拿 $(-1)^i$ 出来，右侧 $(-x)^i&#x3D;((-1)x)^i&#x3D;(-1)^ix^i$。两个 $(-1)^i$ 相乘等于 $(-1)^{2i}&#x3D;1$。原式变为<br>$$<br>\sum_{i&#x3D;0}^{\infty}\frac{n(n+1)…(n+i-1)}{i!}x^i&#x3D;\sum_{i&#x3D;0}^{\infty}{n+i-1\choose i}x^i<br>$$<br>先把这个东西放着，记为多项式 $S(x)$。看一下答案求的是啥，是两个多项式卷起来后 $x^a$ 到 $x^b$ 的系数之和，即<br>$$<br>\sum_{i+j\in[a,b]}[x^i]S(x)\times[x^j]G(x)<br>$$<br>我们不考虑分别求出 $x^a$ 到 $x^b$ 的每一个系数。转而计算全部系数的和。</p>
+<p>因为 $G(x)$ 可以算出来，那就枚举 $G(x)$ 的里的项。记枚举 $x^k$ 的系数。</p>
+<p>我们知道，$x^k$ 的系数会和 $S(x)$ 里的某几项相乘、求和、加到结果多项式里的 $x^a\to x^b$ 之间，</p>
+<p>哪几项呢？当然是 $x^{a-k}\to x^{b-k}$ 项啦。</p>
+<p>$x^k$ 的系数和 $S(x)$ 里的 $x^{a-k}\to x^{b-k}$ 项相乘、求和的结果就是下面这个式子<br>$$<br>[x^k]G(x)\sum_{i&#x3D;a-k}^{b-k}{n+i-1\choose i}<br>$$</p>
+<p>好！那考虑这样一种式子的结果。<br>$$<br>\sum_{i&#x3D;l}^r{n+i-1\choose i}&#x3D;\sum_{i&#x3D;l}^r{n+i-1\choose i}+{n+l-1\choose l-1}-{n+l-1\choose l-1}<br>$$<br>又根据 ${n\choose m}&#x3D;{n-1\choose m}+{n-1\choose m-1}$，当 $i&#x3D;l$ 的时候 $\sum$ 里头的那个组合数可以和 ${n+l-1\choose l-1}$ 加起来变成一个新的数 $P$。</p>
+<p>然后 $P$ 又能和 $i&#x3D;l+1$ 加起来……直到最后，变成了<br>$$<br>\sum_{i&#x3D;l}^r{n+i-1\choose i}&#x3D;{n+r\choose r}-{n+l-1\choose l-1}<br>$$</p>
+<p>总结一下，我们要求 $(S\cdot G)(x)$ 的 $x^a\to x^b$ 的系数之和。我们枚举 $G(x)$ 的次数 $k$，$S(x)$ 中参与贡献的是 $x^{a-k}\to x^{b-k}$ 项。</p>
+<p>然后我们把这个贡献式子列出来，提出公因数 $[x^k]G(x)$，用它乘上一堆组合数的求和。我们又把这一堆组合数变成了两个组合数相减。</p>
+<p>先 $O(2^n)$ 算出 $G(x)$，然后 $O(2^n)$ 枚举 $G(x)$ 里的项，$O(1)$ 算组合数，相乘，累加答案。总共是 $O(2^n)$。</p>
+<p>好！结束了吗？没有！注意到模数是 2004！算不了组合数！</p>
+<p>有一个 Trick 可以当作结论记：<br>$$<br>\frac{a}{b}\bmod M&#x3D;\frac{a\bmod bM}{b}<br>$$<br>此时 $n+r\choose r$ 可以转化为 $n+r\choose n$，进而：<br>$$<br>\frac{(n+r)(n+r-1)…(n+r-n+1)}{n!}<br>$$<br>分子暴力乘，对 $n!\times2004$ 取模。</p>
+<hr>
+<h2 id="P2797-cf626-e"><a href="#P2797-cf626-e" class="headerlink" title="P2797 &amp; cf626_e"></a>P2797 &amp; cf626_e</h2><blockquote>
+<p>给出长度为 $n$ 的序列，你可以选若干个数，求选出数的平均数减中位数最大值。</p>
+<p>$1\leq n\leq1e6,0\leq a_i\leq 1e6$。</p>
+</blockquote>
+<p>既然有中位数，考虑分奇偶求。首先升序排序。</p>
+<p>对于一个长度为奇数的子序列，枚举它中间的点。那剩下一定是紧挨 $x$ 左侧和 $n$ 的。总长为 $2i+1$。</p>
+<p><img src="https://pic.imgdb.cn/item/65571eb4c458853aefc87fcf.png" alt="1"></p>
+<p>暴力枚举 $i$ 可以得到一个 $O(n^2)$ 的算法。太劣了。</p>
+<p>中位数不变，假设平均数为 $x$，如果 $i$ 增加 1，那么平均数的分母就加 2，分子就加两个 $a_?$（下标可以用 $n,x,i$ 表示出，这里不写了）。</p>
+<p>新的平均数记为 $x’$，也就是加上了 $\Delta x&#x3D;x’-x$。</p>
+<p>因为这两个 $a_?$ 之和的大小随着 $i$ 增加而减小。那么可以感受到，平均数增加的那个 $\Delta x$ 不断减小。</p>
+<p>那么 $x$ 就呈现先升后降。</p>
+<p><img src="https://pic.imgdb.cn/item/65571eb4c458853aefc88077.png" alt="2"></p>
+<p>那么三分。奇数部分就搞定了。</p>
+<p>对于偶数的情况，我们没办法继续枚举中位数。设选了 $p_1,p_2,…p_k,p_{k+1},…,p_{2k}$。考虑枚举较左侧的那个中位数 $p_{k}$。</p>
+<p>再想想能不能证明偶数的每种选择方式都能纳归到一类特定、易求的方式。</p>
+<p>但是一通推导之后发现如果仅仅是移动某几个选择的位置的话，根本发现不了任何有用的结论。</p>
+<p>那就考虑加一个或者减一个位置……转化到奇数情况？一通（查看题解）之后就可以知道减掉 $p_{k+1}$ 不选时，答案不更劣。</p>
+<p>证明考虑把前后的答案相减，再利用答案永远非负的性质加以说明。</p>
+<p>即每种最优&#x2F;不最优的偶数选法可以转化为一种不更劣的奇数选法。奇数的选法一定包有答案。</p>
+<p>做做做就完事了。时间 $O(n\log n)$。</p>
+<hr>
+<h2 id="P5923-IOI2004"><a href="#P5923-IOI2004" class="headerlink" title="P5923 [IOI2004]"></a>P5923 [IOI2004]</h2><p>思考的时候我很好奇如果两个障碍段相交是什么情况。然后就有了这种情况：</p>
+<p><img src="https://pic.imgdb.cn/item/65571e75c458853aefc7a51b.png" alt="3"></p>
+<p>我一开始是想着构造上面这幅，答案应为 $[1,8]$ 和 $[4,11]$。</p>
+<p>然而我又看了一眼发现不对劲。正确的输出应当是下方这个。上方的深红色和浅红色是两个框段，下方这才是三个障碍段。</p>
+<p>依据题意，三个都要输出。我们猛然发现，两个相交段相交大小必须为 1。</p>
+<blockquote>
+<p>证明：设框段 $[l,r]$ 和 $[a,b]$（ $a\leq r$ ）。（可以结合上面打叉的那个图，直接看加粗字）</p>
+<ul>
+<li><p>首先我们先严格地证明 $[a,r]$ 的值域是连续的（下面略去写值域）。（想题的时候我直接相信了这个结论，因为感觉上很对，你也可以跳过）</p>
+</li>
+<li><p>可以反证，若 $[a,r]$ 不连续，因为 $[l,r]$ 连续，所以 $[a,r]$ 里缺的数<strong>出现在</strong> $[l,a]$。</p>
+</li>
+<li><p>若 $[a,r]$ 不连续，因为 $[a,b]$ 连续，所以 $[a,r]$ 里缺的数<strong>出现在</strong> $[r,b]$。</p>
+</li>
+<li><p>那它又不可能出现在两个地方。所以与已知事实相悖，$[l,r]$ 连续。</p>
+</li>
+</ul>
+<p>既然 $a_r$ 是 $a_{l\to r}$ 的 $\max$，那 $a_r$ 当然也是 $a_{a\to r}$ 的 $\max$。</p>
+<p>既然 $a_a$ 是 $a_{a\to b}$ 的 $\min$，那 $a_a$ 当然也是 $a_{a\to r}$ 的 $\min$。</p>
+<p>结合这两点以及 $[a,r]$ 值域连续，所以 $[a,r]$ 是一个框段。</p>
+<p>类似地，<strong>你一共可以证明 $[l,a]$ 和 $[a,r]$ 和 $[r,b]$ 是三个两两相交大小为 1 的框段！</strong></p>
+<p><strong>也就是说任意两个相交大小大于 1 的框段，我们可以拆成三个两两相交大小为 1 的框段。</strong>证毕。</p>
+</blockquote>
+<p>先想想一个框段 $[l,r]$ 的充要条件。一通搞可以得到这个式子：<br>$$<br>a_{l}&#x3D;\min(a_{l\to r}),a_r&#x3D;\max(a_{l\to r})\<br>a_l-l&#x3D;a_r-r<br>$$<br>一、考虑一种 $n^2$ 的暴力。</p>
+<p>枚举障碍段的左端点 $l$，从左端点开始向右扩展右端点。然后套这个式子。</p>
+<p>但是这样会做到非障碍段的框段。固然可以全搞下来去重，更好的方法是从后往前枚举 $l$。</p>
+<p>这样的话第一个找到的框段一定是障碍段。我们可以将变量 $Rlimit$ 赋值为第一个框段的左端点。</p>
+<p>接下来再枚举新的 $l$，此时的右端点就有了一个小于 $n$ 的枚举上界 $Rlimit$。时间大大减小。</p>
+<p><del>然后就<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/134126844">过</a>了？ Hack 见<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/discuss/728080">这里</a>。</del></p>
+<p>二、观察上边那个 $a_l-l&#x3D;a_r-r$。不妨将每个位置 $i$ 的 $a_i-i$ 求出来。每次把 $a_i-i$ 相同的那些挖出来做。</p>
+<p>仿照暴力的枚举顺序。枚举左端点 $l$，现在就是要找到最小的 $r\gt l$，满足 $l,r$ 分别是 $a_{l\to r}$ 的 $\min,\max$。</p>
+<p><img src="https://pic.imgdb.cn/item/65571e76c458853aefc7a940.png" alt="4"></p>
+<p>我们设 $f_i$ 是 $i$ 向左最远到哪里 $a_i$ 还是最大值。$g_i$ 是 $i$ 向右最远到哪里 $a_i$ 还是最小值。</p>
+<p>那就是要让 $f_r\leq l,g_l\geq r$。注意到那些 $r$ 是被我的 $l$ 遍历过的，考虑沿途用 DS 做些手脚。</p>
+<p>每次查询“小于等于 $g_l$、$f$ 值小于等于 $l$ 的“、最小的 $r$。把 $[l,r]$ 算入答案。按照 $r,f_r$ 投到平面上就是一个矩形查询的问题。</p>
+<hr>
+<h2 id="cf1120-c"><a href="#cf1120-c" class="headerlink" title="cf1120_c"></a>cf1120_c</h2><blockquote>
+<p>给定长为 $n$ 字符串 $s$，有一个打字机，每次你可以花费 $a$ 的代价打出一个字符，或花费 $b$ 的代价打出一个已打出的字符串的子串，求打出 $s$ 的最小代价。</p>
+<p>$1\leq n,a,b\leq 5e3$。</p>
+</blockquote>
+<p>一种简单的 dp，设 $f_{i}$ 表示做完 $[1,i]$ 的最小代价。</p>
+<p>那要么是 $f_{i-1}+a$ 转移过来，要么是 $f_{j}+b$ 转移过来，其中 $[j+1,i]$ 是 $[1,j]$ 的字串。</p>
+<p>观察一下，发现随着 $j$ 的减小，第二种转移从可以到不可以。严格来讲，</p>
+<ul>
+<li>如果 $j$ 可以，那么 $\forall j\lt j’\leq i$，$j’$ 可以。</li>
+<li>如果 $j$ 不可以，那么 $\forall 1\leq j’\lt j$，$j’$ 不可以。</li>
+</ul>
+<p>很容易证。那么设 $g_i$ 表示从 $i$ 往左延伸多少是可以的。即最长的后缀 $[j,i]$ 的长度，满足在 $[1,j-1]$ 内出现。</p>
+<p>处理 $s_{i,j}$ 表示 $[1,i]$ 和 $[1,j]$ 的最长公共后缀。然后就有 $g$ 了。</p>
+<p>做完了。$f$ 的转移可以优化成 $O(n)$，但没必要了。$s$ 的转移是 $O(n^2)$ 的。</p>
+<p>这个优化是是发现 $f$ 单调不下降，所以直接取最左侧的点转移过来就好了。</p>
+<hr>
+<h2 id="cf520-c"><a href="#cf520-c" class="headerlink" title="cf520_c"></a>cf520_c</h2><blockquote>
+<p>给一个 $n$ 位的十位数，在数字间加 $k$ 个 ‘+’ 号使形成一个加法表达式。</p>
+<p>求全部可能的加法表达式的值之和。$1\leq n\leq1e5$。</p>
+</blockquote>
+<p>暴力枚举 $i,j$，计算 $[i,j]$ 作为整段在全部可能的表达式中的出现次数。用 $[i,j]$ 的值乘上这个次数加进答案。</p>
+<p>次数是个组合数。这是 $O(n^2)$ 的。 感觉不太好优化，这个暴力限制太多了，要求两侧都是加号。</p>
+<p>计划计算 $a_i$ 对答案的贡献。$a_i$ 作为一个数字的某一位只跟右侧的加号有关。</p>
+<p>枚举 $i\lt j\leq n$ 表示在 $j$ 前边加 ‘+’。其余 $[i,j]$ 以内不准填。</p>
+<p>此时剩下了 $n-1-j+i$ 个随便填的位置，剩 $k-1$ 个加号要填。</p>
+<p>所以此时 $a_i$ 对答案的贡献是：<br>$$<br>\sum_{j&#x3D;i+1}^n 10^{j-i-1}\times a_i\times {n-1-j+i\choose k-1}<br>$$<br>把 $a_i$ 提到左侧，发现右侧的这个可以直接预处理。$O(n)$ 做完。</p>
+<hr>
+<h2 id="cf519-e"><a href="#cf519-e" class="headerlink" title="cf519_e"></a>cf519_e</h2><p>发现答案可以用倍增 LCA 维护。然后稍加分讨即可。</p>
+<hr>
+<h2 id="cf768-d"><a href="#cf768-d" class="headerlink" title="cf768_d"></a>cf768_d</h2><blockquote>
+<p>共 $n$ 种物品，每种有无限个，一天会等概率获得一种物品。求最早在第几天获得全部 $n$ 种的概率不小于 $\frac{p}{2000}$。</p>
+<p>$q$ 组询问，每组询问给定 $p$。$1\leq n,q,p\leq 1000$。</p>
+</blockquote>
+<p>看了题解吓我一跳。</p>
+<p>容易想到一个依赖天数的 dp。设 $f_{i,j}$ 表示前 $i$ 天获得 $j$ 种的概率。<br>$$<br>f_{i,j}&#x3D;f_{i-1,j-1}\times\frac{k-j+1}{k}+f_{i-1,j}\times\frac{j}{k}<br>$$<br>我发现，如果终止概率很接近 1 时，天数非常非常大！然后我开始根据 dp 的图开始考虑加速……</p>
+<p>不会！一看题解，$p\leq 1000$？就是说终止概率不大于 $1&#x2F;2$！</p>
+<p>暴力得到，当 $n&#x3D;1000$ 时，$f_{7303,n}\gt0.51$。就是说天数小于 $7303$。根据这个特性直接 dp 即可。 </p>
+<p>一个<strong>经验</strong>：感觉题不可做时看看数据范围。</p>
+<hr>
+<h2 id="cf856-c"><a href="#cf856-c" class="headerlink" title="cf856_c"></a>cf856_c</h2><blockquote>
+<p>$T$ 组数据，每组数据给出 $n$ 和长为 $n$ 的序列。</p>
+<p>定义一个序列是否是 11 的倍数为这个序列全部数字首尾相接构成的数字是否是 11 的倍数。</p>
+<p>求给出序列的全部排列中是 11 的倍数的排列个数。</p>
+<p>$1\leq T\leq 100,1\leq n\leq 2000,1\leq a_i\leq 10^9,\sum n\leq 2000$。</p>
+</blockquote>
+<p>如果一个数是 11 的倍数，当它的<strong>奇数数位上的数字之和</strong>与<strong>偶数位上的数字之和</strong>之差（奇偶差）是 11 的整数倍。</p>
+<p>那么我们关注的只是每个数的奇偶差，以及每个数的最高位在序列中算作奇数数位还是偶数数位（记作最高奇偶性）。</p>
+<p>奇偶差可以在输入的时候求出。记 $a_i$ 是第 $i$ 个数字奇数位减偶数位的值。</p>
+<p><strong>我们可以根据最高奇偶性和 $a_i$算序列的奇偶差。</strong>这是后面的前提。</p>
+<p>我们可以设一个 dp，$f_{i,j}$ 表示在序列前 $i$ 个数构成的全部排列中奇偶差为 $j$ 的排列个数。（如果奇偶差为负就加成正的，方便 dp）</p>
+<p>考虑分讨第 $i$ 个数的最高奇偶性转移。</p>
+<p>这玩意转移不了。状态是关于前 $i$ 个数的排列，而这个排列毫无规律可言。</p>
+<p>那么我们观察一下最终答案的构成。</p>
+<p>长度偶数的 $a_i$ 是不影响后面数字最高奇偶性的，奇偶性的变化出现在全部长度为奇数的数字。</p>
+<p>每个奇数长度的数字的左边好多的数字跟它最高奇偶性一样，直到另一个奇数长度的数字。（红点是奇数长度，黑点是偶数的）</p>
+<p><img src="https://pic.imgdb.cn/item/65571e76c458853aefc7a9ee.png" alt="6"></p>
+<p>那么我们可以先求出全部奇数长度的数字构成的序列的满足某一奇偶差的排列数量，然后把偶数长度的数字一个个加上去。</p>
+<p>设 $f_{i,j}$ 表示前 $i$ 个奇数长度数字构成的序列，奇偶差为 $j$ 的排列数。还是缺乏信息不好转移。</p>
+<p>再观察一下这一问题的答案构成。设有 $n1$ 个奇数长度数字。</p>
+<p>这些数字里面，第一个最高奇偶性为奇、第二个为偶、第三个为奇……</p>
+<p>有 $\lceil \frac{n1}{2}\rceil$ 个最高奇偶性为奇，$\lfloor \frac{n1}{2}\rfloor$ 个偶。记为 $qwq,ovo$。</p>
+<p>像下边这张图，这是 $n1$ 个奇数长度的数字，红色最高奇偶性是奇，黑色是偶。</p>
+<p><img src="https://pic.imgdb.cn/item/65571e76c458853aefc7aab4.png" alt="7"></p>
+<p>原本这个转移不了的 dp 蠢死了！</p>
+<p>我们现在就是要让 $n1$ 个数填进这些空里！上一个 dp 中每次我们只关注前 $i$ 个空。此时我们不妨直接考虑全部空。</p>
+<p>设 $f_{i,j,k}$ 表示考虑到 $n1$ 个数的前 $i$ 个，填了 $j$ 个红色（最高奇偶性为奇）（黑色就是 $i-j$ 个咯），奇偶差为 $k$ 的排列个数。</p>
+<p>这下子就好转移了，分为 $i$ 填红还是黑。然后乘上选这第 $i$ 个的方法数。</p>
+<p>如果当前填红色（最高奇偶性为奇），上一步应当填了 $j-1$ 个红色，这一步有 $qwq-(j-1)$ 个红色可选。</p>
+<p>上一步奇偶差加上 $a_i$ 等于 $k$，上一步奇偶差为 $k-a_i$。</p>
+<p>黑色类似。<br>$$<br>f_{i,j,k}&#x3D;<br>\begin{cases}<br>f_{i-1,j-1,k-a_i}\times(qwq-(j-1))+\<br>f_{i-1,j,k+a_i}\times(ovo-(i-j)+1)<br>\end{cases}<br>$$<br>接着我们将 $n2$ 个偶数长度的数字<strong>加上去</strong>。</p>
+<p>考虑第一张图，偶数长度的数字跟右边第一个奇数长度的数字最高奇偶性一致。</p>
+<ul>
+<li><p>我们可以把第 $i$ 个加到一个奇数长度的数字之前，$i$ 的最高奇偶性与这个数字一致。</p>
+</li>
+<li><p>也可以加到一个已加入的偶数长度的数字之前，$i$ 的最高奇偶性和这个偶数长度的数字一致。</p>
+</li>
+<li><p>特别地，它可以加到最末尾。</p>
+</li>
+</ul>
+<p>设 $g_{i,j,k}$ 表示前 $i$ 个加进去，有 $j$ 个最高奇偶性为奇，奇偶差为 $k$ 的方案数。<br>$$<br>g_{0,0,i}&#x3D;f_{n1,qwq,i}<br>$$<br>分讨第 $i$ 个的奇偶性转移。</p>
+<p>以奇为例，对应上面三点：</p>
+<ul>
+<li>这个奇数长度的数字有 $qwq$ 种可选。</li>
+<li>已加入的、为正的数字有 $j-1$ 个。（算上 $i$ 共 $j$ 个）</li>
+<li>若奇数长度数字是偶数个。</li>
+</ul>
+<p>偶类似。<br>$$<br>g_{i,j,k}&#x3D;<br>\begin{cases}<br>g_{i-1,j-1,k-b_i}\times(j-1+qwq+[n1\bmod2&#x3D;&#x3D;0])+\<br>g_{i-1,j,k+b_i}\times(i-1-j+ovo+[n1\bmod 2&#x3D;&#x3D;1])<br>\end{cases}<br>$$<br>答案即<br>$$<br>\sum_{i&#x3D;0}^{n2} g_{n2,i,0}<br>$$</p>
+<hr>
+<h2 id="arc068-c"><a href="#arc068-c" class="headerlink" title="arc068_c"></a>arc068_c</h2><blockquote>
+<p>有长为 $m$ 的数轴，上面有点 $0,1,…,m$。有 $n$ 个区间，第 $i$ 个区间覆盖点 $[l_i,r_i]$。</p>
+<p>一个点从 $0$ 开始跳，每隔 $d$ 跳一下，经过 $0,d,2d,3d,…$，超出 $m$ 停止。</p>
+<p>输出 $m$ 行，第 $d$ 行表示每隔 $d$ 跳一下，一共会经过多少不同的区间。</p>
+<p>$1\leq n\leq 3e5,1\leq m\leq 1e5,1\leq l_i\leq r_i\leq m$。</p>
+</blockquote>
+<p>首先暴力做法，枚举 $d$ 然后跳。这样需要知道每个点被哪些区间覆盖了。枚举区间的话是 $O(nm\ln m)$，把区间加到点上很耗空间。</p>
+<p>接着分析，如果每个区间都加满的话，每个 $d$ 的答案都是 $n$。此时答案的总和是 $nm$，所以如果想正解的话不可能每次 +1。</p>
+<p>然后我束手无策了，然后开始乱想。</p>
+<p>另一个很显然的结论是如果一个区间长度大于等于 $d$，它一定会贡献到 $d$。但是感觉没啥用。</p>
+<p>然后看了题解。</p>
+<p>解法一</p>
+<p>考虑用数学表示出来。如果一个区间 $[l,r]$ 贡献到 $d$，则<br>$$<br>l\leq k\times d\leq r<br>$$<br>变形<br>$$<br>\lfloor\frac{l-1}{d}\rfloor\neq\lfloor\frac{r}{d}\rfloor<br>$$<br>意味着我们可以枚举每个区间，随着 $d$ 的增加，看看有哪些 $d$ 满足这个条件，然后加到 $ans[d]$ 上。</p>
+<p>根据数论分块的经验，满足条件的 $d$ 呈一段一段，段个数的数量级是 $\sqrt m$。</p>
+<p>那么就可以数论分块+差分完成了。</p>
+<p>时间 $O(n\sqrt m)$。</p>
+<p>解法二</p>
+<p>观察上面的暴力。</p>
+<p>我们之所以要枚举区间，而不能一开始用差分算出每个位置被多少个区间覆盖然后跳的时候直接加，是因为有可能连续的两次跳动在同一个块内。算重。</p>
+<p>能否避免连续跳动在同一块内？</p>
+<p>联系另一个结论，长度大于等于 $d$ 的区间一定贡献到 $d$。长度小于 $d$ 的区间不会连续两次跳动都在。</p>
+<p>那么对于每个 $d$ 我们可以把区间分为两类：长度大于等于 $d$ 的、小于 $d$ 的。</p>
+<p>大于 $d$ 的一定算。</p>
+<p>小于 $d$ 的可以像第二句话那样做。</p>
+<p>随着 $d$ 的增加，长度小于 $d$ 的区间不变少。那么用一个树状数组维护差分的区改单查即可。</p>
+<p>时间 $O(n\log m+m\ln m\log m)$。</p>
+<hr>
+<h2 id="cf853-c"><a href="#cf853-c" class="headerlink" title="cf853_c"></a>cf853_c</h2><p>挺板的一道 DS。</p>
+<p>直接用可持久化权值线段树维护一个区间内的关键点数量。</p>
+<p>然后一堆东西乘起来。注意不要漏和重即可。</p>
+<hr>
+<h2 id="cf785-d"><a href="#cf785-d" class="headerlink" title="cf785_d"></a>cf785_d</h2><blockquote>
+<p>给长为 $n$ 的由 ‘(‘、’)’ 构成的序列，求有多少个长为 $2m$ 的子序列满足：前 $m$ 个和后 $m$ 个分别都是 ‘(‘ 和 ‘)’。</p>
+<p>$1\leq n\leq 2\times10^5$。</p>
+</blockquote>
+<p>首先有一种很简单的方法：钦定一个 ‘(‘ 必选，枚举再选 $i$ 个 ‘(‘，然后组合数。</p>
+<p>如果位置 $i$ 是 ‘(‘，设 $1\to i$、$i+1\to n$ 分别有 $s1$ 个 ‘(‘、$s2$ 个 ‘)’。<br>$$<br>\sum_{i&#x3D;0}^{\min(s1-1,s2-1)}{s1-1\choose i}{s2\choose i+1}<br>$$<br>观察这个式子。联系范德蒙德卷积公式<br>$$<br>\sum_{i&#x3D;0}^k{n\choose i}{m\choose k-i}&#x3D;{n+m\choose k}<br>$$<br>当 $s1-1\leq s2-1$，原式为<br>$$<br>\sum_{i&#x3D;0}^{s1-1}{s1-1\choose i}{s2\choose i+1}<br>$$<br>把左边选 $i$ 替换为 $s1-1-i$，再把枚举的 $i$ 换成 $i+1$<br>$$<br>\sum_{i&#x3D;1}^{s1}{s1-1\choose s1-i}{s2\choose i}<br>$$<br>凑成公式的形式<br>$$<br>\sum_{i&#x3D;0}^{s1}{s1-1\choose s1-i}{s2\choose i}-{s1-1\choose s1}{s2\choose 0}<br>$$<br>右边的值为 $0$。所以答案就是<br>$$<br>{s1-1+s2\choose s1}<br>$$<br>$s1-1\gt s2-1$ 的情况类似。然后就可以直接求了。</p>
+<p>使用线性求逆元可以做到 $O(n)$。</p>
+<hr>
+<h2 id="abc331-g"><a href="#abc331-g" class="headerlink" title="abc331_g"></a>abc331_g</h2><blockquote>
+<p>盒子里有 $n$ 张 $m$ 种卡片，第 $i$ 种卡片有 $c_i$ 张。$\sum c_i&#x3D;n$。</p>
+<p>每次均匀随机选一张，再放回去。求拿出过的卡片包含全部种类所需要的取出次数的期望。</p>
+<p>对 $998244353$ 取模。</p>
+<p>$1\leq n,m\leq 2e5,c_i\gt0$。</p>
+</blockquote>
+<p>首先观察到，对于任意终止局面，最后取出的卡片的种类，一定是第一次被取出。</p>
+<p>那么我们只需要知道每种卡片第一次被取出的时间 $S_i$，剩下每个空位置都可以选前面任意一种卡片。</p>
+<p>这个思路是行不通的。</p>
+<p>发现答案等于“每个卡片第一次被取出的时间”之中的最大值。即 $\max S_i$。</p>
+<p>因为 $S$ 是不确定的。即，求 $S$ 里面最大值的期望。</p>
+<p>联系 Min-Max 容斥：</p>
+<p>设 $U&#x3D;{1,2,…,m}$。$U$ 是全部种类的集合。<br>$$<br>E(\max_{i\in U} S_i)&#x3D;\sum_{T\subseteq U}(-1)^{|T|-1}E(\min_{i\in T} S_i)<br>$$<br>此时我们要算的就是，任选一个种类集合 $T$，（接着我们开始对全部卡牌进行游戏，每种卡牌都会有一个 $S$ 值），求出这些种类里面<strong>最早被取出的那个种类的取出时间</strong>（即最小的 $S$）<strong>的期望</strong>，求和。</p>
+<p>当然还有系数 $(-1)^{|T|-1}$。我们先考虑上面那个怎么求。</p>
+<p>上面那个就是计算独立事件第一次发生的期望次数。</p>
+<p>进行一次实验，这个独立事件发生的概率显然是 $\dfrac{\sum_{i\in T} c_i}{n}$。</p>
+<blockquote>
+<p>独立事件发生概率为 $p$，第一次发生期望次数 $E&#x3D;\frac{1}{p}$。</p>
+<p>证明：<br>$$<br>\begin{aligned}<br>q&amp;&#x3D;1-p\<br>E&amp;&#x3D;\sum_{i&#x3D;1}^\inf iq^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf (i-1+1)q^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf(i-1)q^{i-1}p+\sum_{i&#x3D;1}^\inf q^{i-1}p\<br>&amp;&#x3D;(\sum_{i&#x3D;1}^\inf iq^ip)+1&#x3D;(q\sum_{i&#x3D;1}^\inf iq^{i-1}p)+1&#x3D;qE+1&#x3D;(1-p)E+1\<br>&amp;\because E&#x3D;(1-p)E+1\<br>&amp;\therefore E&#x3D;\frac{1}{p}(p\neq 0)<br>\end{aligned}<br>$$</p>
+</blockquote>
+<p>期望就是<br>$$<br>\dfrac{n}{\sum_{i\in T} c_i}<br>$$</p>
+<p>我们的式子变成了<br>$$<br>E(\max_{i\in U} S_i)&#x3D;\sum_{T\subseteq U}(-1)^{|T|-1}\times\dfrac{n}{\sum_{i\in T} c_i}<br>$$<br>使用一个常见的拆贡献方法，设 $\sum_{i\in T} c_i&#x3D;x$，则原式变为<br>$$<br>\sum_{x&#x3D;1}^n F(x)\times\frac{n}{x}<br>$$<br>$F(x)$ 是一个负或正的整数。因为原式中全部 $\frac{n}{x}$ 相等的项可以合并同类项。$F(x)$ 就是合并完以后他们的系数。</p>
+<p>如果把 $F(x)$ 求出来就可以 $O(n\log n)$ 计算答案了。之所以带 $\log$ 是因为我不会线性求逆元。</p>
+<p>现在考虑求 $F(x)$。因为 $F(x)$ 表示的是若干个 $c$ 相加为 $x$ 的一些系数，考虑卷积。</p>
+<p>一开始我们有 $n$ 个数列，第 $k$ 个数列为：<br>$$<br>[0,0,…,0,1,0,0,…0,0]<br>$$<br>第 $c_k$ 项是 1，其余是 0。</p>
+<p>数列第 $x$ 项代表在 ${k}$ 这一个集合的全部子集 $T\subseteq{k}$ 中，$\frac{n}{x}$ 那一项的系数，也就是 $F(x)$，只不过我们此时的 $U&#x3D;{k}$。</p>
+<p>那么显然，此时 $T$ 只有 ${k}$ 一种取法，而 $(-1)^{|T|-1}&#x3D;1,\sum_{i\in T} c_i&#x3D;c_k$，所以第 $c_k$ 项是 1，其余是 0。</p>
+<p>这一部分的关键在于，每个多项式都有隐含的一个意义：$U$ 的元素（就是上面式子里那个 $U$，最终 $U$ 应当为全集，初始第 $k$ 个多项式 $U&#x3D;{k}$）。</p>
+<p>当我们把两个数列（多项式）卷起来。设这两个数列的 $U$ 分别等于 $A,B$，成绩结果为 $C$。</p>
+<p>乘积多项式的意义<strong>应当</strong>是当 $U&#x3D;A\cup B$ 时的 $F(x)$。</p>
+<p>但我们发现这两个卷起来以后得到的结果是把 $T\subseteq A$ 和 $T\subseteq B$ 排除在外的！</p>
+<p>所以我们要让 $C&#x3D;A\times B+A+B$。</p>
+<p>但我们发现，对于 $-1$ 的处理，在 $A$ 中一个因子是 $(-1)^{|T1|-1}$，在 $B$ 中一个因子是 $(-1)^{|T2|-1}$，两个合起来应当为 $(-1)^{|T1|+|T2|-1}$。</p>
+<p>但是我们做的运算是 $(-1)^{|T1|-1}\times (-1)^{|T2|-1}&#x3D;(-1)^{|T1|+|T2|-1}$。</p>
+<p>所以 $C$ 应当等于 $-(A\times B)+A+B$。</p>
+<p>总结一下：</p>
+<p>我们要求<br>$$<br>\sum_{x&#x3D;1}^n F(x)\times\frac{n}{x}<br>$$<br>所以要求 $F$。每个多项式第 $x$ 项代表对于它的 $U$ 的全部子集 $T\subseteq U$，对 $(-1)^{|T|-1}\times\dfrac{n}{\sum_{i\in T} c_i(&#x3D;x)}$ 求和，$\frac{n}{x}$ 那一项的系数。</p>
+<p>此时我们把这 $n$ 个多项式启发式卷起来。卷不是正常的卷，$F$ 卷 $G$ 等于 $-(F\times G)+F+G$。</p>
+<p>最终的多项式就是要求的 $F(x)$。</p>
+<p>时间 $O(n\log^2n)$。</p>
+<hr>
+<h2 id="abc325-g"><a href="#abc325-g" class="headerlink" title="abc325_g"></a>abc325_g</h2><blockquote>
+<p>给出一个长为 $n$ 的字符串和非负整数 $k$。你可以进行以下操作若干次，使得最终字符串长度最小。</p>
+<p>选择一个字串 <code>of</code>。然后删掉 <code>of</code> 以及这之后的 $i$ 个字符。$i$ 由你决定，但要满足 $0\leq i\leq k$。</p>
+<p>输出这个最小长度。$1\leq n,k\leq 300$。</p>
+</blockquote>
+<p>做完以后感觉很简单。但是做的时候绕了个大大大大大的弯。</p>
+<p>观察最终局面。在原字符串中的表现就是有若干连续段被删除。</p>
+<p><img src="https://pic.imgdb.cn/item/656f2e69c458853aef8426d9.png" alt="8"></p>
+<p>设 $F(l,r)$ 为子串 $[l,r]$ 的答案。</p>
+<p>如果 $F(l,r)$ 不能全部被删完（也就是有黑色部分），则一定存在一个 $i$，$F(l,r)&#x3D;F(l,i)+F(i+1,r)$。</p>
+<p>那做法就很显然了：</p>
+<ul>
+<li>判断 $[l,r]$ 能否被删完。若能，$F(l,r)&#x3D;0$。</li>
+<li>否则，$F(l,r)&#x3D;\min{F(l,i)+F(i+1,r)}$。</li>
+</ul>
+<p>然后我一开始将这两个视作完全独立的问题。结果试了很久都没有试出咋判断。</p>
+<p><del>后来啊，我有些绝望了。直到那一秒，我灵光一现。</del></p>
+<p>我现在要找到对于可以完全删完的串的必要条件。观察 $l$，它一定要是 ‘o’。</p>
+<p>后面要有一个 ‘f’ 与它匹配。设第 $i(a_i&#x3D;f)$ 位与 $l$ 匹配。</p>
+<p>那么 $[l+1,i-1]$ 需要删完。$[i+1,r]$ 里有一些是这一次匹配顺便删的，剩下要删完。</p>
+<p>想到这里我才明白。</p>
+<p>第一个条件意味 $F(l+1,i-1)&#x3D;0$。第二个意味 $F(i+1,r)\leq k$。</p>
+<blockquote>
+<p>本来我使用了一个新的函数描述能否删干净。完全没有想到用第二个 $\leq k$ 这个东西。</p>
+</blockquote>
+<p>判断的方法已经很显然了。枚举 $i$，然后判断 $F$。</p>
+<p>时间 $O(n^3)$。</p>
+<hr>
+<h2 id="abc326-e"><a href="#abc326-e" class="headerlink" title="abc326_e"></a>abc326_e</h2><blockquote>
+<p>有一个 $n$ 面骰子，写着 $1\to n$，每个面朝上概率相等。</p>
+<p>进行一种游戏，投若干次骰子，如果一次投出的点数小于等于此轮中前面投出的任意一次，结束游戏。</p>
+<p>得分为除了最后一次全部的点数之和。求期望得分。$1\leq n\leq 3e5$。对 $998244353$ 取模。</p>
+</blockquote>
+<p>很能体现我思路的缺陷，陷入一种方法一直出不来。</p>
+<p>一种结束局面一定是一个上升子序列，并且最后一次是在最后一位之前的。</p>
+<p>然后我的思路就是枚举最后一位是什么，那么就可以表示出以这一位结束时对答案的贡献。然后考虑优化。</p>
+<p>优化过程中有这样一种式子我一直没办法 $O(1)$ 求<br>$$<br>\sum_{i&#x3D;0}^n{n\choose i}k^i<br>$$<br>然后就不会做了。事实上这一题的方法非常简单。<del>（要不然他是 E 题）</del></p>
+<p>答案是每个 $A_i$ 乘概率加起来得到的。直接求这个概率。是“$i$ 做出贡献的概率”。<br>$$<br>p_i&#x3D;\frac{1}{n}\sum_{i&#x3D;1}^{i-1}p_i<br>$$<br>就好了。</p>
+<hr>
+<h2 id="P1365"><a href="#P1365" class="headerlink" title="P1365"></a>P1365</h2><blockquote>
+<p>给定由 ‘o’,’x’,’?’ 构成的长度为 $n$ 的字符串。’?’ 分别有 0.5 的概率变成 ‘x’,’o’。</p>
+<p>一个字符串的价值为每个极长 ‘o’ 段的长度的平方之和。求给出字符串期望价值。</p>
+<p>$1\leq n\leq 3e5$。</p>
+</blockquote>
+<p>一个字符串的价值为：$()^2\times(\frac{1}{2})^{()}+()^2\times(\frac{1}{2})^{()}+…$。</p>
+<p>考虑枚举这个长度，然后计算全部系数之和，相乘。</p>
+<p>我没有想到低于 $O(n^2)$ 的做法。继续考虑，枚举极长段的右端点。</p>
+<p>那么左端点一直可以延伸到上一个 ‘x’ 出现的位置 +1。</p>
+<p>然后有一些位置是不能当作左端点的，比如：<code>...oo...</code>，此时右边这个 <code>o</code> 不行。</p>
+<p>紧接着感受一下，右端点是可以从 $i$ 移动到 $i+1$ 的。维护：<br>$$<br>\begin{aligned}<br>s&#x3D;()^2\times(\frac{1}{2})^{()}+()^2\times(\frac{1}{2})^{()}+…\<br>f&#x3D;()\times(\frac{1}{2})^{()}+()\times(\frac{1}{2})^{()}+…\<br>p&#x3D;(\frac{1}{2})^{()}+(\frac{1}{2})^{()}+…\<br>\end{aligned}<br>$$<br>小力分讨就好了。</p>
+<hr>
+<h2 id="cf858-f"><a href="#cf858-f" class="headerlink" title="cf858_f"></a>cf858_f</h2><blockquote>
+<p>$n$ 个点 $m$ 条边简单无向图，求最大的三元组数量，记三元组为 $(a,b,c)$。</p>
+<p>三元组要满足：$a$ 到 $b$、$b$ 到 $c$ 有边。并且对于任意两个三元组，它们一共有四条边，这四条边两两不同。</p>
+<p>$1\leq n,m\leq 2e5$。</p>
+</blockquote>
+<p>挺好想的。wtc 曾经说过，没有部分分的题要创造部分分。</p>
+<p>对于图上题，考虑它的 dfs 生成树。</p>
+<p>先想想一棵树怎么做。手玩一下发现能覆盖到的边还是挺多的，最多剩一条。</p>
+<p>为了证明这个结论，考虑叶子的父亲，如果它的全部儿子和他的连边都能算入答案的话，必定是两两儿子相连，因为他向父亲只有一条边。</p>
+<p>我们发现，如果他儿子数量为奇数，多出来的要和他和他父亲那条边配对。而对父亲的影响仅仅是少了一个儿子。</p>
+<p>那做法就呼之欲出了。从下往上做上去即可。每次找出一个点全部儿子（如果与他的边已经占用就不要），然后两两匹配即可。</p>
+<p>放到 dfs 树。dfs 树是没有横叉边的。刚才是在上（父亲）计算下面（儿子），类似，此时考虑对于每个非树边在深度较浅的点计算。</p>
+<p>我们发现刚才的那套理论可以照搬过来！</p>
+<p>这题就做完了。时间是 $O(n+m)$ 的。</p>
+<p>同时我们找到了一个没用性质：任意图中，不能算入答案的边数不超过 1。</p>
+<hr>
+<h2 id="abc332-g"><a href="#abc332-g" class="headerlink" title="abc332_g"></a>abc332_g</h2><blockquote>
+<p>第 $i$ 种球有 $a_i$ 个，共 $n$ 种。</p>
+<p>第 $i$ 种箱子最多共装 $b_i$ 个球。共 $m$ 种。</p>
+<p>第 $i$ 种球在第 $j$ 种箱子里至多放 $ij$ 个。</p>
+<p>问所有箱子放的球数最多是多少。</p>
+<p>$1\leq n\leq 500,1\leq m\leq 5e5,0\leq a_i,b_i\leq 1e12$。</p>
+</blockquote>
+<p>很容易建出网络流模型。从上至下依次有 $1,n,m,1$ 个点。但是图实在太大了。</p>
+<p>考虑求最小割。那就是要把上下共 $n+m$ 个点划分为两类。</p>
+<p>将它表示出来。设上下的全集分别为 $X&#x3D;{1,2,…,n},Y&#x3D;{1,2,…,m}$。</p>
+<p>上下分别选了 $P\subseteq X,Q\subseteq Y$ 归于源点集合。（以下所有式子所有求和条件略去这两个）<br>$$<br>\sum_{i\in X&#x2F;P}a_i+\sum_{i\in P}i\sum_{j\in Y&#x2F;Q}j+\sum_{i\in Q}b_i<br>$$<br>这个东西的最小值不好求。因为既要考虑 $P$ 也要考虑 $Q$。</p>
+<p>观察到数据范围很小，考虑枚举一点东西来把问题划分成独立的两个问题。枚举中间项左侧的 $k&#x3D;\sum_{i\in X}i$。</p>
+<p>有 $0\leq k\leq n(n+1)&#x2F;2$。</p>
+<p>那么对最左项的限制就是选一些求和为 $k$ 的 $i$，作为 $P$。剩下的 $a_i$ 加起来作为这一项。</p>
+<p>写在求和的条件上就是：<br>$$<br>\sum_{i\in X&#x2F;P,k&#x3D;\sum_{i\in X&#x2F;P} i}a_i+k\sum_{i\in Y&#x2F;Q}i+\sum_{i\in Q}b_i<br>$$<br>下面一行要么纳入源点集合，在第三项计算。否则在第二项计算。</p>
+<p>发现此时下面一行对于是否纳入源点集合不受约束。贪心地让它取较小的，使得整个式子最小。<br>$$<br>\sum_{i\in X&#x2F;P,k&#x3D;\sum_{i\in X&#x2F;P} i}a_i+\sum_{1\leq i\leq m}\min(ik,b_i)<br>$$<br>那么可以分别求出左侧和右侧对于每个 $k$ 的最小值，相加。</p>
+<p>左侧可以用 $O(n^3)$ 的 DP 算出，右侧可以发挥智慧写出 $O(n^2+m)$。这部分比较简单。</p>
+<p>总时间复杂度为 $O(n^3+m)$。</p>
+<hr>
+<h2 id="arc125-e"><a href="#arc125-e" class="headerlink" title="arc125_e"></a>arc125_e</h2><blockquote>
+<p>第 $i$ 种糖果有 $a_i$ 个，共 $n$ 种。</p>
+<p>第 $i$ 个小朋友对于每种糖果都最多吃 $b_i$ 个，全部糖果一共最多吃 $c_i$ 个，共 $m$ 个小朋友。</p>
+<p>求每个小朋友吃到糖果数量之和的最大值。</p>
+<p>$1\leq n,m\leq 2\times 10^5,1\leq a_i,c_i\leq 10^{12},1\leq b_i\leq 10^7$。</p>
+</blockquote>
+<p>从上一题过来的。做法一致。</p>
+<p>式子是：<br>$$<br>\sum_{i\in X&#x2F;P}a_i+\sum_{1\leq i\leq m}\min(b_i\times |P|,c_i)<br>$$</p>
+<p>此时左项排序后贪心选，右项和上一题一致。时间复杂度 $O(n\log{n}+m\log{m})$。</p>
+<hr>
+<h2 id="abc311-g"><a href="#abc311-g" class="headerlink" title="abc311_g"></a>abc311_g</h2><blockquote>
+<p>给出 $n\times m$ 的矩阵 $a$。求权值最大子矩形的权值。</p>
+<p>一个矩形的权值定义为它里面全部数的和乘上最小值。</p>
+<p>$n,m\leq 300,0\leq a_{i,j}\leq 300$。</p>
+</blockquote>
+<p>枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。</p>
+<p>这些矩形不好枚举，也难以计算究竟有多少个。</p>
+<p>考虑添加一些限制。</p>
+<p>枚举上下边界。那么我们枚举列，以这一列的最小值为待定矩形的最小值，然后向左右拓展为一个极大的矩形。</p>
+<p>发现这样拓展出的矩形与上面做法的矩形形成双射。</p>
+<p>拓展可以采用二维 ST 表+二分实现。时间复杂度 $O(n^3\log{n})$。</p>
+<p>哦还可以单调栈。时间是 $O(n^3)$。</p>
+<hr>
+<h2 id="cf1292-b"><a href="#cf1292-b" class="headerlink" title="cf1292_b"></a>cf1292_b</h2><p>观察到关键点的生成在两个坐标上独立，且类似于一次函数。</p>
+<p>再次观察数据范围发现关键点的两个坐标每次都会增加，并且至少扩大到自身的一倍。所以最终关键点数量不超过 64 个。</p>
+<p>那么枚举起始点和拓展方向即可。</p>
+<p>时间复杂度 $O(\log^2{B})$。$B$ 指值域。</p>
+<hr>
+<h2 id="cf1304-c"><a href="#cf1304-c" class="headerlink" title="cf1304_c"></a>cf1304_c</h2><p>考虑映射到平面。现在从左至右若干个区间，从 $y&#x3D;m$ 开始向右走，每次 $y$ 可以加一或减一或不变。能否经过全部区间。</p>
+<p>直接维护每个时刻可以到的 $y$ 值。在平面上看一看容易知道它一是一段区间。那么不断维护这个区间就好了。</p>
+<p>$O(Tn)$。</p>
+<hr>
+<h2 id="cf1313-d"><a href="#cf1313-d" class="headerlink" title="cf1313_d"></a>cf1313_d</h2><p>跟联考的一道题做法类似。</p>
+<p>观察到覆盖每个点的区间很少。设 $f_{i,s}$ 表示 dp 到第 $i$ 个小朋友，覆盖它的区间的选择状态为 $s$，前 $i$ 个小朋友最多开心数。</p>
+<p>那么如果枚举了 $s$，转移过来的 $f_{i-1,t}$ 必须满足 $t$ 和 $s$ 有一些位置相同（这些位置所代表的区间覆盖了 $i$ 和 $i-1$）。</p>
+<p>用一个辅助数组预先处理一下，转移就可以不用枚举两次压缩的状态。</p>
+<p>小朋友数量虽然是 $10^9$，但是可以把一些连续、相同的区间打包计算。这里要开动一下脑筋，按差分类似的东西搞一搞。</p>
+<p>容易证明打包过后小朋友数量是 $O(m)$ 级别的。</p>
+<p>时间 $O(mk2^k)$。</p>
+<hr>
+<h2 id="cf1322-b"><a href="#cf1322-b" class="headerlink" title="cf1322_b"></a>cf1322_b</h2><blockquote>
+<p>给出 $n$ 和长为 $n$ 的非负整数序列 $a$。</p>
+<p>输出<br>$$<br>\oplus_{i&#x3D;1}^{n-1}\oplus_{j&#x3D;i+1}^n(a_i+a_j)<br>$$<br>$1\leq n\leq 4\times 10^5,1\leq a_i\leq 10^7$。</p>
+</blockquote>
+<p>挺好玩的题。想了半个多小时最后总算做出来了。</p>
+<p>考虑按位计算贡献。枚举第 $k$ 位，习惯性从零开始，考虑计算有多少对 $(i,j)$ 满足 $a_i+a_j$ 的第 $k$ 位是 1。</p>
+<p>根据这个对数的奇偶性可以算贡献。</p>
+<p>初始我计划从 $k-1$ 转移一些信息过来，深入想了想感觉不会。</p>
+<p>再考虑表示出满足条件的数学式子，看看能否用数据结构维护。</p>
+<p>此时只保留每个数低 $0\to k$ 位。</p>
+<p>若 $a_i+a_j$ 的第 $k$ 位是 1，根据此时的数字都只有后 $k$ 位，得出，两个数的和必须落在 $[2^k,2^{k+1})$ 和 $[2^{k+1}+2^k,2^{k+2})$ 之间。</p>
+<p>那么可以枚举 $i$，把这个不等式解一下，用权值线段树回答。时间是 $O(n\log^2{V})$。</p>
+<p>题解都是 $O(n\log{n}\log{V})$。因为各个 $a$ 先后顺序无影响，可以排序后双指针。xht 的博客讲的很明白：</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/xht37/solution-cf1322b">https://www.luogu.com.cn/blog/xht37/solution-cf1322b</a></p>
+<hr>
+<h2 id="cf1322-c"><a href="#cf1322-c" class="headerlink" title="cf1322_c"></a>cf1322_c</h2><p>考虑只有边 $(i,i)$ 是什么情况。根据 $\gcd$ 的交换律结合律，把 $S$ 分类，再分别考虑。</p>
+<p>对于 $S&#x3D;{1},{2},{3},…,{n}$，这一些 $f(S)$ 的 $\gcd$ 是全部 $c_i$ 的 $\gcd$。设这一部分答案为 $x$。</p>
+<p>那么对于每个 $i$，$c_i$ 可以改写成 $c’_i\times x$。</p>
+<p>此时对于任意一个大小大于 $1$ 的 $|S|$，$f(S)$ 可以提出公因数 $x$。即 $\forall |S|&gt;1,x|\gcd f(S)$。</p>
+<p>那么答案就是 $x$。</p>
+<p>转化到一般二分图。它跟上面的区别在于左侧点的出点集合或许有交。</p>
+<p>再思考一个简单情况，两个左侧的点出点集合有交。设不交、交、不交三部分的 $c$ 值和为 $A,B,C$。</p>
+<p><img src="https://pic.imgdb.cn/item/6582f2c8c458853aef13c06a.png" alt="9"></p>
+<p>此时答案应为 $\gcd(A+B,B+C,A+B+C)$。设答案为 $x$。则应有 $x|(A+B),x|(B+C),x|(A+B+C)$。</p>
+<p>想一会发现并没有什么进展。但因为这题肯定有解，对着样例猜测一些结论性的东西。</p>
+<p>比如把一个连通块里全部 $c_i$ 直接 $\gcd$ 起来。样例一说明这是错的。</p>
+<p>为什么错呢？我们把样例一的全部 $S$ 写出来，发现 $c_1,c_2$ 一直是作为整体出现的，两者不能只出现一个。</p>
+<p>然后对着样例三一通补丁，发现只要把这些作为整体出现的数加起来合并成一个数，然后把全部数 $\gcd$ 起来很有道理。</p>
+<p>因为如果不整体出现的两个数，一定存在两个集合分别包含这两个数，然后这两个集合是要 $\gcd$ 一下的，根据前面提公因数的方法感觉很对。</p>
+<blockquote>
+<p>设这两个数为 $a,b$。则必然存在有一个点连了 $a$ 没连 $b$。</p>
+<p>还有另一个点：</p>
+<ul>
+<li>连了 $b$ 没连 $a$，此时答案包含 $\gcd(a,b)$。</li>
+<li>既连了 $b$ 也连了 $a$。此时答案包含 $\gcd(a,a+b)&#x3D;\gcd(a,b)$。</li>
+</ul>
+<p>所以答案一定有 $\gcd(a,b)$。</p>
+</blockquote>
+<p>上面那个图中间两个就是要合并起来的。</p>
+<p>写完发现是对的。时间 $O(n+m)$。</p>
+<hr>
+<h2 id="cf1325-d"><a href="#cf1325-d" class="headerlink" title="cf1325_d"></a>cf1325_d</h2><blockquote>
+<p>输出长度最短的序列，元素异或和为 $u$，和为 $v$。</p>
+<p>$0\leq u,v\leq 10^{18}$</p>
+</blockquote>
+<p>虽然是绿题，看了题解才会。一直以为是按位考虑。想了很久没有想出当 $u$ 某一位为 1，$v$ 这一位为 0 怎么处理。</p>
+<p>一些题可以从显然的一些情况入手分析。</p>
+<p>当 $u\gt v$，显然是 -1。当 $u&#x3D;v&#x3D;0$，构造空集。当 $u&#x3D;v$，直接构造 ${u}$。</p>
+<p>接下来观察若干个数进行运算的最低位。发现他们异或起来的最低位和加起来的最低位必定相等。</p>
+<p>意味着 $u,v$ 的奇偶性应当一致。不一致时是 -1。</p>
+<p>剩下的情况，考虑先从 $v$ 里面拿一个 $u$ 放进答案。然后把剩下 $v-u$ 个 $1$ 合并成一些东西，并且让合并完以后的全部东西异或和为 0。<br>$$<br>v&#x3D;u+1+…+1<br>$$<br>如果 $1$ 的个数是奇数，则不可能。</p>
+<p>如果 $1$ 的个数是偶数，可以刚好分为两半。</p>
+<p>最终答案数组长度小于等于 3。如果有两个数与起来是 0 还可以合并。</p>
+<p>看起来就很对。</p>
+<hr>
+<h2 id="cf1338-b"><a href="#cf1338-b" class="headerlink" title="cf1338_b"></a>cf1338_b</h2><blockquote>
+<p>给出大小为 $n$ 的树，请给每条边赋正整数权，满足任意两个叶子的路径上全部权异或起来为 0。</p>
+<p>输出两个数，代表不同权值数量的最小值和最大值。权值大小无限制。</p>
+<p>$3\leq n\leq 10^5$。</p>
+</blockquote>
+<p>首先随便找个度数大于 2 的点做根。</p>
+<p>套路地，将树上两点之间的异或和拆成两点到根的异或和的异或和。</p>
+<p>限制转化为，全部叶子到根的异或和相等。</p>
+<p>先想第一问，如果全部叶子深度奇偶性相等，我可以把全部边赋为同一个值。</p>
+<p>如果深度奇偶性有差异。考虑先把整棵树赋为同一个值然后开始调整。</p>
+<p>我先把整棵树赋为 2。</p>
+<p>然后对于一个深度为偶数的叶子，把它连向父亲的边赋为 1。这样，它到根的异或和就是奇数个 2 和一个 1 异或的结果，为 3。</p>
+<p>对于深度为奇数的叶子，把它连向父亲的边赋为 3。类似的道理，我们发现它到根的异或和也为 3。</p>
+<p>这样整棵树只需要 3 种不同的权值。能否更少呢？一种肯定不行。</p>
+<p>如果是两种，设为 $x,y$。对于深度为奇数的叶子，它到根的路径上，$x,y$ 一定是一个出现奇数次一个偶数次。到根的异或和为 $x$ 或 $y$。</p>
+<p>对于深度偶数的叶子，我们容易发现，它到根的异或和要么是 $x\oplus y$ 要么是 $0$。我们证明了深度为偶数和奇数的叶子到根的异或和不同。所以两种也不行。</p>
+<p>对于第二问，我们考虑一开始把整棵树赋为两两不同的权值。</p>
+<p>然后对于每个叶子，调整它连向父亲的边权。显然全部叶子到根的异或和可以调整为一致的。</p>
+<p>此时，父亲相同的叶子，连向父亲的边权一致。父亲不同的叶子，如果它们到根的异或和相等，一定是因为他们父亲到根的异或和相等。</p>
+<p>但是我们仍然可以把全部这样的父亲到根的异或和调整成不一致的。所以父亲不同的叶子到根的异或和不等。</p>
+<p>那就做完了。时间 $O(n)$。</p>
+<hr>
+<h2 id="cf1338-c"><a href="#cf1338-c" class="headerlink" title="cf1338_c"></a>cf1338_c</h2><blockquote>
+<p>用以下方式构造无穷数列 $S$：</p>
+<ul>
+<li>选择字典序最小的有序三元组 $(a,b,c)$，满足 $a,b,c\not\in S$ 且 $a\oplus b\oplus c&#x3D;0$。</li>
+<li>将 $a,b,c$ 按顺序加入 $S$。</li>
+</ul>
+<p>$q$ 次询问 $S$ 的第 $n$ 项。</p>
+<p>$1\leq q\leq 10^5,1\leq n\leq 10^{16}$。</p>
+</blockquote>
+<p>遇到这种题，想 10 分钟想不出来应当打暴力找规律。</p>
+<p>还有，暴力的输出格式一定程度上影响了找出规律的速度和强度。</p>
+<p>输出完发现每组的第一个数是 $1,4,5,6,7,16,17,…31,64,65,…$。递增是显然的。</p>
+<p>即，$2^k\to 2^{k+1}-1$，这里 $k$ 要是偶数。</p>
+<p>紧接着我发现，第二个、第三个数按照上面的写法，分别位于 $2^{k+1}\to 2^{k+1}+2^k-1$ 以及 $2^{k+1}+2^{k}\to 2^{k+2}-1$。</p>
+<p>结论一就是，对于 $k&#x3D;0,2,4,…$，依次都存在 $2^k$ 个三元组，三元组的三个元素分别位于下面这三段长度相等的区间内。</p>
+<p><img src="https://pic.imgdb.cn/item/6584c612c458853aef1fb1a4.png"></p>
+<p>那么对于 $n\bmod 3&#x3D;1$ 的询问，我们已经可以做了。</p>
+<p>对于 $n\bmod 3&#x3D;2$ 的询问，它一定在棕色的区间里面。再次观察暴力的输出结果，我们发现棕色内部有一些规律：</p>
+<p>随着第一个元素在红色区间内右移，第二个元素在棕色区间里的出现顺序是：</p>
+<p>先在第一个 $\frac{1}{4}$ 内出现，再在第三个 $\frac{1}{4}$ 内出现，再在第四个 $\frac{1}{4}$ 内出现，再在第二个 $\frac{1}{4}$ 内出现。</p>
+<p>有点抽象。打出表还是可以理解的。</p>
+<p>那么我可以用 $\log_4{n}$ 的递归完成这一询问。哦对了，第一个的时间复杂度也是 $\log_4{n}$。</p>
+<p>对于 $n\bmod 3&#x3D;0$ 的询问，有类似的规律。</p>
+<p>总时间是 $O(T\log_4{n})$。</p>
+<hr>
+<h2 id="cf1349-b"><a href="#cf1349-b" class="headerlink" title="cf1349_b"></a>cf1349_b</h2><blockquote>
+<p>定义长为 $n$ 区间 $a$ 位数为 $a_{\lfloor\frac{n+1}{2}\rfloor}$。</p>
+<p>给出正整数 $n$，区间 $a$。</p>
+<p>询问区间 $a$ 能否通过多次将一段子区间赋值为这段子区间的中位数的操作，把全部元素变为 $k$。</p>
+<p>多测。</p>
+<p>$1\leq\sum n\leq 10^5,1\leq a_i,k\leq 10^9$。</p>
+</blockquote>
+<p>我的思路想偏了。没绕回来。</p>
+<p>观察到如果有两个相邻的 $k$，则答案为 yes。</p>
+<p>所以想办法搞出两个相邻的 $k$。我大胆猜测如果可以把一个 $k$ “拓展”成两个，则不需要选跨过两个 $k$ 的区间。</p>
+<p>事实上 <code>k=3,a[]=&#123;3,1,3&#125;</code> 就是一个反例。但是我没发现。</p>
+<p>按照我的猜想，我可以对于每个 $k$ 都向左向右枚举区间左右端点。列一下符合条件的式子发现可以先用 map 记录一边的信息，再枚举另一边。</p>
+<p>结论是错的，不能用它。观察发现如果存在两个相邻的 $\geq k$ 的数，则可以把他们一直拓展直到遇见一个 $k$。此时是 yes。</p>
+<p>那我们可以进一步讨论 $\geq k$ 的数的分布。如果 $a_{i-1}\geq k,a_{i+1}\geq k$，这也是可以的。</p>
+<p>如果隔了两个小于 $k$ 的数呢？但是我们很容易证明，当一个区间操作后元素大小 $\geq k$，则有大于一半的 $\geq k$。根据鸽巢原理，上述两种一定存在。而这一种一定不存在。</p>
+<p>或者可以这么理解，如果我们一直隔两个放一个 $\geq k$ 的数，在不出现上面两种情况的前提下，是无法做到操作完以后元素大小 $\geq k$ 的。</p>
+<p>所以只需判断是否存在相邻两个 $\geq k$ 的数相隔不超过 1 个 $\lt k$ 的数即可。还有一些边界要注意。</p>
+<p>时间 $O(\sum n)$。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://2008verser.github.io/2024/01/01/P/" data-id="clqukbyxo000a2wfe1j1x3cuh" data-title="P" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/01/01/CF856C%20Eleventh%20Birthday%20%E9%A2%98%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          CF856C Eleventh Birthday 题解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">线性基</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/">OI</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%94%E8%B5%9B%E7%9B%B8%E5%85%B3/" rel="tag">比赛相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">知识点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E6%AF%94%E8%B5%9B%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">比赛相关</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">知识点</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/01/CF856C%20Eleventh%20Birthday%20%E9%A2%98%E8%A7%A3/">CF856C Eleventh Birthday 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/01/P/">P</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/">线性基</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/">ABC311G One More Grid Task 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/15/ABC332G%20Not%20Too%20Many%20Balls%20%E9%A2%98%E8%A7%A3/">ABC332G Not Too Many Balls 题解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 2008verser<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

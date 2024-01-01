@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>ABC311G One More Grid Task 题解 | 2008verser</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="给出 $n\times m$ 的矩阵 $a$。求权值最大子矩形的权值。 一个矩形的权值定义为它里面全部数的和乘上最小值。 $n,m\leq 300,0\leq a_{i,j}\leq 300$。  枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。 这些矩形不好枚举，也难以计算究竟有多少个。 考虑添加一些限制。 枚举上下边界。那">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ABC311G One More Grid Task 题解">
+<meta property="og:url" content="https://2008verser.github.io/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:site_name" content="2008verser">
+<meta property="og:description" content="给出 $n\times m$ 的矩阵 $a$。求权值最大子矩形的权值。 一个矩形的权值定义为它里面全部数的和乘上最小值。 $n,m\leq 300,0\leq a_{i,j}\leq 300$。  枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。 这些矩形不好枚举，也难以计算究竟有多少个。 考虑添加一些限制。 枚举上下边界。那">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-16T11:27:30.000Z">
+<meta property="article:modified_time" content="2024-01-01T06:34:04.654Z">
+<meta property="article:author" content="2008verser">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="2008verser" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">2008verser</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Welcome to my blog!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://2008verser.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ABC311G One More Grid Task 题解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2023-12-16T11:27:30.000Z" itemprop="datePublished">2023-12-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OI/">OI</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      ABC311G One More Grid Task 题解
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>给出 $n\times m$ 的矩阵 $a$。求权值最大子矩形的权值。</p>
+<p>一个矩形的权值定义为它里面全部数的和乘上最小值。</p>
+<p>$n,m\leq 300,0\leq a_{i,j}\leq 300$。</p>
+</blockquote>
+<p>枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。</p>
+<p>这些矩形不好枚举，也难以计算究竟有多少个。</p>
+<p>考虑添加一些限制。</p>
+<p>枚举上下边界。那么我们枚举列，以这一列的最小值为待定矩形的最小值，然后向左右拓展为一个极大的矩形。</p>
+<p>发现这样拓展出的矩形与上面做法的矩形形成双射。</p>
+<p>拓展可以采用二维 ST 表+二分实现。时间复杂度 $O(n^3\log{n})$。</p>
+<p>哦还可以单调栈。时间是 $O(n^3)$。</p>
+<p>单调栈：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pc putchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pob pop_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ump unordered_map</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vi vector<span class="string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vl vector<span class="string">&lt;ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(rg int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg ll x=<span class="number">0</span>;rg <span class="type">int</span> p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wtl</span><span class="params">(rg ll x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wtl</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">305</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> Lg=<span class="number">9</span>;</span><br><span class="line"><span class="type">int</span> n,m,a[N][N],s[N][N],ql[N],qr[N],mn[N],stl;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">pr</span> &#123; <span class="type">int</span> v,i; &#125;sta[N];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">Sum</span><span class="params">(rg <span class="type">int</span> l1,rg <span class="type">int</span> r1,rg <span class="type">int</span> l2,rg <span class="type">int</span> r2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> s[l2][r2]-s[l1<span class="number">-1</span>][r2]-s[l2][r1<span class="number">-1</span>]+s[l1<span class="number">-1</span>][r1<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;.in&quot;,&quot;r&quot;,stdin),freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	n=<span class="built_in">re</span>(),m=<span class="built_in">re</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">1</span>,m) &#123;</span><br><span class="line">			a[i][j]=<span class="built_in">re</span>();</span><br><span class="line">			s[i][j]=s[i<span class="number">-1</span>][j]+s[i][j<span class="number">-1</span>]-s[i<span class="number">-1</span>][j<span class="number">-1</span>]+a[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(x,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(i,<span class="number">1</span>,m) mn[i]=<span class="number">1000</span>;</span><br><span class="line">		<span class="built_in">fo</span>(y,x,n) &#123;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) mn[i]=<span class="built_in">min</span>(mn[i],a[y][i]);</span><br><span class="line">			stl=<span class="number">0</span>;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">				<span class="keyword">while</span>(stl&amp;&amp;sta[stl].v&gt;=mn[i]) stl--;</span><br><span class="line">				<span class="keyword">if</span>(stl) ql[i]=sta[stl].i+<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">else</span> ql[i]=<span class="number">1</span>;</span><br><span class="line">				sta[++stl]=&#123;mn[i],i&#125;;</span><br><span class="line">			&#125;</span><br><span class="line">			stl=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(rg <span class="type">int</span> i=m;i&gt;=<span class="number">1</span>;--i) &#123;</span><br><span class="line">				<span class="keyword">while</span>(stl&amp;&amp;sta[stl].v&gt;=mn[i]) stl--;</span><br><span class="line">				<span class="keyword">if</span>(stl) qr[i]=sta[stl].i<span class="number">-1</span>;</span><br><span class="line">				<span class="keyword">else</span> qr[i]=m;</span><br><span class="line">				sta[++stl]=&#123;mn[i],i&#125;;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">				ans=<span class="built_in">max</span>(ans,<span class="number">1ll</span>*mn[i]*<span class="built_in">Sum</span>(x,ql[i],y,qr[i]));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">wtl</span>(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ST 表：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pc putchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pob pop_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ump unordered_map</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vi vector<span class="string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vl vector<span class="string">&lt;ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(rg int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg ll x=<span class="number">0</span>;rg <span class="type">int</span> p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wtl</span><span class="params">(rg ll x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wtl</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">305</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> Lg=<span class="number">9</span>;</span><br><span class="line"><span class="type">int</span> n,m,st[N][N][Lg][Lg],g[N],c[N],s[N][N];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> l1,<span class="type">int</span> r1,<span class="type">int</span> l2,<span class="type">int</span> r2)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> sl=g[l2-l1+<span class="number">1</span>],sr=g[r2-r1+<span class="number">1</span>];</span><br><span class="line"><span class="comment">//	printf(&quot;%d %d %d %d = %d\n&quot;,l1,r1,l2,r2,min(&#123;st[l1][r1][sl][sr],st[l1][r2-(1&lt;&lt;sr)+1][sl][sr],st[l2-(1&lt;&lt;sl)+1][r1][sl][sr],st[l2-(1&lt;&lt;sl)+1][r2-(1&lt;&lt;sr)+1][sl][sr]&#125;));</span></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">min</span>(&#123;st[l1][r1][sl][sr],st[l1][r2-(<span class="number">1</span>&lt;&lt;sr)+<span class="number">1</span>][sl][sr],st[l2-(<span class="number">1</span>&lt;&lt;sl)+<span class="number">1</span>][r1][sl][sr],st[l2-(<span class="number">1</span>&lt;&lt;sl)+<span class="number">1</span>][r2-(<span class="number">1</span>&lt;&lt;sr)+<span class="number">1</span>][sl][sr]&#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Sum</span><span class="params">(<span class="type">int</span> l1,<span class="type">int</span> r1,<span class="type">int</span> l2,<span class="type">int</span> r2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> s[l2][r2]-s[l1<span class="number">-1</span>][r2]-s[l2][r1<span class="number">-1</span>]+s[l1<span class="number">-1</span>][r1<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;.in&quot;,&quot;r&quot;,stdin),freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">2</span>,<span class="number">300</span>) g[i]=g[i/<span class="number">2</span>]+<span class="number">1</span>;</span><br><span class="line">	n=<span class="built_in">re</span>(),m=<span class="built_in">re</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">1</span>,m) &#123;</span><br><span class="line">			st[i][j][<span class="number">0</span>][<span class="number">0</span>]=<span class="built_in">re</span>();</span><br><span class="line">			s[i][j]=s[i<span class="number">-1</span>][j]+s[i][j<span class="number">-1</span>]-s[i<span class="number">-1</span>][j<span class="number">-1</span>]+st[i][j][<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(x,<span class="number">0</span>,g[n]) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(y,<span class="number">0</span>,g[m]) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!x&amp;&amp;!y) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i+(<span class="number">1</span>&lt;&lt;x)<span class="number">-1</span>&lt;=n;i++) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j+(<span class="number">1</span>&lt;&lt;y)<span class="number">-1</span>&lt;=m;j++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(!x) st[i][j][x][y]=<span class="built_in">min</span>(st[i][j][x][y<span class="number">-1</span>],st[i][j+(<span class="number">1</span>&lt;&lt;y<span class="number">-1</span>)][x][y<span class="number">-1</span>]);</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(!y) st[i][j][x][y]=<span class="built_in">min</span>(st[i][j][x<span class="number">-1</span>][y],st[i+(<span class="number">1</span>&lt;&lt;x<span class="number">-1</span>)][j][x<span class="number">-1</span>][y]);</span><br><span class="line">					<span class="keyword">else</span> st[i][j][x][y]=<span class="built_in">min</span>(&#123;st[i][j][x<span class="number">-1</span>][y<span class="number">-1</span>],st[i][j+(<span class="number">1</span>&lt;&lt;y<span class="number">-1</span>)][x<span class="number">-1</span>][y<span class="number">-1</span>],st[i+(<span class="number">1</span>&lt;&lt;x<span class="number">-1</span>)][j][x<span class="number">-1</span>][y<span class="number">-1</span>],st[i+(<span class="number">1</span>&lt;&lt;x<span class="number">-1</span>)][j+(<span class="number">1</span>&lt;&lt;y<span class="number">-1</span>)][x<span class="number">-1</span>][y<span class="number">-1</span>]&#125;);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(x,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(y,x,n) &#123;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">				<span class="type">int</span> p=<span class="built_in">query</span>(x,i,y,i),ql,qr;</span><br><span class="line">				<span class="type">int</span> L=<span class="number">1</span>,R=i;</span><br><span class="line">				<span class="keyword">while</span>(L&lt;=R) &#123;</span><br><span class="line">					<span class="type">int</span> mid=L+R&gt;&gt;<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">if</span>(<span class="built_in">query</span>(x,mid,y,i)==p) R=(ql=mid)<span class="number">-1</span>;</span><br><span class="line">					<span class="keyword">else</span> L=mid+<span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				L=i,R=m;</span><br><span class="line">				<span class="keyword">while</span>(L&lt;=R) &#123;</span><br><span class="line">					<span class="type">int</span> mid=L+R&gt;&gt;<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">if</span>(<span class="built_in">query</span>(x,i,y,mid)==p) L=(qr=mid)+<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">else</span> R=mid<span class="number">-1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				ans=<span class="built_in">max</span>(ans,<span class="number">1ll</span>*p*<span class="built_in">Sum</span>(x,ql,y,qr));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">wtl</span>(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://2008verser.github.io/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/" data-id="clqukbyx600002wfehabv2f8s" data-title="ABC311G One More Grid Task 题解" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          线性基
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/12/15/ABC332G%20Not%20Too%20Many%20Balls%20%E9%A2%98%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">ABC332G Not Too Many Balls 题解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/">OI</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%94%E8%B5%9B%E7%9B%B8%E5%85%B3/" rel="tag">比赛相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">知识点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E6%AF%94%E8%B5%9B%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">比赛相关</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">知识点</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/01/CF856C%20Eleventh%20Birthday%20%E9%A2%98%E8%A7%A3/">CF856C Eleventh Birthday 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/01/P/">P</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/31/%E7%BA%BF%E6%80%A7%E5%9F%BA/">线性基</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/">ABC311G One More Grid Task 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/15/ABC332G%20Not%20Too%20Many%20Balls%20%E9%A2%98%E8%A7%A3/">ABC332G Not Too Many Balls 题解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 2008verser<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
