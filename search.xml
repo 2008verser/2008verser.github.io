@@ -1,59 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ABC311G One More Grid Task 题解</title>
-    <url>/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<blockquote>
-<p>给出 $n\times m$ 的矩阵 $a$。求权值最大子矩形的权值。</p>
-<p>一个矩形的权值定义为它里面全部数的和乘上最小值。</p>
-<p>$n,m\leq 300,0\leq a_{i,j}\leq 300$。</p>
-</blockquote>
-<p>枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。</p>
-<span id="more"></span>
-
-<p>这些矩形不好枚举，也难以计算究竟有多少个。</p>
-<p>考虑添加一些限制。</p>
-<p>枚举上下边界。那么我们枚举列，以这一列的最小值为待定矩形的最小值，然后向左右拓展为一个极大的矩形。</p>
-<p>发现这样拓展出的矩形与上面做法的矩形形成双射。</p>
-<p>拓展可以采用二维 ST 表+二分实现。时间复杂度 $O(n^3\log{n})$。</p>
-<p>哦还可以单调栈。时间是 $O(n^3)$。</p>
-<p>单调栈：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pc putchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pob pop_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ump unordered_map</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vi vector<span class="string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vl vector<span class="string">&lt;ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(rg int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg ll x=<span class="number">0</span>;rg <span class="type">int</span> p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wtl</span><span class="params">(rg ll x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wtl</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">305</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> Lg=<span class="number">9</span>;</span><br><span class="line"><span class="type">int</span> n,m,a[N][N],s[N][N],ql[N],qr[N],mn[N],stl;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">pr</span> &#123; <span class="type">int</span> v,i; &#125;sta[N];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">Sum</span><span class="params">(rg <span class="type">int</span> l1,rg <span class="type">int</span> r1,rg <span class="type">int</span> l2,rg <span class="type">int</span> r2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> s[l2][r2]-s[l1<span class="number">-1</span>][r2]-s[l2][r1<span class="number">-1</span>]+s[l1<span class="number">-1</span>][r1<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;.in&quot;,&quot;r&quot;,stdin),freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	n=<span class="built_in">re</span>(),m=<span class="built_in">re</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">1</span>,m) &#123;</span><br><span class="line">			a[i][j]=<span class="built_in">re</span>();</span><br><span class="line">			s[i][j]=s[i<span class="number">-1</span>][j]+s[i][j<span class="number">-1</span>]-s[i<span class="number">-1</span>][j<span class="number">-1</span>]+a[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(x,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(i,<span class="number">1</span>,m) mn[i]=<span class="number">1000</span>;</span><br><span class="line">		<span class="built_in">fo</span>(y,x,n) &#123;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) mn[i]=<span class="built_in">min</span>(mn[i],a[y][i]);</span><br><span class="line">			stl=<span class="number">0</span>;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">				<span class="keyword">while</span>(stl&amp;&amp;sta[stl].v&gt;=mn[i]) stl--;</span><br><span class="line">				<span class="keyword">if</span>(stl) ql[i]=sta[stl].i+<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">else</span> ql[i]=<span class="number">1</span>;</span><br><span class="line">				sta[++stl]=&#123;mn[i],i&#125;;</span><br><span class="line">			&#125;</span><br><span class="line">			stl=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(rg <span class="type">int</span> i=m;i&gt;=<span class="number">1</span>;--i) &#123;</span><br><span class="line">				<span class="keyword">while</span>(stl&amp;&amp;sta[stl].v&gt;=mn[i]) stl--;</span><br><span class="line">				<span class="keyword">if</span>(stl) qr[i]=sta[stl].i<span class="number">-1</span>;</span><br><span class="line">				<span class="keyword">else</span> qr[i]=m;</span><br><span class="line">				sta[++stl]=&#123;mn[i],i&#125;;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">				ans=<span class="built_in">max</span>(ans,<span class="number">1ll</span>*mn[i]*<span class="built_in">Sum</span>(x,ql[i],y,qr[i]));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">wtl</span>(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>ST 表：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pc putchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pob pop_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ump unordered_map</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vi vector<span class="string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vl vector<span class="string">&lt;ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(rg int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg ll x=<span class="number">0</span>;rg <span class="type">int</span> p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wtl</span><span class="params">(rg ll x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wtl</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">305</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> Lg=<span class="number">9</span>;</span><br><span class="line"><span class="type">int</span> n,m,st[N][N][Lg][Lg],g[N],c[N],s[N][N];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> l1,<span class="type">int</span> r1,<span class="type">int</span> l2,<span class="type">int</span> r2)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> sl=g[l2-l1+<span class="number">1</span>],sr=g[r2-r1+<span class="number">1</span>];</span><br><span class="line"><span class="comment">//	printf(&quot;%d %d %d %d = %d\n&quot;,l1,r1,l2,r2,min(&#123;st[l1][r1][sl][sr],st[l1][r2-(1&lt;&lt;sr)+1][sl][sr],st[l2-(1&lt;&lt;sl)+1][r1][sl][sr],st[l2-(1&lt;&lt;sl)+1][r2-(1&lt;&lt;sr)+1][sl][sr]&#125;));</span></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">min</span>(&#123;st[l1][r1][sl][sr],st[l1][r2-(<span class="number">1</span>&lt;&lt;sr)+<span class="number">1</span>][sl][sr],st[l2-(<span class="number">1</span>&lt;&lt;sl)+<span class="number">1</span>][r1][sl][sr],st[l2-(<span class="number">1</span>&lt;&lt;sl)+<span class="number">1</span>][r2-(<span class="number">1</span>&lt;&lt;sr)+<span class="number">1</span>][sl][sr]&#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Sum</span><span class="params">(<span class="type">int</span> l1,<span class="type">int</span> r1,<span class="type">int</span> l2,<span class="type">int</span> r2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> s[l2][r2]-s[l1<span class="number">-1</span>][r2]-s[l2][r1<span class="number">-1</span>]+s[l1<span class="number">-1</span>][r1<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;.in&quot;,&quot;r&quot;,stdin),freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">2</span>,<span class="number">300</span>) g[i]=g[i/<span class="number">2</span>]+<span class="number">1</span>;</span><br><span class="line">	n=<span class="built_in">re</span>(),m=<span class="built_in">re</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">1</span>,m) &#123;</span><br><span class="line">			st[i][j][<span class="number">0</span>][<span class="number">0</span>]=<span class="built_in">re</span>();</span><br><span class="line">			s[i][j]=s[i<span class="number">-1</span>][j]+s[i][j<span class="number">-1</span>]-s[i<span class="number">-1</span>][j<span class="number">-1</span>]+st[i][j][<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(x,<span class="number">0</span>,g[n]) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(y,<span class="number">0</span>,g[m]) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!x&amp;&amp;!y) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i+(<span class="number">1</span>&lt;&lt;x)<span class="number">-1</span>&lt;=n;i++) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j+(<span class="number">1</span>&lt;&lt;y)<span class="number">-1</span>&lt;=m;j++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(!x) st[i][j][x][y]=<span class="built_in">min</span>(st[i][j][x][y<span class="number">-1</span>],st[i][j+(<span class="number">1</span>&lt;&lt;y<span class="number">-1</span>)][x][y<span class="number">-1</span>]);</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(!y) st[i][j][x][y]=<span class="built_in">min</span>(st[i][j][x<span class="number">-1</span>][y],st[i+(<span class="number">1</span>&lt;&lt;x<span class="number">-1</span>)][j][x<span class="number">-1</span>][y]);</span><br><span class="line">					<span class="keyword">else</span> st[i][j][x][y]=<span class="built_in">min</span>(&#123;st[i][j][x<span class="number">-1</span>][y<span class="number">-1</span>],st[i][j+(<span class="number">1</span>&lt;&lt;y<span class="number">-1</span>)][x<span class="number">-1</span>][y<span class="number">-1</span>],st[i+(<span class="number">1</span>&lt;&lt;x<span class="number">-1</span>)][j][x<span class="number">-1</span>][y<span class="number">-1</span>],st[i+(<span class="number">1</span>&lt;&lt;x<span class="number">-1</span>)][j+(<span class="number">1</span>&lt;&lt;y<span class="number">-1</span>)][x<span class="number">-1</span>][y<span class="number">-1</span>]&#125;);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(x,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(y,x,n) &#123;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">				<span class="type">int</span> p=<span class="built_in">query</span>(x,i,y,i),ql,qr;</span><br><span class="line">				<span class="type">int</span> L=<span class="number">1</span>,R=i;</span><br><span class="line">				<span class="keyword">while</span>(L&lt;=R) &#123;</span><br><span class="line">					<span class="type">int</span> mid=L+R&gt;&gt;<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">if</span>(<span class="built_in">query</span>(x,mid,y,i)==p) R=(ql=mid)<span class="number">-1</span>;</span><br><span class="line">					<span class="keyword">else</span> L=mid+<span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				L=i,R=m;</span><br><span class="line">				<span class="keyword">while</span>(L&lt;=R) &#123;</span><br><span class="line">					<span class="type">int</span> mid=L+R&gt;&gt;<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">if</span>(<span class="built_in">query</span>(x,i,y,mid)==p) L=(qr=mid)+<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">else</span> R=mid<span class="number">-1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				ans=<span class="built_in">max</span>(ans,<span class="number">1ll</span>*p*<span class="built_in">Sum</span>(x,ql,y,qr));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">wtl</span>(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>OI</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ABC332G Not Too Many Balls 题解</title>
-    <url>/2023/12/15/ABC332G%20Not%20Too%20Many%20Balls%20%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<blockquote>
-<p>第 $i$ 种球有 $a_i$ 个，共 $n$ 种。</p>
-<p>第 $i$ 种箱子最多共装 $b_i$ 个球。共 $m$ 种。</p>
-<p>第 $i$ 种球在第 $j$ 种箱子里至多放 $ij$ 个。</p>
-<p>问所有箱子放的球数最多是多少。</p>
-<p>$1\leq n\leq 500,1\leq m\leq 5e5,0\leq a_i,b_i\leq 1e12$。</p>
+    <title>ABC331G Collect Them All 题解</title>
+    <url>/2023/12/04/ABC331G%20Collect%20Them%20All%20%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<h2 id="abc331-g"><a href="#abc331-g" class="headerlink" title="abc331_g"></a>abc331_g</h2><blockquote>
+<p>盒子里有 $n$ 张 $m$ 种卡片，第 $i$ 种卡片有 $c_i$ 张。$\sum c_i&#x3D;n$。</p>
+<p>每次均匀随机选一张，再放回去。求拿出过的卡片包含全部种类所需要的取出次数的期望。</p>
+<p>对 $998244353$ 取模。</p>
+<p>$1\leq n,m\leq 2e5,c_i\gt0$。</p>
 </blockquote>
 <span id="more"></span>
 
-<p>很容易建出网络流模型。从上至下依次有 $1,n,m,1$ 个点。但是图实在太大了。</p>
-<p>考虑求最小割。那就是要把上下共 $n+m$ 个点划分为两类。</p>
-<p>将它表示出来。设上下的全集分别为 $X&#x3D;{1,2,…,n},Y&#x3D;{1,2,…,m}$。</p>
-<p>上下分别选了 $P\subseteq X,Q\subseteq Y$ 归于源点集合。（以下所有式子所有求和条件略去这两个）<br>$$<br>\sum_{i\in X&#x2F;P}a_i+\sum_{i\in P}i\sum_{j\in Y&#x2F;Q}j+\sum_{i\in Q}b_i<br>$$<br>这个东西的最小值不好求。因为既要考虑 $P$ 也要考虑 $Q$。</p>
-<p>观察到数据范围很小，考虑枚举一点东西来把问题划分成独立的两个问题。枚举中间项左侧的 $k&#x3D;\sum_{i\in X}i$。</p>
-<p>有 $0\leq k\leq n(n+1)&#x2F;2$。</p>
-<p>那么对最左项的限制就是选一些求和为 $k$ 的 $i$，作为 $P$。剩下的 $a_i$ 加起来作为这一项。</p>
-<p>写在求和的条件上就是：<br>$$<br>\sum_{i\in X&#x2F;P,k&#x3D;\sum_{i\in X&#x2F;P} i}a_i+k\sum_{i\in Y&#x2F;Q}i+\sum_{i\in Q}b_i<br>$$<br>下面一行要么纳入源点集合，在第三项计算。否则在第二项计算。</p>
-<p>发现此时下面一行对于是否纳入源点集合不受约束。贪心地让它取较小的，使得整个式子最小。<br>$$<br>\sum_{i\in X&#x2F;P,k&#x3D;\sum_{i\in X&#x2F;P} i}a_i+\sum_{1\leq i\leq m}\min(ik,b_i)<br>$$<br>那么可以分别求出左侧和右侧对于每个 $k$ 的最小值，相加。</p>
-<p>左侧可以用 $O(n^3)$ 的 DP 算出，右侧可以发挥智慧写出 $O(n^2+m)$。这部分比较简单。</p>
-<p>总时间复杂度为 $O(n^3+m)$。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pc putchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pob pop_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ump unordered_map</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vi vector<span class="string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vl vector<span class="string">&lt;ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(rg int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg ll x=<span class="number">0</span>;rg <span class="type">int</span> p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wtl</span><span class="params">(rg ll x)</span> </span>&#123; <span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wtl</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">505</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> M=<span class="number">5e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> ll inf=<span class="number">1e18</span>;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line">ll a[N],b[M],f[N*(N+<span class="number">1</span>)/<span class="number">2</span>],ans=inf;</span><br><span class="line"><span class="function">ll <span class="title">minl</span><span class="params">(ll a,ll b)</span> </span>&#123; <span class="keyword">return</span> a&lt;b?a:b; &#125;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">pr</span> &#123; ll t;<span class="type">int</span> i; &#125;c[M];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp_by_t</span><span class="params">(pr a,pr b)</span> </span>&#123; <span class="keyword">return</span> a.t&lt;b.t; &#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;.in&quot;,&quot;r&quot;,stdin),freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	n=<span class="built_in">re</span>(),m=<span class="built_in">re</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		a[i]=<span class="built_in">rel</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		b[i]=<span class="built_in">rel</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	vector&lt;vl&gt;<span class="built_in">f</span>(n+<span class="number">1</span>,<span class="built_in">vl</span>(n*(n+<span class="number">1</span>)/<span class="number">2</span>+<span class="number">1</span>,inf));</span><br><span class="line">	<span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">	f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=sum;j&gt;=<span class="number">0</span>;j--) &#123;</span><br><span class="line">			f[i+<span class="number">1</span>][j+i+<span class="number">1</span>]=<span class="built_in">minl</span>(f[i+<span class="number">1</span>][j+i+<span class="number">1</span>],f[i][j]);</span><br><span class="line">			f[i+<span class="number">1</span>][j]=<span class="built_in">minl</span>(f[i+<span class="number">1</span>][j],f[i][j]+a[i+<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		sum+=i+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ll s1=<span class="number">0</span>,s2=<span class="number">0</span>,si=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		si+=i;</span><br><span class="line">		c[i].t=b[i]/i;</span><br><span class="line">		c[i].i=i;</span><br><span class="line"><span class="comment">//		printf(&quot;%d : %d\n&quot;,i,c[i].t);</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(c+<span class="number">1</span>,c+m+<span class="number">1</span>,<span class="type">cmp_by_t</span>);</span><br><span class="line">	<span class="type">int</span> z=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">fo</span>(k,<span class="number">0</span>,n*(n+<span class="number">1</span>)/<span class="number">2</span>) &#123;</span><br><span class="line"><span class="comment">//		printf(&quot;%d : %lld %lld %lld\n&quot;,k,s1,s2,f[n][k]);</span></span><br><span class="line">		ans=<span class="built_in">minl</span>(ans,f[n][k]+s1+s2);</span><br><span class="line">		<span class="keyword">while</span>(z&lt;=m&amp;&amp;c[z].t==k) &#123;</span><br><span class="line">			s1-=<span class="number">1ll</span>*k*c[z].i;</span><br><span class="line">			s2+=b[c[z].i];</span><br><span class="line">			si-=c[z].i;</span><br><span class="line">			z++;</span><br><span class="line">		&#125;</span><br><span class="line">		s1+=si;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">wtl</span>(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先观察到，对于任意终止局面，最后取出的卡片的种类，一定是第一次被取出。</p>
+<p>那么我们只需要知道每种卡片第一次被取出的时间 $S_i$，剩下每个空位置都可以选前面任意一种卡片。</p>
+<p>这个思路是行不通的。</p>
+<p>发现答案等于“每个卡片第一次被取出的时间”之中的最大值。即 $\max S_i$。</p>
+<p>因为 $S$ 是不确定的。即，求 $S$ 里面最大值的期望。</p>
+<p>联系 Min-Max 容斥：</p>
+<p>设 $U&#x3D;{1,2,…,m}$。$U$ 是全部种类的集合。<br>$$<br>E(\max_{i\in U} S_i)&#x3D;\sum_{T\subseteq U}(-1)^{|T|-1}E(\min_{i\in T} S_i)<br>$$<br>此时我们要算的就是，任选一个种类集合 $T$，（接着我们开始对全部卡牌进行游戏，每种卡牌都会有一个 $S$ 值），求出这些种类里面<strong>最早被取出的那个种类的取出时间</strong>（即最小的 $S$）<strong>的期望</strong>，求和。</p>
+<p>当然还有系数 $(-1)^{|T|-1}$。我们先考虑上面那个怎么求。</p>
+<p>上面那个就是计算独立事件第一次发生的期望次数。</p>
+<p>进行一次实验，这个独立事件发生的概率显然是 $\dfrac{\sum_{i\in T} c_i}{n}$。</p>
+<blockquote>
+<p>独立事件发生概率为 $p$，第一次发生期望次数 $E&#x3D;\frac{1}{p}$。</p>
+<p>证明：<br>$$<br>\begin{align}<br>q&amp;&#x3D;1-p\<br>E&amp;&#x3D;\sum_{i&#x3D;1}^\inf iq^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf (i-1+1)q^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf(i-1)q^{i-1}p+\sum_{i&#x3D;1}^\inf q^{i-1}p\<br>&amp;&#x3D;(\sum_{i&#x3D;1}^\inf iq^ip)+1&#x3D;(q\sum_{i&#x3D;1}^\inf iq^{i-1}p)+1&#x3D;qE+1&#x3D;(1-p)E+1\<br>&amp;\because E&#x3D;(1-p)E+1\<br>&amp;\therefore E&#x3D;\frac{1}{p}(p\neq 0)\<br>\end{align}<br>$$</p>
+</blockquote>
+<p>期望就是<br>$$<br>\dfrac{n}{\sum_{i\in T} c_i}<br>$$</p>
+<p>我们的式子变成了<br>$$<br>E(\max_{i\in U} S_i)&#x3D;\sum_{T\subseteq U}(-1)^{|T|-1}\times\dfrac{n}{\sum_{i\in T} c_i}<br>$$<br>使用一个常见的拆贡献方法，设 $\sum_{i\in T} c_i&#x3D;x$，则原式变为<br>$$<br>\sum_{x&#x3D;1}^n F(x)\times\frac{n}{x}<br>$$<br>$F(x)$ 是一个负或正的整数。因为原式中全部 $\frac{n}{x}$ 相等的项可以合并同类项。$F(x)$ 就是合并完以后他们的系数。</p>
+<p>如果把 $F(x)$ 求出来就可以 $O(n\log n)$ 计算答案了。之所以带 $\log$ 是因为我不会线性求逆元。</p>
+<p>现在考虑求 $F(x)$。因为 $F(x)$ 表示的是若干个 $c$ 相加为 $x$ 的一些系数，考虑卷积。</p>
+<p>一开始我们有 $n$ 个数列，第 $k$ 个数列为：<br>$$<br>[0,0,…,0,1,0,0,…0,0]<br>$$<br>第 $c_k$ 项是 1，其余是 0。</p>
+<p>数列第 $x$ 项代表在 ${k}$ 这一个集合的全部子集 $T\subseteq{k}$ 中，$\frac{n}{x}$ 那一项的系数，也就是 $F(x)$，只不过我们此时的 $U&#x3D;{k}$。</p>
+<p>那么显然，此时 $T$ 只有 ${k}$ 一种取法，而 $(-1)^{|T|-1}&#x3D;1,\sum_{i\in T} c_i&#x3D;c_k$，所以第 $c_k$ 项是 1，其余是 0。</p>
+<p>这一部分的关键在于，每个多项式都有隐含的一个意义：$U$ 的元素（就是上面式子里那个 $U$，最终 $U$ 应当为全集，初始第 $k$ 个多项式 $U&#x3D;{k}$）。</p>
+<p>当我们把两个数列（多项式）卷起来。设这两个数列的 $U$ 分别等于 $A,B$，成绩结果为 $C$。</p>
+<p>乘积多项式的意义<strong>应当</strong>是当 $U&#x3D;A\cup B$ 时的 $F(x)$。</p>
+<p>但我们发现这两个卷起来以后得到的结果是把 $T\subseteq A$ 和 $T\subseteq B$ 排除在外的！</p>
+<p>所以我们要让 $C&#x3D;A\times B+A+B$。</p>
+<p>但我们发现，对于 $-1$ 的处理，在 $A$ 中一个因子是 $(-1)^{|T1|-1}$，在 $B$ 中一个因子是 $(-1)^{|T2|-1}$，两个合起来应当为 $(-1)^{|T1|+|T2|-1}$。</p>
+<p>但是我们做的运算是 $(-1)^{|T1|-1}\times (-1)^{|T2|-1}&#x3D;(-1)^{|T1|+|T2|-1}$。</p>
+<p>所以 $C$ 应当等于 $-(A\times B)+A+B$。</p>
+<p>总结一下：</p>
+<p>我们要求<br>$$<br>\sum_{x&#x3D;1}^n F(x)\times\frac{n}{x}<br>$$<br>所以要求 $F$。每个多项式第 $x$ 项代表对于它的 $U$ 的全部子集 $T\subseteq U$，对 $(-1)^{|T|-1}\times\dfrac{n}{\sum_{i\in T} c_i(&#x3D;x)}$ 求和，$\frac{n}{x}$ 那一项的系数。</p>
+<p>此时我们把这 $n$ 个多项式启发式卷起来。卷不是正常的卷，$F$ 卷 $G$ 等于 $-(F\times G)+F+G$。</p>
+<p>最终的多项式就是要求的 $F(x)$。</p>
+<p>时间 $O(n\log^2n)$。</p>
 ]]></content>
       <categories>
         <category>OI</category>
@@ -103,50 +94,27 @@
       </tags>
   </entry>
   <entry>
-    <title>ABC331G Collect Them All 题解</title>
-    <url>/2023/12/04/ABC331G%20Collect%20Them%20All%20%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<h2 id="abc331-g"><a href="#abc331-g" class="headerlink" title="abc331_g"></a>abc331_g</h2><blockquote>
-<p>盒子里有 $n$ 张 $m$ 种卡片，第 $i$ 种卡片有 $c_i$ 张。$\sum c_i&#x3D;n$。</p>
-<p>每次均匀随机选一张，再放回去。求拿出过的卡片包含全部种类所需要的取出次数的期望。</p>
-<p>对 $998244353$ 取模。</p>
-<p>$1\leq n,m\leq 2e5,c_i\gt0$。</p>
+    <title>ABC311G One More Grid Task 题解</title>
+    <url>/2023/12/16/ABC311G%20One%20More%20Grid%20Task%20%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<blockquote>
+<p>给出 $n\times m$ 的矩阵 $a$。求权值最大子矩形的权值。</p>
+<p>一个矩形的权值定义为它里面全部数的和乘上最小值。</p>
+<p>$n,m\leq 300,0\leq a_{i,j}\leq 300$。</p>
 </blockquote>
+<p>枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。</p>
 <span id="more"></span>
 
-<p>首先观察到，对于任意终止局面，最后取出的卡片的种类，一定是第一次被取出。</p>
-<p>那么我们只需要知道每种卡片第一次被取出的时间 $S_i$，剩下每个空位置都可以选前面任意一种卡片。</p>
-<p>这个思路是行不通的。</p>
-<p>发现答案等于“每个卡片第一次被取出的时间”之中的最大值。即 $\max S_i$。</p>
-<p>因为 $S$ 是不确定的。即，求 $S$ 里面最大值的期望。</p>
-<p>联系 Min-Max 容斥：</p>
-<p>设 $U&#x3D;{1,2,…,m}$。$U$ 是全部种类的集合。<br>$$<br>E(\max_{i\in U} S_i)&#x3D;\sum_{T\subseteq U}(-1)^{|T|-1}E(\min_{i\in T} S_i)<br>$$<br>此时我们要算的就是，任选一个种类集合 $T$，（接着我们开始对全部卡牌进行游戏，每种卡牌都会有一个 $S$ 值），求出这些种类里面<strong>最早被取出的那个种类的取出时间</strong>（即最小的 $S$）<strong>的期望</strong>，求和。</p>
-<p>当然还有系数 $(-1)^{|T|-1}$。我们先考虑上面那个怎么求。</p>
-<p>上面那个就是计算独立事件第一次发生的期望次数。</p>
-<p>进行一次实验，这个独立事件发生的概率显然是 $\dfrac{\sum_{i\in T} c_i}{n}$。</p>
-<blockquote>
-<p>独立事件发生概率为 $p$，第一次发生期望次数 $E&#x3D;\frac{1}{p}$。</p>
-<p>证明：<br>$$<br>\begin{align}<br>q&amp;&#x3D;1-p\<br>E&amp;&#x3D;\sum_{i&#x3D;1}^\inf iq^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf (i-1+1)q^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf(i-1)q^{i-1}p+\sum_{i&#x3D;1}^\inf q^{i-1}p\<br>&amp;&#x3D;(\sum_{i&#x3D;1}^\inf iq^ip)+1&#x3D;(q\sum_{i&#x3D;1}^\inf iq^{i-1}p)+1&#x3D;qE+1&#x3D;(1-p)E+1\<br>&amp;\because E&#x3D;(1-p)E+1\<br>&amp;\therefore E&#x3D;\frac{1}{p}(p\neq 0)\<br>\end{align}<br>$$</p>
-</blockquote>
-<p>期望就是<br>$$<br>\dfrac{n}{\sum_{i\in T} c_i}<br>$$</p>
-<p>我们的式子变成了<br>$$<br>E(\max_{i\in U} S_i)&#x3D;\sum_{T\subseteq U}(-1)^{|T|-1}\times\dfrac{n}{\sum_{i\in T} c_i}<br>$$<br>使用一个常见的拆贡献方法，设 $\sum_{i\in T} c_i&#x3D;x$，则原式变为<br>$$<br>\sum_{x&#x3D;1}^n F(x)\times\frac{n}{x}<br>$$<br>$F(x)$ 是一个负或正的整数。因为原式中全部 $\frac{n}{x}$ 相等的项可以合并同类项。$F(x)$ 就是合并完以后他们的系数。</p>
-<p>如果把 $F(x)$ 求出来就可以 $O(n\log n)$ 计算答案了。之所以带 $\log$ 是因为我不会线性求逆元。</p>
-<p>现在考虑求 $F(x)$。因为 $F(x)$ 表示的是若干个 $c$ 相加为 $x$ 的一些系数，考虑卷积。</p>
-<p>一开始我们有 $n$ 个数列，第 $k$ 个数列为：<br>$$<br>[0,0,…,0,1,0,0,…0,0]<br>$$<br>第 $c_k$ 项是 1，其余是 0。</p>
-<p>数列第 $x$ 项代表在 ${k}$ 这一个集合的全部子集 $T\subseteq{k}$ 中，$\frac{n}{x}$ 那一项的系数，也就是 $F(x)$，只不过我们此时的 $U&#x3D;{k}$。</p>
-<p>那么显然，此时 $T$ 只有 ${k}$ 一种取法，而 $(-1)^{|T|-1}&#x3D;1,\sum_{i\in T} c_i&#x3D;c_k$，所以第 $c_k$ 项是 1，其余是 0。</p>
-<p>这一部分的关键在于，每个多项式都有隐含的一个意义：$U$ 的元素（就是上面式子里那个 $U$，最终 $U$ 应当为全集，初始第 $k$ 个多项式 $U&#x3D;{k}$）。</p>
-<p>当我们把两个数列（多项式）卷起来。设这两个数列的 $U$ 分别等于 $A,B$，成绩结果为 $C$。</p>
-<p>乘积多项式的意义<strong>应当</strong>是当 $U&#x3D;A\cup B$ 时的 $F(x)$。</p>
-<p>但我们发现这两个卷起来以后得到的结果是把 $T\subseteq A$ 和 $T\subseteq B$ 排除在外的！</p>
-<p>所以我们要让 $C&#x3D;A\times B+A+B$。</p>
-<p>但我们发现，对于 $-1$ 的处理，在 $A$ 中一个因子是 $(-1)^{|T1|-1}$，在 $B$ 中一个因子是 $(-1)^{|T2|-1}$，两个合起来应当为 $(-1)^{|T1|+|T2|-1}$。</p>
-<p>但是我们做的运算是 $(-1)^{|T1|-1}\times (-1)^{|T2|-1}&#x3D;(-1)^{|T1|+|T2|-1}$。</p>
-<p>所以 $C$ 应当等于 $-(A\times B)+A+B$。</p>
-<p>总结一下：</p>
-<p>我们要求<br>$$<br>\sum_{x&#x3D;1}^n F(x)\times\frac{n}{x}<br>$$<br>所以要求 $F$。每个多项式第 $x$ 项代表对于它的 $U$ 的全部子集 $T\subseteq U$，对 $(-1)^{|T|-1}\times\dfrac{n}{\sum_{i\in T} c_i(&#x3D;x)}$ 求和，$\frac{n}{x}$ 那一项的系数。</p>
-<p>此时我们把这 $n$ 个多项式启发式卷起来。卷不是正常的卷，$F$ 卷 $G$ 等于 $-(F\times G)+F+G$。</p>
-<p>最终的多项式就是要求的 $F(x)$。</p>
-<p>时间 $O(n\log^2n)$。</p>
+<p>这些矩形不好枚举，也难以计算究竟有多少个。</p>
+<p>考虑添加一些限制。</p>
+<p>枚举上下边界。那么我们枚举列，以这一列的最小值为待定矩形的最小值，然后向左右拓展为一个极大的矩形。</p>
+<p>发现这样拓展出的矩形与上面做法的矩形形成双射。</p>
+<p>拓展可以采用二维 ST 表+二分实现。时间复杂度 $O(n^3\log{n})$。</p>
+<p>哦还可以单调栈。时间是 $O(n^3)$。</p>
+<p>单调栈：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pc putchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pob pop_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ump unordered_map</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vi vector<span class="string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vl vector<span class="string">&lt;ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(rg int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg ll x=<span class="number">0</span>;rg <span class="type">int</span> p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wtl</span><span class="params">(rg ll x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wtl</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">305</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> Lg=<span class="number">9</span>;</span><br><span class="line"><span class="type">int</span> n,m,a[N][N],s[N][N],ql[N],qr[N],mn[N],stl;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">pr</span> &#123; <span class="type">int</span> v,i; &#125;sta[N];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">Sum</span><span class="params">(rg <span class="type">int</span> l1,rg <span class="type">int</span> r1,rg <span class="type">int</span> l2,rg <span class="type">int</span> r2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> s[l2][r2]-s[l1<span class="number">-1</span>][r2]-s[l2][r1<span class="number">-1</span>]+s[l1<span class="number">-1</span>][r1<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;.in&quot;,&quot;r&quot;,stdin),freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	n=<span class="built_in">re</span>(),m=<span class="built_in">re</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">1</span>,m) &#123;</span><br><span class="line">			a[i][j]=<span class="built_in">re</span>();</span><br><span class="line">			s[i][j]=s[i<span class="number">-1</span>][j]+s[i][j<span class="number">-1</span>]-s[i<span class="number">-1</span>][j<span class="number">-1</span>]+a[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(x,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(i,<span class="number">1</span>,m) mn[i]=<span class="number">1000</span>;</span><br><span class="line">		<span class="built_in">fo</span>(y,x,n) &#123;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) mn[i]=<span class="built_in">min</span>(mn[i],a[y][i]);</span><br><span class="line">			stl=<span class="number">0</span>;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">				<span class="keyword">while</span>(stl&amp;&amp;sta[stl].v&gt;=mn[i]) stl--;</span><br><span class="line">				<span class="keyword">if</span>(stl) ql[i]=sta[stl].i+<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">else</span> ql[i]=<span class="number">1</span>;</span><br><span class="line">				sta[++stl]=&#123;mn[i],i&#125;;</span><br><span class="line">			&#125;</span><br><span class="line">			stl=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(rg <span class="type">int</span> i=m;i&gt;=<span class="number">1</span>;--i) &#123;</span><br><span class="line">				<span class="keyword">while</span>(stl&amp;&amp;sta[stl].v&gt;=mn[i]) stl--;</span><br><span class="line">				<span class="keyword">if</span>(stl) qr[i]=sta[stl].i<span class="number">-1</span>;</span><br><span class="line">				<span class="keyword">else</span> qr[i]=m;</span><br><span class="line">				sta[++stl]=&#123;mn[i],i&#125;;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">				ans=<span class="built_in">max</span>(ans,<span class="number">1ll</span>*mn[i]*<span class="built_in">Sum</span>(x,ql[i],y,qr[i]));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">wtl</span>(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ST 表：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pc putchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pob pop_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ump unordered_map</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vi vector<span class="string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vl vector<span class="string">&lt;ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(rg int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg ll x=<span class="number">0</span>;rg <span class="type">int</span> p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wtl</span><span class="params">(rg ll x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wtl</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">305</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> Lg=<span class="number">9</span>;</span><br><span class="line"><span class="type">int</span> n,m,st[N][N][Lg][Lg],g[N],c[N],s[N][N];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> l1,<span class="type">int</span> r1,<span class="type">int</span> l2,<span class="type">int</span> r2)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> sl=g[l2-l1+<span class="number">1</span>],sr=g[r2-r1+<span class="number">1</span>];</span><br><span class="line"><span class="comment">//	printf(&quot;%d %d %d %d = %d\n&quot;,l1,r1,l2,r2,min(&#123;st[l1][r1][sl][sr],st[l1][r2-(1&lt;&lt;sr)+1][sl][sr],st[l2-(1&lt;&lt;sl)+1][r1][sl][sr],st[l2-(1&lt;&lt;sl)+1][r2-(1&lt;&lt;sr)+1][sl][sr]&#125;));</span></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">min</span>(&#123;st[l1][r1][sl][sr],st[l1][r2-(<span class="number">1</span>&lt;&lt;sr)+<span class="number">1</span>][sl][sr],st[l2-(<span class="number">1</span>&lt;&lt;sl)+<span class="number">1</span>][r1][sl][sr],st[l2-(<span class="number">1</span>&lt;&lt;sl)+<span class="number">1</span>][r2-(<span class="number">1</span>&lt;&lt;sr)+<span class="number">1</span>][sl][sr]&#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Sum</span><span class="params">(<span class="type">int</span> l1,<span class="type">int</span> r1,<span class="type">int</span> l2,<span class="type">int</span> r2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> s[l2][r2]-s[l1<span class="number">-1</span>][r2]-s[l2][r1<span class="number">-1</span>]+s[l1<span class="number">-1</span>][r1<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;.in&quot;,&quot;r&quot;,stdin),freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">2</span>,<span class="number">300</span>) g[i]=g[i/<span class="number">2</span>]+<span class="number">1</span>;</span><br><span class="line">	n=<span class="built_in">re</span>(),m=<span class="built_in">re</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">1</span>,m) &#123;</span><br><span class="line">			st[i][j][<span class="number">0</span>][<span class="number">0</span>]=<span class="built_in">re</span>();</span><br><span class="line">			s[i][j]=s[i<span class="number">-1</span>][j]+s[i][j<span class="number">-1</span>]-s[i<span class="number">-1</span>][j<span class="number">-1</span>]+st[i][j][<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(x,<span class="number">0</span>,g[n]) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(y,<span class="number">0</span>,g[m]) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!x&amp;&amp;!y) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i+(<span class="number">1</span>&lt;&lt;x)<span class="number">-1</span>&lt;=n;i++) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j+(<span class="number">1</span>&lt;&lt;y)<span class="number">-1</span>&lt;=m;j++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(!x) st[i][j][x][y]=<span class="built_in">min</span>(st[i][j][x][y<span class="number">-1</span>],st[i][j+(<span class="number">1</span>&lt;&lt;y<span class="number">-1</span>)][x][y<span class="number">-1</span>]);</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(!y) st[i][j][x][y]=<span class="built_in">min</span>(st[i][j][x<span class="number">-1</span>][y],st[i+(<span class="number">1</span>&lt;&lt;x<span class="number">-1</span>)][j][x<span class="number">-1</span>][y]);</span><br><span class="line">					<span class="keyword">else</span> st[i][j][x][y]=<span class="built_in">min</span>(&#123;st[i][j][x<span class="number">-1</span>][y<span class="number">-1</span>],st[i][j+(<span class="number">1</span>&lt;&lt;y<span class="number">-1</span>)][x<span class="number">-1</span>][y<span class="number">-1</span>],st[i+(<span class="number">1</span>&lt;&lt;x<span class="number">-1</span>)][j][x<span class="number">-1</span>][y<span class="number">-1</span>],st[i+(<span class="number">1</span>&lt;&lt;x<span class="number">-1</span>)][j+(<span class="number">1</span>&lt;&lt;y<span class="number">-1</span>)][x<span class="number">-1</span>][y<span class="number">-1</span>]&#125;);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(x,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">fo</span>(y,x,n) &#123;</span><br><span class="line">			<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">				<span class="type">int</span> p=<span class="built_in">query</span>(x,i,y,i),ql,qr;</span><br><span class="line">				<span class="type">int</span> L=<span class="number">1</span>,R=i;</span><br><span class="line">				<span class="keyword">while</span>(L&lt;=R) &#123;</span><br><span class="line">					<span class="type">int</span> mid=L+R&gt;&gt;<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">if</span>(<span class="built_in">query</span>(x,mid,y,i)==p) R=(ql=mid)<span class="number">-1</span>;</span><br><span class="line">					<span class="keyword">else</span> L=mid+<span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				L=i,R=m;</span><br><span class="line">				<span class="keyword">while</span>(L&lt;=R) &#123;</span><br><span class="line">					<span class="type">int</span> mid=L+R&gt;&gt;<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">if</span>(<span class="built_in">query</span>(x,i,y,mid)==p) L=(qr=mid)+<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">else</span> R=mid<span class="number">-1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				ans=<span class="built_in">max</span>(ans,<span class="number">1ll</span>*p*<span class="built_in">Sum</span>(x,ql,y,qr));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">wtl</span>(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>OI</category>
@@ -218,119 +186,35 @@
       </tags>
   </entry>
   <entry>
-    <title>GDKOI2024 比赛记</title>
-    <url>/2024/01/08/GDKOI2024%20%E6%AF%94%E8%B5%9B%E8%AE%B0/</url>
+    <title>ABC332G Not Too Many Balls 题解</title>
+    <url>/2023/12/15/ABC332G%20Not%20Too%20Many%20Balls%20%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<blockquote>
-<p>我们是来比赛的，我们是有任务的！我们不是来干嘛的呀？我们不是来旅游，来享受住酒店的！</p>
+<p>第 $i$ 种球有 $a_i$ 个，共 $n$ 种。</p>
+<p>第 $i$ 种箱子最多共装 $b_i$ 个球。共 $m$ 种。</p>
+<p>第 $i$ 种球在第 $j$ 种箱子里至多放 $ij$ 个。</p>
+<p>问所有箱子放的球数最多是多少。</p>
+<p>$1\leq n\leq 500,1\leq m\leq 5e5,0\leq a_i,b_i\leq 1e12$。</p>
 </blockquote>
-<p>所以这是一篇比赛记。</p>
-<p>打得不好。收获很大。</p>
 <span id="more"></span>
 
-<p>省流：我就是菜！</p>
-<p>day1</p>
-<p><img src="https://pic.imgdb.cn/item/659bfbf0871b83018a8967d9.jpg"></p>
-<p>day2</p>
-<p><img src="https://pic.imgdb.cn/item/659bfbf0871b83018a8969ba.jpg"></p>
-<hr>
-<h1 id="day-1"><a href="#day-1" class="headerlink" title="day-1"></a>day-1</h1><p>复习李超树。还有哪个东西来着忘了。</p>
-<h1 id="day0"><a href="#day0" class="headerlink" title="day0"></a>day0</h1><p>下午走了。路上跟 wzx 坐一排，知乎，百词斩，phigros，看着窗外发呆。</p>
-<p>还蛮丰富的。</p>
-<p>到酒店放完东西就去报道。拍照。吃饭。</p>
-<p>饭特咸，特油。认为不如 jy。</p>
-<p>晚上回去不想玩了。开会，洗澡，看书，跟 wzx 看《地球脉动：Ⅲ》，<del>du</del>。</p>
-<p>十一点睡了。被子有灰，差评。有点担心第二天鼻子过敏。</p>
-<h1 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h1><h2 id="上午"><a href="#上午" class="headerlink" title="上午"></a>上午</h2><p>早餐很丰富。龙 sir 吃了五块玉米。昭成晓夫是也。</p>
-<p>车上用手机复习 NTT 板子。感觉丝毫没有紧张的心情。</p>
-<p>入场。建完文件夹发现发现鼠标滚轮是坏的。两个监考员嘀咕了半天对着我的电脑搞来搞去，让我换个电脑。</p>
-<p>一直到 8:50，终于开始看题。</p>
-<p>T1 感觉是 CHD 题。我看不出来， 手算了几组数据，否掉了若干结论。</p>
-<p>T2 DS。先看 T3，$m&#x3D;1$ 大概可以吧连续段奇偶分讨。推不出规律。</p>
-<p>回去想 T2，弄了个很绕的拆贡献思路，只有 $L&#x3D;1$ 之前的 40pts。</p>
-<p>接着做 T1，可是我不会了呀！直接 <code>shuffle</code> 边集数组跑 Maxflow 得了。</p>
-<p>过不了第二个样例。</p>
-<p>突然发现 T2 $L&#x3D;1$ 咋做了。接着写。</p>
-<p>写到一半发现自己是个傻缺。压根不用这一通转化。</p>
-<p>硬着头皮写下去了。线段树推平感觉一年多没写，乱调调了一个多小时卡着最后 10min 过拍了。</p>
-<p>我感觉要吐了。</p>
-<p>最后还是啥都没做出来。</p>
-<p>估分 T1 $n\leq 8$ 的 20。T2 60。T3 10。</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>fu 圣告诉我 T1 是前几天省选组原题的 subtask。</p>
-<p>问了问大家都没切题。谔谔。</p>
-<p>吃饭的时候听说 <code>shuffle+Maxflow</code> 可以过随机。好像确实。</p>
-<p>还听 lsx 说 T1 可以状压过前面数据。只能骂自己蠢。</p>
-<p>中午和 lsx、djt 逛逛。回到报告厅和 lsx 对弈。</p>
-<p>讲题。</p>
-<p>T1 任找一个匹配。找一个有奇数条黑边的环。这个环恰一半的边被选。切换到另一半，黑边数量奇偶性必改变。</p>
-<p>好强。想不到。</p>
-<p>T2 神仙 DS。可是我不会 DS。完全听不懂。</p>
-<p>T3 ddpp？好困也没听懂。</p>
-<p>剩下讲座。咳咳。不明白。</p>
-<p>发成绩。</p>
-<p>啊！寄！T1 连 $n\leq 8$ 都没过。T2 60。T3 暴力都错爆零了。</p>
-<p>20+60+0。悲伤。</p>
-<p>lsx 众人 T2 挂成 10 分了。可是我 T1 只有 20。没有优势。</p>
-<p>晚上和 thy、lsx、mqf 出去玩。</p>
-<p>喝果茶。喂鸽子。抓娃娃。吃烧烤。</p>
-<p>二十大洋抓了两个娃娃！天赋异禀！</p>
-<p><img src="https://pic.imgdb.cn/item/659bfcc2871b83018a8da34c.jpg"></p>
-<p>后来不想 du。于是早早躺床上了。</p>
-<h1 id="day2"><a href="#day2" class="headerlink" title="day2"></a>day2</h1><h2 id="上午-1"><a href="#上午-1" class="headerlink" title="上午"></a>上午</h2><p>入场。T1 又是 DS。</p>
-<p>稳健一点先写 $O(n^2)$ 暴力。发现读错题了。然后有三个限制。然而不会维护。</p>
-<p>T2 是数学。</p>
-<p>数学和 DS 我做个 p 啊！</p>
-<p>T3 一眼高消，大概能过 $n\leq 2$。乱想了一会没有别的方法。</p>
-<p>先写 T3。稳健一点先写暴力。</p>
-<p>然后我开始 debug 暴力。调了一个小时还没调出来。最后发现枚举应当从 0 开始。</p>
-<p>fyou！！！my time！！！</p>
-<p>抓紧敲高消。$n&#x3D;4$ 还不错。$n&#x3D;7$ 跑了 1.2s。动用脑筋剪枝剪到了 0.7s。</p>
-<p>还剩不到 2h。写 T2 15pts。（此时心态有些崩了丝毫不敢再想 T2）</p>
-<p>然后 T1 狂写纯暴力，$b_i\geq a_i$。</p>
-<p>$a_i\times b_i&#x3D;0$ 可以 cdq。最后 40min 狂写+狂喝水+狂上厕所。感觉低血糖，想吐，吃了一口吃士力架感觉更恶心了。</p>
-<p>没调出来。遗（wo）憾（cao）离（ni）场（mama）。</p>
-<p>估分 30（忘了，好像是吧）+15+50。</p>
-<p>问了问，人均切 T1。T2 人均 30。或 65。</p>
-<p>心里想着今年要打铁了。</p>
-<p>冷静了一番突然醒悟了自己这么菜的一些原因。</p>
-<h2 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h2><p>吃饭时 lsx 讲了讲 T1。会了。</p>
-<p>感觉 T3 分还挺高。但没卵用。</p>
-<p>中午和 lsx 逛。对弈。phigros。百词斩。</p>
-<p>讲题。</p>
-<p>T1 DS。看起来有很清新的做法。</p>
-<p>T2 有个性质。比赛时压根没想。可惜。听不懂。</p>
-<p>T3 奇偶行列提出来，子问题，边界 $n&#x3D;2$。</p>
-<p>好多大佬致辞。好多老师获奖。</p>
-<p>没打铁。Cu。</p>
-<p>wzx 金了。tn、cdq 金了。lsx、qtr 银了。</p>
-<p>前十 jz 四个。可喜。</p>
-<p>然后回家。和 lsx 坐车。phigros。发呆。对弈。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这次比赛突然意识到我知识体系太散了。</p>
-<p>类比 whk。永远是一章章讲，一个知识一个知识地学，一部分一部分地测验。</p>
-<p>虽然 whk 应试功利性更强，但这种学习模式的存在毋庸置疑是正确的。</p>
-<p>我一贯没有意识到，OI 原来，是要更强系统的。</p>
-<p>某天看忘记哪篇文章，说，停课集训，是，重新构建知识体系的时间。</p>
-<p>停课集训时，我感觉我的收获并没有太大。</p>
-<p>题目难度高。因为我以往完全没有一个知识的框架，而是东学一点西学一点，显得更加吃力。</p>
-<p>还有很致命的一点就是，平时模拟赛的懒散。</p>
-<p>六年级疫情停课开始，训练形式转变成了一场又一场的模拟赛。</p>
-<p>到如今，我仿佛已经麻木。毫无认真对待的态度。</p>
-<p>两天场上，我狂敲，到最后一个，甚至两个小时，我便会头晕。</p>
-<p>两天，day1T1 没想出前两档 40 分，day1T3 暴力写挂 10 分，day2T1 完全不会（第一个分段还忘解注释了），day2T3 暴力调 1h。</p>
-<p>这都是平时缺乏紧张氛围练习的结果。</p>
-<p>某天，我突然发现我几乎用着中山几乎最优质的资源：OI、jz、jy、强悍的同学。</p>
-<p>然而我却一日日地落入绝望的境地。</p>
-<p>正因此，我日渐彷徨，担忧，还有一些，或许不能算是愧疚的心情。</p>
-<p>但，而今，我貌似触摸到了一些光亮。</p>
-<p>我的生命，她不长。不能用她来悲伤。</p>
-<p>先学数数。再学 DS。</p>
-<p>我下决心。做出我不知道是否正确的改变。</p>
-<p>那些坏天气，终于都会过去。</p>
+<p>很容易建出网络流模型。从上至下依次有 $1,n,m,1$ 个点。但是图实在太大了。</p>
+<p>考虑求最小割。那就是要把上下共 $n+m$ 个点划分为两类。</p>
+<p>将它表示出来。设上下的全集分别为 $X&#x3D;{1,2,…,n},Y&#x3D;{1,2,…,m}$。</p>
+<p>上下分别选了 $P\subseteq X,Q\subseteq Y$ 归于源点集合。（以下所有式子所有求和条件略去这两个）<br>$$<br>\sum_{i\in X&#x2F;P}a_i+\sum_{i\in P}i\sum_{j\in Y&#x2F;Q}j+\sum_{i\in Q}b_i<br>$$<br>这个东西的最小值不好求。因为既要考虑 $P$ 也要考虑 $Q$。</p>
+<p>观察到数据范围很小，考虑枚举一点东西来把问题划分成独立的两个问题。枚举中间项左侧的 $k&#x3D;\sum_{i\in X}i$。</p>
+<p>有 $0\leq k\leq n(n+1)&#x2F;2$。</p>
+<p>那么对最左项的限制就是选一些求和为 $k$ 的 $i$，作为 $P$。剩下的 $a_i$ 加起来作为这一项。</p>
+<p>写在求和的条件上就是：<br>$$<br>\sum_{i\in X&#x2F;P,k&#x3D;\sum_{i\in X&#x2F;P} i}a_i+k\sum_{i\in Y&#x2F;Q}i+\sum_{i\in Q}b_i<br>$$<br>下面一行要么纳入源点集合，在第三项计算。否则在第二项计算。</p>
+<p>发现此时下面一行对于是否纳入源点集合不受约束。贪心地让它取较小的，使得整个式子最小。<br>$$<br>\sum_{i\in X&#x2F;P,k&#x3D;\sum_{i\in X&#x2F;P} i}a_i+\sum_{1\leq i\leq m}\min(ik,b_i)<br>$$<br>那么可以分别求出左侧和右侧对于每个 $k$ 的最小值，相加。</p>
+<p>左侧可以用 $O(n^3)$ 的 DP 算出，右侧可以发挥智慧写出 $O(n^2+m)$。这部分比较简单。</p>
+<p>总时间复杂度为 $O(n^3+m)$。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pc putchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pob pop_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ump unordered_map</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vi vector<span class="string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vl vector<span class="string">&lt;ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(rg int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg ll x=<span class="number">0</span>;rg <span class="type">int</span> p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wtl</span><span class="params">(rg ll x)</span> </span>&#123; <span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wtl</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">505</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> M=<span class="number">5e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> ll inf=<span class="number">1e18</span>;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line">ll a[N],b[M],f[N*(N+<span class="number">1</span>)/<span class="number">2</span>],ans=inf;</span><br><span class="line"><span class="function">ll <span class="title">minl</span><span class="params">(ll a,ll b)</span> </span>&#123; <span class="keyword">return</span> a&lt;b?a:b; &#125;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">pr</span> &#123; ll t;<span class="type">int</span> i; &#125;c[M];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp_by_t</span><span class="params">(pr a,pr b)</span> </span>&#123; <span class="keyword">return</span> a.t&lt;b.t; &#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;.in&quot;,&quot;r&quot;,stdin),freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	n=<span class="built_in">re</span>(),m=<span class="built_in">re</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		a[i]=<span class="built_in">rel</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		b[i]=<span class="built_in">rel</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	vector&lt;vl&gt;<span class="built_in">f</span>(n+<span class="number">1</span>,<span class="built_in">vl</span>(n*(n+<span class="number">1</span>)/<span class="number">2</span>+<span class="number">1</span>,inf));</span><br><span class="line">	<span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">	f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=sum;j&gt;=<span class="number">0</span>;j--) &#123;</span><br><span class="line">			f[i+<span class="number">1</span>][j+i+<span class="number">1</span>]=<span class="built_in">minl</span>(f[i+<span class="number">1</span>][j+i+<span class="number">1</span>],f[i][j]);</span><br><span class="line">			f[i+<span class="number">1</span>][j]=<span class="built_in">minl</span>(f[i+<span class="number">1</span>][j],f[i][j]+a[i+<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		sum+=i+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ll s1=<span class="number">0</span>,s2=<span class="number">0</span>,si=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		si+=i;</span><br><span class="line">		c[i].t=b[i]/i;</span><br><span class="line">		c[i].i=i;</span><br><span class="line"><span class="comment">//		printf(&quot;%d : %d\n&quot;,i,c[i].t);</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(c+<span class="number">1</span>,c+m+<span class="number">1</span>,<span class="type">cmp_by_t</span>);</span><br><span class="line">	<span class="type">int</span> z=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">fo</span>(k,<span class="number">0</span>,n*(n+<span class="number">1</span>)/<span class="number">2</span>) &#123;</span><br><span class="line"><span class="comment">//		printf(&quot;%d : %lld %lld %lld\n&quot;,k,s1,s2,f[n][k]);</span></span><br><span class="line">		ans=<span class="built_in">minl</span>(ans,f[n][k]+s1+s2);</span><br><span class="line">		<span class="keyword">while</span>(z&lt;=m&amp;&amp;c[z].t==k) &#123;</span><br><span class="line">			s1-=<span class="number">1ll</span>*k*c[z].i;</span><br><span class="line">			s2+=b[c[z].i];</span><br><span class="line">			si-=c[z].i;</span><br><span class="line">			z++;</span><br><span class="line">		&#125;</span><br><span class="line">		s1+=si;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">wtl</span>(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>OI</category>
       </categories>
       <tags>
-        <tag>比赛</tag>
+        <tag>题解</tag>
       </tags>
   </entry>
   <entry>
@@ -915,6 +799,122 @@
       </categories>
       <tags>
         <tag>题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GDKOI2024 比赛记</title>
+    <url>/2024/01/08/GDKOI2024%20%E6%AF%94%E8%B5%9B%E8%AE%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>我们是来比赛的，我们是有任务的！我们不是来干嘛的呀？我们不是来旅游，来享受住酒店的！</p>
+</blockquote>
+<p>所以这是一篇比赛记。</p>
+<p>打得不好。收获很大。</p>
+<span id="more"></span>
+
+<p>省流：我就是菜！</p>
+<p>day1</p>
+<p><img src="https://pic.imgdb.cn/item/659bfbf0871b83018a8967d9.jpg"></p>
+<p>day2</p>
+<p><img src="https://pic.imgdb.cn/item/659bfbf0871b83018a8969ba.jpg"></p>
+<hr>
+<h1 id="day-1"><a href="#day-1" class="headerlink" title="day-1"></a>day-1</h1><p>复习李超树。还有哪个东西来着忘了。</p>
+<h1 id="day0"><a href="#day0" class="headerlink" title="day0"></a>day0</h1><p>下午走了。路上跟 wzx 坐一排，知乎，百词斩，phigros，看着窗外发呆。</p>
+<p>还蛮丰富的。</p>
+<p>到酒店放完东西就去报道。拍照。吃饭。</p>
+<p>饭特咸，特油。认为不如 jy。</p>
+<p>晚上回去不想玩了。开会，洗澡，看书，跟 wzx 看《地球脉动：Ⅲ》，<del>du</del>。</p>
+<p>十一点睡了。被子有灰，差评。有点担心第二天鼻子过敏。</p>
+<h1 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h1><h2 id="上午"><a href="#上午" class="headerlink" title="上午"></a>上午</h2><p>早餐很丰富。龙 sir 吃了五块玉米。昭成晓夫是也。</p>
+<p>车上用手机复习 NTT 板子。感觉丝毫没有紧张的心情。</p>
+<p>入场。建完文件夹发现发现鼠标滚轮是坏的。两个监考员嘀咕了半天对着我的电脑搞来搞去，让我换个电脑。</p>
+<p>一直到 8:50，终于开始看题。</p>
+<p>T1 感觉是 CHD 题。我看不出来， 手算了几组数据，否掉了若干结论。</p>
+<p>T2 DS。先看 T3，$m&#x3D;1$ 大概可以吧连续段奇偶分讨。推不出规律。</p>
+<p>回去想 T2，弄了个很绕的拆贡献思路，只有 $L&#x3D;1$ 之前的 40pts。</p>
+<p>接着做 T1，可是我不会了呀！直接 <code>shuffle</code> 边集数组跑 Maxflow 得了。</p>
+<p>过不了第二个样例。</p>
+<p>突然发现 T2 $L&#x3D;1$ 咋做了。接着写。</p>
+<p>写到一半发现自己是个傻缺。压根不用这一通转化。</p>
+<p>硬着头皮写下去了。线段树推平感觉一年多没写，乱调调了一个多小时卡着最后 10min 过拍了。</p>
+<p>我感觉要吐了。</p>
+<p>最后还是啥都没做出来。</p>
+<p>估分 T1 $n\leq 8$ 的 20。T2 60。T3 10。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>fu 圣告诉我 T1 是前几天省选组原题的 subtask。</p>
+<p>问了问大家都没切题。谔谔。</p>
+<p>吃饭的时候听说 <code>shuffle+Maxflow</code> 可以过随机。好像确实。</p>
+<p>还听 lsx 说 T1 可以状压过前面数据。只能骂自己蠢。</p>
+<p>中午和 lsx、djt 逛逛。回到报告厅和 lsx 对弈。</p>
+<p>讲题。</p>
+<p>T1 任找一个匹配。找一个有奇数条黑边的环。这个环恰一半的边被选。切换到另一半，黑边数量奇偶性必改变。</p>
+<p>好强。想不到。</p>
+<p>T2 神仙 DS。可是我不会 DS。完全听不懂。</p>
+<p>T3 ddpp？好困也没听懂。</p>
+<p>剩下讲座。咳咳。不明白。</p>
+<p>发成绩。</p>
+<p>啊！寄！T1 连 $n\leq 8$ 都没过。T2 60。T3 暴力都错爆零了。</p>
+<p>20+60+0。悲伤。</p>
+<p>lsx 众人 T2 挂成 10 分了。可是我 T1 只有 20。没有优势。</p>
+<p>晚上和 thy、lsx、mqf 出去玩。</p>
+<p>喝果茶。喂鸽子。抓娃娃。吃烧烤。</p>
+<p>二十大洋抓了两个娃娃！天赋异禀！</p>
+<p><img src="https://pic.imgdb.cn/item/659bfcc2871b83018a8da34c.jpg"></p>
+<p>后来不想 du。于是早早躺床上了。</p>
+<h1 id="day2"><a href="#day2" class="headerlink" title="day2"></a>day2</h1><h2 id="上午-1"><a href="#上午-1" class="headerlink" title="上午"></a>上午</h2><p>入场。T1 又是 DS。</p>
+<p>稳健一点先写 $O(n^2)$ 暴力。发现读错题了。然后有三个限制。然而不会维护。</p>
+<p>T2 是数学。</p>
+<p>数学和 DS 我做个 p 啊！</p>
+<p>T3 一眼高消，大概能过 $n\leq 2$。乱想了一会没有别的方法。</p>
+<p>先写 T3。稳健一点先写暴力。</p>
+<p>然后我开始 debug 暴力。调了一个小时还没调出来。最后发现枚举应当从 0 开始。</p>
+<p>fyou！！！my time！！！</p>
+<p>抓紧敲高消。$n&#x3D;4$ 还不错。$n&#x3D;7$ 跑了 1.2s。动用脑筋剪枝剪到了 0.7s。</p>
+<p>还剩不到 2h。写 T2 15pts。（此时心态有些崩了丝毫不敢再想 T2）</p>
+<p>然后 T1 狂写纯暴力，$b_i\geq a_i$。</p>
+<p>$a_i\times b_i&#x3D;0$ 可以 cdq。最后 40min 狂写+狂喝水+狂上厕所。感觉低血糖，想吐，吃了一口吃士力架感觉更恶心了。</p>
+<p>没调出来。遗（wo）憾（cao）离（ni）场（mama）。</p>
+<p>估分 30（忘了，好像是吧）+15+50。</p>
+<p>问了问，人均切 T1。T2 人均 30。或 65。</p>
+<p>心里想着今年要打铁了。</p>
+<p>冷静了一番突然醒悟了自己这么菜的一些原因。</p>
+<h2 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h2><p>吃饭时 lsx 讲了讲 T1。会了。</p>
+<p>感觉 T3 分还挺高。但没卵用。</p>
+<p>中午和 lsx 逛。对弈。phigros。百词斩。</p>
+<p>讲题。</p>
+<p>T1 DS。看起来有很清新的做法。</p>
+<p>T2 有个性质。比赛时压根没想。可惜。听不懂。</p>
+<p>T3 奇偶行列提出来，子问题，边界 $n&#x3D;2$。</p>
+<p>好多大佬致辞。好多老师获奖。</p>
+<p>没打铁。Cu。</p>
+<p>wzx 金了。tn、cdq 金了。lsx、qtr 银了。</p>
+<p>前十 jz 四个。可喜。</p>
+<p>然后回家。和 lsx 坐车。phigros。发呆。对弈。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这次比赛突然意识到我知识体系太散了。</p>
+<p>类比 whk。永远是一章章讲，一个知识一个知识地学，一部分一部分地测验。</p>
+<p>虽然 whk 应试功利性更强，但这种学习模式的存在毋庸置疑是正确的。</p>
+<p>我一贯没有意识到，OI 原来，是要更强系统的。</p>
+<p>某天看忘记哪篇文章，说，停课集训，是，重新构建知识体系的时间。</p>
+<p>停课集训时，我感觉我的收获并没有太大。</p>
+<p>题目难度高。因为我以往完全没有一个知识的框架，而是东学一点西学一点，显得更加吃力。</p>
+<p>还有很致命的一点就是，平时模拟赛的懒散。</p>
+<p>六年级疫情停课开始，训练形式转变成了一场又一场的模拟赛。</p>
+<p>到如今，我仿佛已经麻木。毫无认真对待的态度。</p>
+<p>两天场上，我狂敲，到最后一个，甚至两个小时，我便会头晕。</p>
+<p>两天，day1T1 没想出前两档 40 分，day1T3 暴力写挂 10 分，day2T1 完全不会（第一个分段还忘解注释了），day2T3 暴力调 1h。</p>
+<p>这都是平时缺乏紧张氛围练习的结果。</p>
+<p>某天，我突然发现我几乎用着中山几乎最优质的资源：OI、jz、jy、强悍的同学。</p>
+<p>然而我却一日日地落入绝望的境地。</p>
+<p>正因此，我日渐彷徨，担忧，还有一些，或许不能算是愧疚的心情。</p>
+<p>但，而今，我貌似触摸到了一些光亮。</p>
+<p>我的生命，她不长。不能用她来悲伤。</p>
+<p>先学数数。再学 DS。</p>
+<p>我下决心。做出我不知道是否正确的改变。</p>
+<p>那些坏天气，终于都会过去。</p>
+]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>比赛</tag>
       </tags>
   </entry>
   <entry>
