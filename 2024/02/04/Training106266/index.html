@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"2008verser.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="P3807 【模板】卢卡斯定理&#x2F;Lucas 定理略。  CF1545B AquaMoon and Chess题目给出的移动方式，是选择一个连续的 $11$，左移或右移一位。 考虑一堆不相邻的 $1$，以及，一个相邻的 $11$。$$010010…0{\color{red}11}00…01001$$此时，仅有 $11$ 是自由的。它可以乱动。 发现什么了吗？ 1、所经之处的 $1$ 都会向">
+    <meta name="description" content="P3807 【模板】卢卡斯定理&#x2F;Lucas 定理略。  CF1545B AquaMoon and Chess题目给出的移动方式，是选择一个连续的 $11$，左移或右移一位。 考虑一堆不相邻的 $1$，以及，一个相邻的 $11$。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Training106266++">
 <meta property="og:url" content="https://2008verser.github.io/2024/02/04/Training106266/index.html">
 <meta property="og:site_name" content="2008verser">
-<meta property="og:description" content="P3807 【模板】卢卡斯定理&#x2F;Lucas 定理略。  CF1545B AquaMoon and Chess题目给出的移动方式，是选择一个连续的 $11$，左移或右移一位。 考虑一堆不相邻的 $1$，以及，一个相邻的 $11$。$$010010…0{\color{red}11}00…01001$$此时，仅有 $11$ 是自由的。它可以乱动。 发现什么了吗？ 1、所经之处的 $1$ 都会向">
+<meta property="og:description" content="P3807 【模板】卢卡斯定理&#x2F;Lucas 定理略。  CF1545B AquaMoon and Chess题目给出的移动方式，是选择一个连续的 $11$，左移或右移一位。 考虑一堆不相邻的 $1$，以及，一个相邻的 $11$。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-02-04T06:53:12.000Z">
-<meta property="article:modified_time" content="2024-02-04T06:54:18.216Z">
+<meta property="article:modified_time" content="2024-02-04T06:55:45.816Z">
 <meta property="article:author" content="2008verser">
 <meta property="article:tag" content="题">
 <meta name="twitter:card" content="summary">
@@ -217,7 +217,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-02-04 14:53:12 / 修改时间：14:54:18" itemprop="dateCreated datePublished" datetime="2024-02-04T14:53:12+08:00">2024-02-04</time>
+      <time title="创建时间：2024-02-04 14:53:12 / 修改时间：14:55:45" itemprop="dateCreated datePublished" datetime="2024-02-04T14:53:12+08:00">2024-02-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -263,7 +263,9 @@
     <div class="post-body" itemprop="articleBody"><h2 id="P3807-【模板】卢卡斯定理-Lucas-定理"><a href="#P3807-【模板】卢卡斯定理-Lucas-定理" class="headerlink" title="P3807 【模板】卢卡斯定理&#x2F;Lucas 定理"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3807">P3807 【模板】卢卡斯定理&#x2F;Lucas 定理</a></h2><p>略。</p>
 <hr>
 <h2 id="CF1545B-AquaMoon-and-Chess"><a href="#CF1545B-AquaMoon-and-Chess" class="headerlink" title="CF1545B AquaMoon and Chess"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1545B">CF1545B AquaMoon and Chess</a></h2><p>题目给出的移动方式，是选择一个连续的 $11$，左移或右移一位。</p>
-<p>考虑一堆不相邻的 $1$，以及，一个相邻的 $11$。<br>$$<br>010010…0{\color{red}11}00…01001<br>$$<br>此时，仅有 $11$ 是自由的。它可以乱动。</p>
+<p>考虑一堆不相邻的 $1$，以及，一个相邻的 $11$。</p>
+<span id="more"></span>
+<p>$$<br>010010…0{\color{red}11}00…01001<br>$$<br>此时，仅有 $11$ 是自由的。它可以乱动。</p>
 <p>发现什么了吗？</p>
 <p>1、所经之处的 $1$ 都会向左&#x2F;右移两格。</p>
 <p>2、不论任何时候，整个序列仅有一个 $11$。$11$ 的数量不因 $11$ 的移动改变。如果出现 $111$，我们认为它也是一个 $11$。</p>
