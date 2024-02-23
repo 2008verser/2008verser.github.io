@@ -19,32 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"2008verser.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="我们是来比赛的，我们是有任务的！我们不是来干嘛的呀？我们不是来旅游，来享受住酒店的！  所以这是一篇比赛记。 打得不好。收获很大。">
+    <meta name="description" content="P5110 块速递推理解还不够透彻，先咕为敬。 UPD：好像就这么多了。 特征方程解一阶递推给出 $f_1$，求 $f_n$ 的通项公式：$$f_n&#x3D;pf_{n-1}+q\ (n\gt 1,p\neq 0)$$">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GDKOI2024 比赛记">
-<meta property="og:url" content="https://2008verser.github.io/2024/01/08/GDKOI2024%20%E6%AF%94%E8%B5%9B%E8%AE%B0/index.html">
+<meta property="og:title" content="特征方程解递推式 - P5110 题解">
+<meta property="og:url" content="https://2008verser.github.io/2024/02/19/P5110%20%E9%A2%98%E8%A7%A3%20-%20%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E8%A7%A3%E9%80%92%E6%8E%A8%E5%BC%8F/index.html">
 <meta property="og:site_name" content="2008verser">
-<meta property="og:description" content="我们是来比赛的，我们是有任务的！我们不是来干嘛的呀？我们不是来旅游，来享受住酒店的！  所以这是一篇比赛记。 打得不好。收获很大。">
+<meta property="og:description" content="P5110 块速递推理解还不够透彻，先咕为敬。 UPD：好像就这么多了。 特征方程解一阶递推给出 $f_1$，求 $f_n$ 的通项公式：$$f_n&#x3D;pf_{n-1}+q\ (n\gt 1,p\neq 0)$$">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic.imgdb.cn/item/659bfbf0871b83018a8967d9.jpg">
-<meta property="og:image" content="https://pic.imgdb.cn/item/659bfbf0871b83018a8969ba.jpg">
-<meta property="og:image" content="https://pic.imgdb.cn/item/659bfcc2871b83018a8da34c.jpg">
-<meta property="article:published_time" content="2024-01-08T12:11:21.000Z">
-<meta property="article:modified_time" content="2024-01-09T11:59:56.625Z">
+<meta property="article:published_time" content="2024-02-19T14:27:23.000Z">
+<meta property="article:modified_time" content="2024-02-23T14:31:13.749Z">
 <meta property="article:author" content="2008verser">
-<meta property="article:tag" content="比赛">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pic.imgdb.cn/item/659bfbf0871b83018a8967d9.jpg">
 
 
-<link rel="canonical" href="https://2008verser.github.io/2024/01/08/GDKOI2024%20%E6%AF%94%E8%B5%9B%E8%AE%B0/">
+<link rel="canonical" href="https://2008verser.github.io/2024/02/19/P5110%20%E9%A2%98%E8%A7%A3%20-%20%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E8%A7%A3%E9%80%92%E6%8E%A8%E5%BC%8F/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://2008verser.github.io/2024/01/08/GDKOI2024%20%E6%AF%94%E8%B5%9B%E8%AE%B0/","path":"2024/01/08/GDKOI2024 比赛记/","title":"GDKOI2024 比赛记"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://2008verser.github.io/2024/02/19/P5110%20%E9%A2%98%E8%A7%A3%20-%20%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E8%A7%A3%E9%80%92%E6%8E%A8%E5%BC%8F/","path":"2024/02/19/P5110 题解 - 特征方程解递推式/","title":"特征方程解递推式 - P5110 题解"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>GDKOI2024 比赛记 | 2008verser</title>
+<title>特征方程解递推式 - P5110 题解 | 2008verser</title>
   
 
 
@@ -140,7 +136,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#day-1"><span class="nav-number">1.</span> <span class="nav-text">day-1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day0"><span class="nav-number">2.</span> <span class="nav-text">day0</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day1"><span class="nav-number">3.</span> <span class="nav-text">day1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E5%8D%88"><span class="nav-number">3.1.</span> <span class="nav-text">上午</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">3.2.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day2"><span class="nav-number">4.</span> <span class="nav-text">day2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E5%8D%88-1"><span class="nav-number">4.1.</span> <span class="nav-text">上午</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96-1"><span class="nav-number">4.2.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#P5110-%E5%9D%97%E9%80%9F%E9%80%92%E6%8E%A8"><span class="nav-number">1.</span> <span class="nav-text">P5110 块速递推</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E8%A7%A3%E4%B8%80%E9%98%B6%E9%80%92%E6%8E%A8"><span class="nav-number">1.1.</span> <span class="nav-text">特征方程解一阶递推</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E8%A7%A3%E4%BA%8C%E9%98%B6%E9%80%92%E6%8E%A8"><span class="nav-number">1.2.</span> <span class="nav-text">特征方程解二阶递推</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -191,7 +187,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://2008verser.github.io/2024/01/08/GDKOI2024%20%E6%AF%94%E8%B5%9B%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://2008verser.github.io/2024/02/19/P5110%20%E9%A2%98%E8%A7%A3%20-%20%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E8%A7%A3%E9%80%92%E6%8E%A8%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/tx.jpg">
@@ -204,12 +200,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="GDKOI2024 比赛记 | 2008verser">
+      <meta itemprop="name" content="特征方程解递推式 - P5110 题解 | 2008verser">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          GDKOI2024 比赛记
+          特征方程解递推式 - P5110 题解
         </h1>
 
         <div class="post-meta-container">
@@ -220,14 +216,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-01-08 20:11:21" itemprop="dateCreated datePublished" datetime="2024-01-08T20:11:21+08:00">2024-01-08</time>
+      <time title="创建时间：2024-02-19 22:27:23" itemprop="dateCreated datePublished" datetime="2024-02-19T22:27:23+08:00">2024-02-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-09 19:59:56" itemprop="dateModified" datetime="2024-01-09T19:59:56+08:00">2024-01-09</time>
+      <time title="修改时间：2024-02-23 22:31:13" itemprop="dateModified" datetime="2024-02-23T22:31:13+08:00">2024-02-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -253,14 +249,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.2k</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -270,111 +266,32 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><blockquote>
-<p>我们是来比赛的，我们是有任务的！我们不是来干嘛的呀？我们不是来旅游，来享受住酒店的！</p>
-</blockquote>
-<p>所以这是一篇比赛记。</p>
-<p>打得不好。收获很大。</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="P5110-块速递推"><a href="#P5110-块速递推" class="headerlink" title="P5110 块速递推"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5110">P5110 块速递推</a></h1><p>理解还不够透彻，先咕为敬。</p>
+<p>UPD：好像就这么多了。</p>
+<h2 id="特征方程解一阶递推"><a href="#特征方程解一阶递推" class="headerlink" title="特征方程解一阶递推"></a>特征方程解一阶递推</h2><p>给出 $f_1$，求 $f_n$ 的通项公式：<br>$$<br>f_n&#x3D;pf_{n-1}+q\ (n\gt 1,p\neq 0)<br>$$</p>
 <span id="more"></span>
 
-<p>省流：我就是菜！</p>
-<p>day1</p>
-<p><img src="https://pic.imgdb.cn/item/659bfbf0871b83018a8967d9.jpg"></p>
-<p>day2</p>
-<p><img src="https://pic.imgdb.cn/item/659bfbf0871b83018a8969ba.jpg"></p>
+<p>我们一口咬定存在一个 $a$ 使数列 ${f_{n}-a}$ 是一个公比为 $p$ 的数列。</p>
+<p>列出这个公比数列相邻两项的关系，与递推式比较就可以求得 $f_0$。<br>$$<br>f_n-a&#x3D;p(f_{n-1}-a){\color{red}\Longrightarrow}f_n&#x3D;pf_{n-1}+(1-p)a{\color{red}\Longrightarrow}q&#x3D;(1-p)a{\color{red}\Longrightarrow}a&#x3D;\frac{q}{1-p}<br>$$<br>（你或许留意到过程中除以了 $1-p$，当 $p&#x3D;1$ 的时候这就是等差数列，特殊讨论即可）</p>
+<p>接着写出 ${f_n-a}$ 的通项，可求得 $f_n$ 的通项。<br>$$<br>f_n-a&#x3D;p^{n-1}(f_1-a){\color{red}\Longrightarrow}f_n&#x3D;p^{n-1}f_1+(1-p^{n-1})a<br>$$</p>
 <hr>
-<h1 id="day-1"><a href="#day-1" class="headerlink" title="day-1"></a>day-1</h1><p>复习李超树。还有哪个东西来着忘了。</p>
-<h1 id="day0"><a href="#day0" class="headerlink" title="day0"></a>day0</h1><p>下午走了。路上跟 wzx 坐一排，知乎，百词斩，phigros，看着窗外发呆。</p>
-<p>还蛮丰富的。</p>
-<p>到酒店放完东西就去报道。拍照。吃饭。</p>
-<p>饭特咸，特油。认为不如 jy。</p>
-<p>晚上回去不想玩了。开会，洗澡，看书，跟 wzx 看《地球脉动：Ⅲ》，<del>du</del>。</p>
-<p>十一点睡了。被子有灰，差评。有点担心第二天鼻子过敏。</p>
-<h1 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h1><h2 id="上午"><a href="#上午" class="headerlink" title="上午"></a>上午</h2><p>早餐很丰富。龙 sir 吃了五块玉米。昭成晓夫是也。</p>
-<p>车上用手机复习 NTT 板子。感觉丝毫没有紧张的心情。</p>
-<p>入场。建完文件夹发现发现鼠标滚轮是坏的。两个监考员嘀咕了半天对着我的电脑搞来搞去，让我换个电脑。</p>
-<p>一直到 8:50，终于开始看题。</p>
-<p>T1 感觉是 CHD 题。我看不出来， 手算了几组数据，否掉了若干结论。</p>
-<p>T2 DS。先看 T3，$m&#x3D;1$ 大概可以吧连续段奇偶分讨。推不出规律。</p>
-<p>回去想 T2，弄了个很绕的拆贡献思路，只有 $L&#x3D;1$ 之前的 40pts。</p>
-<p>接着做 T1，可是我不会了呀！直接 <code>shuffle</code> 边集数组跑 Maxflow 得了。</p>
-<p>过不了第二个样例。</p>
-<p>突然发现 T2 $L&#x3D;1$ 咋做了。接着写。</p>
-<p>写到一半发现自己是个傻缺。压根不用这一通转化。</p>
-<p>硬着头皮写下去了。线段树推平感觉一年多没写，乱调调了一个多小时卡着最后 10min 过拍了。</p>
-<p>我感觉要吐了。</p>
-<p>最后还是啥都没做出来。</p>
-<p>估分 T1 $n\leq 8$ 的 20。T2 60。T3 10。</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>fu 圣告诉我 T1 是前几天省选组原题的 subtask。</p>
-<p>问了问大家都没切题。谔谔。</p>
-<p>吃饭的时候听说 <code>shuffle+Maxflow</code> 可以过随机。好像确实。</p>
-<p>还听 lsx 说 T1 可以状压过前面数据。只能骂自己蠢。</p>
-<p>中午和 lsx、djt 逛逛。回到报告厅和 lsx 对弈。</p>
-<p>讲题。</p>
-<p>T1 任找一个匹配。找一个有奇数条黑边的环。这个环恰一半的边被选。切换到另一半，黑边数量奇偶性必改变。</p>
-<p>好强。想不到。</p>
-<p>T2 神仙 DS。可是我不会 DS。完全听不懂。</p>
-<p>T3 ddpp？好困也没听懂。</p>
-<p>剩下讲座。咳咳。不明白。</p>
-<p>发成绩。</p>
-<p>啊！寄！T1 连 $n\leq 8$ 都没过。T2 60。T3 暴力都错爆零了。</p>
-<p>20+60+0。悲伤。</p>
-<p>lsx 众人 T2 挂成 10 分了。可是我 T1 只有 20。没有优势。</p>
-<p>晚上和 thy、lsx、mqf 出去玩。</p>
-<p>喝果茶。喂鸽子。抓娃娃。吃烧烤。</p>
-<p>二十大洋抓了两个娃娃！天赋异禀！</p>
-<p><img src="https://pic.imgdb.cn/item/659bfcc2871b83018a8da34c.jpg"></p>
-<p>后来不想 du。于是早早躺床上了。</p>
-<h1 id="day2"><a href="#day2" class="headerlink" title="day2"></a>day2</h1><h2 id="上午-1"><a href="#上午-1" class="headerlink" title="上午"></a>上午</h2><p>入场。T1 又是 DS。</p>
-<p>稳健一点先写 $O(n^2)$ 暴力。发现读错题了。然后有三个限制。然而不会维护。</p>
-<p>T2 是数学。</p>
-<p>数学和 DS 我做个 p 啊！</p>
-<p>T3 一眼高消，大概能过 $n\leq 2$。乱想了一会没有别的方法。</p>
-<p>先写 T3。稳健一点先写暴力。</p>
-<p>然后我开始 debug 暴力。调了一个小时还没调出来。最后发现枚举应当从 0 开始。</p>
-<p>fyou！！！my time！！！</p>
-<p>抓紧敲高消。$n&#x3D;4$ 还不错。$n&#x3D;7$ 跑了 1.2s。动用脑筋剪枝剪到了 0.7s。</p>
-<p>还剩不到 2h。写 T2 15pts。（此时心态有些崩了丝毫不敢再想 T2）</p>
-<p>然后 T1 狂写纯暴力，$b_i\geq a_i$。</p>
-<p>$a_i\times b_i&#x3D;0$ 可以 cdq。最后 40min 狂写+狂喝水+狂上厕所。感觉低血糖，想吐，吃了一口吃士力架感觉更恶心了。</p>
-<p>没调出来。遗（wo）憾（cao）离（ni）场（mama）。</p>
-<p>估分 30（忘了，好像是吧）+15+50。</p>
-<p>问了问，人均切 T1。T2 人均 30。或 65。</p>
-<p>心里想着今年要打铁了。</p>
-<p>冷静了一番突然醒悟了自己这么菜的一些原因。</p>
-<h2 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h2><p>吃饭时 lsx 讲了讲 T1。会了。</p>
-<p>感觉 T3 分还挺高。但没卵用。</p>
-<p>中午和 lsx 逛。对弈。phigros。百词斩。</p>
-<p>讲题。</p>
-<p>T1 DS。看起来有很清新的做法。</p>
-<p>T2 有个性质。比赛时压根没想。可惜。听不懂。</p>
-<p>T3 奇偶行列提出来，子问题，边界 $n&#x3D;2$。</p>
-<p>好多大佬致辞。好多老师获奖。</p>
-<p>没打铁。Cu。</p>
-<p>wzx 金了。tn、cdq 金了。lsx、qtr 银了。</p>
-<p>前十 jz 四个。可喜。</p>
-<p>然后回家。和 lsx 坐车。phigros。发呆。对弈。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这次比赛突然意识到我知识体系太散了。</p>
-<p>类比 whk。永远是一章章讲，一个知识一个知识地学，一部分一部分地测验。</p>
-<p>虽然 whk 应试功利性更强，但这种学习模式的存在毋庸置疑是正确的。</p>
-<p>我一贯没有意识到，OI 原来，是要更强系统的。</p>
-<p>某天看忘记哪篇文章，说，停课集训，是，重新构建知识体系的时间。</p>
-<p>停课集训时，我感觉我的收获并没有太大。</p>
-<p>题目难度高。因为我以往完全没有一个知识的框架，而是东学一点西学一点，显得更加吃力。</p>
-<p>还有很致命的一点就是，平时模拟赛的懒散。</p>
-<p>六年级疫情停课开始，训练形式转变成了一场又一场的模拟赛。</p>
-<p>到如今，我仿佛已经麻木。毫无认真对待的态度。</p>
-<p>两天场上，我狂敲，到最后一个，甚至两个小时，我便会头晕。</p>
-<p>两天，day1T1 没想出前两档 40 分，day1T3 暴力写挂 10 分，day2T1 完全不会（第一个分段还忘解注释了），day2T3 暴力调 1h。</p>
-<p>这都是平时缺乏紧张氛围练习的结果。</p>
-<p>某天，我突然发现我几乎用着中山几乎最优质的资源：OI、jz、jy、强悍的同学。</p>
-<p>然而我却一日日地落入绝望的境地。</p>
-<p>正因此，我日渐彷徨，担忧，还有一些，或许不能算是愧疚的心情。</p>
-<p>但，而今，我貌似触摸到了一些光亮。</p>
-<p>我的生命，她不长。不能用她来悲伤。</p>
-<p>先学数数。再学 DS。</p>
-<p>我下决心。做出我不知道是否正确的改变。</p>
-<p>那些坏天气，终于都会过去。</p>
+<p>插播，上面的 $a$ 是函数 $f(x)&#x3D;px+q$ 的一阶不动点。</p>
+<p>这是一个很形象的名词：</p>
+<ul>
+<li>对于函数 $f(x)$，满足 $f(x_0)&#x3D;x_0$ 的 $x_0$ 称为函数 $f(x)$ 的（一阶）不动点。</li>
+<li>因为 $f_n&#x3D;f(f_{n-1})$，可以把递推的过程视作 $f_1$ 不断变为它的函数值的过程。</li>
+<li>当它和它的函数值相等，则接下来它就动弹不得。</li>
+</ul>
+<p>为什么 $a$ 是？将上面公比数列相邻两项关系的那条式子的第三个等式拆开来，就是 $a&#x3D;pa+q$。</p>
+<p>同时可以得到 $a$ 就是 $f(x)&#x3D;x$ 与 $f(x)&#x3D;px+q$ 的交点的横坐标。</p>
+<hr>
+<h2 id="特征方程解二阶递推"><a href="#特征方程解二阶递推" class="headerlink" title="特征方程解二阶递推"></a>特征方程解二阶递推</h2><p>给定 $f_1,f_2$，求它的通项公式：<br>$$<br>f_n&#x3D;pf_{n-1}+qf_{n-2}\ (n\gt 2)<br>$$<br>我们一口咬定存在 $a,b$ 使数列 ${f_n-af_{n-1}}$ 是公比为 $b$ 的等比数列。</p>
+<p>类似解一阶递推式，列出该数列相邻两项的关系：<br>$$<br>f_{n}-af_{n-1}&#x3D;b(f_{n-1}-af_{n-2}){\color{red}\Longrightarrow}f_{n}&#x3D;(a+b)f_{n-1}-abf_{n-2}<br>$$<br>列得方程组：<br>$$<br>\begin{cases}<br>a+b&#x3D;p\<br>-ab&#x3D;q<br>\end{cases}<br>$$<br>可以直接解出 $a,b$。</p>
+<p>联系韦达定理可知 $a,b$ 是方程 $x^2-px-q&#x3D;0$ 的两根。</p>
+<p>继续效仿解一阶递推式的过程，写出 ${f_n-af_{n-1}}$ 的通项，化简：<br>$$<br>f_n-af_{n-1}&#x3D;b^{n-2}(f_2-af_1)<br>$$<br>有个 $f_{n-1}$ 怎么办？</p>
+<p>注意 $a,b$ 满足轮换对称。因此还有：<br>$$<br>f_n-bf_{n-1}&#x3D;a^{n-2}(f_2-bf_1)<br>$$<br>两式相减，化得 $f_{n}$ 的通项。<br>$$<br>f_{n-1}&#x3D;\frac{a^{n-2}(f_2-bf_1)-b^{n-2}(f_2-af_1)}{a-b}<br>$$</p>
+<p>$$<br>{\color{red}\Longrightarrow}f_{n}&#x3D;\frac{a^{n-1}(f_2-bf_1)-b^{n-1}(f_2-af_1)}{a-b}<br>$$</p>
+<p>同样留意 $a,b$ 是 $f(x)&#x3D;x^2$ 与 $f(x)&#x3D;px+q$ 的交点横坐标。</p>
 
     </div>
 
@@ -384,20 +301,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%AF%94%E8%B5%9B/" rel="tag"># 比赛</a>
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/01/08/ABC341G%20Highest%20Ratio%20%E9%A2%98%E8%A7%A3/" rel="prev" title="ABC341G Highest Ratio 题解">
-                  <i class="fa fa-angle-left"></i> ABC341G Highest Ratio 题解
+                <a href="/2024/02/18/P5110%20%E5%9D%97%E9%80%9F%E9%80%92%E6%8E%A8%20%E9%A2%98%E8%A7%A3/" rel="prev" title="P5110 块速递推 题解">
+                  <i class="fa fa-angle-left"></i> P5110 块速递推 题解
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/01/29/PKUWC%202024/" rel="next" title="PKUWC 2024">
-                  PKUWC 2024 <i class="fa fa-angle-right"></i>
+                <a href="/2024/02/23/P/" rel="next" title="P">
+                  P <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
