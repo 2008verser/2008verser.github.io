@@ -124,6 +124,32 @@
       </tags>
   </entry>
   <entry>
+    <title>ABC341G Highest Ratio 题解</title>
+    <url>/2024/01/08/ABC341G%20Highest%20Ratio%20%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<p>设 $s_n&#x3D;\sum_{i&#x3D;1}^na_i$。</p>
+<p>设 $f_i$ 为 $i$ 的答案。则 $f_i&#x3D;\max(\frac{1}{j-i+1}(s_j-s_{i-1})),j\geq i$。</p>
+<p>换个表述使式子好看些。设 $f_i$ 是 $i+1$ 的答案，则 $f_i&#x3D;\max(\frac{1}{j-i}(s_j-s_i)),j\gt i$。</p>
+<p><strong>注意到</strong>如果把每个数映射为二维平面上的一个点 $(i,s_i)$，这个式子就是求过 $i$ 和 $i+1$、过 $i$ 和 $i+2$ ……的这些直线的斜率的最大值。</p>
+<span id="more"></span>
+
+<p>这就是一个比较经典的问题了。</p>
+<ul>
+<li>$i+1\sim n$ 这些点形成的上凸壳包含决策点 $j$。</li>
+</ul>
+<p>那么大到小枚举 $i&#x3D;n…0$（注意状态），然后把 $i$ 加入凸壳。</p>
+<p>找决策点就是找最小的凸壳上的 $j$，满足过 $i$ 和 $j$ 的直线斜率小于过 $j$ 和”$j$ 在凸壳上的下一个点”的斜率。</p>
+<p>暴力找到这个 $j$，这个过程同样是将 $i$ 加入凸壳的过程。</p>
+<p>每个点至多一进一出凸壳。时间复杂度 $O(n)$。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pc putchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ppb pop_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> umap unordered_map</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vi vector<span class="string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vl vector<span class="string">&lt;ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rp(i,r,l) for(rg int i=(r);i&gt;=(l);--i)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(rg int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg ll x=<span class="number">0</span>;rg <span class="type">int</span> p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wtl</span><span class="params">(rg ll x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wtl</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> ld eps=<span class="number">1e-11</span>;</span><br><span class="line"><span class="type">int</span> n,stl;</span><br><span class="line">ll s[N];</span><br><span class="line">ld ans[N];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">qq</span> &#123;</span><br><span class="line">	ld x,y,k;</span><br><span class="line">&#125;st[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;&quot;,&quot;r&quot;,stdin);</span></span><br><span class="line"><span class="comment">//	freopen(&quot;&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	n=<span class="built_in">re</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) s[i]=<span class="built_in">rel</span>()+s[i<span class="number">-1</span>];</span><br><span class="line">	st[++stl]=&#123;n,s[n],<span class="number">-1e9</span>&#125;;</span><br><span class="line">	<span class="built_in">rp</span>(i,n<span class="number">-1</span>,<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(stl==<span class="number">1</span>) &#123;</span><br><span class="line">			ld k=(st[stl].y-s[i])/(st[stl].x-i);</span><br><span class="line">			st[++stl]=&#123;i,s[i],k&#125;;</span><br><span class="line">			ans[i]=st[stl].k;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">while</span>((st[stl].y-s[i])/(st[stl].x-i)-st[stl].k&lt;eps) stl--;</span><br><span class="line">			ld k=(st[stl].y-s[i])/(st[stl].x-i);</span><br><span class="line">			ans[i]=k;</span><br><span class="line">			st[++stl]=&#123;i,s[i],k&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.6Lf\n&quot;</span>,ans[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ABC332G Not Too Many Balls 题解</title>
     <url>/2023/12/15/ABC332G%20Not%20Too%20Many%20Balls%20%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<blockquote>
@@ -148,68 +174,6 @@
 <p>总时间复杂度为 $O(n^3+m)$。</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pc putchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pob pop_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ump unordered_map</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vi vector<span class="string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vl vector<span class="string">&lt;ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(rg int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg ll x=<span class="number">0</span>;rg <span class="type">int</span> p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wtl</span><span class="params">(rg ll x)</span> </span>&#123; <span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wtl</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">505</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> M=<span class="number">5e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> ll inf=<span class="number">1e18</span>;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line">ll a[N],b[M],f[N*(N+<span class="number">1</span>)/<span class="number">2</span>],ans=inf;</span><br><span class="line"><span class="function">ll <span class="title">minl</span><span class="params">(ll a,ll b)</span> </span>&#123; <span class="keyword">return</span> a&lt;b?a:b; &#125;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">pr</span> &#123; ll t;<span class="type">int</span> i; &#125;c[M];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp_by_t</span><span class="params">(pr a,pr b)</span> </span>&#123; <span class="keyword">return</span> a.t&lt;b.t; &#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;.in&quot;,&quot;r&quot;,stdin),freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	n=<span class="built_in">re</span>(),m=<span class="built_in">re</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		a[i]=<span class="built_in">rel</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		b[i]=<span class="built_in">rel</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	vector&lt;vl&gt;<span class="built_in">f</span>(n+<span class="number">1</span>,<span class="built_in">vl</span>(n*(n+<span class="number">1</span>)/<span class="number">2</span>+<span class="number">1</span>,inf));</span><br><span class="line">	<span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">	f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=sum;j&gt;=<span class="number">0</span>;j--) &#123;</span><br><span class="line">			f[i+<span class="number">1</span>][j+i+<span class="number">1</span>]=<span class="built_in">minl</span>(f[i+<span class="number">1</span>][j+i+<span class="number">1</span>],f[i][j]);</span><br><span class="line">			f[i+<span class="number">1</span>][j]=<span class="built_in">minl</span>(f[i+<span class="number">1</span>][j],f[i][j]+a[i+<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		sum+=i+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ll s1=<span class="number">0</span>,s2=<span class="number">0</span>,si=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		si+=i;</span><br><span class="line">		c[i].t=b[i]/i;</span><br><span class="line">		c[i].i=i;</span><br><span class="line"><span class="comment">//		printf(&quot;%d : %d\n&quot;,i,c[i].t);</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(c+<span class="number">1</span>,c+m+<span class="number">1</span>,<span class="type">cmp_by_t</span>);</span><br><span class="line">	<span class="type">int</span> z=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">fo</span>(k,<span class="number">0</span>,n*(n+<span class="number">1</span>)/<span class="number">2</span>) &#123;</span><br><span class="line"><span class="comment">//		printf(&quot;%d : %lld %lld %lld\n&quot;,k,s1,s2,f[n][k]);</span></span><br><span class="line">		ans=<span class="built_in">minl</span>(ans,f[n][k]+s1+s2);</span><br><span class="line">		<span class="keyword">while</span>(z&lt;=m&amp;&amp;c[z].t==k) &#123;</span><br><span class="line">			s1-=<span class="number">1ll</span>*k*c[z].i;</span><br><span class="line">			s2+=b[c[z].i];</span><br><span class="line">			si-=c[z].i;</span><br><span class="line">			z++;</span><br><span class="line">		&#125;</span><br><span class="line">		s1+=si;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">wtl</span>(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>OI</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CF856C Eleventh Birthday 题解</title>
-    <url>/2024/01/01/CF856C%20Eleventh%20Birthday%20%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<blockquote>
-<p>$T$ 组数据，每组数据给出 $n$ 和长为 $n$ 的序列。</p>
-<p>定义一个序列是否是 11 的倍数为这个序列全部数字首尾相接构成的数字是否是 11 的倍数。</p>
-<p>求给出序列的全部排列中是 11 的倍数的排列个数。</p>
-<p>$1\leq T\leq 100,1\leq n\leq 2000,1\leq a_i\leq 10^9,\sum n\leq 2000$。</p>
-</blockquote>
-<p>如果一个数是 11 的倍数，当它的<strong>奇数数位上的数字之和</strong>与<strong>偶数位上的数字之和</strong>之差（奇偶差）是 11 的整数倍。</p>
-<span id="more"></span>
-
-<p>那么我们关注的只是每个数的奇偶差，以及每个数的最高位在序列中算作奇数数位还是偶数数位（记作最高奇偶性）。</p>
-<p>奇偶差可以在输入的时候求出。记 $a_i$ 是第 $i$ 个数字奇数位减偶数位的值。</p>
-<p><strong>我们可以根据最高奇偶性和 $a_i$ 算序列的奇偶差。</strong>这是后面的前提。</p>
-<h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p>我们可以设一个 dp，$f_{i,j}$ 表示在序列前 $i$ 个数构成的全部排列中奇偶差为 $j$ 的排列个数。（如果奇偶差为负就加成正的，方便 dp）</p>
-<p>考虑分讨第 $i$ 个数的最高奇偶性转移。</p>
-<p>这玩意转移不了。状态是关于前 $i$ 个数的排列，而这个排列毫无规律可言。</p>
-<p>那么我们观察一下最终答案的构成。</p>
-<p>长度偶数的 $a_i$ 是不影响后面数字最高奇偶性的，奇偶性的变化出现在全部长度为奇数的数字。</p>
-<p>每个奇数长度的数字的左边好多的数字跟它最高奇偶性一样，直到另一个奇数长度的数字。（红点是奇数长度，黑点是偶数的）</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/ofyx0ekk.png"></p>
-<p>那么我们可以先求出全部奇数长度的数字构成的序列的满足某一奇偶差的排列数量，然后把偶数长度的数字一个个加上去。</p>
-<h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p>设 $f_{i,j}$ 表示前 $i$ 个奇数长度数字构成的序列，奇偶差为 $j$ 的排列数。还是缺乏信息不好转移。</p>
-<p>再观察一下这一问题的答案构成。设有 $n1$ 个奇数长度数字。</p>
-<p>这些数字里面，第一个最高奇偶性为奇、第二个为偶、第三个为奇……</p>
-<p>有 $\lceil \frac{n1}{2}\rceil$ 个最高奇偶性为奇，$\lfloor \frac{n1}{2}\rfloor$ 个偶。记为 $qwq,ovo$。</p>
-<p>像下边这张图，这是 $n1$ 个奇数长度的数字，红色最高奇偶性是奇，黑色是偶。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/zze43yzt.png"></p>
-<p>原本这个转移不了的 dp 蠢死了！</p>
-<p>我们现在就是要让 $n1$ 个数填进这些空里！上一个 dp 中每次我们只关注前 $i$ 个空。此时我们不妨直接考虑全部空。</p>
-<p>设 $f_{i,j,k}$ 表示考虑到 $n1$ 个数的前 $i$ 个，填了 $j$ 个红色（最高奇偶性为奇）（黑色就是 $i-j$ 个咯），奇偶差为 $k$ 的排列个数。</p>
-<p>这下子就好转移了，分为 $i$ 填红还是黑。然后乘上选这第 $i$ 个的方法数。</p>
-<p>如果当前填红色（最高奇偶性为奇），上一步应当填了 $j-1$ 个红色，这一步有 $qwq-(j-1)$ 个红色可选。</p>
-<p>上一步奇偶差加上 $a_i$ 等于 $k$，上一步奇偶差为 $k-a_i$。</p>
-<p>黑色类似。<br>$$<br>f_{i,j,k}&#x3D;<br>\begin{cases}<br>f_{i-1,j-1,k-a_i}\times(qwq-(j-1))+\<br>f_{i-1,j,k+a_i}\times(ovo-(i-j)+1)<br>\end{cases}<br>$$</p>
-<h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><p>接着我们将 $n2$ 个偶数长度的数字<strong>加上去</strong>。</p>
-<p>考虑第一张图，偶数长度的数字跟右边第一个奇数长度的数字最高奇偶性一致。</p>
-<ul>
-<li><p>我们可以把第 $i$ 个加到一个奇数长度的数字之前，$i$ 的最高奇偶性与这个数字一致。</p>
-</li>
-<li><p>也可以加到一个已加入的偶数长度的数字之前，$i$ 的最高奇偶性和这个偶数长度的数字一致。</p>
-</li>
-<li><p>特别地，它可以加到最末尾。</p>
-</li>
-</ul>
-<p>设 $g_{i,j,k}$ 表示前 $i$ 个加进去，有 $j$ 个最高奇偶性为奇，奇偶差为 $k$ 的方案数。<br>$$<br>g_{0,0,i}&#x3D;f_{n1,qwq,i}<br>$$<br>分讨第 $i$ 个的奇偶性转移。</p>
-<p>以奇为例，对应上面三点：</p>
-<ul>
-<li>这个奇数长度的数字有 $qwq$ 种可选。</li>
-<li>已加入的、为正的数字有 $j-1$ 个。（算上 $i$ 共 $j$ 个）</li>
-<li>若奇数长度数字是偶数个。</li>
-</ul>
-<p>偶类似。<br>$$<br>g_{i,j,k}&#x3D;<br>\begin{cases}<br>g_{i-1,j-1,k-b_i}\times(j-1+qwq+[n1\bmod2&#x3D;&#x3D;0])+\<br>g_{i-1,j,k+b_i}\times(i-1-j+ovo+[n1\bmod 2&#x3D;&#x3D;1])<br>\end{cases}<br>$$<br>答案即<br>$$<br>\sum_{i&#x3D;0}^{n2} g_{n2,i,0}<br>$$</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> epb emplace_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> getc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ptc putchar</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">ptc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2005</span>;</span><br><span class="line"><span class="type">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="type">int</span> T,n,a[N],b[N];</span><br><span class="line">ll f[N][N&gt;&gt;<span class="number">1</span>][<span class="number">11</span>],g[N][N][<span class="number">11</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">i11</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ((x%<span class="number">11</span>)+<span class="number">11</span>)%<span class="number">11</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ADD</span><span class="params">(ll&amp;a,ll b)</span> </span>&#123;</span><br><span class="line">	(a+=b)%=mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	T=<span class="built_in">re</span>();</span><br><span class="line">	<span class="keyword">while</span>(T--) &#123;</span><br><span class="line">		<span class="type">int</span> n1=<span class="number">0</span>,n2=<span class="number">0</span>;</span><br><span class="line">		n=<span class="built_in">re</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">			<span class="type">int</span> s=<span class="number">0</span>,ty=<span class="number">1</span>;</span><br><span class="line">			<span class="type">char</span> c=<span class="built_in">getc</span>();</span><br><span class="line">			<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) c=<span class="built_in">getc</span>();</span><br><span class="line">			<span class="keyword">while</span>(c&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">				s=<span class="built_in">i11</span>(s+(c<span class="number">-48</span>)*ty);</span><br><span class="line">				ty=-ty;</span><br><span class="line">				c=<span class="built_in">getc</span>();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(ty==<span class="number">1</span>) b[++n2]=s;</span><br><span class="line">			<span class="keyword">else</span> a[++n1]=s;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="type">int</span> qwq=n1/<span class="number">2</span>+n1%<span class="number">2</span>,ovo=n1/<span class="number">2</span>;</span><br><span class="line">		f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n1;i++) &#123;</span><br><span class="line">			<span class="type">int</span> jmax=<span class="built_in">min</span>(qwq,i);</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=jmax;j++) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;<span class="number">11</span>;k++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(j) <span class="built_in">ADD</span>(f[i][j][k],f[i<span class="number">-1</span>][j<span class="number">-1</span>][<span class="built_in">i11</span>(k-a[i])]*(qwq-(j<span class="number">-1</span>))%mod);</span><br><span class="line">					<span class="built_in">ADD</span>(f[i][j][k],f[i<span class="number">-1</span>][j][<span class="built_in">i11</span>(k+a[i])]*(ovo-(i-j)+<span class="number">1</span>)%mod);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">11</span>;i++) g[<span class="number">0</span>][<span class="number">0</span>][i]=f[n1][qwq][i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n2;i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i;j++) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;<span class="number">11</span>;k++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(j) <span class="built_in">ADD</span>(g[i][j][k],g[i<span class="number">-1</span>][j<span class="number">-1</span>][<span class="built_in">i11</span>(k-b[i])]*(j<span class="number">-1</span>+qwq+(!(n1&amp;<span class="number">1</span>)))%mod);</span><br><span class="line">					<span class="built_in">ADD</span>(g[i][j][k],g[i<span class="number">-1</span>][j][<span class="built_in">i11</span>(k+b[i])]*(i<span class="number">-1</span>-j+ovo+(n1&amp;<span class="number">1</span>))%mod);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		ll ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=n2;i++) <span class="built_in">ADD</span>(ans,g[n2][i][<span class="number">0</span>]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n1;i++) &#123;</span><br><span class="line">			<span class="type">int</span> jmax=<span class="built_in">min</span>(qwq,i);</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=jmax;j++) <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;<span class="number">11</span>;k++) f[i][j][k]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n2;i++) <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i;j++) <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;<span class="number">11</span>;k++) g[i][j][k]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>OI</category>
       </categories>
@@ -331,6 +295,68 @@
       </categories>
       <tags>
         <tag>比赛</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CF856C Eleventh Birthday 题解</title>
+    <url>/2024/01/01/CF856C%20Eleventh%20Birthday%20%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<blockquote>
+<p>$T$ 组数据，每组数据给出 $n$ 和长为 $n$ 的序列。</p>
+<p>定义一个序列是否是 11 的倍数为这个序列全部数字首尾相接构成的数字是否是 11 的倍数。</p>
+<p>求给出序列的全部排列中是 11 的倍数的排列个数。</p>
+<p>$1\leq T\leq 100,1\leq n\leq 2000,1\leq a_i\leq 10^9,\sum n\leq 2000$。</p>
+</blockquote>
+<p>如果一个数是 11 的倍数，当它的<strong>奇数数位上的数字之和</strong>与<strong>偶数位上的数字之和</strong>之差（奇偶差）是 11 的整数倍。</p>
+<span id="more"></span>
+
+<p>那么我们关注的只是每个数的奇偶差，以及每个数的最高位在序列中算作奇数数位还是偶数数位（记作最高奇偶性）。</p>
+<p>奇偶差可以在输入的时候求出。记 $a_i$ 是第 $i$ 个数字奇数位减偶数位的值。</p>
+<p><strong>我们可以根据最高奇偶性和 $a_i$ 算序列的奇偶差。</strong>这是后面的前提。</p>
+<h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p>我们可以设一个 dp，$f_{i,j}$ 表示在序列前 $i$ 个数构成的全部排列中奇偶差为 $j$ 的排列个数。（如果奇偶差为负就加成正的，方便 dp）</p>
+<p>考虑分讨第 $i$ 个数的最高奇偶性转移。</p>
+<p>这玩意转移不了。状态是关于前 $i$ 个数的排列，而这个排列毫无规律可言。</p>
+<p>那么我们观察一下最终答案的构成。</p>
+<p>长度偶数的 $a_i$ 是不影响后面数字最高奇偶性的，奇偶性的变化出现在全部长度为奇数的数字。</p>
+<p>每个奇数长度的数字的左边好多的数字跟它最高奇偶性一样，直到另一个奇数长度的数字。（红点是奇数长度，黑点是偶数的）</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/ofyx0ekk.png"></p>
+<p>那么我们可以先求出全部奇数长度的数字构成的序列的满足某一奇偶差的排列数量，然后把偶数长度的数字一个个加上去。</p>
+<h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p>设 $f_{i,j}$ 表示前 $i$ 个奇数长度数字构成的序列，奇偶差为 $j$ 的排列数。还是缺乏信息不好转移。</p>
+<p>再观察一下这一问题的答案构成。设有 $n1$ 个奇数长度数字。</p>
+<p>这些数字里面，第一个最高奇偶性为奇、第二个为偶、第三个为奇……</p>
+<p>有 $\lceil \frac{n1}{2}\rceil$ 个最高奇偶性为奇，$\lfloor \frac{n1}{2}\rfloor$ 个偶。记为 $qwq,ovo$。</p>
+<p>像下边这张图，这是 $n1$ 个奇数长度的数字，红色最高奇偶性是奇，黑色是偶。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/zze43yzt.png"></p>
+<p>原本这个转移不了的 dp 蠢死了！</p>
+<p>我们现在就是要让 $n1$ 个数填进这些空里！上一个 dp 中每次我们只关注前 $i$ 个空。此时我们不妨直接考虑全部空。</p>
+<p>设 $f_{i,j,k}$ 表示考虑到 $n1$ 个数的前 $i$ 个，填了 $j$ 个红色（最高奇偶性为奇）（黑色就是 $i-j$ 个咯），奇偶差为 $k$ 的排列个数。</p>
+<p>这下子就好转移了，分为 $i$ 填红还是黑。然后乘上选这第 $i$ 个的方法数。</p>
+<p>如果当前填红色（最高奇偶性为奇），上一步应当填了 $j-1$ 个红色，这一步有 $qwq-(j-1)$ 个红色可选。</p>
+<p>上一步奇偶差加上 $a_i$ 等于 $k$，上一步奇偶差为 $k-a_i$。</p>
+<p>黑色类似。<br>$$<br>f_{i,j,k}&#x3D;<br>\begin{cases}<br>f_{i-1,j-1,k-a_i}\times(qwq-(j-1))+\<br>f_{i-1,j,k+a_i}\times(ovo-(i-j)+1)<br>\end{cases}<br>$$</p>
+<h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><p>接着我们将 $n2$ 个偶数长度的数字<strong>加上去</strong>。</p>
+<p>考虑第一张图，偶数长度的数字跟右边第一个奇数长度的数字最高奇偶性一致。</p>
+<ul>
+<li><p>我们可以把第 $i$ 个加到一个奇数长度的数字之前，$i$ 的最高奇偶性与这个数字一致。</p>
+</li>
+<li><p>也可以加到一个已加入的偶数长度的数字之前，$i$ 的最高奇偶性和这个偶数长度的数字一致。</p>
+</li>
+<li><p>特别地，它可以加到最末尾。</p>
+</li>
+</ul>
+<p>设 $g_{i,j,k}$ 表示前 $i$ 个加进去，有 $j$ 个最高奇偶性为奇，奇偶差为 $k$ 的方案数。<br>$$<br>g_{0,0,i}&#x3D;f_{n1,qwq,i}<br>$$<br>分讨第 $i$ 个的奇偶性转移。</p>
+<p>以奇为例，对应上面三点：</p>
+<ul>
+<li>这个奇数长度的数字有 $qwq$ 种可选。</li>
+<li>已加入的、为正的数字有 $j-1$ 个。（算上 $i$ 共 $j$ 个）</li>
+<li>若奇数长度数字是偶数个。</li>
+</ul>
+<p>偶类似。<br>$$<br>g_{i,j,k}&#x3D;<br>\begin{cases}<br>g_{i-1,j-1,k-b_i}\times(j-1+qwq+[n1\bmod2&#x3D;&#x3D;0])+\<br>g_{i-1,j,k+b_i}\times(i-1-j+ovo+[n1\bmod 2&#x3D;&#x3D;1])<br>\end{cases}<br>$$<br>答案即<br>$$<br>\sum_{i&#x3D;0}^{n2} g_{n2,i,0}<br>$$</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> epb emplace_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> getc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ptc putchar</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">ptc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2005</span>;</span><br><span class="line"><span class="type">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="type">int</span> T,n,a[N],b[N];</span><br><span class="line">ll f[N][N&gt;&gt;<span class="number">1</span>][<span class="number">11</span>],g[N][N][<span class="number">11</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">i11</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ((x%<span class="number">11</span>)+<span class="number">11</span>)%<span class="number">11</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ADD</span><span class="params">(ll&amp;a,ll b)</span> </span>&#123;</span><br><span class="line">	(a+=b)%=mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	T=<span class="built_in">re</span>();</span><br><span class="line">	<span class="keyword">while</span>(T--) &#123;</span><br><span class="line">		<span class="type">int</span> n1=<span class="number">0</span>,n2=<span class="number">0</span>;</span><br><span class="line">		n=<span class="built_in">re</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">			<span class="type">int</span> s=<span class="number">0</span>,ty=<span class="number">1</span>;</span><br><span class="line">			<span class="type">char</span> c=<span class="built_in">getc</span>();</span><br><span class="line">			<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) c=<span class="built_in">getc</span>();</span><br><span class="line">			<span class="keyword">while</span>(c&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">				s=<span class="built_in">i11</span>(s+(c<span class="number">-48</span>)*ty);</span><br><span class="line">				ty=-ty;</span><br><span class="line">				c=<span class="built_in">getc</span>();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(ty==<span class="number">1</span>) b[++n2]=s;</span><br><span class="line">			<span class="keyword">else</span> a[++n1]=s;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="type">int</span> qwq=n1/<span class="number">2</span>+n1%<span class="number">2</span>,ovo=n1/<span class="number">2</span>;</span><br><span class="line">		f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n1;i++) &#123;</span><br><span class="line">			<span class="type">int</span> jmax=<span class="built_in">min</span>(qwq,i);</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=jmax;j++) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;<span class="number">11</span>;k++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(j) <span class="built_in">ADD</span>(f[i][j][k],f[i<span class="number">-1</span>][j<span class="number">-1</span>][<span class="built_in">i11</span>(k-a[i])]*(qwq-(j<span class="number">-1</span>))%mod);</span><br><span class="line">					<span class="built_in">ADD</span>(f[i][j][k],f[i<span class="number">-1</span>][j][<span class="built_in">i11</span>(k+a[i])]*(ovo-(i-j)+<span class="number">1</span>)%mod);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">11</span>;i++) g[<span class="number">0</span>][<span class="number">0</span>][i]=f[n1][qwq][i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n2;i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i;j++) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;<span class="number">11</span>;k++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(j) <span class="built_in">ADD</span>(g[i][j][k],g[i<span class="number">-1</span>][j<span class="number">-1</span>][<span class="built_in">i11</span>(k-b[i])]*(j<span class="number">-1</span>+qwq+(!(n1&amp;<span class="number">1</span>)))%mod);</span><br><span class="line">					<span class="built_in">ADD</span>(g[i][j][k],g[i<span class="number">-1</span>][j][<span class="built_in">i11</span>(k+b[i])]*(i<span class="number">-1</span>-j+ovo+(n1&amp;<span class="number">1</span>))%mod);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		ll ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=n2;i++) <span class="built_in">ADD</span>(ans,g[n2][i][<span class="number">0</span>]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n1;i++) &#123;</span><br><span class="line">			<span class="type">int</span> jmax=<span class="built_in">min</span>(qwq,i);</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=jmax;j++) <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;<span class="number">11</span>;k++) f[i][j][k]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n2;i++) <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i;j++) <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;<span class="number">11</span>;k++) g[i][j][k]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
       </tags>
   </entry>
   <entry>
@@ -918,6 +944,173 @@
       </tags>
   </entry>
   <entry>
+    <title>P5110 块速递推 题解</title>
+    <url>/2024/02/18/P5110%20%E5%9D%97%E9%80%9F%E9%80%92%E6%8E%A8%20%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<h1 id="P5110-块速递推"><a href="#P5110-块速递推" class="headerlink" title="P5110 块速递推"></a><a href="https://www.luogu.com.cn/problem/P5110">P5110 块速递推</a></h1><p>设序列 $f_n$ 的 OGF 为 $F(x)$。</p>
+<p>则封闭形式为：<br>$$<br>F(x)&#x3D;233xF(x)+666x^2F(x)+x{\color{red}\Longrightarrow}F(x)&#x3D;\frac{x}{-666x^2-233x+1}<br>$$<br>接下来全部的工作就是展开这个封闭形式。</p>
+<span id="more"></span>
+
+<p>留意到对关于 $x$ 的多项式因式分解后可以变成大概 $\prod(1-ax)$ 的形式。而已知 $\frac{1}{1-ax}$ 的展开是 $\sum_{n\geq 0}(ax)^n$。</p>
+<p>因此对分母进行因式分解，使分母变为这样利于分析的样子。</p>
+<p>设方程 $-666x^2-233x+1$ 的两根为 $x_1,x_2$，因式分解后带回封闭形式：<br>$$<br>-666x^2-233x+1&#x3D;(1-x&#x2F;x_1)(1-x&#x2F;x_2)<br>$$</p>
+<p>$$<br>F(x)&#x3D;\frac{x}{(1-x&#x2F;x_1)(1-x&#x2F;x_2)}<br>$$</p>
+<blockquote>
+<p>如果分成 $-666(x-x_1)(x-x_2)$ 的话，样子就不太好，后续化式子会稍微麻烦一点。</p>
+</blockquote>
+<p>我们一口咬定这个分式可以写成两个分式之和：<br>$$<br>\frac{x}{(1-x&#x2F;x_1)(1-x&#x2F;x_2)}&#x3D;\frac{a}{1-x&#x2F;x_1}+\frac{b}{1-x&#x2F;x_2}<br>$$<br>左边的数都已知，右边的 $a,b$ 可以列方程组求得。此处不表。</p>
+<p>那么右边这是两个幂级数的封闭形式之和。套用 $\frac{1}{1-ax}$ 型 OGF 的展开式就可以得到这两个幂级数（的各项系数）。</p>
+<p>剩下的也没啥体力活：<br>$$<br>\begin{aligned}<br>&amp;<a href="%5Cfrac%7Ba%7D%7B1-x/x_1%7D+%5Cfrac%7Bb%7D%7B1-x/x_2%7D">x^n</a>\<br>&#x3D;&amp;<a href="%5Cfrac%7Ba%7D%7B1-x/x_1%7D">x^n</a>+<a href="%5Cfrac%7Bb%7D%7B1-x/x_2%7D">x^n</a>\<br>&#x3D;&amp;a&#x2F;x_1^n+b&#x2F;x_2^n<br>\end{aligned}<br>$$<br>最后就是要求 $\frac{1}{x_1}$ 的 $n$ 次幂。结合费马小定理和光速幂即可完成。</p>
+<p>还有就是 $188305837^2\equiv56953\pmod{10^9+7}$。计算要用。</p>
+]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>特征方程解递推式 - P5110 题解</title>
+    <url>/2024/02/19/P5110%20%E9%A2%98%E8%A7%A3%20-%20%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E8%A7%A3%E9%80%92%E6%8E%A8%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="P5110-块速递推"><a href="#P5110-块速递推" class="headerlink" title="P5110 块速递推"></a><a href="https://www.luogu.com.cn/problem/P5110">P5110 块速递推</a></h1><p>理解还不够透彻，先咕为敬。</p>
+<p>UPD：好像就这么多了。</p>
+<h2 id="特征方程解一阶递推"><a href="#特征方程解一阶递推" class="headerlink" title="特征方程解一阶递推"></a>特征方程解一阶递推</h2><p>给出 $f_1$，求 $f_n$ 的通项公式：<br>$$<br>f_n&#x3D;pf_{n-1}+q\ (n\gt 1,p\neq 0)<br>$$</p>
+<span id="more"></span>
+
+<p>我们一口咬定存在一个 $a$ 使数列 ${f_{n}-a}$ 是一个公比为 $p$ 的数列。</p>
+<p>列出这个公比数列相邻两项的关系，与递推式比较就可以求得 $f_0$。<br>$$<br>f_n-a&#x3D;p(f_{n-1}-a){\color{red}\Longrightarrow}f_n&#x3D;pf_{n-1}+(1-p)a{\color{red}\Longrightarrow}q&#x3D;(1-p)a{\color{red}\Longrightarrow}a&#x3D;\frac{q}{1-p}<br>$$<br>（你或许留意到过程中除以了 $1-p$，当 $p&#x3D;1$ 的时候这就是等差数列，特殊讨论即可）</p>
+<p>接着写出 ${f_n-a}$ 的通项，可求得 $f_n$ 的通项。<br>$$<br>f_n-a&#x3D;p^{n-1}(f_1-a){\color{red}\Longrightarrow}f_n&#x3D;p^{n-1}f_1+(1-p^{n-1})a<br>$$</p>
+<hr>
+<p>插播，上面的 $a$ 是函数 $f(x)&#x3D;px+q$ 的一阶不动点。</p>
+<p>这是一个很形象的名词：</p>
+<ul>
+<li>对于函数 $f(x)$，满足 $f(x_0)&#x3D;x_0$ 的 $x_0$ 称为函数 $f(x)$ 的（一阶）不动点。</li>
+<li>因为 $f_n&#x3D;f(f_{n-1})$，可以把递推的过程视作 $f_1$ 不断变为它的函数值的过程。</li>
+<li>当它和它的函数值相等，则接下来它就动弹不得。</li>
+</ul>
+<p>为什么 $a$ 是？将上面公比数列相邻两项关系的那条式子的第三个等式拆开来，就是 $a&#x3D;pa+q$。</p>
+<p>同时可以得到 $a$ 就是 $f(x)&#x3D;x$ 与 $f(x)&#x3D;px+q$ 的交点的横坐标。</p>
+<hr>
+<h2 id="特征方程解二阶递推"><a href="#特征方程解二阶递推" class="headerlink" title="特征方程解二阶递推"></a>特征方程解二阶递推</h2><p>给定 $f_1,f_2$，求它的通项公式：<br>$$<br>f_n&#x3D;pf_{n-1}+qf_{n-2}\ (n\gt 2)<br>$$<br>我们一口咬定存在 $a,b$ 使数列 ${f_n-af_{n-1}}$ 是公比为 $b$ 的等比数列。</p>
+<p>类似解一阶递推式，列出该数列相邻两项的关系：<br>$$<br>f_{n}-af_{n-1}&#x3D;b(f_{n-1}-af_{n-2}){\color{red}\Longrightarrow}f_{n}&#x3D;(a+b)f_{n-1}-abf_{n-2}<br>$$<br>列得方程组：<br>$$<br>\begin{cases}<br>a+b&#x3D;p\<br>-ab&#x3D;q<br>\end{cases}<br>$$<br>可以直接解出 $a,b$。</p>
+<p>联系韦达定理可知 $a,b$ 是方程 $x^2-px-q&#x3D;0$ 的两根。</p>
+<p>继续效仿解一阶递推式的过程，写出 ${f_n-af_{n-1}}$ 的通项，化简：<br>$$<br>f_n-af_{n-1}&#x3D;b^{n-2}(f_2-af_1)<br>$$<br>有个 $f_{n-1}$ 怎么办？</p>
+<p>注意 $a,b$ 满足轮换对称。因此还有：<br>$$<br>f_n-bf_{n-1}&#x3D;a^{n-2}(f_2-bf_1)<br>$$<br>两式相减，化得 $f_{n}$ 的通项。<br>$$<br>f_{n-1}&#x3D;\frac{a^{n-2}(f_2-bf_1)-b^{n-2}(f_2-af_1)}{a-b}<br>$$</p>
+<p>$$<br>{\color{red}\Longrightarrow}f_{n}&#x3D;\frac{a^{n-1}(f_2-bf_1)-b^{n-1}(f_2-af_1)}{a-b}<br>$$</p>
+<p>同样留意 $a,b$ 是 $f(x)&#x3D;x^2$ 与 $f(x)&#x3D;px+q$ 的交点横坐标。</p>
+]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PKUWC 2024</title>
+    <url>/2024/01/29/PKUWC%202024/</url>
+    <content><![CDATA[<h1 id="PKUWC-2024"><a href="#PKUWC-2024" class="headerlink" title="PKUWC 2024"></a>PKUWC 2024</h1><span id="more"></span>
+
+<h3 id="day-x（-x-in-infin-1-cap-Z-）"><a href="#day-x（-x-in-infin-1-cap-Z-）" class="headerlink" title="day x（$x\in(\infin,-1]\cap\Z$）"></a>day x（$x\in(\infin,-1]\cap\Z$）</h3><p>乱学生成函数周围的数学板块。</p>
+<p>知道可以去之前一直挺摆得，没做啥题。</p>
+<p>知道可以去以后一直挺摆得，没做啥题。</p>
+<p>感觉我这种烂货压根配不上 PKUWC。CSP-S 135，NOIP 226，一个比一个菜。</p>
+<hr>
+<h2 id="day-x（-x-in-4-1-cap-Z-）"><a href="#day-x（-x-in-4-1-cap-Z-）" class="headerlink" title="day x（$x\in[-4,-1]\cap\Z$）"></a>day x（$x\in[-4,-1]\cap\Z$）</h2><p>晚上不知道为何很难睡着。基本上是十二点至一点莫名其妙睡着了。</p>
+<p>还发现了十二点零一整栋宿舍准时亮灯。</p>
+<p>以前从没听人发现过。逆天。</p>
+<p>养好了 6h 充足睡眠。</p>
+<p>开始咳嗽。</p>
+<hr>
+<h2 id="day-1"><a href="#day-1" class="headerlink" title="day -1"></a>day -1</h2><p>教练：早上 6:30 东门集合。</p>
+<p>？？？真早。大半年来我还没起过这么早。</p>
+<hr>
+<h2 id="day-0"><a href="#day-0" class="headerlink" title="day 0"></a>day 0</h2><p>和 @Assembly_line 住一个大♂床♂房♂。</p>
+<p>晚上吃火锅。</p>
+<p>辣特别劲，最后令人不得不罢休。</p>
+<hr>
+<h2 id="day-1-1"><a href="#day-1-1" class="headerlink" title="day 1"></a>day 1</h2><p>上午是开幕式。</p>
+<p>重庆立体城市名不虚传。从地面坐电梯到三楼，出电梯以后是另一个地面。</p>
+<p>讲座是一个北大的老师讲了很多北大的招生信息。</p>
+<p><del>难道和我有很大关系吗？</del></p>
+<p>试机。Linux 下好复杂。最终用 VsCode编写+terminal编译运行 总算学会了写 a+b。</p>
+<p>单步调试啥的看起来用不了了。</p>
+<p>试机题没做出来。</p>
+<p>午饭还不错，比较符合我的胃口。</p>
+<p>中午玩了一会手机，突然发现一点就比赛了。</p>
+<p>赶紧看了看多项式 exp。<strong>然后入场。</strong></p>
+<p>看 T1，怎么是博弈论？！肯定不能弃 T1 啊！我手写了几个小数据感觉没啥规律。</p>
+<p>开始回忆很久很久以前了解过的 SG 函数。总算想起来了。</p>
+<p>然后用暴力打了个 SG 的表。一眼发现 SG&#x3D;0 的情况都是当 LR 形成合法括号序的。</p>
+<p>再看一眼发现所有形成合法括号序的 LR 的 SG 都是 0。</p>
+<p>然后写，过了。<strong>此时 13:50。</strong></p>
+<p>T2 一个构造。没想到什么突破口。</p>
+<p>打完暴力 11pts，打了一个高消。</p>
+<p>一些 $len&gt;2$ 的区间如果可以知道序列的相对大小顺序就可以化为主元之一。</p>
+<p>然后随机化排列。遗憾的是不知道是哪里写挂了还是算法本身强度不够（应该两者兼具），一分也没拿到。</p>
+<p><strong>此时 15:00。</strong></p>
+<p>T3 题目很长。对背景加以分析得到背景题目是一个贪心。</p>
+<p>然后直接套到这道题上，写完得到了 40pts。</p>
+<p>后来对于 $S_2$ 为空的特殊性质想了个假分块。到最后没写完。</p>
+<p>100+11+40&#x3D;151。对了对分发现初中的几个同学都没写 T3 的贪心。</p>
+<p>那还是挺高？后来发现高一的同学也都比我低二三十。</p>
+<p>赢！</p>
+<p><strong>吗？</strong></p>
+<p>晚上继续火锅。辣度较昨天更可人。</p>
+<p>和 Assembly_line 在商场打实况手柄。</p>
+<p>回酒店腐。</p>
+<hr>
+<h2 id="day-2"><a href="#day-2" class="headerlink" title="day 2"></a>day 2</h2><p>上午讲座讲各种编程语言。听不太明白。</p>
+<p>吃饭。继续看了几眼多项式。</p>
+<p>入场。</p>
+<p>T1 看了几眼就写了个贪心试试水。WA 10。</p>
+<p>过了一会找了个反例。意识到可以把拼成 0.5,0.6,0.7,0.8 的全部情况列举出来。</p>
+<p>共 11 种。接下来是一个 11元 的不定方程组。共 4 个方程。求 $\max\sum a_i$。</p>
+<p>有一个暴力的四维 dp。看起来不是很可优化。</p>
+<p>然后认定了这是一个线性规划。我不会单纯形。</p>
+<p>考虑过根据方程数量较少的性质特殊求解。不会。</p>
+<p>然后暴力枚举 $a_i$。得到了 56pts 的“好成绩”。</p>
+<p>T2 讲了一个未曾接触的希尔排序。不太影响<del>做题</del>打暴力。</p>
+<p>T3 令人懵逼的 DS。会不了一点。</p>
+<p>最终 56+28+18&#x3D;102。对了对成绩，发现：</p>
+<p>大部分同学切了 T1，没切的也都是 70+。</p>
+<p>大部分同学 T2 打了状压。</p>
+<p>全部同学都比我高。</p>
+<p><strong>然后我第三次出现了 day1 最高 day2 最低的惨案。</strong></p>
+<p>上一次是在 GDOI2023，153+20。</p>
+<p>上上次是在 GDKOI2023，120+10。</p>
+<p>晚上吃面。没细心看图片导致点到了一碗充满蘑菇的鸡汤面。</p>
+<p>和<br>Assembly_line 打车到较远的地方随机游走。</p>
+<p>他真是命硬，想拉着我在没有人行道的高架桥上逆行步行。</p>
+<p>我不敢。我怕死。QwQ</p>
+<p>晚上聊天的主题是【】。</p>
+<hr>
+<h2 id="day-3"><a href="#day-3" class="headerlink" title="day 3"></a>day 3</h2><p>结束了。一切都结束了。</p>
+<p><del>飞机餐还 tmd 有一堆蘑菇！</del></p>
+<p>晚上看医生，极性支气管炎。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>day1 是正常发挥，同学都没打好。</p>
+<p>day1 之所以打得高，是因为很短的时间内做出了 T1，然后后面两题能静下来思考，也有区分度不高的缘故。</p>
+<p>day2 一开始就犯了巨大的错误：未经思考就开写。</p>
+<p>IOI 赛制是防挂分，我却乱玩。</p>
+<p>这导致后面我一直没有继续认真思考贪心。</p>
+<p>当然，如果得到 WA 以后能认真思考是最好，但我同样没有做到。</p>
+<p>并且，在一开始就被我提出的四维 dp，可以拿到较高的分，到后来却被我遗忘。</p>
+<p>这是 dfs 式做题的后果。这个错误犯了好多遍了。</p>
+<p>考场又有时做一道题做急了，别的题就没咋思考。</p>
+<p>例如 GDKOIday2T2，这次 day2T2。</p>
+<p>这些不稳定因素过多，导致我的发挥难以预测。还很容易受日常的一些心态影响，如今年 CSP、NOIP。</p>
+<p>如果说想打好比赛最重要的是什么。</p>
+<p>日常的努力，和，考场的心态。</p>
+]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>比赛</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Training106266++</title>
     <url>/2024/02/04/Training106266/</url>
     <content><![CDATA[<h2 id="P3807-【模板】卢卡斯定理-Lucas-定理"><a href="#P3807-【模板】卢卡斯定理-Lucas-定理" class="headerlink" title="P3807 【模板】卢卡斯定理&#x2F;Lucas 定理"></a><a href="https://www.luogu.com.cn/problem/P3807">P3807 【模板】卢卡斯定理&#x2F;Lucas 定理</a></h2><p>略。</p>
@@ -1403,199 +1596,6 @@
       </categories>
       <tags>
         <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ABC341G Highest Ratio 题解</title>
-    <url>/2024/01/08/ABC341G%20Highest%20Ratio%20%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<p>设 $s_n&#x3D;\sum_{i&#x3D;1}^na_i$。</p>
-<p>设 $f_i$ 为 $i$ 的答案。则 $f_i&#x3D;\max(\frac{1}{j-i+1}(s_j-s_{i-1})),j\geq i$。</p>
-<p>换个表述使式子好看些。设 $f_i$ 是 $i+1$ 的答案，则 $f_i&#x3D;\max(\frac{1}{j-i}(s_j-s_i)),j\gt i$。</p>
-<p><strong>注意到</strong>如果把每个数映射为二维平面上的一个点 $(i,s_i)$，这个式子就是求过 $i$ 和 $i+1$、过 $i$ 和 $i+2$ ……的这些直线的斜率的最大值。</p>
-<span id="more"></span>
-
-<p>这就是一个比较经典的问题了。</p>
-<ul>
-<li>$i+1\sim n$ 这些点形成的上凸壳包含决策点 $j$。</li>
-</ul>
-<p>那么大到小枚举 $i&#x3D;n…0$（注意状态），然后把 $i$ 加入凸壳。</p>
-<p>找决策点就是找最小的凸壳上的 $j$，满足过 $i$ 和 $j$ 的直线斜率小于过 $j$ 和”$j$ 在凸壳上的下一个点”的斜率。</p>
-<p>暴力找到这个 $j$，这个过程同样是将 $i$ 加入凸壳的过程。</p>
-<p>每个点至多一进一出凸壳。时间复杂度 $O(n)$。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pc putchar</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ppb pop_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> umap unordered_map</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vi vector<span class="string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> vl vector<span class="string">&lt;ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rp(i,r,l) for(rg int i=(r);i&gt;=(l);--i)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(rg int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">re</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg <span class="type">int</span> x=<span class="number">0</span>,p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	rg ll x=<span class="number">0</span>;rg <span class="type">int</span> p=<span class="number">0</span>;rg <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(c&lt;<span class="string">&#x27;0&#x27;</span>||c&gt;<span class="string">&#x27;9&#x27;</span>) (!p)?(p=c==<span class="string">&#x27;-&#x27;</span>):(p=p),c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>) (x*=<span class="number">10</span>)+=c<span class="number">-48</span>,c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(p) x=-x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wt</span><span class="params">(rg <span class="type">int</span> x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wt</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">wtl</span><span class="params">(rg ll x)</span> </span>&#123; <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="built_in">pc</span>(<span class="string">&#x27;-&#x27;</span>),x=-x;<span class="keyword">if</span>(x&gt;<span class="number">9</span>) <span class="built_in">wtl</span>(x/<span class="number">10</span>);<span class="built_in">pc</span>(x%<span class="number">10</span>+<span class="number">48</span>); &#125;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> ld eps=<span class="number">1e-11</span>;</span><br><span class="line"><span class="type">int</span> n,stl;</span><br><span class="line">ll s[N];</span><br><span class="line">ld ans[N];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">qq</span> &#123;</span><br><span class="line">	ld x,y,k;</span><br><span class="line">&#125;st[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen(&quot;&quot;,&quot;r&quot;,stdin);</span></span><br><span class="line"><span class="comment">//	freopen(&quot;&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">	n=<span class="built_in">re</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) s[i]=<span class="built_in">rel</span>()+s[i<span class="number">-1</span>];</span><br><span class="line">	st[++stl]=&#123;n,s[n],<span class="number">-1e9</span>&#125;;</span><br><span class="line">	<span class="built_in">rp</span>(i,n<span class="number">-1</span>,<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(stl==<span class="number">1</span>) &#123;</span><br><span class="line">			ld k=(st[stl].y-s[i])/(st[stl].x-i);</span><br><span class="line">			st[++stl]=&#123;i,s[i],k&#125;;</span><br><span class="line">			ans[i]=st[stl].k;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">while</span>((st[stl].y-s[i])/(st[stl].x-i)-st[stl].k&lt;eps) stl--;</span><br><span class="line">			ld k=(st[stl].y-s[i])/(st[stl].x-i);</span><br><span class="line">			ans[i]=k;</span><br><span class="line">			st[++stl]=&#123;i,s[i],k&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.6Lf\n&quot;</span>,ans[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>OI</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>P5110 块速递推 题解</title>
-    <url>/2024/02/18/P5110%20%E5%9D%97%E9%80%9F%E9%80%92%E6%8E%A8%20%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<h1 id="P5110-块速递推"><a href="#P5110-块速递推" class="headerlink" title="P5110 块速递推"></a><a href="https://www.luogu.com.cn/problem/P5110">P5110 块速递推</a></h1><p>设序列 $f_n$ 的 OGF 为 $F(x)$。</p>
-<p>则封闭形式为：<br>$$<br>F(x)&#x3D;233xF(x)+666x^2F(x)+x{\color{red}\Longrightarrow}F(x)&#x3D;\frac{x}{-666x^2-233x+1}<br>$$<br>接下来全部的工作就是展开这个封闭形式。</p>
-<span id="more"></span>
-
-<p>留意到对关于 $x$ 的多项式因式分解后可以变成大概 $\prod(1-ax)$ 的形式。而已知 $\frac{1}{1-ax}$ 的展开是 $\sum_{n\geq 0}(ax)^n$。</p>
-<p>因此对分母进行因式分解，使分母变为这样利于分析的样子。</p>
-<p>设方程 $-666x^2-233x+1$ 的两根为 $x_1,x_2$，因式分解后带回封闭形式：<br>$$<br>-666x^2-233x+1&#x3D;(1-x&#x2F;x_1)(1-x&#x2F;x_2)<br>$$</p>
-<p>$$<br>F(x)&#x3D;\frac{x}{(1-x&#x2F;x_1)(1-x&#x2F;x_2)}<br>$$</p>
-<blockquote>
-<p>如果分成 $-666(x-x_1)(x-x_2)$ 的话，样子就不太好，后续化式子会稍微麻烦一点。</p>
-</blockquote>
-<p>我们一口咬定这个分式可以写成两个分式之和：<br>$$<br>\frac{x}{(1-x&#x2F;x_1)(1-x&#x2F;x_2)}&#x3D;\frac{a}{1-x&#x2F;x_1}+\frac{b}{1-x&#x2F;x_2}<br>$$<br>左边的数都已知，右边的 $a,b$ 可以列方程组求得。此处不表。</p>
-<p>那么右边这是两个幂级数的封闭形式之和。套用 $\frac{1}{1-ax}$ 型 OGF 的展开式就可以得到这两个幂级数（的各项系数）。</p>
-<p>剩下的也没啥体力活：<br>$$<br>\begin{aligned}<br>&amp;<a href="%5Cfrac%7Ba%7D%7B1-x/x_1%7D+%5Cfrac%7Bb%7D%7B1-x/x_2%7D">x^n</a>\<br>&#x3D;&amp;<a href="%5Cfrac%7Ba%7D%7B1-x/x_1%7D">x^n</a>+<a href="%5Cfrac%7Bb%7D%7B1-x/x_2%7D">x^n</a>\<br>&#x3D;&amp;a&#x2F;x_1^n+b&#x2F;x_2^n<br>\end{aligned}<br>$$<br>最后就是要求 $\frac{1}{x_1}$ 的 $n$ 次幂。结合费马小定理和光速幂即可完成。</p>
-<p>还有就是 $188305837^2\equiv56953\pmod{10^9+7}$。计算要用。</p>
-]]></content>
-      <categories>
-        <category>OI</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>特征方程解递推式 - P5110 题解</title>
-    <url>/2024/02/19/P5110%20%E9%A2%98%E8%A7%A3%20-%20%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E8%A7%A3%E9%80%92%E6%8E%A8%E5%BC%8F/</url>
-    <content><![CDATA[<h1 id="P5110-块速递推"><a href="#P5110-块速递推" class="headerlink" title="P5110 块速递推"></a><a href="https://www.luogu.com.cn/problem/P5110">P5110 块速递推</a></h1><p>理解还不够透彻，先咕为敬。</p>
-<p>UPD：好像就这么多了。</p>
-<h2 id="特征方程解一阶递推"><a href="#特征方程解一阶递推" class="headerlink" title="特征方程解一阶递推"></a>特征方程解一阶递推</h2><p>给出 $f_1$，求 $f_n$ 的通项公式：<br>$$<br>f_n&#x3D;pf_{n-1}+q\ (n\gt 1,p\neq 0)<br>$$</p>
-<span id="more"></span>
-
-<p>我们一口咬定存在一个 $a$ 使数列 ${f_{n}-a}$ 是一个公比为 $p$ 的数列。</p>
-<p>列出这个公比数列相邻两项的关系，与递推式比较就可以求得 $f_0$。<br>$$<br>f_n-a&#x3D;p(f_{n-1}-a){\color{red}\Longrightarrow}f_n&#x3D;pf_{n-1}+(1-p)a{\color{red}\Longrightarrow}q&#x3D;(1-p)a{\color{red}\Longrightarrow}a&#x3D;\frac{q}{1-p}<br>$$<br>（你或许留意到过程中除以了 $1-p$，当 $p&#x3D;1$ 的时候这就是等差数列，特殊讨论即可）</p>
-<p>接着写出 ${f_n-a}$ 的通项，可求得 $f_n$ 的通项。<br>$$<br>f_n-a&#x3D;p^{n-1}(f_1-a){\color{red}\Longrightarrow}f_n&#x3D;p^{n-1}f_1+(1-p^{n-1})a<br>$$</p>
-<hr>
-<p>插播，上面的 $a$ 是函数 $f(x)&#x3D;px+q$ 的一阶不动点。</p>
-<p>这是一个很形象的名词：</p>
-<ul>
-<li>对于函数 $f(x)$，满足 $f(x_0)&#x3D;x_0$ 的 $x_0$ 称为函数 $f(x)$ 的（一阶）不动点。</li>
-<li>因为 $f_n&#x3D;f(f_{n-1})$，可以把递推的过程视作 $f_1$ 不断变为它的函数值的过程。</li>
-<li>当它和它的函数值相等，则接下来它就动弹不得。</li>
-</ul>
-<p>为什么 $a$ 是？将上面公比数列相邻两项关系的那条式子的第三个等式拆开来，就是 $a&#x3D;pa+q$。</p>
-<p>同时可以得到 $a$ 就是 $f(x)&#x3D;x$ 与 $f(x)&#x3D;px+q$ 的交点的横坐标。</p>
-<hr>
-<h2 id="特征方程解二阶递推"><a href="#特征方程解二阶递推" class="headerlink" title="特征方程解二阶递推"></a>特征方程解二阶递推</h2><p>给定 $f_1,f_2$，求它的通项公式：<br>$$<br>f_n&#x3D;pf_{n-1}+qf_{n-2}\ (n\gt 2)<br>$$<br>我们一口咬定存在 $a,b$ 使数列 ${f_n-af_{n-1}}$ 是公比为 $b$ 的等比数列。</p>
-<p>类似解一阶递推式，列出该数列相邻两项的关系：<br>$$<br>f_{n}-af_{n-1}&#x3D;b(f_{n-1}-af_{n-2}){\color{red}\Longrightarrow}f_{n}&#x3D;(a+b)f_{n-1}-abf_{n-2}<br>$$<br>列得方程组：<br>$$<br>\begin{cases}<br>a+b&#x3D;p\<br>-ab&#x3D;q<br>\end{cases}<br>$$<br>可以直接解出 $a,b$。</p>
-<p>联系韦达定理可知 $a,b$ 是方程 $x^2-px-q&#x3D;0$ 的两根。</p>
-<p>继续效仿解一阶递推式的过程，写出 ${f_n-af_{n-1}}$ 的通项，化简：<br>$$<br>f_n-af_{n-1}&#x3D;b^{n-2}(f_2-af_1)<br>$$<br>有个 $f_{n-1}$ 怎么办？</p>
-<p>注意 $a,b$ 满足轮换对称。因此还有：<br>$$<br>f_n-bf_{n-1}&#x3D;a^{n-2}(f_2-bf_1)<br>$$<br>两式相减，化得 $f_{n}$ 的通项。<br>$$<br>f_{n-1}&#x3D;\frac{a^{n-2}(f_2-bf_1)-b^{n-2}(f_2-af_1)}{a-b}<br>$$</p>
-<p>$$<br>{\color{red}\Longrightarrow}f_{n}&#x3D;\frac{a^{n-1}(f_2-bf_1)-b^{n-1}(f_2-af_1)}{a-b}<br>$$</p>
-<p>同样留意 $a,b$ 是 $f(x)&#x3D;x^2$ 与 $f(x)&#x3D;px+q$ 的交点横坐标。</p>
-]]></content>
-      <categories>
-        <category>OI</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PKUWC 2024</title>
-    <url>/2024/01/29/PKUWC%202024/</url>
-    <content><![CDATA[<h1 id="PKUWC-2024"><a href="#PKUWC-2024" class="headerlink" title="PKUWC 2024"></a>PKUWC 2024</h1><span id="more"></span>
-
-<h3 id="day-x（-x-in-infin-1-cap-Z-）"><a href="#day-x（-x-in-infin-1-cap-Z-）" class="headerlink" title="day x（$x\in(\infin,-1]\cap\Z$）"></a>day x（$x\in(\infin,-1]\cap\Z$）</h3><p>乱学生成函数周围的数学板块。</p>
-<p>知道可以去之前一直挺摆得，没做啥题。</p>
-<p>知道可以去以后一直挺摆得，没做啥题。</p>
-<p>感觉我这种烂货压根配不上 PKUWC。CSP-S 135，NOIP 226，一个比一个菜。</p>
-<hr>
-<h2 id="day-x（-x-in-4-1-cap-Z-）"><a href="#day-x（-x-in-4-1-cap-Z-）" class="headerlink" title="day x（$x\in[-4,-1]\cap\Z$）"></a>day x（$x\in[-4,-1]\cap\Z$）</h2><p>晚上不知道为何很难睡着。基本上是十二点至一点莫名其妙睡着了。</p>
-<p>还发现了十二点零一整栋宿舍准时亮灯。</p>
-<p>以前从没听人发现过。逆天。</p>
-<p>养好了 6h 充足睡眠。</p>
-<p>开始咳嗽。</p>
-<hr>
-<h2 id="day-1"><a href="#day-1" class="headerlink" title="day -1"></a>day -1</h2><p>教练：早上 6:30 东门集合。</p>
-<p>？？？真早。大半年来我还没起过这么早。</p>
-<hr>
-<h2 id="day-0"><a href="#day-0" class="headerlink" title="day 0"></a>day 0</h2><p>和 @Assembly_line 住一个大♂床♂房♂。</p>
-<p>晚上吃火锅。</p>
-<p>辣特别劲，最后令人不得不罢休。</p>
-<hr>
-<h2 id="day-1-1"><a href="#day-1-1" class="headerlink" title="day 1"></a>day 1</h2><p>上午是开幕式。</p>
-<p>重庆立体城市名不虚传。从地面坐电梯到三楼，出电梯以后是另一个地面。</p>
-<p>讲座是一个北大的老师讲了很多北大的招生信息。</p>
-<p><del>难道和我有很大关系吗？</del></p>
-<p>试机。Linux 下好复杂。最终用 VsCode编写+terminal编译运行 总算学会了写 a+b。</p>
-<p>单步调试啥的看起来用不了了。</p>
-<p>试机题没做出来。</p>
-<p>午饭还不错，比较符合我的胃口。</p>
-<p>中午玩了一会手机，突然发现一点就比赛了。</p>
-<p>赶紧看了看多项式 exp。<strong>然后入场。</strong></p>
-<p>看 T1，怎么是博弈论？！肯定不能弃 T1 啊！我手写了几个小数据感觉没啥规律。</p>
-<p>开始回忆很久很久以前了解过的 SG 函数。总算想起来了。</p>
-<p>然后用暴力打了个 SG 的表。一眼发现 SG&#x3D;0 的情况都是当 LR 形成合法括号序的。</p>
-<p>再看一眼发现所有形成合法括号序的 LR 的 SG 都是 0。</p>
-<p>然后写，过了。<strong>此时 13:50。</strong></p>
-<p>T2 一个构造。没想到什么突破口。</p>
-<p>打完暴力 11pts，打了一个高消。</p>
-<p>一些 $len&gt;2$ 的区间如果可以知道序列的相对大小顺序就可以化为主元之一。</p>
-<p>然后随机化排列。遗憾的是不知道是哪里写挂了还是算法本身强度不够（应该两者兼具），一分也没拿到。</p>
-<p><strong>此时 15:00。</strong></p>
-<p>T3 题目很长。对背景加以分析得到背景题目是一个贪心。</p>
-<p>然后直接套到这道题上，写完得到了 40pts。</p>
-<p>后来对于 $S_2$ 为空的特殊性质想了个假分块。到最后没写完。</p>
-<p>100+11+40&#x3D;151。对了对分发现初中的几个同学都没写 T3 的贪心。</p>
-<p>那还是挺高？后来发现高一的同学也都比我低二三十。</p>
-<p>赢！</p>
-<p><strong>吗？</strong></p>
-<p>晚上继续火锅。辣度较昨天更可人。</p>
-<p>和 Assembly_line 在商场打实况手柄。</p>
-<p>回酒店腐。</p>
-<hr>
-<h2 id="day-2"><a href="#day-2" class="headerlink" title="day 2"></a>day 2</h2><p>上午讲座讲各种编程语言。听不太明白。</p>
-<p>吃饭。继续看了几眼多项式。</p>
-<p>入场。</p>
-<p>T1 看了几眼就写了个贪心试试水。WA 10。</p>
-<p>过了一会找了个反例。意识到可以把拼成 0.5,0.6,0.7,0.8 的全部情况列举出来。</p>
-<p>共 11 种。接下来是一个 11元 的不定方程组。共 4 个方程。求 $\max\sum a_i$。</p>
-<p>有一个暴力的四维 dp。看起来不是很可优化。</p>
-<p>然后认定了这是一个线性规划。我不会单纯形。</p>
-<p>考虑过根据方程数量较少的性质特殊求解。不会。</p>
-<p>然后暴力枚举 $a_i$。得到了 56pts 的“好成绩”。</p>
-<p>T2 讲了一个未曾接触的希尔排序。不太影响<del>做题</del>打暴力。</p>
-<p>T3 令人懵逼的 DS。会不了一点。</p>
-<p>最终 56+28+18&#x3D;102。对了对成绩，发现：</p>
-<p>大部分同学切了 T1，没切的也都是 70+。</p>
-<p>大部分同学 T2 打了状压。</p>
-<p>全部同学都比我高。</p>
-<p><strong>然后我第三次出现了 day1 最高 day2 最低的惨案。</strong></p>
-<p>上一次是在 GDOI2023，153+20。</p>
-<p>上上次是在 GDKOI2023，120+10。</p>
-<p>晚上吃面。没细心看图片导致点到了一碗充满蘑菇的鸡汤面。</p>
-<p>和<br>Assembly_line 打车到较远的地方随机游走。</p>
-<p>他真是命硬，想拉着我在没有人行道的高架桥上逆行步行。</p>
-<p>我不敢。我怕死。QwQ</p>
-<p>晚上聊天的主题是【】。</p>
-<hr>
-<h2 id="day-3"><a href="#day-3" class="headerlink" title="day 3"></a>day 3</h2><p>结束了。一切都结束了。</p>
-<p><del>飞机餐还 tmd 有一堆蘑菇！</del></p>
-<p>晚上看医生，极性支气管炎。</p>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>day1 是正常发挥，同学都没打好。</p>
-<p>day1 之所以打得高，是因为很短的时间内做出了 T1，然后后面两题能静下来思考，也有区分度不高的缘故。</p>
-<p>day2 一开始就犯了巨大的错误：未经思考就开写。</p>
-<p>IOI 赛制是防挂分，我却乱玩。</p>
-<p>这导致后面我一直没有继续认真思考贪心。</p>
-<p>当然，如果得到 WA 以后能认真思考是最好，但我同样没有做到。</p>
-<p>并且，在一开始就被我提出的四维 dp，可以拿到较高的分，到后来却被我遗忘。</p>
-<p>这是 dfs 式做题的后果。这个错误犯了好多遍了。</p>
-<p>考场又有时做一道题做急了，别的题就没咋思考。</p>
-<p>例如 GDKOIday2T2，这次 day2T2。</p>
-<p>这些不稳定因素过多，导致我的发挥难以预测。还很容易受日常的一些心态影响，如今年 CSP、NOIP。</p>
-<p>如果说想打好比赛最重要的是什么。</p>
-<p>日常的努力，和，考场的心态。</p>
-]]></content>
-      <categories>
-        <category>OI</category>
-      </categories>
-      <tags>
-        <tag>比赛</tag>
       </tags>
   </entry>
 </search>
