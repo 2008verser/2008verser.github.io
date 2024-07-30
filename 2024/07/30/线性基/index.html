@@ -150,7 +150,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2024-07-30 20:53:28
+          2024-07-30 21:10:48
         </span>
         
               <span class="post-categories">
@@ -283,8 +283,7 @@
 <p>如果从一个点开始，走到一个环，绕一圈，原路回来，此时获得的贡献仅是环的。意思是<strong>每个环都可以随便选</strong>。</p>
 <p>记由「若干返祖边和返祖边跨过的边形成的环」为<strong>特殊环</strong>。</p>
 <p>建出 dfs 树。那么<strong>每个环</strong>都可以由<strong>若干特殊环通过异或</strong>组成。如下图，再归纳即可。</p>
-<p><img src="/images/1.png"></p>
-<p><img src="/2024/07/30/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%85%A8%E5%AE%B6%E6%A1%B6/ng"></p>
+<p><img src="/2024/07/30/%E7%BA%BF%E6%80%A7%E5%9F%BA/a.jpg"></p>
 <p>那么我们此时要选一条从 $1$ 到 $n$ 的最优的路径，最优是指它选一些环异或起来最大。</p>
 <p>当我们知道哪一条最优以后，问题就变成了已知的路径异或和（第一步），要任选一些 $a_i$ 异或异或起来最大（第二步）。$a_i$ 就是各个环的异或和。</p>
 <p>既然<strong>每个环都在特殊环的张成里</strong>，我们对特殊环建线性基。那问题就是第一步。</p>
@@ -369,8 +368,7 @@
 <p>为了实现常数，我们不真的像原本那样建立新数组存基，转而记录<strong>最高维是第 $i$ 维的变量</strong>在原数组的下标。并在原数组进行消元。</p>
 <p>时间 $O(nm^2)$。</p>
 <p>同时我们发现，这才是线性基真正的复杂度。</p>
-<p><img src="/images/2.png"></p>
-<p><img src="/2024/07/30/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%85%A8%E5%AE%B6%E6%A1%B6/ng"></p>
+<p><img src="/2024/07/30/%E7%BA%BF%E6%80%A7%E5%9F%BA/b.jpg"></p>
 <p>平时的异或线性基为什么少了个 $m$ 呢？因为消元运算被异或运算优化成 $O(1)$ 的了。</p>
 <p>@Tangninghaha 做过一道可删线性基《八纵八横》。这里维度很高，可以用 <code>bitset</code> 优化。$\frac{m^2}{\omega}$。</p>
 <p>你也可以理解为平时 $V$ 在 <code>long long</code> 以内的是除了个 $\omega$。</p>
@@ -388,8 +386,7 @@
 <h2 id="CF724G-Xor-matic-Number-of-the-Graph"><a href="#CF724G-Xor-matic-Number-of-the-Graph" class="headerlink" title="CF724G Xor-matic Number of the Graph"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF724G">CF724G Xor-matic Number of the Graph</a></h2><p>像 WC2011 那题一样构造特殊环的线性基 $circle$。先表示出来答案。</p>
 <p>就是对于全部的 $u,v$，对 $\sum_{x\in\text{span}(circle)} dis(u,v)\oplus x$ 求和。</p>
 <p>任意建生成树，设 $d_x$ 为 $x$ 到根的异或和。$dis(u,v)$ 就变成了 $d_u\oplus d_v$。</p>
-<p><img src="/images/3.png"></p>
-<p><img src="/2024/07/30/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%85%A8%E5%AE%B6%E6%A1%B6/ng"></p>
+<p><img src="/2024/07/30/%E7%BA%BF%E6%80%A7%E5%9F%BA/c.jpg"></p>
 <p>枚举 $u$，此时我们有三组数，第一组是 $d_u$ 一个，第二组是 $v$ 大于 $u$ 的 $d_v$（为了不算重），第三组是特殊环的基。</p>
 <p>我们要做的就是<strong>每组任选一个</strong>，Xor 起来，求和。</p>
 <p>这里我们可以<strong>按位贡献</strong>。统计下面两组每个位置 0&#x2F;1 数量。</p>
@@ -493,7 +490,7 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2024-07-30 20:53:28
+              2024-07-30 21:10:48
             </span>
             
                   <span class="post-categories">
