@@ -153,7 +153,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2024-08-28 22:17:08
+          2024-09-02 22:00:59
         </span>
         
               <span class="post-categories">
@@ -231,6 +231,11 @@ f_{i,j}=\sum_{k=2}^{i-1}f_{k-1,j-p}\times 2^{p-1}\times \frac{j^{\underline{p}}}
 <p>做这道题发现</p>
 <script type="math/tex; mode=display">
 {p+\sum_{i=1}^{n} a_i\choose p,a_1,a_2,...,a_n}={\sum_{i=1}^{n} a_i\choose a_1,a_2,...,a_n}{p+\sum_{i=1}^n a_i\choose p}</script></blockquote>
+<h2 id="P5664-CSP-S2019-Emiya-家今天的饭【0-9】"><a href="#P5664-CSP-S2019-Emiya-家今天的饭【0-9】" class="headerlink" title="P5664 [CSP-S2019] Emiya 家今天的饭【0.9】"></a>P5664 [CSP-S2019] Emiya 家今天的饭【0.9】</h2><p>还是比较好想。限制即每行至多选一个，有一列要超过一半。</p>
+<p>超过一半的至多一列。因此容斥用每行至多一个的方案数减去有一列超过一半的方案数。</p>
+<p>考虑后者。枚举一列。设 $f_{i,j,k}$ 为前 $i$ 行选 $j$ 个有 $k$ 个在钦定列的方案数。$O(mn^3)$ 并不能通过。</p>
+<p>限制转化为，在钦定列的大于不在钦定列的。有两个在钦定列、三个不在钦定列和有三个在钦定列，四个不在钦定列显然是等价的。</p>
+<p>因此设 $f_{i,j}$ 表示前 $i$ 行，在列上和不在列上的差是 $j$ 方案数。状态数就是 $O(n^2)$ 了。转移依旧是 $O(1)$ 的。</p>
 
       </div>
       
@@ -246,7 +251,7 @@ f_{i,j}=\sum_{k=2}^{i-1}f_{k-1,j-p}\times 2^{p-1}\times \frac{j^{\underline{p}}}
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2024-08-28 22:17:08
+              2024-09-02 22:00:59
             </span>
             
                   <span class="post-categories">
@@ -286,7 +291,7 @@ f_{i,j}=\sum_{k=2}^{i-1}f_{k-1,j-p}\times 2^{p-1}\times \frac{j^{\underline{p}}}
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#P3713-BJOI2017-%E6%9C%BA%E5%8A%A8%E8%AE%AD%E7%BB%83%E3%80%900-3%E3%80%91"><span class="toc-text">P3713 [BJOI2017] 机动训练【0.3】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5307-COCI2018-2019-6-Mobitel%E3%80%900-8%E3%80%91"><span class="toc-text">P5307 [COCI2018-2019#6] Mobitel【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AGC005D-K-Perm-Counting-%E3%80%900-9%E3%80%91"><span class="toc-text">[AGC005D] ~K Perm Counting 【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P8558-%E9%BB%91%E6%9A%97%E3%80%900-8%E3%80%91"><span class="toc-text">P8558 黑暗【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ABC221H-Count-Multiset%E3%80%900-1%E3%80%91"><span class="toc-text">[ABC221H] Count Multiset【0.1】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1515E-Phoenix-and-Computers%E3%80%901-0%E3%80%91"><span class="toc-text">[CF1515E] Phoenix and Computers【1.0】</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#P3713-BJOI2017-%E6%9C%BA%E5%8A%A8%E8%AE%AD%E7%BB%83%E3%80%900-3%E3%80%91"><span class="toc-text">P3713 [BJOI2017] 机动训练【0.3】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5307-COCI2018-2019-6-Mobitel%E3%80%900-8%E3%80%91"><span class="toc-text">P5307 [COCI2018-2019#6] Mobitel【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AGC005D-K-Perm-Counting-%E3%80%900-9%E3%80%91"><span class="toc-text">[AGC005D] ~K Perm Counting 【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P8558-%E9%BB%91%E6%9A%97%E3%80%900-8%E3%80%91"><span class="toc-text">P8558 黑暗【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ABC221H-Count-Multiset%E3%80%900-1%E3%80%91"><span class="toc-text">[ABC221H] Count Multiset【0.1】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1515E-Phoenix-and-Computers%E3%80%901-0%E3%80%91"><span class="toc-text">[CF1515E] Phoenix and Computers【1.0】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5664-CSP-S2019-Emiya-%E5%AE%B6%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A5%AD%E3%80%900-9%E3%80%91"><span class="toc-text">P5664 [CSP-S2019] Emiya 家今天的饭【0.9】</span></a></li></ol>
       
     </div>
   </div>
