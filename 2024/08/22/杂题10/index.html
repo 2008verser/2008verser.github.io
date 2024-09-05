@@ -153,7 +153,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2024-09-03 16:37:01
+          2024-09-05 12:19:37
         </span>
         
               <span class="post-categories">
@@ -252,6 +252,23 @@ F_i(x)=\sum_{u\geq 0}\frac{a_i-u}{u!}x^u=(a_i-x)x^e</script><p>令 $F(x)=\prod F
 <p>没看出来是减少量。</p>
 <p>EGF 提取 $k$ 次项系数时，没注意到 $k!/(k-i)!$ 可以计算。</p>
 </blockquote>
+<h2 id="CF917D-Stranger-Trees【0-5】"><a href="#CF917D-Stranger-Trees【0-5】" class="headerlink" title="[CF917D] Stranger Trees【0.5】"></a>[CF917D] Stranger Trees【0.5】</h2><p>观察我的树和给定树重复的边。构成若干连通块。若先钦定连通块，让剩下不选到树边是困难的。考虑剩下随便选，最后想办法容斥/反演掉。</p>
+<p>听说的一个经典结论：</p>
+<blockquote>
+<p>$n$ 个点 $k$ 个连通块，大小 $s_1,s_2,\dots,s_k$。生成树个数是</p>
+<script type="math/tex; mode=display">
+n^{k-2}\prod s_i</script></blockquote>
+<p>这道题中意思就是当知道钦定的连通块的 $s$，剩下随便选的方案数就可以知道了。</p>
+<p>因此设，$g(k)$ 表示钦定 $k$ 条边（钦定 $(n-k)$ 个连通块），对于每种钦定，计数剩下边随便选（使生成树）的方案数，相加的结果。</p>
+<blockquote>
+<p>有的题解简单将其称为钦定 $(n-k)$ 个联通块，块外边任意的方案数，其实是不准确的。</p>
+</blockquote>
+<p>$h(k)$ 表示钦定 $k$ 条边，剩下边不产生重合方案数。</p>
+<script type="math/tex; mode=display">
+g(k)=\sum_{i=k}^n{i\choose k}h(i)\Rightarrow h(k)=\sum_{i=k}^n(-1)^{i-k}{i\choose k}g(i)</script><p>dp 一下就可以得出 $g$。$f_{x,i,j}$ 表示 $x$ 子树 $i$ 个连通块，$x$ 所在块大小 $k$ 方案数。转移跳过。</p>
+<script type="math/tex; mode=display">
+g(k)=n^{n-k-2}\sum f_{root,n-k,*}</script><p>dp 可以用技巧做到 $O(n^2)$。但是我写的是 $n^3$ 的。</p>
+<p>这道题卡在了一开始直接硬刚计数没想到容斥。还有一开始推反演没留意到下指标可以转换。</p>
 
       </div>
       
@@ -267,7 +284,7 @@ F_i(x)=\sum_{u\geq 0}\frac{a_i-u}{u!}x^u=(a_i-x)x^e</script><p>令 $F(x)=\prod F
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2024-09-03 16:37:01
+              2024-09-05 12:19:37
             </span>
             
                   <span class="post-categories">
@@ -307,7 +324,7 @@ F_i(x)=\sum_{u\geq 0}\frac{a_i-u}{u!}x^u=(a_i-x)x^e</script><p>令 $F(x)=\prod F
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#P3713-BJOI2017-%E6%9C%BA%E5%8A%A8%E8%AE%AD%E7%BB%83%E3%80%900-3%E3%80%91"><span class="toc-text">P3713 [BJOI2017] 机动训练【0.3】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5307-COCI2018-2019-6-Mobitel%E3%80%900-8%E3%80%91"><span class="toc-text">P5307 [COCI2018-2019#6] Mobitel【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AGC005D-K-Perm-Counting-%E3%80%900-9%E3%80%91"><span class="toc-text">[AGC005D] ~K Perm Counting 【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P8558-%E9%BB%91%E6%9A%97%E3%80%900-8%E3%80%91"><span class="toc-text">P8558 黑暗【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ABC221H-Count-Multiset%E3%80%900-1%E3%80%91"><span class="toc-text">[ABC221H] Count Multiset【0.1】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1515E-Phoenix-and-Computers%E3%80%901-0%E3%80%91"><span class="toc-text">[CF1515E] Phoenix and Computers【1.0】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5664-CSP-S2019-Emiya-%E5%AE%B6%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A5%AD%E3%80%900-9%E3%80%91"><span class="toc-text">P5664 [CSP-S2019] Emiya 家今天的饭【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF891E-Lust%E3%80%900-5%E3%80%91"><span class="toc-text">[CF891E] Lust【0.5】</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#P3713-BJOI2017-%E6%9C%BA%E5%8A%A8%E8%AE%AD%E7%BB%83%E3%80%900-3%E3%80%91"><span class="toc-text">P3713 [BJOI2017] 机动训练【0.3】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5307-COCI2018-2019-6-Mobitel%E3%80%900-8%E3%80%91"><span class="toc-text">P5307 [COCI2018-2019#6] Mobitel【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AGC005D-K-Perm-Counting-%E3%80%900-9%E3%80%91"><span class="toc-text">[AGC005D] ~K Perm Counting 【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P8558-%E9%BB%91%E6%9A%97%E3%80%900-8%E3%80%91"><span class="toc-text">P8558 黑暗【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ABC221H-Count-Multiset%E3%80%900-1%E3%80%91"><span class="toc-text">[ABC221H] Count Multiset【0.1】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1515E-Phoenix-and-Computers%E3%80%901-0%E3%80%91"><span class="toc-text">[CF1515E] Phoenix and Computers【1.0】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5664-CSP-S2019-Emiya-%E5%AE%B6%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A5%AD%E3%80%900-9%E3%80%91"><span class="toc-text">P5664 [CSP-S2019] Emiya 家今天的饭【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF891E-Lust%E3%80%900-5%E3%80%91"><span class="toc-text">[CF891E] Lust【0.5】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF917D-Stranger-Trees%E3%80%900-5%E3%80%91"><span class="toc-text">[CF917D] Stranger Trees【0.5】</span></a></li></ol>
       
     </div>
   </div>
