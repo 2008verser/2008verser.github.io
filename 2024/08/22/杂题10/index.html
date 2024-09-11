@@ -153,7 +153,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2024-09-06 17:18:28
+          2024-09-11 22:37:59
         </span>
         
               <span class="post-categories">
@@ -308,6 +308,27 @@ f_x&=\frac{1}{deg_x-\sum k_y}f_{fa}+\frac{deg_x+\sum b_y}{deg_x-\sum k_y}\tag{2}
 <p>总时间就是 $O(2^n\log V)$。</p>
 <p>这题自己只是想到了高消做法，并在题解提示后推了待定系数的式子。</p>
 <p>树上高消转为 dp 的思路很高明，完全没想到。</p>
+<h2 id="P5333-JSOI2019-神经网络【0-1】"><a href="#P5333-JSOI2019-神经网络【0-1】" class="headerlink" title="P5333 [JSOI2019] 神经网络【0.1】"></a>P5333 [JSOI2019] 神经网络【0.1】</h2><p>又是一道零点一。做了好几次啊终于看懂了。写详细一点。</p>
+<p>观察一种回路由若干树上的链构成。使得相邻链不是在一棵树里。那先 dp 出 $g_{i,j}$ 表示第 $i$ 棵树划分成 $j$ 条链方案数。</p>
+<p>考虑容斥，求出 $m$ 棵树一共钦定 $j$ 对同一棵树的链相邻，的方案数，带上容斥系数相加即可。</p>
+<p>先想不是环怎么做。没有限制就是把每棵树以链数为大小用 EGF 卷起来。</p>
+<p>接下来的都没想到：</p>
+<p>观察容斥的对象，一个对象的系数可以拆成各个树的系数相乘，而且可以先把每棵树的一些链捏起来表示他们相邻，树的大小减去捏了几次，EGF 的结果。</p>
+<p>所以直接对每棵树进行捏链的过程，把捏出来的带着容斥系数塞进这个树的 EGF。</p>
+<p>不考虑环，这是对的吗？把每棵树的 EGF 重新写成多项式相加，每个多项式代表捏一定数量的链所得结果的 EGF。</p>
+<p>把这些多项式视作单项式，对 EGF 乘法拆括号可以发现容斥对上了！</p>
+<p>看看对每棵树捏出来的 EGF 长啥样，设 $g_i$ 表示这棵树划分成 $i$ 条链的 dp 结果。</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^k g_i i!\sum_{j=0}^i{i-1\choose j}(-1)^j\frac{x^{i-j}}{(i-j)!}</script><p>拆成 $i$ 条链，捏 $j$ 次，剩下 $(i-j)$ 条链！链间是有序的，所以要 $i!$。</p>
+<p>但是前面挖了环的坑。其实找一个位置然后计数链的数量即可。不妨把放到第一位。</p>
+<p>此时最后一位还不能是第一棵树的链。对第一棵树的 EGF 动些手脚。</p>
+<p>第一位要是第一棵树结点 $1$ 所在链，令其及不参与树内链的有序计数。也不参与 EGF 乘法，在构造上的意义即占位符次数减一。</p>
+<p>最后一位的限制并不是必须是，而是不能是。因此减法原理。但是注意此时可以参与树内链的有序计数，因为最后一位没必要是含某结点的链。</p>
+<p>所以第一棵树捏出来的 EGF 长这样</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^kg_i(i-1)!\sum_{j=0}^{i-1}{i-1\choose j}(-1)^j\frac{x^{i-j-1}}{(i-j-1)!}-\sum_{i=1}^kg_i(i-1)!\sum_{j=0}^{i-2}{i-1\choose j}(-1)^j\frac{x^{i-j-2}}{(i-j-2)!}</script><p>第二项 $j$ 上指标是 $i-2$，因为要算减法原理，而整棵树捏成一条链不应当被减去。</p>
+<p>提取系数不要忘记乘 $i!$。</p>
+<p>暴力卷就好了。因为 $\sum k_i(\sum_{j\lt i}k_j)\leq \sum_{i\neq j}k_ik_j\leq(\sum k_i)^2$。</p>
 
       </div>
       
@@ -323,7 +344,7 @@ f_x&=\frac{1}{deg_x-\sum k_y}f_{fa}+\frac{deg_x+\sum b_y}{deg_x-\sum k_y}\tag{2}
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2024-09-06 17:18:28
+              2024-09-11 22:37:59
             </span>
             
                   <span class="post-categories">
@@ -381,7 +402,7 @@ f_x&=\frac{1}{deg_x-\sum k_y}f_{fa}+\frac{deg_x+\sum b_y}{deg_x-\sum k_y}\tag{2}
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#P3713-BJOI2017-%E6%9C%BA%E5%8A%A8%E8%AE%AD%E7%BB%83%E3%80%900-3%E3%80%91"><span class="toc-text">P3713 [BJOI2017] 机动训练【0.3】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5307-COCI2018-2019-6-Mobitel%E3%80%900-8%E3%80%91"><span class="toc-text">P5307 [COCI2018-2019#6] Mobitel【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AGC005D-K-Perm-Counting-%E3%80%900-9%E3%80%91"><span class="toc-text">[AGC005D] ~K Perm Counting 【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P8558-%E9%BB%91%E6%9A%97%E3%80%900-8%E3%80%91"><span class="toc-text">P8558 黑暗【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ABC221H-Count-Multiset%E3%80%900-1%E3%80%91"><span class="toc-text">[ABC221H] Count Multiset【0.1】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1515E-Phoenix-and-Computers%E3%80%901-0%E3%80%91"><span class="toc-text">[CF1515E] Phoenix and Computers【1.0】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5664-CSP-S2019-Emiya-%E5%AE%B6%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A5%AD%E3%80%900-9%E3%80%91"><span class="toc-text">P5664 [CSP-S2019] Emiya 家今天的饭【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF891E-Lust%E3%80%900-6%E3%80%91"><span class="toc-text">[CF891E] Lust【0.6】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF917D-Stranger-Trees%E3%80%900-5%E3%80%91"><span class="toc-text">[CF917D] Stranger Trees【0.5】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5643-PKUWC2018-%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E3%80%900-4%E3%80%91"><span class="toc-text">P5643 [PKUWC2018] 随机游走【0.4】</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#P3713-BJOI2017-%E6%9C%BA%E5%8A%A8%E8%AE%AD%E7%BB%83%E3%80%900-3%E3%80%91"><span class="toc-text">P3713 [BJOI2017] 机动训练【0.3】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5307-COCI2018-2019-6-Mobitel%E3%80%900-8%E3%80%91"><span class="toc-text">P5307 [COCI2018-2019#6] Mobitel【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AGC005D-K-Perm-Counting-%E3%80%900-9%E3%80%91"><span class="toc-text">[AGC005D] ~K Perm Counting 【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P8558-%E9%BB%91%E6%9A%97%E3%80%900-8%E3%80%91"><span class="toc-text">P8558 黑暗【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ABC221H-Count-Multiset%E3%80%900-1%E3%80%91"><span class="toc-text">[ABC221H] Count Multiset【0.1】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1515E-Phoenix-and-Computers%E3%80%901-0%E3%80%91"><span class="toc-text">[CF1515E] Phoenix and Computers【1.0】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5664-CSP-S2019-Emiya-%E5%AE%B6%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A5%AD%E3%80%900-9%E3%80%91"><span class="toc-text">P5664 [CSP-S2019] Emiya 家今天的饭【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF891E-Lust%E3%80%900-6%E3%80%91"><span class="toc-text">[CF891E] Lust【0.6】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF917D-Stranger-Trees%E3%80%900-5%E3%80%91"><span class="toc-text">[CF917D] Stranger Trees【0.5】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5643-PKUWC2018-%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E3%80%900-4%E3%80%91"><span class="toc-text">P5643 [PKUWC2018] 随机游走【0.4】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5333-JSOI2019-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E3%80%900-1%E3%80%91"><span class="toc-text">P5333 [JSOI2019] 神经网络【0.1】</span></a></li></ol>
       
     </div>
   </div>
