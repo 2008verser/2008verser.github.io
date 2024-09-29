@@ -153,7 +153,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2024-09-11 22:37:59
+          2024-09-29 15:28:19
         </span>
         
               <span class="post-categories">
@@ -191,6 +191,12 @@
                 <span class="span--tag mr-8">
                   <a href="/tags/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%9C%9F%E6%9C%9B/" title="概率与期望">
                     #概率与期望
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" title="生成函数">
+                    #生成函数
                   </a>
                 </span>
                 
@@ -329,6 +335,13 @@ f_x&=\frac{1}{deg_x-\sum k_y}f_{fa}+\frac{deg_x+\sum b_y}{deg_x-\sum k_y}\tag{2}
 \sum_{i=1}^kg_i(i-1)!\sum_{j=0}^{i-1}{i-1\choose j}(-1)^j\frac{x^{i-j-1}}{(i-j-1)!}-\sum_{i=1}^kg_i(i-1)!\sum_{j=0}^{i-2}{i-1\choose j}(-1)^j\frac{x^{i-j-2}}{(i-j-2)!}</script><p>第二项 $j$ 上指标是 $i-2$，因为要算减法原理，而整棵树捏成一条链不应当被减去。</p>
 <p>提取系数不要忘记乘 $i!$。</p>
 <p>暴力卷就好了。因为 $\sum k_i(\sum_{j\lt i}k_j)\leq \sum_{i\neq j}k_ik_j\leq(\sum k_i)^2$。</p>
+<hr>
+<p>切换战场。</p>
+<h2 id="SP3734-PERIODNI【0-7】"><a href="#SP3734-PERIODNI【0-7】" class="headerlink" title="SP3734 PERIODNI【0.7】"></a>SP3734 PERIODNI【0.7】</h2><p>观察最终的局面，并不能很好地直接分组计数。</p>
+<p>考虑了若干种直接 dp 的方式都不行。再次观察局面里面的联系，下图若 $a$ 区域一共 $x$ 个，则 $b$ 区域相当于全都减去 $x$ 列。</p>
+<p><img src="/2024/08/22/%E6%9D%82%E9%A2%9810/1.png" alt="1"></p>
+<p>因此把图划分乘若干矩形使上面矩形会影响下面的下面的不会影响上面的。而且“同一行”的不会互相影响。这样就可以树形背包一下。</p>
+<p>矩形数量是 $O(n)$ 的。可以过。</p>
 
       </div>
       
@@ -344,7 +357,7 @@ f_x&=\frac{1}{deg_x-\sum k_y}f_{fa}+\frac{deg_x+\sum b_y}{deg_x-\sum k_y}\tag{2}
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2024-09-11 22:37:59
+              2024-09-29 15:28:19
             </span>
             
                   <span class="post-categories">
@@ -385,6 +398,12 @@ f_x&=\frac{1}{deg_x-\sum k_y}f_{fa}+\frac{deg_x+\sum b_y}{deg_x-\sum k_y}\tag{2}
                       </a>
                     </span>
                     
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" title="生成函数">
+                        #生成函数
+                      </a>
+                    </span>
+                    
                   </span>
               
           </div>
@@ -402,7 +421,7 @@ f_x&=\frac{1}{deg_x-\sum k_y}f_{fa}+\frac{deg_x+\sum b_y}{deg_x-\sum k_y}\tag{2}
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#P3713-BJOI2017-%E6%9C%BA%E5%8A%A8%E8%AE%AD%E7%BB%83%E3%80%900-3%E3%80%91"><span class="toc-text">P3713 [BJOI2017] 机动训练【0.3】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5307-COCI2018-2019-6-Mobitel%E3%80%900-8%E3%80%91"><span class="toc-text">P5307 [COCI2018-2019#6] Mobitel【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AGC005D-K-Perm-Counting-%E3%80%900-9%E3%80%91"><span class="toc-text">[AGC005D] ~K Perm Counting 【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P8558-%E9%BB%91%E6%9A%97%E3%80%900-8%E3%80%91"><span class="toc-text">P8558 黑暗【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ABC221H-Count-Multiset%E3%80%900-1%E3%80%91"><span class="toc-text">[ABC221H] Count Multiset【0.1】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1515E-Phoenix-and-Computers%E3%80%901-0%E3%80%91"><span class="toc-text">[CF1515E] Phoenix and Computers【1.0】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5664-CSP-S2019-Emiya-%E5%AE%B6%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A5%AD%E3%80%900-9%E3%80%91"><span class="toc-text">P5664 [CSP-S2019] Emiya 家今天的饭【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF891E-Lust%E3%80%900-6%E3%80%91"><span class="toc-text">[CF891E] Lust【0.6】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF917D-Stranger-Trees%E3%80%900-5%E3%80%91"><span class="toc-text">[CF917D] Stranger Trees【0.5】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5643-PKUWC2018-%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E3%80%900-4%E3%80%91"><span class="toc-text">P5643 [PKUWC2018] 随机游走【0.4】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5333-JSOI2019-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E3%80%900-1%E3%80%91"><span class="toc-text">P5333 [JSOI2019] 神经网络【0.1】</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#P3713-BJOI2017-%E6%9C%BA%E5%8A%A8%E8%AE%AD%E7%BB%83%E3%80%900-3%E3%80%91"><span class="toc-text">P3713 [BJOI2017] 机动训练【0.3】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5307-COCI2018-2019-6-Mobitel%E3%80%900-8%E3%80%91"><span class="toc-text">P5307 [COCI2018-2019#6] Mobitel【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AGC005D-K-Perm-Counting-%E3%80%900-9%E3%80%91"><span class="toc-text">[AGC005D] ~K Perm Counting 【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P8558-%E9%BB%91%E6%9A%97%E3%80%900-8%E3%80%91"><span class="toc-text">P8558 黑暗【0.8】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ABC221H-Count-Multiset%E3%80%900-1%E3%80%91"><span class="toc-text">[ABC221H] Count Multiset【0.1】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1515E-Phoenix-and-Computers%E3%80%901-0%E3%80%91"><span class="toc-text">[CF1515E] Phoenix and Computers【1.0】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5664-CSP-S2019-Emiya-%E5%AE%B6%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A5%AD%E3%80%900-9%E3%80%91"><span class="toc-text">P5664 [CSP-S2019] Emiya 家今天的饭【0.9】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF891E-Lust%E3%80%900-6%E3%80%91"><span class="toc-text">[CF891E] Lust【0.6】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF917D-Stranger-Trees%E3%80%900-5%E3%80%91"><span class="toc-text">[CF917D] Stranger Trees【0.5】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5643-PKUWC2018-%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E3%80%900-4%E3%80%91"><span class="toc-text">P5643 [PKUWC2018] 随机游走【0.4】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5333-JSOI2019-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E3%80%900-1%E3%80%91"><span class="toc-text">P5333 [JSOI2019] 神经网络【0.1】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SP3734-PERIODNI%E3%80%900-7%E3%80%91"><span class="toc-text">SP3734 PERIODNI【0.7】</span></a></li></ol>
       
     </div>
   </div>
@@ -678,21 +697,5 @@ f_x&=\frac{1}{deg_x-\sum k_y}f_{fa}+\frac{deg_x+\sum b_y}{deg_x-\sum k_y}\tag{2}
 
       </div>
     </div>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="//cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-</body>
+  </body>
 </html>
