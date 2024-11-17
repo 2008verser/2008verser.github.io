@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="John Doe" />
+  <!-- Open Graph Description 简短摘要-->
+  
+  <!-- 用于搜索引擎的文章摘要 -->
+  
+  
+  
+  <title>
+    
+      多项式全家桶 
+      
+      
+      |
+    
+     Hexo
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">2008verser</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">Categories</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">多项式全家桶</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2024-07-30 20:04:12
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">
+                    <b>#</b> 数学
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" title="多项式">
+                    #多项式
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>目前只有一些偏简单常用的部分。</p>
+<hr>
+<ul>
+<li><p>多项式的逆元是一对	乘积为乘法单位元的多项式。乘法单位元显然是 $F(x)&#x3D;1$。</p>
+</li>
+<li><p>对于多项式 $F(x)$，$\ln F(x)&#x3D;G(x)$ 是指 $e^{G(x)}&#x3D;F(x)$。</p>
+</li>
+</ul>
+<p>$e^{G(x)}$ 是一个多项式（幂级数）（的封闭形式）！对 $e^{G(x)}$ 进行麦克劳林展开得到它的幂级数（多项式）：<br>$$<br>e^{G(x)}&#x3D;\sum_{n\geq 0}\frac{G(x)^n}{n!}<br>$$</p>
+<ul>
+<li>多项式 $\exp$ 的定义如上。</li>
+<li>多项式求导、积分与普通函数相同。</li>
+</ul>
+<hr>
+<h2 id="多项式乘法（FFT-NTT）"><a href="#多项式乘法（FFT-NTT）" class="headerlink" title="多项式乘法（FFT&amp;NTT）"></a>多项式乘法（FFT&amp;NTT）</h2><ul>
+<li>FFT</li>
+</ul>
+<p>求出 $F(x)$ 和 $G(x)$ 在 $\omega_{n}^0,\omega_{n}^1,…\omega_{n}^{n-1}$ 处的点值，相乘，再插值。</p>
+<p>求点值（DFT）：将多项式系数按次数奇偶分开求点值，利用单位根性质划分为两个规模为一半的相同子问题。分治求解。</p>
+<p>插值（IDFT）：单位根反演后，左侧是 $n$ 乘上 $i$ 次项系数，右侧是把求出的点值当作系数成为一个多项式，求 $\omega_{n}^{-i}$ 的点值的式子。套用 DFT 求解。</p>
+<p>FFT 是在复数上的实现，在代码中使用浮点数。</p>
+<ul>
+<li>NTT</li>
+</ul>
+<p>设 $g$ 是质数 $p$ 的原根之一。</p>
+<p>将 $g^{0},g^{(p-1)&#x2F;n},g^{2(p-1)&#x2F;n},…,g^{(n-1)(p-1)&#x2F;n}$ 替换掉单位根。</p>
+<p>可以完成多项式乘法在数论上的实现。</p>
+<hr>
+<h2 id="多项式求逆"><a href="#多项式求逆" class="headerlink" title="多项式求逆"></a>多项式求逆</h2><p>给出 $F(x)$，要求 $G(x)$ 满足 $G(x)F(x)\equiv1\pmod{x^n}$。</p>
+<p>设 $R_0(x)F(x)\equiv1\pmod{x^{n&#x2F;2}},R(x)F(x)\equiv1\pmod{x^n}$。</p>
+<p>假设已知 $R_0(x)$，试求 $R(x)$。</p>
+<p>因为 $R(x)F(x)$ 在模 $x^{n&#x2F;2}$ 意义下也是 $1$。所以有 $R_0(x)\equiv R(x)\pmod{x^{n&#x2F;2}}$。</p>
+<p>相减后做平方，则模数就升到 $x^n$，两侧再同时乘以 $F(x)$ 消去两个 $R(x)$，得到递推式。<br>$$<br>\begin{aligned}<br>R_0(x)^2-2R(x)R_0(x)+R(x)^2&amp;\equiv0\pmod{x^n}\<br>R_0(x)^2F(x)-2R_0(x)+R(x)&amp;\equiv0\pmod{x^n}\<br>R(x)&amp;\equiv 2R_0(x)-R_0(x)^2F(x)\pmod{x^n}<br>\end{aligned}<br>$$<br>先把次数补到 $2$ 的整幂再倍增即可。</p>
+<p>边界即一个整数求逆。</p>
+<p>时间复杂度 $T(n)&#x3D;T(n&#x2F;2)+O(n\log n)&#x3D;O(n\log n)$。</p>
+<hr>
+<h2 id="多项式对数函数（取-ln-）（含求导、积分）"><a href="#多项式对数函数（取-ln-）（含求导、积分）" class="headerlink" title="多项式对数函数（取 $\ln$）（含求导、积分）"></a>多项式对数函数（取 $\ln$）（含求导、积分）</h2><p>给出 $F(x)$，要求 $n$ 次多项式 $G(x)$ 满足 $G(x)&#x3D;\ln F(x)$。</p>
+<p>设 $f(x)&#x3D;\ln x$。则题目变成了复合函数 $G(x)&#x3D;f(F(x))$。</p>
+<p>先导再积。</p>
+<p>复合函数求导为：$f(g(x))’&#x3D;f’(g(x))g’(x)$。</p>
+<p>结合 $(\ln x)’&#x3D;\frac{1}{x}$ 可以化简。<br>$$<br>G’(x)&#x3D;f(F(x))’&#x3D;f’(F(x))F’(x)&#x3D;\frac{F’(x)}{F(x)}<br>$$</p>
+<p>$$<br>G(x)&#x3D;\int G’(x)dx<br>$$</p>
+<p>就差求导和积分了。</p>
+<p>它俩满足：</p>
+<p>【多个单项式的和】的导数（积分）等于【多个单项式的导数（积分）】的和。</p>
+<p>【系数乘未知数】的导数（积分）等于系数乘【未知数的导数（积分）】。</p>
+<p>利用<br>$$<br>(x^a)’&#x3D;ax^{a-1},\int x^{a}dx&#x3D;\frac{1}{a+1}x^{a+1}<br>$$<br>可以 $O(n)$ 求出给定多项式的导数和积分。</p>
+<p>综上，求 $\ln$ 时间显然 $O(n\log n)$。</p>
+<hr>
+<h2 id="多项式牛顿迭代"><a href="#多项式牛顿迭代" class="headerlink" title="多项式牛顿迭代"></a>多项式牛顿迭代</h2><p>若已知 $g(x)$，且有 $g(f(x))&#x3D;0$，可以倍增求得 $f$。</p>
+<p>设 $f_0(x)$ 满足在模 $x^{n&#x2F;2}$ 意义下 $g(f_0(x))&#x3D;0$。</p>
+<p>求在模 $x^n$ 意义下的 $f$ 有如下公式：<br>$$<br>f(x)&#x3D;f_0(x)-\frac{g(f_0(x))}{g’(f_0(x))}<br>$$<br>通过手动构造不同的 $g$，可以很简单地求出一些 $f$。如多项式求逆。</p>
+<p>证明：鸽鸽鸽鸽鸽。（我只挑难的鸽！）看看今年能不能补上。</p>
+<hr>
+<h2 id="多项式指数函数（取-exp-）"><a href="#多项式指数函数（取-exp-）" class="headerlink" title="多项式指数函数（取 $\exp$）"></a>多项式指数函数（取 $\exp$）</h2><p>给定 $n-1$ 次多项式 $F(x)$，求 $e^{F(x)}$ 在模 $x^n$ 意义下值。（满足 $[x^0]F(x)&#x3D;0$）</p>
+<p>直接构造使得 $g(e^{F(x)})&#x3D;0$ 的 $g(x)&#x3D;\ln x-F(x)$。</p>
+<p>$g’(x)&#x3D;(\ln x)’-(F(x))’&#x3D;\frac{1}{x}$。</p>
+<p>设倍增的多项为 $h(x)$，套公式即可：<br>$$<br>h(x)&#x3D;h_0(x)-\frac{g(h_0(x))}{g’(h_0(x))}&#x3D;h_0(x)-\frac{\ln h_0(x)-F(x)}{\frac{1}{h_0(x)}}&#x3D;h_0(x)(1-\ln h_0(x)+F(x))<br>$$<br>初始值是 $e^{F(x)}\bmod x&#x3D;\sum_{n\geq 0}\frac{F(x)^n}{n!}\bmod x$，因为 $F(x)^n$ 大于零次项全都模掉了，而 $a_0$ 又是零，</p>
+<p>所以仅当 $n&#x3D;0$ 时有 $1$ 的贡献。初始值是 $1$。</p>
+<ul>
+<li>如果不保证 $a_0&#x3D;0$？</li>
+</ul>
+<p>设 $f_i&#x3D;[x^i]F(x)$，初值就是<br>$$<br>\sum_{n\geq 0}\frac{f_0^n}{n!}&#x3D;e^{f_0}<br>$$<br>而 $e$ 在模意义下无意义。这是算不了的。吧？（应该没有什么还不懂的东西能算这个了吧……如果有请教我）</p>
+<p>（$e$ 在模意义下无意义，是因为它等于 $\sum_{n\geq 0}\frac{1}{n!}\bmod p$，分母迟早要模成零，出现除以零错误 ×）</p>
+<p>写代码的时候需要注意，$\ln h_0(x)$ 需要在模 $x^n$ 的意义下求，$\ln$ 里面套的那个求逆也要求在 $x^n$ 意义下的！！！</p>
+<p>写 <code>vector</code> 尤其容易写错，还难调。（我就傻了好久）</p>
+<hr>
+<h2 id="多项式开根"><a href="#多项式开根" class="headerlink" title="多项式开根"></a>多项式开根</h2><p>给定 $F(x)$，求 $G(x)$ 满足 $G(x)^2\equiv F(x)\pmod{x^n}$。要求零次项系数最小。$[x^0]F(x)&#x3D;1$。</p>
+<p>类似上一道题，零次项系数保证的是倍增初值是 $1$。</p>
+<p>直接多项式牛顿迭代：<br>$$<br>g(x)&#x3D;x^2-F(x)<br>$$</p>
+<p>$$<br>h(x)&#x3D;\frac{h_0(x)^2+F(x)}{2h_0(x)}<br>$$</p>
+<p>继续注意分母的精度即可。</p>
+<hr>
+<h2 id="下降幂多项式乘法"><a href="#下降幂多项式乘法" class="headerlink" title="下降幂多项式乘法"></a>下降幂多项式乘法</h2><p>给出两个下降幂多项式，求它们乘积的多项式的下降幂表示。</p>
+<p>直接用下降幂和连续点值的相互转换做就好了。</p>
+<p>具体地，求出多项式的连续点值，然后相乘，然后插值。</p>
+<p>求点值是：（直接把解析式化成卷积形式）<br>$$<br>\frac{f(x)}{x!}&#x3D;\sum_{i&#x3D;0}^xa_i\frac{1}{(x-i)!}<br>$$<br>插值是：（把解析式化出一个组合数然后二项式反演，再化成卷积形式）<br>$$<br>a_x&#x3D;\sum_{i&#x3D;0}^x\frac{f(i)}{i!}\frac{(-1)^{x-i}}{(x-i)!}<br>$$</p>
+<hr>
+<h2 id="多项式快速幂"><a href="#多项式快速幂" class="headerlink" title="多项式快速幂"></a>多项式快速幂</h2><p>法一：快速幂。$O(n\log n\log k)$。</p>
+<p>法二：$F(x)^k&#x3D;(e^{\ln F(x)})^k&#x3D;e^{k\ln F(x)}$。$O(n\log n+n\log(k\bmod 998244353))$。</p>
+<p>两种方法的指数都是可以取模的。下面证明抄的<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/solution/P5245">【这里】</a>：</p>
+<p>设 $p$ 为一个质数模数，当计算 $f(x)^p\bmod x^n$ 时，根据 $(a+b)^n\equiv a^n+b^n\pmod{x^n}$，</p>
+<p>把每个单项式取 $p$ 次方，又因为 $p$ 大于 $n$，所以只有零次项没被模掉，所以 $f(x)^p\bmod x^n&#x3D;a_0^p&#x3D;1$。</p>
+<p>故可以将次数取模。</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2024-07-30 20:04:12
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="Categories"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">
+                        <b>#</b> 数学
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" title="多项式">
+                        #多项式
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2024/07/30/%E7%BA%BF%E6%80%A7%E5%9F%BA/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B9%98%E6%B3%95%EF%BC%88FFT-NTT%EF%BC%89"><span class="toc-text">多项式乘法（FFT&amp;NTT）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E9%80%86"><span class="toc-text">多项式求逆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%AF%B9%E6%95%B0%E5%87%BD%E6%95%B0%EF%BC%88%E5%8F%96-ln-%EF%BC%89%EF%BC%88%E5%90%AB%E6%B1%82%E5%AF%BC%E3%80%81%E7%A7%AF%E5%88%86%EF%BC%89"><span class="toc-text">多项式对数函数（取 $\ln$）（含求导、积分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%89%9B%E9%A1%BF%E8%BF%AD%E4%BB%A3"><span class="toc-text">多项式牛顿迭代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8C%87%E6%95%B0%E5%87%BD%E6%95%B0%EF%BC%88%E5%8F%96-exp-%EF%BC%89"><span class="toc-text">多项式指数函数（取 $\exp$）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%BC%80%E6%A0%B9"><span class="toc-text">多项式开根</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E9%99%8D%E5%B9%82%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B9%98%E6%B3%95"><span class="toc-text">下降幂多项式乘法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%BF%AB%E9%80%9F%E5%B9%82"><span class="toc-text">多项式快速幂</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          
+              <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+                <i class="iconfont icon-github"></i>
+              </a>
+              
+        </li>
+        
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2024 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+
+      </div>
+    </div>
+  </body>
+</html>

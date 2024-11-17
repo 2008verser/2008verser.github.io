@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="John Doe" />
+  <!-- Open Graph Description 简短摘要-->
+  
+  <!-- 用于搜索引擎的文章摘要 -->
+  
+  
+  
+  <title>
+    
+      线性基 
+      
+      
+      |
+    
+     Hexo
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">2008verser</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">Categories</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">线性基</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2024-07-30 21:10:50
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
+                    <b>#</b> 数据结构
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E5%BC%82%E6%88%96/" title="异或">
+                    #异或
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E7%BA%BF%E6%80%A7%E7%9B%B8%E5%85%B3/" title="线性相关">
+                    #线性相关
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>【少图预警！】【需要结合其他文章食用！】</p>
+<hr>
+<h2 id="？声明？"><a href="#？声明？" class="headerlink" title="？声明？"></a>？声明？</h2><p>这里不对线性代数相关概念和<strong>异或</strong>线性基做最基本的概述。</p>
+<p>上网搜大概可以搜到三篇高质的讲解线性基的博客：</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/command-block/xian-xing-ji-xiao-ji">线性基小记 - command_block 的博客 - 洛谷博客 (luogu.com.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/Troverld/xian-xing-ji-xue-xi-bi-ji">线性基学习笔记 - 拜傅里叶教总部 - 洛谷博客 (luogu.com.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://oi.men.ci/linear-basis-notes/">线性基学习笔记 | Menci’s OI Blog</a></p>
+<p>下面两篇适合入门。上面那个没点线性代数基础感觉看不太懂。</p>
+<p>最下面这一篇介绍的线性基构建方法比较麻烦。</p>
+<p>它保证了每一个存在于线性基的位置 $i$，仅有 $a_i$ 的第 $i$ 位为 1。</p>
+<p>但这个性质完全可以在构建完线性基后，扫一遍来完成。将在模板习题给出。</p>
+<ul>
+<li></li>
+</ul>
+<p>文章中习题包括但不限于 11251 号题单。</p>
+<p>与其说一篇关于线性基的描述，不如算是对许多博客未加证明的结论的补充，或是隐藏的结论的点明。</p>
+<p>速成顺序建议：【模板】【前缀】【实数】【CF1163E】。</p>
+<ul>
+<li></li>
+</ul>
+<p>线性基的性质，除了常说的，基最小、基线性无关、基的张成等于原集合的张成、原集合元素的唯一表示以外，还有很多，我们将在例题逐一分析。</p>
+<p>读者注意留意题目中各种映射关系，有助于理解。</p>
+<p>为防不知道有没有的读者和我用的循环压缩不一致，下面的代码默认有这两行 <code>#define</code>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> rp(i,r,l) for(int i=(r);i&gt;=(l);--i)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(int i=(l);i&lt;=(r);++i)</span></span><br></pre></td></tr></table></figure>
+
+<p>全文 <code>w</code> 定义为 $\log V$。</p>
+<hr>
+<h2 id="模板线性基：P3812-【模板】线性基"><a href="#模板线性基：P3812-【模板】线性基" class="headerlink" title="模板线性基：P3812 【模板】线性基"></a>模板线性基：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3812">P3812 【模板】线性基</a></h2><p>这里补充一个构造线性基时需要用到的结论，或有助理解：</p>
+<ul>
+<li>将基中的任意一个元素异或上基中的另外一个元素，基仍是基。</li>
+</ul>
+<blockquote>
+<p>证明考虑，设是 $x$ 异或上了 $y$ 变成 $x’&#x3D;x\oplus y$，把原张成的每个含 $x$ 的元素，替换成 $x’\oplus y$ 即可。</p>
+</blockquote>
+<p>根据「基的张成等于原集合的张成」，我们可以对输入的全部数求基。</p>
+<p>那么问题变成了，我们在基里面选若干元素使异或和最大。</p>
+<p>到这里，可以使用前两篇博客中的构造方法，写出这样的代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">rp</span>(i,w,<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(x&amp;(<span class="number">1ll</span>&lt;&lt;i)) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!a[i]) &#123; a[i]=x;<span class="keyword">return</span>; &#125;</span><br><span class="line">			x^=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">query</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ll ret=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rp</span>(i,w,<span class="number">0</span>) <span class="keyword">if</span>((ret^a[i])&gt;ret) ret^=a[i];</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是这样丝毫不能体现我们对线性基的高超技艺。</p>
+<p>我们可以使用第三篇博客的构造方法，这样构造出的基，如果第 $i$ 位存在，那么第 $i$ 列仅这一个为 $1$。（可以去 Menci 博客里好好看看，这里不详细讲）</p>
+<p>也就意味着一个非零的行，我们选他，一定更优。</p>
+<p>那么全部异或起来就对了。</p>
+<p>事实上，Menci 博客里面的构造方式有些繁琐。我们可以按照前两篇博客的构造方式先构造一组线性基。</p>
+<p>因为线性基里的数随便异或不会改变任何事情。我们可以不断异或，使得这组线性基具有 Menci 博客中提到的性质。如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">rp</span>(i,w,<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(x&amp;(<span class="number">1ll</span>&lt;&lt;i)) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!a[i]) &#123;</span><br><span class="line">				a[i]=x;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			x^=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">0</span>,w) &#123;</span><br><span class="line">		<span class="built_in">rp</span>(j,i<span class="number">-1</span>,<span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&amp;(<span class="number">1ll</span>&lt;&lt;j)) a[i]^=a[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">query</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">prepare</span>();</span><br><span class="line">	ll ret=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rp</span>(i,w,<span class="number">0</span>) ret^=a[i];</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二种方法，我们的 <code>prepare()</code> 操作就是 command_block 博客里提到的：“将三角基进一步消成对角基”。（虽然我也不知道这俩是啥。）</p>
+<p>在执行完 <code>prepare()</code> 以后，我们的基就有 Menci 博客里介绍的全部性质了。</p>
+<p>模板题到这里就结束了。时间复杂度，三角基是 $O(n\log V)$。消成对角基要多一个 $\log V$。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/22tccolk">Code for this.</a></p>
+<hr>
+<h2 id="P3857-TJOI2008-彩灯"><a href="#P3857-TJOI2008-彩灯" class="headerlink" title="P3857 [TJOI2008] 彩灯"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3857">P3857 [TJOI2008] 彩灯</a></h2><p>即，计算给定集合的张成与 ${0}$ 的并的大小。</p>
+<p>直接对原集合求张成大小是不会的。所以我们先求基。</p>
+<p>根据「原集合元素的唯一表示」以及「基线性无关」，我们知道基的每个元素选，或不选，组合成的数于原数组都是<strong>不重不漏</strong>的。</p>
+<p>那么一共能组合出 $2^k$ 次方个数。$k$ 是基的大小。</p>
+<p>至于零，输出时加一就好了。</p>
+<p>时间 $O(mn)$。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/w5alxn07">Code for this.</a></p>
+<hr>
+<h2 id="P4301-CQOI2013-新Nim游戏"><a href="#P4301-CQOI2013-新Nim游戏" class="headerlink" title="P4301 [CQOI2013] 新Nim游戏"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4301">P4301 [CQOI2013] 新Nim游戏</a></h2><p>首先我们要熟知经典 Nim 游戏的结论：当一个局面全部石子个数的异或和为零，必败。否则必胜。</p>
+<p>在这道题中，第一回合我们需要拿走若干堆石子，使得无论对手取哪几堆石子，都会送我们一个必胜局面。</p>
+<p>也就是说，使得对手不能将局面变为，全部石子个数异或为零。</p>
+<p>也就是说，我们拿完第一次，剩下的石子<strong>不存在一个非空的子集</strong>（因为对手可以不拿，所以不是真子集），使得<strong>异或和为零</strong>。</p>
+<p>也就是说，剩下的石子<strong>线性无关</strong>。</p>
+<p>注意基的定义，基没有异或和为零的子集。</p>
+<p>且，「基，是原集合全部<strong>线性无关</strong>子集中，集合大小最大的」。</p>
+<p>因为我们要最小化第一回合我们取的石子数量，所以剩下的石子要大。那么我们留一个基就好了。</p>
+<p>为了最大化基，我们降序排序，顺序枚举，能选就选。</p>
+<blockquote>
+<p>如果向 $a_{1\to i-1}$ 形成的基中加入 $a_i$，变得线性相关，说明 $a_i$ 可以被 $a_{1\to i-1}$ 一些表示出来。</p>
+<p>此时我们要么保留原本的基，要么从原本的基删掉一个元素，加入 $a_i$。</p>
+<p>注意到，这两种基都是由 $a_{1\to i-1}$ 形成的基，<strong>张成一样。即完全等价。</strong></p>
+<p>那么，对于两种等价的基，我们保留原本的基，答案不会更劣。</p>
+<p>所以这是对的。</p>
+</blockquote>
+<p>这种，「选取线性无关子集，最大化求和」或是「留下线性无关子集，最小化选取求和」的问题，以后还会遇到很多次，都可以用这种方式解决。</p>
+<p>时间 $O(k\log V)$。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/xo61mipn">Code for this.</a></p>
+<hr>
+<h2 id="P4570-BJWC2011-元素"><a href="#P4570-BJWC2011-元素" class="headerlink" title="P4570 [BJWC2011] 元素"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4570">P4570 [BJWC2011] 元素</a></h2><p>做过【P4301】这道题就算裸了。请读者自行完成。</p>
+<hr>
+<h2 id="P3292-SCOI2016-幸运数字"><a href="#P3292-SCOI2016-幸运数字" class="headerlink" title="P3292 [SCOI2016] 幸运数字"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3292">P3292 [SCOI2016] 幸运数字</a></h2><p>若我们得到两点间的线性基，事情就很典了。</p>
+<p>注意线性基大小是 $\log V$ 级别的。那么我们可以通过把一个线性基里的数加入另一个完成时间为 $O(\log^2V)$ 的合并。</p>
+<p>那我们有两种方法：</p>
+<ul>
+<li>获得 $(x,lca)$ 和 $(y,lca)$ 的线性基，合并。</li>
+<li>树剖+线段树或者倍增维护线性基。</li>
+</ul>
+<p>询问是不确定的，所以第一种方法不行。（可以使用前缀线性基 $O(q\log^2V)$，但这里先不提前介绍）</p>
+<p>从线段树询问区间线性基，会拆成 $\log n$ 个区间，合并这些要 $\log^2V\times\log n$。</p>
+<p>树剖需要 $\log n$ 次线段树询问。所以时间是 $O(q\log^2V\log^2n)$ 的。</p>
+<p>注意线性基是<strong>可重复贡献</strong>的。可以用 ST 表维护某个点向上 $2^i$ 的线性基。$O(n\log^2V\log n+q\log ^2V)$。</p>
+<p>$n$ 比 $q$ 小一些，第二个做法较优。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/epx7nkne">Code for this.</a>（这里是树剖+线段树，ST 表的代码可以去题解区找）</p>
+<hr>
+<h2 id="P4151-WC2011-最大XOR和路径"><a href="#P4151-WC2011-最大XOR和路径" class="headerlink" title="P4151 [WC2011] 最大XOR和路径"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4151">P4151 [WC2011] 最大XOR和路径</a></h2><p>这次变成图了。没环的话跟上一题一样。</p>
+<p>如果从一个点开始，走到一个环，绕一圈，原路回来，此时获得的贡献仅是环的。意思是<strong>每个环都可以随便选</strong>。</p>
+<p>记由「若干返祖边和返祖边跨过的边形成的环」为<strong>特殊环</strong>。</p>
+<p>建出 dfs 树。那么<strong>每个环</strong>都可以由<strong>若干特殊环通过异或</strong>组成。如下图，再归纳即可。</p>
+<p><img src="/a.jpg"></p>
+<p>那么我们此时要选一条从 $1$ 到 $n$ 的最优的路径，最优是指它选一些环异或起来最大。</p>
+<p>当我们知道哪一条最优以后，问题就变成了已知的路径异或和（第一步），要任选一些 $a_i$ 异或异或起来最大（第二步）。$a_i$ 就是各个环的异或和。</p>
+<p>既然<strong>每个环都在特殊环的张成里</strong>，我们对特殊环建线性基。那问题就是第一步。</p>
+<p>总不能枚举全部路径。观察两条从 $1$ 到 $n$ 的路径。它们构成了一个环。</p>
+<p>那么，如果我选了一条 $1\to n$ 的路径 $A$，然而 $1\to n$ 的最优路径是一条不等于 $A$ 的路径 $B$。</p>
+<p>那么在我选一些环使得异或和最大的时候，我会选出 $1\to n\to 1$ 这一个环，且这个环由 $A,B$ 构成。</p>
+<p>此时我的第一部分异或就变成了 $B$。</p>
+<p>所以<strong>第二步会令第一步最优</strong>。第一步随便找就好了。</p>
+<p>时间 $O(n+(m-n)\log V)$。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/hxmmb3od">Code for this.</a></p>
+<hr>
+<h2 id="前缀线性基：CF1100F-Ivan-and-Burgers"><a href="#前缀线性基：CF1100F-Ivan-and-Burgers" class="headerlink" title="前缀线性基：CF1100F Ivan and Burgers"></a>前缀线性基：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1100F">CF1100F Ivan and Burgers</a></h2><p>提醒：<code>a[i]</code> 指基元素，$a_i$ 指序列。</p>
+<p>这，就是上上题提到的，前缀线性基！</p>
+<p>我们对于每个 $i$ 维护一个 $a_{1\to i}$ 形成的线性基。</p>
+<p>这个基，由<strong>尽可能靠后</strong>的数组成。</p>
+<blockquote>
+<p>什么意思？</p>
+<p>我们要理解两件事：</p>
+<ul>
+<li>基不唯一，且可以是原集合的子集。</li>
+</ul>
+<p>（如果你是线代大师会觉得这很显然）</p>
+<p>举个例子，$a&#x3D;{1,2,3}$，一个合法的基是 ${2,3}$。<br>$$<br>\begin{aligned}<br>10\<br>11\<br>\end{aligned}<br>$$<br>但是这种基并不会被我们构造出来，因为他们的最高位都是 $2^1$ 位。</p>
+<p>我们构造的应是：<br>$$<br>\begin{aligned}<br>01\<br>10\<br>\end{aligned}<br>$$<br>这两种基<strong>本质是相同</strong>的。我们可以对第一个基进行<strong>内部异或运算</strong>。它一定可以变成第二个。<strong>（全部基都可以这样，证明考虑【模板】的证明）</strong></p>
+<ul>
+<li>常见的线性基，由<strong>尽可能靠前</strong>的元素组成。</li>
+</ul>
+<p>因为我们是贪心构造：如果能加就加了。</p>
+<ul>
+<li>综上，「构造线性基」得到的<strong>结果</strong>（后面两句不是流程！只是结果一样！），是选最靠前的<strong>基</strong>，再进行基内部异或使得不存在两个最高位相同的元素。</li>
+</ul>
+<p>内部异或不会异或出零，因为我们选了<strong>基</strong>。</p>
+<p>这两条性质很重要。影响到后面题目的完成。</p>
+</blockquote>
+<p>那么，选尽可能靠后的数构成线性基，即从后往前做 <code>insert()</code>。</p>
+<p>那对于每个位置 $i$ 处理出 $a_{1\to i}$ 尽可能靠后的元素形成的线性基，下意识记录基元素 <code>a[i]</code> 在原数组下标，记 <code>p[i]</code>。</p>
+<p>询问时不要算 <code>p[i]&lt;l</code> 的 <code>a[i]</code> 就好了。</p>
+<p>我们发现它 <a target="_blank" rel="noopener" href="https://codeforces.com/contest/1100/submission/239765131">TLE</a> 了（而非 WA ）。所以分析是对的。</p>
+<p>考虑利用好 $i-1$ 的信息，令 $i$ 的线性基从 $i-1$ 复制过来。接着想办法把 $a_i$ <strong>正确加入</strong>。</p>
+<p>使 $a_i$ 必须加入。</p>
+<ul>
+<li>若加入 $a_i$ 基仍线性无关，则代码会自己顺序执行并插入 $a_i$。</li>
+<li>否则会冲突。</li>
+</ul>
+<p>有一种很自然的解决方式，如代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> id)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">rp</span>(i,w,<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!x) <span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span>(x&amp;(<span class="number">1</span>&lt;&lt;i)) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!a[i]) &#123; a[i]=x;p[i]=id;<span class="keyword">return</span>; &#125;</span><br><span class="line">			<span class="keyword">if</span>(id&gt;p[i]) <span class="built_in">swap</span>(p[i],id),<span class="built_in">swap</span>(a[i],x);</span><br><span class="line">			x^=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们<strong>遍历过的</strong> <code>a[i]</code> 已经是尽可能靠后，并且<strong>当前</strong> <code>a[i]</code> 尽可能靠后，并且<strong>最终</strong>基的张成不变，归纳可证<strong>新基由尽可能靠后的元素形成</strong>。（信息量很大）</p>
+<p>请你联系引用框段，好好思考。</p>
+<blockquote>
+<p>你会明白此时的基，<code>a[i]</code>，是原序列第 <code>p[i]</code> 位经基内异或得到的结果。</p>
+<p>虽然对这题无意义。</p>
+</blockquote>
+<p>那么我们成功得到了第 $i$ 位的基。</p>
+<p>时间 $O(n\log V+q\log V)$。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/5l1542ab">Code for this.</a></p>
+<hr>
+<h2 id="CF845G-Shortest-Path-Problem"><a href="#CF845G-Shortest-Path-Problem" class="headerlink" title="CF845G Shortest Path Problem?"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF845G">CF845G Shortest Path Problem?</a></h2><p>与 WC2011 一样。请读者自己思考。</p>
+<hr>
+<h2 id="实数线性基：P3265-JLOI2015-装备购买"><a href="#实数线性基：P3265-JLOI2015-装备购买" class="headerlink" title="实数线性基：P3265 [JLOI2015] 装备购买"></a>实数线性基：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3265">P3265 [JLOI2015] 装备购买</a></h2><p>事情变得稍稍有点意思了。</p>
+<p>这次，线性组合不再是常见的 Xor 运算，而是线代中的「线性组合」，也即，<strong>向量的缩放和加法</strong>。</p>
+<p>将 $n$ 件武器视作 $n$ 个 $m$ 维<strong>向量</strong>。</p>
+<p>如果我们能维护这样子的「线性组合」意义下的「线性基」，这道题就变得很经典了——排序。</p>
+<p>照葫芦画瓢，我们重新思考异或线性基中各个部分的意义。</p>
+<blockquote>
+<ul>
+<li>基、张成，很显然。</li>
+<li>内部异或，张成不变。</li>
+</ul>
+<p>内部异或→内部线性组合→矩阵的行初等变换。</p>
+<p>即，矩阵做行初等变换，张成不变。证明与先前类似。</p>
+<ul>
+<li><code>insert()</code> 时，$i$ 从 <code>w</code> 向 <code>0</code> 枚举，<strong>空</strong>就赋值，<strong>非空</strong>就异或。</li>
+</ul>
+<p>空，指没有最高位为 $2^i$ 的基元素。</p>
+<p>异或，指消掉待加入数的 $2^i$ 位。</p>
+<p>变为：从最高维开始，向最低维枚举，若基中<strong>没有最高维是第 $i$ 维的变量</strong>，赋值；否则<strong>将待加入的向量第 $i$ 维消为零</strong>。</p>
+<p>P.S. 为了和异或线性基一致，定义属性从 $1$ 到 $m$ 为从高到低。</p>
+</blockquote>
+<p>那就会做了。</p>
+<p>可以联系<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/xrr/solution-p3265">这篇博客</a>的图。</p>
+<p>为了实现常数，我们不真的像原本那样建立新数组存基，转而记录<strong>最高维是第 $i$ 维的变量</strong>在原数组的下标。并在原数组进行消元。</p>
+<p>时间 $O(nm^2)$。</p>
+<p>同时我们发现，这才是线性基真正的复杂度。</p>
+<p><img src="/b.jpg"></p>
+<p>平时的异或线性基为什么少了个 $m$ 呢？因为消元运算被异或运算优化成 $O(1)$ 的了。</p>
+<p>@Tangninghaha 做过一道可删线性基《八纵八横》。这里维度很高，可以用 <code>bitset</code> 优化。$\frac{m^2}{\omega}$。</p>
+<p>你也可以理解为平时 $V$ 在 <code>long long</code> 以内的是除了个 $\omega$。</p>
+<p>这道题精度开 <code>1e-5</code> 即可。不然会 WA。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/lf9b5alx">Code for this.</a></p>
+<hr>
+<h2 id="P5556-圣剑护符"><a href="#P5556-圣剑护符" class="headerlink" title="P5556 圣剑护符"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5556">P5556 圣剑护符</a></h2><p>询问两点间点权是否线性相关。</p>
+<p>基元素最高位不得相同。因此，<strong>基的元素不超过 $\log V$ （ <code>w</code> ）个。</strong></p>
+<p>当原集合大小大于 <code>w</code> 时，必有元素无法插入，即<strong>线性相关</strong>。</p>
+<p>所以选择性暴力回答询问或输出 <code>YES</code>。</p>
+<p>修改我选择了利用 dfn 序差分。或许还有别的做法。</p>
+<p>这是 $O(n\log V+q\log^2 V)$。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/whq0sskm">Code for this.</a></p>
+<hr>
+<h2 id="CF724G-Xor-matic-Number-of-the-Graph"><a href="#CF724G-Xor-matic-Number-of-the-Graph" class="headerlink" title="CF724G Xor-matic Number of the Graph"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF724G">CF724G Xor-matic Number of the Graph</a></h2><p>像 WC2011 那题一样构造特殊环的线性基 $circle$。先表示出来答案。</p>
+<p>就是对于全部的 $u,v$，对 $\sum_{x\in\text{span}(circle)} dis(u,v)\oplus x$ 求和。</p>
+<p>任意建生成树，设 $d_x$ 为 $x$ 到根的异或和。$dis(u,v)$ 就变成了 $d_u\oplus d_v$。</p>
+<p><img src="/c.jpg"></p>
+<p>枚举 $u$，此时我们有三组数，第一组是 $d_u$ 一个，第二组是 $v$ 大于 $u$ 的 $d_v$（为了不算重），第三组是特殊环的基。</p>
+<p>我们要做的就是<strong>每组任选一个</strong>，Xor 起来，求和。</p>
+<p>这里我们可以<strong>按位贡献</strong>。统计下面两组每个位置 0&#x2F;1 数量。</p>
+<p>用简单的组合数学做。就不细讲了。</p>
+<p>注意图不一定联通。</p>
+<p>时间 $O(n\log V)$。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/hxxfrsm2">Code for this.</a>（我当时写的时候每个 $(u,v)$ 算了两次，最后除以 $2$，懒得改了。）</p>
+<hr>
+<h2 id="CF895C-Square-Subsets"><a href="#CF895C-Square-Subsets" class="headerlink" title="CF895C Square Subsets"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF895C">CF895C Square Subsets</a></h2><p>注意 $70$ 以内质数共有 $19$ 个。</p>
+<p>某个数是完全平方数，当且仅当，它每个素因子的次数为偶数。</p>
+<p>我们可以把每个 $a_i$ 变成一个长 $19$ 的二进制串，代表 $a_i$ 中每个素因子次数的奇偶性。</p>
+<p>非空子集乘积为完全平方数，当且仅当，这些二进制串 Xor 为零。</p>
+<h3 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h3><p>那么我们状压。$f_{i,j}$ 前 $i$ 个二进制串，Xor 等于 $j$ 的非空子集数量。转移很显然。</p>
+<p>怎么优化？注意 $1\leq a_i\leq 70$，所以本质不同的二进制串至多 $70$ 个。</p>
+<p>可以把若干个相同的压起来，dp 时乘一乘即可。</p>
+<p>时间 $O(2^{19}V)$。（不要跟我争是 $O(V)$。）</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/wzoo8uj1">Code for this,312ms.</a></p>
+<h3 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h3><p>线性基！「非空子集异或和为零」是「非空子集线性相关」充要条件。</p>
+<p><strong>求有多少非空子集线性相关。</strong>延续前面几题的思想，一个基对应着若干个原序列的元素。（你忘了的话请看「前缀线性基」的引用段落）</p>
+<p>剩下的元素的任意非空子集都有一个 Xor 值，且我们可以<strong>唯一选取</strong>选基的一个子集（可为空）使得它的异或和异或上 Xor 等于零。</p>
+<p>哦！</p>
+<p>我们每选取剩下元素的一种非空子集，对应着<strong>一种</strong>不同的选取方案（基里唯一选取）。</p>
+<p>且，每一种合法选取，必对应上面这里的一种选取。</p>
+<p><strong>他们是双射！</strong></p>
+<p>答案就是 $2^{n-l}-1$！（$l$ 是基大小）</p>
+<p>减一你猜。</p>
+<p>时间 $O(19n)$。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/xii0lch2">Code for this,46ms.</a></p>
+<hr>
+<h2 id="CF1163E-Magical-Permutation"><a href="#CF1163E-Magical-Permutation" class="headerlink" title="CF1163E Magical Permutation"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1163E">CF1163E Magical Permutation</a></h2><p>我们可以先枚举 $x$，判断是否存在相邻两个数的 Xor 属于 $S$ 的、$0\to 2^x-1$ 的排列。简记 $n&#x3D;2^x-1$。</p>
+<p>设排列的第一个数为 $\alpha$，第二个为 $\beta$。设排列相邻两两异或值为 $S_{i_1\to i_{n-1}}$。</p>
+<p>则 $\alpha\oplus\beta&#x3D;S_{i_1}$，即 $\beta&#x3D;\alpha\oplus S_{i_1}$。</p>
+<p>那可以表示出整个排列：<br>$$<br>\begin{aligned}<br>&amp;\alpha\<br>&amp;\alpha\oplus s_{i_1}\<br>&amp;\alpha\oplus s_{i_1}\oplus s_{i_2}\<br>&amp;……<br>\end{aligned}<br>$$<br>$\alpha$ 不知道哎！没关系！把排列每个数异或上 $\alpha$，得到的还是一个排列。<br>$$<br>\begin{aligned}<br>&amp;0\<br>&amp;s_{i_1}\<br>&amp;s_{i_1}\oplus s_{i_2}\<br>&amp;……<br>\end{aligned}<br>$$<br>现在要解决：不断从 $S$ 里选数，和上一个数异或，得出新一个数。重复这个操作，要构造排列。</p>
+<p>我们设想一下，如果新选的数没被选过，那构造出的一定是新数。</p>
+<p>否则，新选的数会和原先选过的异或相消，<strong>相当于删了一个数。</strong></p>
+<p>所以，这其实是不断在集合中加数、减数的一个过程。</p>
+<p>我们用到的是全部最高位不超过 $2^x$ 的 $S$。这些元素的张成<strong>是</strong> $[0,2^x-1]$，是有解的充要条件。</p>
+<p>假设现在有解。</p>
+<p>我们对这些元素建线性基，并提取出**在基中的 $S$ **，记为 $in$。</p>
+<p>则 $in$ 大小等于 $x$。我们要构造一个二进制数的排列，相邻两个不同位置恰为 $1$，<strong>每个数都代表选择 $in$ 里的哪些</strong>。</p>
+<p>输出时可以用二进制数算出答案。</p>
+<p>构造二进制数排列方法打个暴力找规律就会了。也可以去看别的题解。</p>
+<p>$in$ 这里讲的有些简陋。但如果你对前缀线性基里的引用段落完全理解，这一部分会很显然！</p>
+<p>时间 $O(\log^2 V\log n+V\log V)$。</p>
+<p><strong>我们发现，许多题都是从 $in$ 这种思想开始思考的，通常会有双射，这也是线性基强大之处之一。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/9gvu19bq">Code for this.</a></p>
+<hr>
+<h2 id="P4869-albus就是要第一个出场"><a href="#P4869-albus就是要第一个出场" class="headerlink" title="P4869 albus就是要第一个出场"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4869">P4869 albus就是要第一个出场</a></h2><p>求 $a$ 全部非空子集异或和组成的可重集里 $q$ 的排名。</p>
+<p>排名，即小于它的个数+1。</p>
+<p>想象这样的画面，$n$ 个点排成一行，其中有 $l$ 个是黑的，剩下都是白色，这 $l$ 个是 $a$ 的一组基。</p>
+<p>这些黑点有多少子集的异或和小于 $q$ 是很好算的。</p>
+<p>我们思考是否关于每一种黑点的、异或和小于 $q$ 的选择方案，都有等数量的、整个序列的选择方案与其<strong>对应</strong>（可以理解为一对多的映射“黑 $\to$ 黑白”）。</p>
+<p>如果有的话，我们直接用黑点的方案乘上这个等数量即可。</p>
+<p>在选择一组异或和小于 $q$ 的黑点方案<strong>前提</strong>下（设异或和是 $y$），随便画一种白点的选择方案（设 $x$）。</p>
+<p>此时我们不能保证整个序列选择的异或和 $x\oplus y$ 小于 $q$。</p>
+<p>但我们若能令此时序列异或和再异或上 $x$，则 $y$ 是小于 $q$ 的。</p>
+<p>注意 $y$ 可以被黑点<strong>唯一表示</strong>。也就是<strong>再“选”一些黑点！</strong></p>
+<p>但如果黑点贡献到 $y$ 了呢？我们不选它。因为<strong>删它和选两次它</strong>效果是一样的。</p>
+<p>因此，每种黑点的、异或和小于 $q$ 的选择方案，我们可以<strong>通过调整黑点的选择</strong>，<strong>使得</strong>任意一组白点的选择方案（共 $2^{n-l}$ 组）合法。</p>
+<p>直接乘起来？</p>
+<p>若两种黑点的选择方案所拓展出的选择方案有重复呢？</p>
+<p>这显然不存在，因为对于一种黑点方案拓展出的 $2^{n-l}$ 种序列选择方案，异或和相等，且等于黑点方案异或和。</p>
+<p>又因为黑点方案不相等，故不重复。</p>
+<p>（至于求 $k$ 大、求排名，可以消成对角基后当作一种特殊进制做。）</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/9mcyz8hu">Code for this.</a></p>
+<hr>
+<h2 id="P4839-P-哥的桶"><a href="#P4839-P-哥的桶" class="headerlink" title="P4839 P 哥的桶"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4839">P4839 P 哥的桶</a></h2><p>这么靠后的还有板题？！</p>
+<p>你自己想怎么做吧。时间 $O(q\log n\log^2V)$ 就过了。</p>
+<hr>
+<h2 id="P5607-Ynoi2013-无力回天-NOI2017"><a href="#P5607-Ynoi2013-无力回天-NOI2017" class="headerlink" title="P5607 [Ynoi2013] 无力回天 NOI2017"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5607">P5607 [Ynoi2013] 无力回天 NOI2017</a></h2><p>这题很妙啊。</p>
+<p>构一个数组 $b_i&#x3D;a_i\oplus a_{i-1}$。</p>
+<p>则 $a_i&#x3D;b_1\oplus b_2\oplus …\oplus b_i—-[1]$。</p>
+<p>而且，$a_{l+1}&#x3D;a_l\oplus b_{l+1},a_{l+2}&#x3D;a_l\oplus b_{l+1}\oplus b_{l+2}$。以此类推。</p>
+<p>所以 $a_{l\to r}$ 可以被 $a_l,b_{l+1\to r}$ 异或得出。</p>
+<p>与「基内部异或，张成不变」类似，「集合内部异或，张成不变」。所以这两个东西张成一致。</p>
+<p>所以可以建立 $b$ 的基，并用式 $[1]$ 得到 $a_l$，回答询问。</p>
+<p>同时我们惊讶地发现，对 $a$ 的区间操作，由于异或相消的性质，在 $b$ 上是单点操作。</p>
+<p>那么就做完了。时间 $O(n\log^2 V+q\log n\log^2 V)$。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/14tgkk7c">Code for this.</a></p>
+<p>ix35_ 提到了一种不用前缀的做法。搞明白再回来补。</p>
+<hr>
+<h2 id="CF959F-Mahmoud-and-Ehab-and-yet-another-xor-task"><a href="#CF959F-Mahmoud-and-Ehab-and-yet-another-xor-task" class="headerlink" title="CF959F Mahmoud and Ehab and yet another xor task"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF959F">CF959F Mahmoud and Ehab and yet another xor task</a></h2><p>对前 $l$ 个建立线性基。</p>
+<p>与 P4869 一样进行黑白染色。（这题感觉是 P4869 弱化版）</p>
+<p>当 $x$ 在前 $l$ 个数的张成里，那么对于白点的每一种方案（设异或和为 $y$）（可知 $x\oplus y$ 在张成里），</p>
+<p>根据「原集合元素的唯一表示」，可以唯一选黑点使得黑点异或和为 $x\oplus y$。</p>
+<p>答案和白点方案双射。那就做完了。</p>
+<p>$O(n\log V+q(\log V+\log n))$。不同写法会有略微差别。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/jwo2p8t5">Code for this.</a></p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2024/07/30/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%85%A8%E5%AE%B6%E6%A1%B6/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2024-07-30 21:10:50
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="Categories"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
+                        <b>#</b> 数据结构
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E5%BC%82%E6%88%96/" title="异或">
+                        #异或
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E7%BA%BF%E6%80%A7%E7%9B%B8%E5%85%B3/" title="线性相关">
+                        #线性相关
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2024/07/30/%E6%9D%82%E9%A2%981/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%9F%E5%A3%B0%E6%98%8E%EF%BC%9F"><span class="toc-text">？声明？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%9AP3812-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E7%BA%BF%E6%80%A7%E5%9F%BA"><span class="toc-text">模板线性基：P3812 【模板】线性基</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P3857-TJOI2008-%E5%BD%A9%E7%81%AF"><span class="toc-text">P3857 [TJOI2008] 彩灯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P4301-CQOI2013-%E6%96%B0Nim%E6%B8%B8%E6%88%8F"><span class="toc-text">P4301 [CQOI2013] 新Nim游戏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P4570-BJWC2011-%E5%85%83%E7%B4%A0"><span class="toc-text">P4570 [BJWC2011] 元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P3292-SCOI2016-%E5%B9%B8%E8%BF%90%E6%95%B0%E5%AD%97"><span class="toc-text">P3292 [SCOI2016] 幸运数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P4151-WC2011-%E6%9C%80%E5%A4%A7XOR%E5%92%8C%E8%B7%AF%E5%BE%84"><span class="toc-text">P4151 [WC2011] 最大XOR和路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%9ACF1100F-Ivan-and-Burgers"><span class="toc-text">前缀线性基：CF1100F Ivan and Burgers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF845G-Shortest-Path-Problem"><span class="toc-text">CF845G Shortest Path Problem?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%95%B0%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%9AP3265-JLOI2015-%E8%A3%85%E5%A4%87%E8%B4%AD%E4%B9%B0"><span class="toc-text">实数线性基：P3265 [JLOI2015] 装备购买</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5556-%E5%9C%A3%E5%89%91%E6%8A%A4%E7%AC%A6"><span class="toc-text">P5556 圣剑护符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF724G-Xor-matic-Number-of-the-Graph"><span class="toc-text">CF724G Xor-matic Number of the Graph</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF895C-Square-Subsets"><span class="toc-text">CF895C Square Subsets</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="toc-text">解法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="toc-text">解法二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1163E-Magical-Permutation"><span class="toc-text">CF1163E Magical Permutation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P4869-albus%E5%B0%B1%E6%98%AF%E8%A6%81%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%87%BA%E5%9C%BA"><span class="toc-text">P4869 albus就是要第一个出场</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P4839-P-%E5%93%A5%E7%9A%84%E6%A1%B6"><span class="toc-text">P4839 P 哥的桶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P5607-Ynoi2013-%E6%97%A0%E5%8A%9B%E5%9B%9E%E5%A4%A9-NOI2017"><span class="toc-text">P5607 [Ynoi2013] 无力回天 NOI2017</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF959F-Mahmoud-and-Ehab-and-yet-another-xor-task"><span class="toc-text">CF959F Mahmoud and Ehab and yet another xor task</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          
+              <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+                <i class="iconfont icon-github"></i>
+              </a>
+              
+        </li>
+        
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2024 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+
+      </div>
+    </div>
+  </body>
+</html>
