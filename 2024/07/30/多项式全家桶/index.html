@@ -155,7 +155,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2024-11-17 14:02:52
+          2024-11-17 19:55:08
         </span>
         
               <span class="post-categories">
@@ -214,7 +214,7 @@
 <p>设 $R_0(x)F(x)\equiv1\pmod{x^{n/2}},R(x)F(x)\equiv1\pmod{x^n}$。</p>
 <p>假设已知 $R_0(x)$，试求 $R(x)$。</p>
 <p>因为 $R(x)F(x)$ 在模 $x^{n/2}$ 意义下也是 $1$。所以有 $R_0(x)\equiv R(x)\pmod{x^{n/2}}$。</p>
-<p>相减后做平方，则模数就升到 $x^n$，两侧再同时乘以 $F(x)$ 消去两个 $R(x)$，得到递推式。<br>$$<br>\begin{split}<br>R_0(x)^2-2R(x)R_0(x)+R(x)^2&amp;\equiv0\pmod{x^n}\\<br>R_0(x)^2F(x)-2R_0(x)+R(x)&amp;\equiv0\pmod{x^n}\\<br>R(x)&amp;\equiv 2R_0(x)-R_0(x)^2F(x)\pmod{x^n}<br>\end{split}<br>$$<br>先把次数补到 $2$ 的整幂再倍增即可。</p>
+<p>相减后做平方，则模数就升到 $x^n$，两侧再同时乘以 $F(x)$ 消去两个 $R(x)$，得到递推式。<br>$$<br>\begin{aligned}<br>R_0(x)^2-2R(x)R_0(x)+R(x)^2&amp;\equiv0\pmod{x^n}\\<br>R_0(x)^2F(x)-2R_0(x)+R(x)&amp;\equiv0\pmod{x^n}\\<br>R(x)&amp;\equiv 2R_0(x)-R_0(x)^2F(x)\pmod{x^n}<br>\end{aligned}<br>$$<br>先把次数补到 $2$ 的整幂再倍增即可。</p>
 <p>边界即一个整数求逆。</p>
 <p>时间复杂度 $T(n)=T(n/2)+O(n\log n)=O(n\log n)$。</p>
 <hr>
@@ -276,7 +276,7 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2024-11-17 14:02:52
+              2024-11-17 19:55:08
             </span>
             
                   <span class="post-categories">

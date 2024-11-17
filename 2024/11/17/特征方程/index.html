@@ -13,7 +13,7 @@
   
   <title>
     
-      archive_a: 2024/7 
+      特征方程 
       
       
       |
@@ -106,113 +106,199 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2024</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">特征方程</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2024-11-17 22:41:32
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">
+                    <b>#</b> 数学
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E6%95%B0%E5%AD%A6/" title="数学">
+                    #数学
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>给出了求常系数齐次线性递推的通项公式的方法。</p>
+<p>没有涉及任何高深的内容。<strong>认识</strong> OGF 即可。</p>
+<p>基本是把别人写的东西重新讲了一遍。主要有意思的是 P4 提到的两种方法之间的联系。</p>
+<p>突然发现因为要求高次方程精确根，本文基本没有任何实战价值。</p>
+<p>以后有新感悟再写。</p>
+<h2 id="P1"><a href="#P1" class="headerlink" title="P1"></a>P1</h2><p>给定 $f_0,f_1,\dots,f_{k-1}$，当 $n\geq k$：<br>$$<br>f_n=a_1f_{n-1}+a_2f_{n-2}+\dots+a_kf_{n-k}=\sum_{i=1}^k a_if_{n-i}\tag 1<br>$$<br>常系数指 $a_1,a_2,\dots,a_k$ 都是常数，如 $f_{n}=nf_{n-1}$ 这样的递推关系不在此类。</p>
+<p>齐次指递推关系中没有常数项。式 $(1)$ 并没有写常数项。</p>
+<p>线性指一维。</p>
+<p>接下来会用一种比较简单的方式计算出此类递推式的通项公式，在 $k$ 不是很大时一般容易手算，稍大的情况可能需要计算机的帮助。</p>
+<hr>
+<h2 id="P2"><a href="#P2" class="headerlink" title="P2"></a>P2</h2><p>为了直观，我们分析一个具体的递推，并在结束后描述该问题的一般形式。</p>
+<p>不妨以斐波那契数列为例：$f_{0}=0,f_1=1$，当 $n\geq 2$<br>$$<br>f_n=f_{n-1}+f_{n-2}\tag 2<br>$$<br>注意到递推被划分为界限分明的两部分：第一部分是初始值，第二部分是递推关系。</p>
+<p>我们不难得到一些只满足递推关系的数列。比如下面这个：<br>$$<br>1,q,q^2,q^3,\dots,q^n,\dots<br>$$<br>令 $f_n=q^n$，由 $(2)$ 推出：<br>$$<br>q^n=q^{n-1}+q^{n-2}\Longrightarrow q^2-q-1=0\tag 3<br>$$<br>方程 $(3)$ 的每个根都导出一个满足递推关系的数列。</p>
+<p>解出来 $q_1=\frac{1+\sqrt 5}{2},q_2=\frac{1-\sqrt 5}{2}$。但这两个数列都不满足初值。</p>
+<p>考虑用这两个数列构造出满足初值的数列，且不影响递推关系。</p>
+<p>若 $\{g_n\}$ 满足递推关系，则 $\{cg_n\}$ 满足递推关系。</p>
+<p>若 $\{g_n\},\{h_n\}$ 都满足递推关系，则 $\{g_n+h_n\}$ 满足递推关系。</p>
+<p>因此待定系数 $c_1,c_2$，使得 $\{c_1q_1^n+c_2q_2^n\}$ 满足初始值，如此<br>$$<br>c_1+c_2,c_1q_1+c_2q_2,c_1q_1^2+c_2q_2^2,\dots,c_1q_1^n+c_2q_2^n,\dots<br>$$<br>就是斐波那契数列。</p>
+<p>根据 $c_1+c_2=f_0=0$ 和 $c_1q_1+c_2q_2=f_1=1$列出方程组：<br>$$<br>\begin{cases}<br>c_1+c_2=0\\<br>q_1c_1+q_2c_2=1<br>\end{cases}\Longrightarrow<br>\begin{cases}<br>c_1=\frac{1}{\sqrt 5}\\<br>c_2=-\frac{1}{\sqrt 5}<br>\end{cases}\tag 4<br>$$<br>这样就得到的大名鼎鼎的斐波那契数列的通项公式：<br>$$<br>f_n=\frac{1}{\sqrt 5}\left(\left(\frac{1+\sqrt 5}{2}\right)^n-\left(\frac{1-\sqrt 5}{2}\right)^n\right)<br>$$</p>
+<hr>
+<h2 id="P3"><a href="#P3" class="headerlink" title="P3"></a>P3</h2><p>根据上述过程，令 $f_n=q^n$ 满足递推关系<br>$$<br>f_n-a_1f_{n-1}-a_2f_{n-2}-\dots-a_kf_{n-k}=0<br>$$<br>得到<br>$$<br>q^k-a_1q^{k-1}-a_2q^{k-2}-\dots-a_k=0\tag 5<br>$$<br>式 $(5)$ 称作递推关系的特征方程，其有 $k$ 个根（可能有复根和重根），称作特征根。</p>
+<p>（正因为有可能重根的存在所以这里的求法并不严谨，P4 继续讨论）</p>
+<p>接下来像 $(4)$ 看到的那样，列出方程组即可得到通项公式。<br>$$<br>\begin{cases}<br>c_1+c_2+\dots+c_k=f_0\\<br>q_1c_1+q_2c_2+\dots+q_kc_k=f_1\\<br>\dots\\<br>q_1^{k-1}c_1+q_2^{k-1}c_2+\dots+q_k^{k-1}c_k=f_{k-1}<br>\end{cases}\tag 6<br>$$</p>
+<hr>
+<h2 id="P4"><a href="#P4" class="headerlink" title="P4"></a>P4</h2><p>接下来将会重新用 OGF 刻画过程，从另一个角度验证上述过程，讨论两种方式的关系，并处理重根的情况。</p>
+<p>重根，据说必会导致 $(6)$ 无解。证明需要我不会的线性代数知识。总之，寄了。</p>
+<p>递推关系可以用生成函数刻画。</p>
+<blockquote>
+<p>比如斐波那契数列的生成函数 $F(x)=f_0+f_1x+f_2x^2+\dots+f_nx^n+\dots$ 就满足<br>$$<br>\begin{aligned}<br>F(x)&amp;=f_0+f_1x+f_2x^2+f_3x^3+\dots\\<br>-xF(x)&amp;=\ \ \ \ -f_0x-f_1x^2-f_2x^3-\dots\\<br>-x^2F(x)&amp;=\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -f_0x^2-f_1x^3-\dots<br>\end{aligned}<br>$$<br>三式相加，则二次项以后系数都为 $0$。所以<br>$$<br>(1-x-x^2)F(x)=x\Longrightarrow F(x)=\frac{x}{1-x-x^2}<br>$$<br>待定系数 $c_1,c_2$ 以提取系数：<br>$$<br>\frac{x}{1-x-x^2}=\frac{x}{(1-q_1x)(1-q_2x)}=\frac{c_1}{1-q_1x}+\frac{c_2}{1-q_2x}\tag 7<br>$$<br>然后同样地列方程组即可。</p>
+<p>其中<br>$$<br>\frac{c_1}{1-q_1x}=\sum_{n\geq 0}c_1q_1^nx^n\tag 8<br>$$<br>即提取系数。</p>
+</blockquote>
+<p>例子中，分母是用 $\frac 1 x$ 替换特征方程的 $x$ 得到的结果，对分母的因式分解本质是求特征根（的倒数），$q_1,q_2$ 就是特征根，提取系数 $(7)(8)$ 也就是取了 $c_1q_1^n$！</p>
+<p>现在就可以讨论特征根重根的情况了。读者可以先尝试自己证明再阅读以下内容，这里给出结论：</p>
+<blockquote>
+<ul>
+<li>设 $q$ 是特征方程的 $s$ 重根，则将原做法的 $s$ 个 $\{q^n\}$ 替换为</li>
+</ul>
+<p>$$<br>\{q^n\},\{nq^n\},\dots,\{n^{s-1}q^n\}\tag 9<br>$$</p>
+<p>接着待定系数。</p>
+</blockquote>
+<p>重根时 $(7)$ 最终得到 $s$ 个分母为 $1-qx$ 的项。我们不要把他完全拆开，即保留为<br>$$<br>\dots+c\left(\frac{1}{1-qx}\right)^{\large s}+\dots<br>$$<br>因为<br>$$<br>\left(\frac{1}{1-qx}\right)^{\large s}=\sum_{n\geq 0}{n+s-1\choose s-1}q^nx^n<br>$$<br>而组合数是关于 $n$ 的 $s-1$ 次多项式！</p>
+<p>所以这一项可以再次拆成 $s$ 个幂级数，每个幂级数的占位元就是 $(9)$ 的样子，重新待定系数即可。</p>
+<p>$\Box$</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2024/08/22/%E6%9D%82%E9%A2%9810/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2024-11-17 22:41:32
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="Categories"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">
+                        <b>#</b> 数学
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E6%95%B0%E5%AD%A6/" title="数学">
+                        #数学
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2024/11/17/%E5%88%86%E6%8B%86%E6%95%B0-%E9%92%A9%E5%AD%90%E5%85%AC%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
         </div>
       
-      <div class="post-item" title="分拆数&钩子公式学习笔记">
-        <div class="time-m-d">11-17</div>
-        <div class="title">
-          <a href="/2024/11/17/%E5%88%86%E6%8B%86%E6%95%B0-%E9%92%A9%E5%AD%90%E5%85%AC%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-            <span>分拆数&钩子公式学习笔记</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="特征方程">
-        <div class="time-m-d">11-17</div>
-        <div class="title">
-          <a href="/2024/11/17/%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B/">
-            <span>特征方程</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="杂题10">
-        <div class="time-m-d">08-22</div>
-        <div class="title">
-          <a href="/2024/08/22/%E6%9D%82%E9%A2%9810/">
-            <span>杂题10</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="总结100">
-        <div class="time-m-d">08-12</div>
-        <div class="title">
-          <a href="/2024/08/12/%E6%80%BB%E7%BB%93100/">
-            <span>总结100</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="总结10">
-        <div class="time-m-d">07-30</div>
-        <div class="title">
-          <a href="/2024/07/30/%E6%80%BB%E7%BB%9310/">
-            <span>总结10</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="总结11">
-        <div class="time-m-d">07-30</div>
-        <div class="title">
-          <a href="/2024/07/30/%E6%80%BB%E7%BB%9311/">
-            <span>总结11</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="总结1">
-        <div class="time-m-d">07-30</div>
-        <div class="title">
-          <a href="/2024/07/30/%E6%80%BB%E7%BB%931/">
-            <span>总结1</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="杂题1">
-        <div class="time-m-d">07-30</div>
-        <div class="title">
-          <a href="/2024/07/30/%E6%9D%82%E9%A2%981/">
-            <span>杂题1</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="线性基">
-        <div class="time-m-d">07-30</div>
-        <div class="title">
-          <a href="/2024/07/30/%E7%BA%BF%E6%80%A7%E5%9F%BA/">
-            <span>线性基</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="多项式全家桶">
-        <div class="time-m-d">07-30</div>
-        <div class="title">
-          <a href="/2024/07/30/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%85%A8%E5%AE%B6%E6%A1%B6/">
-            <span>多项式全家桶</span>
-          </a>
-        </div>
-      </div>
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#P1"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P2"><span class="toc-text">P2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P3"><span class="toc-text">P3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P4"><span class="toc-text">P4</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
   </div>
-</div>
+
 
         
 <div class="footer">

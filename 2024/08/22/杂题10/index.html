@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="John Doe" />
+  <!-- Open Graph Description 简短摘要-->
+  
+  <!-- 用于搜索引擎的文章摘要 -->
+  
+  
+  
+  <title>
+    
+      杂题10 
+      
+      
+      |
+    
+     Hexo
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">2008verser</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">Categories</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">杂题10</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2024-11-17 22:41:00
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" title="题解">
+                    <b>#</b> 题解
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E9%A2%98%E8%A7%A3/" title="题解">
+                    #题解
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" title="组合数学">
+                    #组合数学
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划">
+                    #动态规划
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%9C%9F%E6%9C%9B/" title="概率与期望">
+                    #概率与期望
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" title="生成函数">
+                    #生成函数
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>$$<br>\clubsuit\bigstar\blacksquare\maltese\blacklozenge\spadesuit<br>$$</p>
+<h2 id="【0-3】P3713-BJOI2017-机动训练"><a href="#【0-3】P3713-BJOI2017-机动训练" class="headerlink" title="【0.3】P3713 [BJOI2017] 机动训练"></a>【0.3】P3713 [BJOI2017] 机动训练</h2><p>设 $P(X)$ 为路径 $X$ 的数量。将要求的 $\sum_{X}P^2(x)$ 看成组合意义。</p>
+<p>统计有多少个相等路径对。一种路径可以向左上、左下、右上和右下（各有三个方向）。</p>
+<p>直接 dp，枚举两条路径方向，设两条路径分别终点进状态。</p>
+<p>但是直的路径会重复计算。这一点我花了好久工夫设计容斥，一直调不出来，还是看了题解的容斥才会。</p>
+<p>比如第一条路径是直的话，就会被第一条两种大方向计数。</p>
+<p>对两条路径有序地考虑：求第一条走四个大方向的方案数（第二条随便），减去第一条走四个小方向的方案。</p>
+<p>现钦定第一条方向，第二条类似地容斥。最后两条的方向都确定了，$O(n^4)$ dp 一下即可。</p>
+<p>时间 $O(n^4)$，常数比较大。</p>
+<h2 id="【0-8】P5307-COCI2018-2019-6-Mobitel"><a href="#【0-8】P5307-COCI2018-2019-6-Mobitel" class="headerlink" title="【0.8】P5307 [COCI2018-2019#6] Mobitel"></a>【0.8】P5307 [COCI2018-2019#6] Mobitel</h2><p>直接 $f_{i,j,k}$ 表示到 $(i,j)$ 乘积是 $k$ 方案数。</p>
+<p>注意到有一些状态可以合并，举个例子，$n=7$ 的时候，$k=4(4=\lceil\frac n 2\rceil),5,6$ 对后续转移贡献是一样的，因为只要有 $2$ 就乘出去了，$1$ 的话不变。</p>
+<p>但是 $k$ 更小时是不是有类似的情况呢？考虑乘上 $p$ 恰好不小于 $n$ 的数字 $k$：<br>$$<br>pk\geq n\Longrightarrow p\geq\frac n k\Longrightarrow p=\lceil\frac n k\rceil<br>$$<br>自变量为 $k$ 时，$p$ 显然成段出现。根据数论分块的经验，段数是 $\sqrt n$ 级别的。因此把 $p$ 相同的 $k$ 合并起来转移。</p>
+<p>一个 $\lceil\frac n k\rceil$ 乘上新的 $a$ 会贡献到 $\lceil\frac{n}{ak}\rceil=\lceil\frac{\lceil\frac n k\rceil}{a}\rceil$。即 $f_{i,j,p}\to f_{i+1,j,\lceil\frac{p}{a_{i+1,j}}\rceil}$。</p>
+<p>注意滚动数组和实现。$O(rc\sqrt n)$。6s 足以通过。</p>
+<h2 id="【0-9】-AGC005D-K-Perm-Counting"><a href="#【0-9】-AGC005D-K-Perm-Counting" class="headerlink" title="【0.9】[AGC005D] ~K Perm Counting"></a>【0.9】[AGC005D] ~K Perm Counting</h2><p>转为求不合法方案数。一眼容斥，设 $f_i$ 为钦定 $i$ 个位置不合法，剩下随便的方案数。</p>
+<p>总答案等于<br>$$<br>\sum_{i=0}^n (-1)^{i}f_i(n-i)!<br>$$<br>两排点，第一排 $i$ 向第二排 $i\pm k$ 连边。选一条边 $(i,j)$ 意味位置 $i$ 填 $j$。</p>
+<p>注意到 $i$ 和 $i+2k$ 会共用一个 $i+k$。所以每个点都不是独立的。但是注意图形成若干链，每个链独立（$2k$ 同余下的位置）。</p>
+<p>所以 dp 一下 $g_{i,j,0/1}$ 考虑到点 $i$，$i$ 所处链在 $i$ 以前（包括 $i$）钦定了 $j$ 个，$(i,i+k)$ 边是否被钦定的方案数。</p>
+<p>最后把每条链终点那里背包合并一下就可以得到 $f$。还是挺典得。$O(n^2)$。</p>
+<h2 id="【0-8】P8558-黑暗"><a href="#【0-8】P8558-黑暗" class="headerlink" title="【0.8】P8558 黑暗"></a>【0.8】P8558 黑暗</h2><p>找两个大于零的坐标 $x\leq a,y\leq b$ 在 $(x,y,0)$ 撞墙，首先要走到 $(x,y,0)$，然后撞，概率是：<br>$$<br>\frac{1}{3}\sum_{x=1}^{a} \sum_{y=1}^b (x+y)^k \frac{ {a+b+c-x-y\choose c} {a+b-x-y\choose a-x} }{3^{a+b+c-x-y}}<br>$$<br>注意到好多都只和 $x+y$ 有关。枚举 $d=x+y$。<br>$$<br>\begin{aligned}<br>&amp;\frac{1}{3}\sum_{x=1}^{a} \sum_{d=x+1}^{a+b} d^k \frac{ {a+b+c-d\choose c} {a+b-d\choose a-x} }{3^{a+b+c-d}}\\<br>=&amp;\frac{1}{3}\sum_{d=2}^{a+b} d^k \frac{ {a+b+c-d\choose c} }{3^{a+b+c-d}}\sum_{x=1}^{\min(d-1,a)} {a+b-d\choose a-x}<br>\end{aligned}<br>$$</p>
+<p>把 $\min$ 拆成两段，随着 $d$ 的变化可以 $O(1)$ 转移。</p>
+<p>$O(V)$。</p>
+<p>完成率只有 0.8 是因为求和上界一开始写错了。</p>
+<h2 id="【0-1】-ABC221H-Count-Multiset"><a href="#【0-1】-ABC221H-Count-Multiset" class="headerlink" title="【0.1】[ABC221H] Count Multiset"></a>【0.1】[ABC221H] Count Multiset</h2><p>转化为对长为 $k=1,..,n$ 的不降序列 $a$ 计数，满足序列和为 $n$ 每个连续段长度不超过 $m$。</p>
+<p>差分一下，$b_i=a_i-a_{i-1}$，转化为一般序列 $b$ 计数，满足 $n=\sum_{i=1}^{k}(k-i+1)b_i$ 且连续零不超过 $m-1$ 个，$b_1{\color{grey}=a_1}\gt 0$。</p>
+<p>这个计数可以等价将第一个条件变为 $n=\sum_{i=1}^kib_i$，然后 $b_n\gt 0$。直接设 $f_{i,j}$ 表示长度 $i$，第一个条件式子和为 $j$，$b_i\gt 0$ 的方案数。</p>
+<p>枚举 $b_i$ 上一个非零的是 $b_{i-l}$ 并枚举 $b_i=p$。<br>$$<br>\sum_{l=1}^{\min(m,i)}\sum_{p=1}^{\lfloor\frac{j}{i}\rfloor}f_{i-k,j-il}<br>$$<br>前缀和优化得到 $O(n^2\ln n)$，跑的挺快。</p>
+<p>关键在于将有序的数组变成更松的差分数组计数。这个双射简化了好多限制。</p>
+<h2 id="【1-0】-CF1515E-Phoenix-and-Computers"><a href="#【1-0】-CF1515E-Phoenix-and-Computers" class="headerlink" title="【1.0】[CF1515E] Phoenix and Computers"></a>【1.0】[CF1515E] Phoenix and Computers</h2><p>第一次推错多了一个辅助数组麻烦了，其实这题还是很简单的。</p>
+<p>手动开机的集合，若干连续段，间隔一个零。</p>
+<p>一个长度为 $l$ 连续段内开机顺序，是选一个然后左右拓展。<br>$$<br>\sum_{i=1}^{l}{l-1\choose i-1}=2^{l-1}<br>$$<br>连续段相互独立，设有 $m$ 个长度分别为 $l_1,l_2,…,l_m$ 的连续段。这种集合的顺序数量是<br>$$<br>(\prod_{i=1}^{m}2^{l_i-1}){\sum_{i=1}^m l_i\choose l_1,l_2,…,l_m}<br>$$<br>考虑 dp 设 $f_i$ 表示 $i$ 个电脑的答案。枚举上一个零的位置 $k$，推一下发现这个转移需要用到手动开机数量。（即集合大小）</p>
+<p>因此设 $f_{i,j}$ 表示 $i$ 个电脑有 $j$ 个手动开机的顺序数量。总转移如下，$p=i-k$。<br>$$<br>f_{i,j}=\sum_{k=2}^{i-1}f_{k-1,j-p}\times 2^{p-1}\times \frac{j^{\underline{p}}}{p!}<br>$$</p>
+<blockquote>
+<p>做这道题发现<br>$$<br>{p+\sum_{i=1}^{n} a_i\choose p,a_1,a_2,…,a_n}={\sum_{i=1}^{n} a_i\choose a_1,a_2,…,a_n}{p+\sum_{i=1}^n a_i\choose p}<br>$$</p>
+</blockquote>
+<h2 id="【0-9】P5664-CSP-S2019-Emiya-家今天的饭"><a href="#【0-9】P5664-CSP-S2019-Emiya-家今天的饭" class="headerlink" title="【0.9】P5664 [CSP-S2019] Emiya 家今天的饭"></a>【0.9】P5664 [CSP-S2019] Emiya 家今天的饭</h2><p>还是比较好想。限制即每行至多选一个，有一列要超过一半。</p>
+<p>超过一半的至多一列。因此容斥用每行至多一个的方案数减去有一列超过一半的方案数。</p>
+<p>考虑后者。枚举一列。设 $f_{i,j,k}$ 为前 $i$ 行选 $j$ 个有 $k$ 个在钦定列的方案数。$O(mn^3)$ 并不能通过。</p>
+<p>限制转化为，在钦定列的大于不在钦定列的。有两个在钦定列、三个不在钦定列和有三个在钦定列，四个不在钦定列显然是等价的。</p>
+<p>因此设 $f_{i,j}$ 表示前 $i$ 行，在列上和不在列上的差是 $j$ 方案数。状态数就是 $O(n^2)$ 了。转移依旧是 $O(1)$ 的。</p>
+<h2 id="【0-6】-CF891E-Lust"><a href="#【0-6】-CF891E-Lust" class="headerlink" title="【0.6】[CF891E] Lust"></a>【0.6】[CF891E] Lust</h2><p>EGF 不够熟练。首先这个东西等于 $\prod a_i$ 的期望减少量。即<br>$$<br>\prod a_i - \mathbb{E}(\prod(a_i-b_i))<br>$$<br>也就是要求最终的乘积的期望。</p>
+<p>将期望表示，式子包含多重组合数，即 EGF 乘法的结果。将每个数减少量当作对象大小，减少后的结果当作值设 EGF：<br>$$<br>F_i(x)=\sum_{u\geq 0}\frac{a_i-u}{u!}x^u=(a_i-x)x^e<br>$$<br>令 $F(x)=\prod F_i(x)$。期望就是<br>$$<br>\frac{1}{n^k}[x^k]F(x)=\frac{1}{n^k}<a href="e^{nx}\prod(a_i-x)">x^k</a><br>$$<br>$\prod(a_i-x)$ 可以暴力算得 $\sum g_ix^i$。和前面相乘，提取 $k$ 次项系数：<br>$$<br>\sum_{i=0}^{n}\frac{n^{k-i}}{(k-i)!}g_ik!<br>$$<br>同样可以计算。</p>
+<p>时间复杂度 $O(n^2)$ 在于算 $\prod(a_i-x)$。</p>
+<blockquote>
+<p>遇到了以下问题：</p>
+<p>没看出来是减少量。</p>
+<p>EGF 提取 $k$ 次项系数时，没注意到 $k!/(k-i)!$ 可以计算。</p>
+</blockquote>
+<h2 id="【0-5】-CF917D-Stranger-Trees"><a href="#【0-5】-CF917D-Stranger-Trees" class="headerlink" title="【0.5】[CF917D] Stranger Trees"></a>【0.5】[CF917D] Stranger Trees</h2><p>观察我的树和给定树重复的边。构成若干连通块。若先钦定连通块，让剩下不选到树边是困难的。考虑剩下随便选，最后想办法容斥/反演掉。</p>
+<p>听说的一个经典结论：</p>
+<blockquote>
+<p>$n$ 个点 $k$ 个连通块，大小 $s_1,s_2,\dots,s_k$。生成树个数是<br>$$<br>n^{k-2}\prod s_i<br>$$</p>
+</blockquote>
+<p>这道题中意思就是当知道钦定的连通块的 $s$，剩下随便选的方案数就可以知道了。</p>
+<p>因此设，$g(k)$ 表示钦定 $k$ 条边（钦定 $(n-k)$ 个连通块），对于每种钦定，计数剩下边随便选（使生成树）的方案数，相加的结果。</p>
+<blockquote>
+<p>有的题解简单将其称为钦定 $(n-k)$ 个联通块，块外边任意的方案数，其实是不准确的。</p>
+</blockquote>
+<p>$h(k)$ 表示钦定 $k$ 条边，剩下边不产生重合方案数。<br>$$<br>g(k)=\sum_{i=k}^n{i\choose k}h(i)\Rightarrow h(k)=\sum_{i=k}^n(-1)^{i-k}{i\choose k}g(i)<br>$$<br>dp 一下就可以得出 $g$。$f_{x,i,j}$ 表示 $x$ 子树 $i$ 个连通块，$x$ 所在块大小 $k$ 方案数。转移跳过。<br>$$<br>g(k)=n^{n-k-2}\sum f_{root,n-k,*}<br>$$<br>dp 可以用技巧做到 $O(n^2)$。但是我写的是 $n^3$ 的。</p>
+<p>这道题卡在了一开始直接硬刚计数没想到容斥。还有一开始推反演没留意到下指标可以转换。</p>
+<h2 id="【0-4】P5643-PKUWC2018-随机游走"><a href="#【0-4】P5643-PKUWC2018-随机游走" class="headerlink" title="【0.4】P5643 [PKUWC2018] 随机游走"></a>【0.4】P5643 [PKUWC2018] 随机游走</h2><p>首先 $\min-\max$ 容斥将其转化为求所有的 $f_{x,S}$ 表示从 $x$ 出发走到 $s$ 里任意一点的期望步数。</p>
+<p>因此先处理出全部的 $f$，询问的时候套容斥式子可以 $O(q2^n)$。看起来有点慢，先不管他。</p>
+<p>$f_{x,S}=0,x\in S$。记 $x\to y$ 表示 $y$ 是 $x$ 的儿子，$x\sim y$ 表示 $x,y$ 相邻。整理到下面式子<br>$$<br>f_{x,S}=1+\frac{1}{deg_x}(\sum_{x\sim y} f_{y,S})<br>$$<br>枚举 $S$，然后计算全部 $f_{x,S}$。</p>
+<p>直接高消是 $O(2^nn^3)$ 的无法通过。观察消完的形式，叶子结点由其父亲推得，这个父亲由他的父亲和这些叶子推得。</p>
+<p>（又因为这些叶子可以用其表示，）所以这个父亲可以由其父亲推得。归纳一下所有点都可以。</p>
+<p>设（省略 $S$）<br>$$<br>f_{x}=k_xf_{fa}+b_x\tag{1}<br>$$<br>带入上面的，进行化简：<br>$$<br>\begin{align<em>}<br>f_x&amp;=1+\frac{1}{deg_x}(f_{fa}+\sum_{x\to y}k_yf_x+b_y)\\<br>f_x&amp;=\frac{1}{deg_x-\sum k_y}f_{fa}+\frac{deg_x+\sum b_y}{deg_x-\sum k_y}\tag{2}<br>\end{align</em>}<br>$$<br>对比式 $(1)(2)$ 可以通过 dp 求出所有的 $k,b$。再来一遍就可以得到所有 $f$ 了。这是 $O(2^nn\log V)$ 的。</p>
+<p>上面遗留了一个问题就是询问的时间复杂度。其实观察到 $\min-\max$ 容斥每项容斥系数都只和自己有关。因此高维前缀和即可。</p>
+<p>总时间就是 $O(2^n\log V)$。</p>
+<p>这题自己只是想到了高消做法，并在题解提示后推了待定系数的式子。</p>
+<p>树上高消转为 dp 的思路很高明，完全没想到。</p>
+<h2 id="【0-1】P5333-JSOI2019-神经网络"><a href="#【0-1】P5333-JSOI2019-神经网络" class="headerlink" title="【0.1】P5333 [JSOI2019] 神经网络"></a>【0.1】P5333 [JSOI2019] 神经网络</h2><p>又是一道零点一。做了好几次啊终于看懂了。写详细一点。</p>
+<p>观察一种回路由若干树上的链构成。使得相邻链不是在一棵树里。那先 dp 出 $g_{i,j}$ 表示第 $i$ 棵树划分成 $j$ 条链方案数。</p>
+<p>考虑容斥，求出 $m$ 棵树一共钦定 $j$ 对同一棵树的链相邻，的方案数，带上容斥系数相加即可。</p>
+<p>先想不是环怎么做。没有限制就是把每棵树以链数为大小用 EGF 卷起来。</p>
+<p>接下来的都没想到：</p>
+<p>观察容斥的对象，一个对象的系数可以拆成各个树的系数相乘，而且可以先把每棵树的一些链捏起来表示他们相邻，树的大小减去捏了几次，EGF 的结果。</p>
+<p>所以直接对每棵树进行捏链的过程，把捏出来的带着容斥系数塞进这个树的 EGF。</p>
+<p>不考虑环，这是对的吗？把每棵树的 EGF 重新写成多项式相加，每个多项式代表捏一定数量的链所得结果的 EGF。</p>
+<p>把这些多项式视作单项式，对 EGF 乘法拆括号可以发现容斥对上了！</p>
+<p>看看对每棵树捏出来的 EGF 长啥样，设 $g_i$ 表示这棵树划分成 $i$ 条链的 dp 结果。<br>$$<br>\sum_{i=1}^k g_i i!\sum_{j=0}^i{i-1\choose j}(-1)^j\frac{x^{i-j}}{(i-j)!}<br>$$<br>拆成 $i$ 条链，捏 $j$ 次，剩下 $(i-j)$ 条链！链间是有序的，所以要 $i!$。</p>
+<p>但是前面挖了环的坑。其实找一个位置然后计数链的数量即可。不妨把放到第一位。</p>
+<p>此时最后一位还不能是第一棵树的链。对第一棵树的 EGF 动些手脚。</p>
+<p>第一位要是第一棵树结点 $1$ 所在链，令其及不参与树内链的有序计数。也不参与 EGF 乘法，在构造上的意义即占位符次数减一。</p>
+<p>最后一位的限制并不是必须是，而是不能是。因此减法原理。但是注意此时可以参与树内链的有序计数，因为最后一位没必要是含某结点的链。</p>
+<p>所以第一棵树捏出来的 EGF 长这样<br>$$<br>\sum_{i=1}^kg_i(i-1)!\sum_{j=0}^{i-1}{i-1\choose j}(-1)^j\frac{x^{i-j-1}}{(i-j-1)!}-\sum_{i=1}^kg_i(i-1)!\sum_{j=0}^{i-2}{i-1\choose j}(-1)^j\frac{x^{i-j-2}}{(i-j-2)!}<br>$$<br>第二项 $j$ 上指标是 $i-2$，因为要算减法原理，而整棵树捏成一条链不应当被减去。</p>
+<p>提取系数不要忘记乘 $i!$。</p>
+<p>暴力卷就好了。因为 $\sum k_i(\sum_{j\lt i}k_j)\leq \sum_{i\neq j}k_ik_j\leq(\sum k_i)^2$。</p>
+<h2 id="【1-0】CF1093F-Vasya-and-Array"><a href="#【1-0】CF1093F-Vasya-and-Array" class="headerlink" title="【1.0】CF1093F Vasya and Array"></a>【1.0】CF1093F Vasya and Array</h2><p>竟然第三次做才做出来。胆量不够导致的。</p>
+<p>不要奢求每道题都顺着思路能够想出做法。不妨自上而下地想。因为有时会注意不到。</p>
+<p>$f_{i,j,k}$ 表示 $i$ 结尾极长段填 $j$，极长段是 $[k,i]$ 的方案数。</p>
+<p>则确定 $i,j$ 后 $k$ 是一段区间。那么前缀和优化即可 $O(nk)$。Alpha 博客里有 $O(n)$ 做法。以后补。</p>
+<p>upd 11.6：ARC169C 领取双倍经验。</p>
+<h2 id="【0-8】P3349-ZJOI2016-小星星-10-30"><a href="#【0-8】P3349-ZJOI2016-小星星-10-30" class="headerlink" title="【0.8】P3349 [ZJOI2016] 小星星 - 10.30"></a>【0.8】P3349 [ZJOI2016] 小星星 - 10.30</h2><p>经题解提示容斥才会做。但是做完感觉不难啊？</p>
+<p>首先在想的时候直接想正解。似乎会影响对题意的抽象。先抽象好更适合中国宝宝体质的题意才对。而想暴力是一种办法。</p>
+<p>所以呢这道题抽象为给树标号，树上相邻两个点 $(u,v)$ 满足 $(x_u,x_v)$ 在图上。啊那就 $f_{x,i,S}$ 点 $x$ 填 $i$，子树放了 $S$ 方案数。</p>
+<p>子集枚举过不去啊。放松限制配合容斥。观察到计数的排列就是使用的数字种类恰好为 $n$，而反应到小于等于 $n$ 的直接去掉 $S$ 维即可。</p>
+<p>观察小于等于 $n$ 的计数，数到了很多恰好为 $1,2,\dots,n-1$ 的。容斥即可 $O(n^22^n)$。</p>
+<p><strong>启示：排列是恰好用了长度种数字的任意序列。</strong></p>
+<p>放松性质配合容斥。</p>
+<h2 id="【0-9】-AGC012D-Colorful-Balls-10-31"><a href="#【0-9】-AGC012D-Colorful-Balls-10-31" class="headerlink" title="【0.9】[AGC012D] Colorful Balls - 10.31"></a>【0.9】[AGC012D] Colorful Balls - 10.31</h2><p>我觉得很好的题。勉勉强强守斯 *2700。</p>
+<p>过了一会想到考虑每种颜色只有一个的情况。注意到比较沉的部分是固定的，剩下让最轻的忙活就达到了全部方案，答案是一个阶乘。</p>
+<p>接下来添加数量。观察每种颜色，可以不凭借外力活动的是较轻的部分。</p>
+<p>把每种颜色较轻的部分拿出来看。再感受一下，而且单个颜色可以自身打乱。</p>
+<p>种类的重量，约定为这种颜色最轻的球的重量。</p>
+<p>可以用三次操作实现最轻的和任意一个位置的交换。这部分是全部方案。</p>
+<p>剩下的？注意到如果它可以和上边这种掺和，则也随便打乱。</p>
+<p>综上题意转化为，若球 $i,j$ 可以打乱，则连一条边。最终每个连通块独立，且一个连通块的答案是多重集的排列。</p>
+<p>显然地考虑优化边数。直观的思路就是把每种颜色画成一条线，左到右是轻到重，下到上是轻到重。</p>
+<p>重复上述过程。留意到对剩下部分的考虑可以优化为，只和全局最优点弄起来。这样已经会了。</p>
+<p><strong>狠狠观察这个图注意到对答案有贡献的连通块就一个。</strong>大大简化实现难度。1k 解决。</p>
+<p><strong>启示：对于一些题，思考特殊情况有助于形成思路/观察性质。但特殊情况不是通法。</strong></p>
+<p><strong>这道题由于特殊情况有做法，而且特殊情况的做法引出了加一些点时依旧可以乱放的结论，才显得很有效。</strong></p>
+<h2 id="【0-7】-AGC026D-Histogram-Coloring-11-01"><a href="#【0-7】-AGC026D-Histogram-Coloring-11-01" class="headerlink" title="【0.7】[AGC026D] Histogram Coloring - 11.01"></a>【0.7】[AGC026D] Histogram Coloring - 11.01</h2><p><strong>启示：想清楚计数内容的分组再写！</strong></p>
+<p>看了原题解关键结论 + 修了 2h。但还是觉得 *2700 虚高了，少两百差不多。</p>
+<p>看到这题我就想到 SP3734 - PERIODNI。接着交界处不会处理。怎么办呢。回忆一下经典的矩阵问题，钦定完第一行第一列剩下都确定了。</p>
+<p>已知靠下的一行，其上边一行只要确定了最左边的就确定了。而且上边一行有两种方案的充要条件是下边是 $01$ 交错。</p>
+<p>这下子把那道题的建树思路搬过来。自上向下进行计数。</p>
+<p>因为推底下一行方案数只和上面一行是否 $01$ 交错有关。设 $f_{x,0/1}$ 表示编号 $x$ 的矩形最底层是/不是交错的方案数。</p>
+<p>转移思路是根据上面矩形的底数出矩形 $x$ 顶层是/不是交错，然后推出底下的。</p>
+<p>最要注意的是，顶层是交错的条件不仅是，上面矩形底部是交错，而且有要<strong>按一定顺序</strong>。</p>
+<p>剩下转移不难推。矩形数量是 $O(n)$ 的，时间 $O(n^2)$。</p>
+<p>upd：更简单的理解是把矩形视作二元组  $(x,y)$ 表示两种方案的数量。然后空位视作 $(1,0)$。合并更加清晰。拜谢题解区大佬。</p>
+<h2 id="【0-5】-AGC023C-Painting-Machines-11-01"><a href="#【0-5】-AGC023C-Painting-Machines-11-01" class="headerlink" title="【0.5】[AGC023C] Painting Machines - 11.01"></a>【0.5】[AGC023C] Painting Machines - 11.01</h2><p>啊啊啊啊啊啊好大一部分看了题解。还好反应过来了。不然又要来一道 0.1。</p>
+<p>首先我想到的计算内容包括了 $F(n,t)$ 表示恰好 $t$ 条边覆盖 $n$ 个点的选边的排列数。这个时候特别难优化回 $O(n)$。</p>
+<p>【看题解×1】，说 $t$ 条边覆盖 $n$ 个点选边数。想到，上面过程有一个 $t$ 的系数，不妨拆成 $t$ 个 $1$ 贡献。</p>
+<p>在组合意义上就是换为求用 $t$ 条边还没覆盖 $n$ 个点。稍加变形就是用 $t$ 条边覆盖 $n$ 个点的选边数。外边套几个阶乘即可排列。</p>
+<p>怎么求 $f(t)$？【看题解×2】，设 $s_i$ 表示左到右第 $i$ 个机器下标，$f(t)$ 即计数</p>
+<ul>
+<li>$s_0=1,s_t=n-1$。</li>
+<li>$s_{i-1}\lt s_i,s_i-s_{i-1}\leq 2$。</li>
+</ul>
+<p>直接将 $s$ 与两两相邻之间的差形成双射，组合数即可。</p>
+<p>最终是<br>$$<br>\sum_{i=1}^{n-1}i!(n-1-i)!{i-1\choose n-i-1}<br>$$<br><strong>启示：</strong></p>
+<ul>
+<li><strong>遇见恰好，且带系数，考虑拆系数贡献，组合意义上是将恰好放松。比如这道题就是放松为，只要覆盖掉就好，不必要最后一次必须起效。</strong></li>
+<li><strong>遇见摸不着头脑的组合问题，一定一定要抽象出来！这道题就是一直瞎想，完全没有抽象出 $s$。</strong></li>
+</ul>
+<p>绝对有缺陷！</p>
+<h2 id="【0-7】-AGC028B-Removing-Blocks-11-03"><a href="#【0-7】-AGC028B-Removing-Blocks-11-03" class="headerlink" title="【0.7】[AGC028B] Removing Blocks - 11.03"></a>【0.7】[AGC028B] Removing Blocks - 11.03</h2><p>非常好题目，使我目眦欲裂。深刻感受到想计数题时思考方向远大于思考过程。</p>
+<p>启示最近这几道题看的题解完全没有看推导因为自己能推出来。完完全全是看到了几个关键词。</p>
+<p>比如【小星星】看了容斥，【026d】看了观察两行这一行为，【023c】看了拆贡献和形式化的行为。</p>
+<p>在过程中的体现是，费劲写出了一个优化不了/巨多细节的式子。</p>
+<p>今天就是这样。写出了一个我自己写完以后就把自己绕晕的式子。然后看题解。</p>
+<p>一开始我是怎么想的呢？首先必然是计算每个数在各操作排列中贡献次数之和。先想到枚举贡献次数，发现太紧。</p>
+<p>接着向上一题一样拆贡献，人话说就是枚举操作的步数，计算多少排列在这一步算到 $i$。就要算有多少排列在这步操作 $j$ 且 $j\sim i$ 联通。</p>
+<p>式子很不好看而且组合意义的 corner case 很多。最后弃疗。</p>
+<p>看了一眼题解发现它考虑每个数 $i$ 被操作的时间。顺着想不久就做出来了。</p>
+<p>那么设 $p_i$ 是数 $i$ 被操作时间。其与操作排列双射。每次贡献到 $i$ 都是操作 $j$，且 $j\sim i$ 联通。</p>
+<p>算算这种情况数量即可。<br>$$<br>{n\choose |i-x|+1}\times |i-x|!\times (n-(|i-x|+1))!=\frac{n!}{|i-x|+1}<br>$$<br><strong>启示：思路复杂约等于想偏。多分散思考。</strong></p>
+<h2 id="【0-4】-AGC009C-Division-into-Two-11-06"><a href="#【0-4】-AGC009C-Division-into-Two-11-06" class="headerlink" title="【0.4】[AGC009C] Division into Two - 11.06"></a>【0.4】[AGC009C] Division into Two - 11.06</h2><p>设 $f_i$ 表示前 $i$ 个的方案数。先记住这个是对称的。枚举上一个同组的 $j$，只要 $(j,i)$ 满足另一组的限制，且 $j+1$ 和上一个未知位置的同组是合法的。</p>
+<p>第二个限制没法处理。表示一下，假设 dp 的 $i$ 是第二组。则该未知位置 $k$ 要满足 $a_{j+1}-a_k\geq A$。<strong>注意到此限制比较废话。</strong></p>
+<p>换句话说，当 $a_{j+1}-a_k\lt A$ 时不可以计数。但 $A\leq B$ 时如果出现这种情况就没有任何划分了。一开始判掉 $\exist i,a_i-a_{i-2}\lt A$。</p>
+<p>那么 dp 状态就没有这种。所以只要 $(j,i)$ 满足另一组限制且 $a_i-a_{j-1}\geq B$ 即可。$j$ 是一段很容易求出的区间。</p>
+<p>$O(n)$。</p>
+<h2 id="【0-7】-AGC030D-Inversion-Sum-11-06"><a href="#【0-7】-AGC030D-Inversion-Sum-11-06" class="headerlink" title="【0.7】[AGC030D] Inversion Sum - 11.06"></a>【0.7】[AGC030D] Inversion Sum - 11.06</h2><p>注意力不集中。鉴定完毕。推出了很强的提示不会把握。</p>
+<p><del><strong>启示：注意力需要加强。</strong></del></p>
+<p>拆到每对位置 $1\leq i\lt j\leq n$ 贡献。考虑求过，对于每个 $x$，处理 $f_{i,j}$ 考虑前 $i$ 个询问，挪到了 $j$ 的方案数。</p>
+<p>一层转移是 $O(1)$ 的，所以单个 $x$ 是 $O(n)$。</p>
+<p>推完立马发现对于 $(i,j)$，这种计数不是相互独立的。立马想到设关于两个的状态。然后没设？</p>
+<p>这就是没把握住了。</p>
+<p>依次考虑每个操作，设 $f_{i,j}$ 表示考虑完这些操作 $a_i\gt a_j$ 的方案数。注意到一层转移是 $O(n)$ 的，所以可以 $O(qn)$ 做。</p>
+<p>（没影响到的要乘以 $2$，随便弄就好了）</p>
+<p>这和一开始没法算答案的转移有很像的地方。就是状态数很大但是转移级别很小！</p>
+<h2 id="【1-0】-AGC020E-Encoding-Subsets-11-07"><a href="#【1-0】-AGC020E-Encoding-Subsets-11-07" class="headerlink" title="【1.0】[AGC020E] Encoding Subsets - 11.07"></a>【1.0】[AGC020E] Encoding Subsets - 11.07</h2><p>嗷手切 2900。</p>
+<p>考虑单个串的计数。设 $f_{l,r}$ 表示 $l\sim r$ encode 出来的数量。枚举左边极长的单个 encode 元素的，就是 <code>(...xk)</code> 或 <code>0</code> 这种。</p>
+<p>设 $g_{l,r}$ 表示 $l\sim r$ encode 成单个元素的数量。<br>$$<br>\begin{aligned}<br>f_{l,r}&amp;=g_{l,r}+\sum_{i=l}^{r-1}g_{l,i}f_{i+1,r}\\<br>g_{l,r}&amp;=\sum_{d|(r-l+1)}[l\sim r\text{是}l\sim (l+d-1)\text{的重复}]\times f_{l,l+d-1}<br>\end{aligned}<br>$$<br>接下来肯定不能枚举子集。考虑继续这个 dp。把状态调为全部子集 encode 出来的方案数之和。分析一通发现 $f$ 转移不变。</p>
+<p>$g$ 这个长为 $d$ 的东西一定要是每个长为 $d$ 的子集。再分析一通注意到每个这样的 $d$ 东西对应一个原串子集，每个原串子集对应一个 $d$ 东西。<br>$$<br>g_{l,r}=\sum_{d|(r-l+1)}f_{s}<br>$$<br>其中 $s$ 是这 $(r-l+1)/d$ 个东西按位与的结果。</p>
+<p>这个时候初始觉得，有些奇怪，因为需要求 $f_s$ 表示串 $s$ 而不是串 $a_{l\sim r}$。</p>
+<p>马上想到这不就对了吗，刚刚设 $a_{l\sim r}$ 的状态是因为串是固定。这时求所有子集的答案变一下很正常啊。</p>
+<p>状态数也是不必担忧的。因为注意到 $f$ 的转移无关痛痒，而 $g$ 枚举的 $d$ 最少也会把长度除以 $2$，而且状态数和子集数量是无关的。</p>
+<p>时间我也不知道。反正过了。可能是什么带着 $d()$ 的数字吧。</p>
+<p><strong>启示：</strong></p>
+<p><strong>一开始推后来这个 $g$ 的时候感觉很不像正解。没想到多想了一会就想出来了。</strong></p>
+<p><strong>不要放弃。但是也不要像以前一样死想。<del>要相信自己半个小时想不出来的东西就是无法被想出来的。</del></strong></p>
+<p>哦写代码的时候发现 $f$ 和 $g$ 记忆化要互相调用函数。学到了【提前声明】：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">g</span><span class="params">(string s)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(string s)</span> </span>&#123; &#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">g</span><span class="params">(string s)</span> </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="【1-0】-AGC038C-LCMs-11-08"><a href="#【1-0】-AGC038C-LCMs-11-08" class="headerlink" title="【1.0】[AGC038C] LCMs - 11.08"></a>【1.0】[AGC038C] LCMs - 11.08</h2><p>咋混入了一道莫反板题。</p>
+<p>求这个<br>$$<br>\frac{\sum\sum \text{lcm}(a_i,a_j)-\sum a_i}{2}<br>$$<br>经典手法<br>$$<br>\sum_{i=1}^n\sum_{j=1}^n \frac{a_ia_j}{\gcd(a_i,a_j)}=\sum_{d=1}^{max}\frac{1}{d}\sum_{d|a_i}\sum_{d|a_j}a_ia_j[\gcd(a_i/d,a_j/d)=1]=\sum_{d=1}^{max}\frac{1}{d}\sum_{x=1}^{max/d}\mu(x)\sum_{dx|a_i}\sum_{dx|a_j}a_ia_j=\sum_{d=1}^{max}\frac{1}{d}\sum_{x=1}^{max/d}\mu(x)c(dx)^2<br>$$<br>提前算出 $c(x)=\sum_{x|a_i}a_i$ 即可。大概是 $O(V\ln V+nd(V))$ 的。吸氧过。</p>
+<hr>
+<h2 id="【0-7】SP3734-PERIODNI"><a href="#【0-7】SP3734-PERIODNI" class="headerlink" title="【0.7】SP3734 PERIODNI"></a>【0.7】SP3734 PERIODNI</h2><p>观察最终的局面，并不能很好地直接分组计数。</p>
+<p>考虑了若干种直接 dp 的方式都不行。再次观察局面里面的联系，下图若 $a$ 区域一共 $x$ 个，则 $b$ 区域相当于全都减去 $x$ 列。</p>
+<p><img src="D:%5C2008verser%5CPicforp1%5C1.png" alt="4"></p>
+<p>因此把图划分乘若干矩形使上面矩形会影响下面的下面的不会影响上面的。而且“同一行”的不会互相影响。这样就可以树形背包一下。</p>
+<p>矩形数量是 $O(n)$ 的。可以过。</p>
+<h2 id="【-0-8-dot3-】十二重计数法"><a href="#【-0-8-dot3-】十二重计数法" class="headerlink" title="【$0.8\dot3$】十二重计数法"></a>【$0.8\dot3$】十二重计数法</h2><ul>
+<li>Ⅰ</li>
+</ul>
+<p>$$<br>m^n<br>$$</p>
+<ul>
+<li>Ⅱ</li>
+</ul>
+<p>$$<br>{m\choose n}n!<br>$$</p>
+<ul>
+<li>Ⅲ</li>
+</ul>
+<p>一：容斥钦定 $i$ 个为空。剩下的就是Ⅱ。</p>
+<p>二：EGF。答案就是 $n<img src="e%5Ex-1" alt="x^n">^m$。</p>
+<p>两个式子拆开都是<br>$$<br>\sum_{i=0}^m{m\choose i}(-1)^{m-i}i^n<br>$$</p>
+<ul>
+<li>Ⅳ</li>
+</ul>
+<p>实际上球把 $i$ 个非空盒子区分。枚举 $i$ 个非空就是Ⅲ。<br>$$<br>\sum_{i=1}^n\frac{1}{i!}n<img src="e%5Ex-1" alt="x^n">^i=\sum_{i=1}^n\frac{1}{i!}\sum_{j=0}^{i}{i\choose j}(-1)^{i-j}j^n=\sum_{j=0}^m\frac{j^n}{j!}\sum_{i=0}^{m-j}\frac{(-1)^i}{i!}<br>$$<br>里头预处理即可。</p>
+<ul>
+<li>Ⅴ</li>
+</ul>
+<p>$$<br>[n\leq m]<br>$$</p>
+<ul>
+<li>Ⅵ</li>
+</ul>
+<p>类似地球把盒子区分。因此和Ⅲ是除法原理。除以 $m!$ 即可。</p>
+<ul>
+<li>Ⅶ</li>
+</ul>
+<p>经典的 $x_1+x_2+\dots+x_{m}=n$ 非负整数解个数。<br>$$<br>n+m-1\choose m-1<br>$$</p>
+<ul>
+<li>Ⅷ</li>
+</ul>
+<p>$$<br>m\choose n<br>$$</p>
+<ul>
+<li>Ⅸ</li>
+</ul>
+<p>经典的 $x_1+x_2+\dots+x_m=n$ 正整数解个数。<br>$$<br>n-1\choose m-1<br>$$</p>
+<ul>
+<li>Ⅹ</li>
+</ul>
+<p>这一条完全看了题解。</p>
+<p>dp+GF。令 $T_{n,m}$ 表示答案。则 $T_{n,m}=T_{n,m-1}+T_{n-m,m}$。</p>
+<p>把 $T_{n,m}$ 按有无空盒分组加法原理即可验证。</p>
+<p>观察转移图于是按列转移：设 $F_m(x)=T_{0,m}+T_{1,m}x+T_{2,m}x^2+\dots$。</p>
+<p>则<br>$$<br>F_m(x)=F_{m-1}(1+x^m+x^{2m}+\dots)=\frac{1}{1-x^m}F_{m-1}(x)=\prod_{i=0}^m\frac{1}{1-x^i}<br>$$<br><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4389">付公主的背包</a>同样手法 $\ln+\exp$ 即可得到 $F_m(x)$。答案就是其 $n$ 次项系数。<br>$$<br>\prod_{i=0}^m\frac{1}{1-x^i}=\exp(\sum_{i=0}^m -\ln(1-x^i))<br>$$<br>其中<br>$$<br>\begin{aligned}<br>\because&amp;(\ln(1-x^i))’=-ix^{i-1}\frac{1}{1-x^i}=-i\sum_{j\geq0}x^{i+ij-1}=-i\sum_{j\geq 1}x^{ij-1}\\<br>\therefore&amp;\ln(1-x^i)=-i\sum_{j\geq 1}\frac{1}{ij}x^{ij}=-\sum_{j\geq 1}\frac{x^{ij}}{j}<br>\end{aligned}<br>$$<br>最终的和式可以调和级数时间求出。模 $x^{n+1}$ 意义下套上 $n\log n$ 的多项式 $\exp$ 即可。</p>
+<ul>
+<li>Ⅺ</li>
+</ul>
+<p>$$<br>[n\leq m]<br>$$</p>
+<ul>
+<li>Ⅻ</li>
+</ul>
+<p>和 $T_{n-m,m}$ 双射。还是 $m$ 列因此直接用Ⅹ的结果即可。</p>
+<p>综上，时间复杂度 $O(n\log n+n\ln n+n\log V)$。</p>
+<p>额一开始做的时候写了这样的东西：<code>printf(&quot;%d %d&quot;,c1(),c2());</code>。事实上 <code>c1()</code> 和 <code>c2()</code> 会以任何可能的顺序执行。不要当作从左至右。</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2024/08/12/%E6%80%BB%E7%BB%93100/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2024-11-17 22:41:00
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="Categories"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E9%A2%98%E8%A7%A3/" title="题解">
+                        <b>#</b> 题解
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E9%A2%98%E8%A7%A3/" title="题解">
+                        #题解
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" title="组合数学">
+                        #组合数学
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划">
+                        #动态规划
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%9C%9F%E6%9C%9B/" title="概率与期望">
+                        #概率与期望
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" title="生成函数">
+                        #生成函数
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2024/11/17/%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-3%E3%80%91P3713-BJOI2017-%E6%9C%BA%E5%8A%A8%E8%AE%AD%E7%BB%83"><span class="toc-text">【0.3】P3713 [BJOI2017] 机动训练</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-8%E3%80%91P5307-COCI2018-2019-6-Mobitel"><span class="toc-text">【0.8】P5307 [COCI2018-2019#6] Mobitel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-9%E3%80%91-AGC005D-K-Perm-Counting"><span class="toc-text">【0.9】[AGC005D] ~K Perm Counting</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-8%E3%80%91P8558-%E9%BB%91%E6%9A%97"><span class="toc-text">【0.8】P8558 黑暗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-1%E3%80%91-ABC221H-Count-Multiset"><span class="toc-text">【0.1】[ABC221H] Count Multiset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%901-0%E3%80%91-CF1515E-Phoenix-and-Computers"><span class="toc-text">【1.0】[CF1515E] Phoenix and Computers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-9%E3%80%91P5664-CSP-S2019-Emiya-%E5%AE%B6%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A5%AD"><span class="toc-text">【0.9】P5664 [CSP-S2019] Emiya 家今天的饭</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-6%E3%80%91-CF891E-Lust"><span class="toc-text">【0.6】[CF891E] Lust</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-5%E3%80%91-CF917D-Stranger-Trees"><span class="toc-text">【0.5】[CF917D] Stranger Trees</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-4%E3%80%91P5643-PKUWC2018-%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0"><span class="toc-text">【0.4】P5643 [PKUWC2018] 随机游走</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-1%E3%80%91P5333-JSOI2019-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-text">【0.1】P5333 [JSOI2019] 神经网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%901-0%E3%80%91CF1093F-Vasya-and-Array"><span class="toc-text">【1.0】CF1093F Vasya and Array</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-8%E3%80%91P3349-ZJOI2016-%E5%B0%8F%E6%98%9F%E6%98%9F-10-30"><span class="toc-text">【0.8】P3349 [ZJOI2016] 小星星 - 10.30</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-9%E3%80%91-AGC012D-Colorful-Balls-10-31"><span class="toc-text">【0.9】[AGC012D] Colorful Balls - 10.31</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-7%E3%80%91-AGC026D-Histogram-Coloring-11-01"><span class="toc-text">【0.7】[AGC026D] Histogram Coloring - 11.01</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-5%E3%80%91-AGC023C-Painting-Machines-11-01"><span class="toc-text">【0.5】[AGC023C] Painting Machines - 11.01</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-7%E3%80%91-AGC028B-Removing-Blocks-11-03"><span class="toc-text">【0.7】[AGC028B] Removing Blocks - 11.03</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-4%E3%80%91-AGC009C-Division-into-Two-11-06"><span class="toc-text">【0.4】[AGC009C] Division into Two - 11.06</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-7%E3%80%91-AGC030D-Inversion-Sum-11-06"><span class="toc-text">【0.7】[AGC030D] Inversion Sum - 11.06</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%901-0%E3%80%91-AGC020E-Encoding-Subsets-11-07"><span class="toc-text">【1.0】[AGC020E] Encoding Subsets - 11.07</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%901-0%E3%80%91-AGC038C-LCMs-11-08"><span class="toc-text">【1.0】[AGC038C] LCMs - 11.08</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%900-7%E3%80%91SP3734-PERIODNI"><span class="toc-text">【0.7】SP3734 PERIODNI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90-0-8-dot3-%E3%80%91%E5%8D%81%E4%BA%8C%E9%87%8D%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="toc-text">【$0.8\dot3$】十二重计数法</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          
+              <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+                <i class="iconfont icon-github"></i>
+              </a>
+              
+        </li>
+        
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2024 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+
+      </div>
+    </div>
+  </body>
+</html>

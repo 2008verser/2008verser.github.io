@@ -13,7 +13,7 @@
   
   <title>
     
-      Tag 
+      分拆数&amp;钩子公式学习笔记 
       
       
       |
@@ -140,21 +140,161 @@
 
 
 
-  <!-- 标签页 url形式：https://yoursite/tags/ -->
-  <div class="container tag-index">
-    <div>
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" rel="tag">多项式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E6%88%96/" rel="tag">异或</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%9C%9F%E6%9C%9B/" rel="tag">概率与期望</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag">生成函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E7%9B%B8%E5%85%B3/" rel="tag">线性相关</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="tag">组合数学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a><span class="tag-list-count">6</span></li></ul>
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">分拆数&钩子公式学习笔记</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2024-11-17 22:41:17
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">
+                    <b>#</b> 数学
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E6%95%B0%E5%AD%A6/" title="数学">
+                    #数学
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h2 id="分拆数-p-n"><a href="#分拆数-p-n" class="headerlink" title="分拆数 $p_n$"></a>分拆数 $p_n$</h2><p>其 gf 为<br>$$<br>\sum p_nx^n=\prod_{i=1}^{\infin}\frac{1}{1-x^i}<br>$$</p>
+<h2 id="k-部分拆数-p-n-k"><a href="#k-部分拆数-p-n-k" class="headerlink" title="$k$ 部分拆数 $p(n,k)$"></a>$k$ 部分拆数 $p(n,k)$</h2><p>递推：将等式两侧同时减 $k$ 并枚举右侧零的数量 $i$。<br>$$<br>p(n,k)=\sum_{i=0}^{k}p(n-k,k-i)=\sum_{i=0}^kp(n-k,i)<br>$$<br>画出转移图不难得到<br>$$<br>p(n,k)=p(n-1,k-1)+p(n-k,k)<br>$$<br>也可以分 $r_1=1$ 和 $r1\gt 1$ 得到。</p>
+<p>其二元 gf 为<br>$$<br>\sum p(n,k)x^ny^k=\prod_{i=1}^{\infin}\frac{1}{1-x^iy}<br>$$</p>
+<h2 id="互异分拆数-pd-n"><a href="#互异分拆数-pd-n" class="headerlink" title="互异分拆数 $pd_n$"></a>互异分拆数 $pd_n$</h2><p>其 gf 为<br>$$<br>\sum pd_nx^n=\prod_{i=1}^{\infin}(1+x^i)<br>$$</p>
+<h2 id="互异-k-部分拆数-pd-n-k"><a href="#互异-k-部分拆数-pd-n-k" class="headerlink" title="互异 $k$ 部分拆数 $pd(n,k)$"></a>互异 $k$ 部分拆数 $pd(n,k)$</h2><p>递推：将等式两侧同时减 $k$，分 $r_1=1$ 和 $r_1\gt 1$。<br>$$<br>pd(n,k)=pd(n-k,k)+pd(n-k,k-1)<br>$$<br>其二元 gf 为<br>$$<br>\sum pd(n,k)x^ny^k=\prod_{i=1}^{\infin}(1+x^iy)<br>$$</p>
+<h2 id="奇分拆数-po-n"><a href="#奇分拆数-po-n" class="headerlink" title="奇分拆数 $po_n$"></a>奇分拆数 $po_n$</h2><p>$$<br>\prod_{i=1}^{\infin}(1+x^i)=\prod_{i=1}^{\infin}\frac{1-x^{2i}}{1-x^i}=\prod_{i=1}^{\infin}\frac{1}{1-x^{2i-1}}<br>$$</p>
+<p>左边是互异分拆数的 gf，右侧是奇分拆数的 gf。所以 $po_n=pd_n$。</p>
+<h2 id="五边形数定理"><a href="#五边形数定理" class="headerlink" title="五边形数定理"></a>五边形数定理</h2><ul>
+<li>互异奇、偶分拆数 $pdo_n,pde_n$。</li>
+</ul>
+<p>注意下式，即 $p_n$ 的 gf 的倒数<br>$$<br>\prod_{i=1}^{\infin}(1-x^i)<br>$$<br>是<br>$$<br>\sum(pde_n-pdo_n)x^n<br>$$<br>接下证明在大多数情况下 $pde_n=pdo_n$，即 $x^n$ 项系数为 $0$，其余情况二者之差不超过 $1$。</p>
+<p>考虑将 $n$ 所有分拆两两分组，即令互异奇分拆与互异偶分拆形成双射。</p>
+<p>画出 Ferrers 图，比较右上角极长 $45^{\circ}$ 连续段的长度 $s$ 和底部长度 $b$。将较小的一方挪到另一方即可改变部分数的奇偶性。</p>
+<p>但是对于某些 $n$，存在无法进行上述操作的 Ferrers 图。不难发现只有如下两种：</p>
+<p><img src="5.png" alt=""></p>
+<p>此时 $n=\frac{s(3s-1)}{2}$ 或 $n=\frac{s(3s+1)}{2}$。不论从代数角度还是图形角度，我们知道两种情况不会同时发生。$\Box$</p>
+<p>下面仔细推导一下该生成函数展开式的系数。</p>
+<p>这些 $n$ 处的系数即 $pde_n-pdo_n$，与 $s$ 的奇偶性有关。$s$ 是奇数就是 $-1$，偶数就是 $1$。</p>
+<p>为了得到更漂亮的结论我们整理两个条件得到 $x^n$ 的系数<br>$$<br>\begin{cases}<br>(-1)^s&amp;\exist s\in\mathbb{Z},n=\frac{s(3s-1)}{2}\\<br>0&amp;others<br>\end{cases}<br>$$<br>换句话说一开始的生成函数等于<br>$$<br>\prod_{i=1}^{\infin}(1-x^i)=\sum_{i=-\infin}^{\infin}(-1)^ix^{\frac{i(3i-1)}{2}}=1-x-x^2+x^5+x^7-x^{12}-\dots<br>$$<br>零次项系数为 $1$，恰好是 $pde_0=1,pdo_0=0$，符合常理。$\Box$</p>
+<p>下面给出其和 $p_n$ 的联系。（其实就是它和 $p_n$ 的生成函数乘积是 $1$ 啦）。<br>$$<br>(1+p_1x+p_2x^2+\dots)(1-x-x^2+x^5+x^7-x^{12}-\dots)=1<br>$$<br>对比系数即可得到 $p_n$ 的递推式！<br>$$<br>p_n-p_{n-1}-p_{n-2}+p_{n-5}+\dots=0\Longrightarrow p_n=p_{n-1}+p_{n-2}-p_{n-5}-\dots<br>$$</p>
+<blockquote>
+<p>这个时候会发现上面讨论的生成函数是数列 $\{p_n\}$ 的特征多项式交换高低次项的结果。</p>
+<p>这和<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/article/uy0wc1x4">前面一篇博客</a>得到的结论是一样的。即将特征多项式交换高低次项，得到数列 gf 的逆。$\Box$</p>
+</blockquote>
+<p>为什么是五边形数定理呢？注意到第 $n$ 个五边形数等于 $\frac{n(3n-1)}{2}$。</p>
+<p><img src="6.png" alt=""></p>
+<h2 id="钩长公式"><a href="#钩长公式" class="headerlink" title="钩长公式"></a>钩长公式</h2><p>给定大小为 $n$ 的杨表 $\lambda=(\lambda_1,\lambda_2,\dots)$。定义一个格子 $(i,j)$ 的钩长 $h_{i,j}$ 等于其右侧下侧以及它本身的全部格子数量。</p>
+<p>现要求用 $1\sim n$ 填充格子使每行每列递增。求方案数。</p>
+<p>结论：答案等于<br>$$<br>H(\lambda)=\frac{n!}{\prod h_{i,j}}<br>$$<br>证明：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/suncongbo/p/14967000.html">【学习笔记】杨表的拓扑序计数与钩长公式 - suncongbo - 博客园</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/639459761">钩长公式(Hook Length Formula)：杨表中的计数结论 - 知乎</a></p>
+<p>设 $F(\lambda)$ 表示标准答案。注意到 $n$ 一定在某个“角落”，考虑简单的 dp。</p>
+<p>枚举 $n$ 所处的位置是第 $i$ 个角落 $(\alpha_i,\beta_i)$，并设 $\mu_i$ 表示一个杨表，其由 $\lambda$ 抠去 $(\alpha_i,\beta_i)$ 得到，记为 $\mu_i\uparrow\lambda$。</p>
+<p>显然<br>$$<br>F(\lambda)=\sum_{\mu\uparrow\lambda}F(\mu)<br>$$<br>现在转为证明上面定义的 $H(\lambda)$ 具有同样的递推式。<br>$$<br>H(\lambda)=\sum_{\mu\uparrow\lambda}H(\mu)\Longleftrightarrow \sum_{\mu\uparrow\lambda}\frac{H(\mu)}{H(\lambda)}=1<br>$$<br>归 $1$ 启示我们使用概率。将 $H$ 按定义式拆开并化简。关注求和的其中一项 $\mu_i$，其由 $\lambda$ 抠去 $(\alpha,\beta)$ 得到：<br>$$<br>\frac{H(\mu)}{H(\lambda)}=\frac{1}{n}\prod_{i=1}^{\alpha-1}(1+\frac{1}{h_{i,\beta}-1})\prod_{j=1}^{\beta-1}(1+\frac{1}{h_{\alpha,j}-1})=\frac{1}{n}\sum_{A\subseteq\{1,\dots,\alpha-1\}\\\B\subseteq\{1,\dots,\beta-1\}}\prod_{i\in A}\frac{1}{h_{i,\beta}-1}\prod_{j\in B}\frac{1}{h_{\alpha,i}-1}<br>$$</p>
+<p>定义 hook-walk：</p>
+<ul>
+<li>随机降落在一个杨表中的格子 $(i,j)$。</li>
+<li>在 $(i,j)$ 下面和右边的全部格子中随机一个，并移动到这里。</li>
+<li>直到 $(i,j)$ 到达边角 $c$。</li>
+</ul>
+<p>关注求和的一个 $A,B$，右边的乘积是：</p>
+<p>第一步降落 $(A_1,B_1)$，在 $(\alpha,\beta)$ 终止的全部 hook-walk 路径中，经过的行列集合分别是 $A,B$ 的概率。</p>
+<p>原因是，行列的行走是独立的。因此概率相乘。上面的两篇博客使用的是 dp 归纳。$\Box$</p>
+<p>那么整个求和的结果就是最终到达 $(\alpha,\beta)$ 的概率。即<br>$$<br>\mathbb{P}(c=(\alpha,\beta))=\frac{H(\mu)}{H(\lambda)}<br>$$<br>所以得到<br>$$<br>\sum_{\mu\uparrow\lambda}\frac{H(\mu)}{H(\lambda)}=\sum \mathbb{P}(c=(\alpha_i,\beta_i))=1<br>$$<br>$\Box$</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2024/11/17/%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2024-11-17 22:41:17
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="Categories"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">
+                        <b>#</b> 数学
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E6%95%B0%E5%AD%A6/" title="数学">
+                        #数学
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%8B%86%E6%95%B0-p-n"><span class="toc-text">分拆数 $p_n$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k-%E9%83%A8%E5%88%86%E6%8B%86%E6%95%B0-p-n-k"><span class="toc-text">$k$ 部分拆数 $p(n,k)$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E5%BC%82%E5%88%86%E6%8B%86%E6%95%B0-pd-n"><span class="toc-text">互异分拆数 $pd_n$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E5%BC%82-k-%E9%83%A8%E5%88%86%E6%8B%86%E6%95%B0-pd-n-k"><span class="toc-text">互异 $k$ 部分拆数 $pd(n,k)$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%87%E5%88%86%E6%8B%86%E6%95%B0-po-n"><span class="toc-text">奇分拆数 $po_n$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E8%BE%B9%E5%BD%A2%E6%95%B0%E5%AE%9A%E7%90%86"><span class="toc-text">五边形数定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%A9%E9%95%BF%E5%85%AC%E5%BC%8F"><span class="toc-text">钩长公式</span></a></li></ol>
+      
     </div>
   </div>
-  
 
   
+<script src="/js/catalog.js"></script>
 
-  
 
-  
 
-  
+
+    
+  </div>
+
 
         
 <div class="footer">

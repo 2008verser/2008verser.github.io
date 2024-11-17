@@ -155,20 +155,14 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2024-11-17 13:41:30
+          2024-11-17 19:51:36
         </span>
         
               <span class="post-categories">
                 <i class="iconfont icon-bookmark" title="Categories"></i>
                 
                 <span class="span--category">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">
-                    <b>#</b> 数学
-                  </a>
-                </span>
-                
-                <span class="span--category">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
                     <b>#</b> 数据结构
                   </a>
                 </span>
@@ -313,8 +307,8 @@
 <li>基不唯一，且可以是原集合的子集。</li>
 </ul>
 <p>（如果你是线代大师会觉得这很显然）</p>
-<p>举个例子，$a=\{1,2,3\}$，一个合法的基是 $\{2,3\}$。<br>$$<br>\begin{aligned}<br>10\<br>11\<br>\end{aligned}<br>$$<br>但是这种基并不会被我们构造出来，因为他们的最高位都是 $2^1$ 位。</p>
-<p>我们构造的应是：<br>$$<br>\begin{aligned}<br>01\<br>10\<br>\end{aligned}<br>$$<br>这两种基<strong>本质是相同</strong>的。我们可以对第一个基进行<strong>内部异或运算</strong>。它一定可以变成第二个。<strong>（全部基都可以这样，证明考虑【模板】的证明）</strong></p>
+<p>举个例子，$a=\{1,2,3\}$，一个合法的基是 $\{2,3\}$。<br>$$<br>\begin{aligned}<br>10\\<br>11\\<br>\end{aligned}<br>$$<br>但是这种基并不会被我们构造出来，因为他们的最高位都是 $2^1$ 位。</p>
+<p>我们构造的应是：<br>$$<br>\begin{aligned}<br>01\\<br>10\\<br>\end{aligned}<br>$$<br>这两种基<strong>本质是相同</strong>的。我们可以对第一个基进行<strong>内部异或运算</strong>。它一定可以变成第二个。<strong>（全部基都可以这样，证明考虑【模板】的证明）</strong></p>
 <ul>
 <li>常见的线性基，由<strong>尽可能靠前</strong>的元素组成。</li>
 </ul>
@@ -426,7 +420,7 @@
 <h2 id="CF1163E-Magical-Permutation"><a href="#CF1163E-Magical-Permutation" class="headerlink" title="CF1163E Magical Permutation"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1163E">CF1163E Magical Permutation</a></h2><p>我们可以先枚举 $x$，判断是否存在相邻两个数的 Xor 属于 $S$ 的、$0\to 2^x-1$ 的排列。简记 $n=2^x-1$。</p>
 <p>设排列的第一个数为 $\alpha$，第二个为 $\beta$。设排列相邻两两异或值为 $S_{i_1\to i_{n-1}}$。</p>
 <p>则 $\alpha\oplus\beta=S_{i_1}$，即 $\beta=\alpha\oplus S_{i_1}$。</p>
-<p>那可以表示出整个排列：<br>$$<br>\begin{aligned}<br>&amp;\alpha\<br>&amp;\alpha\oplus s_{i_1}\<br>&amp;\alpha\oplus s_{i_1}\oplus s_{i_2}\<br>&amp;……<br>\end{aligned}<br>$$<br>$\alpha$ 不知道哎！没关系！把排列每个数异或上 $\alpha$，得到的还是一个排列。<br>$$<br>\begin{aligned}<br>&amp;0\<br>&amp;s_{i_1}\<br>&amp;s_{i_1}\oplus s_{i_2}\<br>&amp;……<br>\end{aligned}<br>$$<br>现在要解决：不断从 $S$ 里选数，和上一个数异或，得出新一个数。重复这个操作，要构造排列。</p>
+<p>那可以表示出整个排列：<br>$$<br>\begin{aligned}<br>&amp;\alpha\\<br>&amp;\alpha\oplus s_{i_1}\\<br>&amp;\alpha\oplus s_{i_1}\oplus s_{i_2}\\<br>&amp;……<br>\end{aligned}<br>$$<br>$\alpha$ 不知道哎！没关系！把排列每个数异或上 $\alpha$，得到的还是一个排列。<br>$$<br>\begin{aligned}<br>&amp;0\\<br>&amp;s_{i_1}\\<br>&amp;s_{i_1}\oplus s_{i_2}\\<br>&amp;……<br>\end{aligned}<br>$$<br>现在要解决：不断从 $S$ 里选数，和上一个数异或，得出新一个数。重复这个操作，要构造排列。</p>
 <p>我们设想一下，如果新选的数没被选过，那构造出的一定是新数。</p>
 <p>否则，新选的数会和原先选过的异或相消，<strong>相当于删了一个数。</strong></p>
 <p>所以，这其实是不断在集合中加数、减数的一个过程。</p>
@@ -497,20 +491,14 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2024-11-17 13:41:30
+              2024-11-17 19:51:36
             </span>
             
                   <span class="post-categories">
                     <i class="iconfont icon-bookmark" title="Categories"></i>
                     
                     <span class="span--category">
-                      <a href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">
-                        <b>#</b> 数学
-                      </a>
-                    </span>
-                    
-                    <span class="span--category">
-                      <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
+                      <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
                         <b>#</b> 数据结构
                       </a>
                     </span>

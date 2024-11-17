@@ -155,7 +155,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2024-07-30 21:17:16
+          2024-11-17 19:52:22
         </span>
         
               <span class="post-categories">
@@ -268,7 +268,7 @@
 <p>时间肯定过不去。用生成函数凑一凑。设普通型生成函数 $F_i(x)=1+x+x^2+…+x^{m_i}$。</p>
 <p>可以得到 $F_i(x)$ 的封闭形式<br>$$<br>F_i(x)=\frac{1-x^{m_i+1}}{1-x}<br>$$</p>
 <p>全部乘起来<br>$$<br>\frac{\Pi(1-x^{m_i+1})}{(1-x)^n}=(1-x)^{-n}\Pi(1-x^{m_i+1})<br>$$<br>记 $\Pi(1-x^{m_i+1})$ 的结果为多项式 $G(x)$。虽然它的最高次数很大，但是项数很少，不超过 $2^n$ 个，可以 dfs 求出 $G(x)$。</p>
-<p>定义广义组合数<br>$$<br>{n\choose m}=\frac{n(n-1)…(n-m+1)}{m!}<br>$$<br>根据牛顿二项式定理把 $(1-x)^{-n}$ 展开<br>$$<br>\begin{aligned}<br>(1-x)^{-n}&amp;=\sum_{i=0}^{\infty}{-n\choose i}(-x)^i\<br>&amp;=\sum_{i=0}^{\infty}\frac{(-n)(-n-1)…(-n-i+1)}{i!}(-x)^i<br>\end{aligned}<br>$$<br>分子里可以拿 $(-1)^i$ 出来，右侧 $(-x)^i=((-1)x)^i=(-1)^ix^i$。两个 $(-1)^i$ 相乘等于 $(-1)^{2i}=1$。原式变为<br>$$<br>\sum_{i=0}^{\infty}\frac{n(n+1)…(n+i-1)}{i!}x^i=\sum_{i=0}^{\infty}{n+i-1\choose i}x^i<br>$$<br>先把这个东西放着，记为多项式 $S(x)$。看一下答案求的是啥，是两个多项式卷起来后 $x^a$ 到 $x^b$ 的系数之和，即<br>$$<br>\sum_{i+j\in[a,b]}[x^i]S(x)\times[x^j]G(x)<br>$$<br>我们不考虑分别求出 $x^a$ 到 $x^b$ 的每一个系数。转而计算全部系数的和。</p>
+<p>定义广义组合数<br>$$<br>{n\choose m}=\frac{n(n-1)…(n-m+1)}{m!}<br>$$<br>根据牛顿二项式定理把 $(1-x)^{-n}$ 展开<br>$$<br>\begin{aligned}<br>(1-x)^{-n}&amp;=\sum_{i=0}^{\infty}{-n\choose i}(-x)^i\\<br>&amp;=\sum_{i=0}^{\infty}\frac{(-n)(-n-1)…(-n-i+1)}{i!}(-x)^i<br>\end{aligned}<br>$$<br>分子里可以拿 $(-1)^i$ 出来，右侧 $(-x)^i=((-1)x)^i=(-1)^ix^i$。两个 $(-1)^i$ 相乘等于 $(-1)^{2i}=1$。原式变为<br>$$<br>\sum_{i=0}^{\infty}\frac{n(n+1)…(n+i-1)}{i!}x^i=\sum_{i=0}^{\infty}{n+i-1\choose i}x^i<br>$$<br>先把这个东西放着，记为多项式 $S(x)$。看一下答案求的是啥，是两个多项式卷起来后 $x^a$ 到 $x^b$ 的系数之和，即<br>$$<br>\sum_{i+j\in[a,b]}[x^i]S(x)\times[x^j]G(x)<br>$$<br>我们不考虑分别求出 $x^a$ 到 $x^b$ 的每一个系数。转而计算全部系数的和。</p>
 <p>因为 $G(x)$ 可以算出来，那就枚举 $G(x)$ 的里的项。记枚举 $x^k$ 的系数。</p>
 <p>我们知道，$x^k$ 的系数会和 $S(x)$ 里的某几项相乘、求和、加到结果多项式里的 $x^a\to x^b$ 之间，</p>
 <p>哪几项呢？当然是 $x^{a-k}\to x^{b-k}$ 项啦。</p>
@@ -326,7 +326,7 @@
 <p>类似地，<strong>你一共可以证明 $[l,a]$ 和 $[a,r]$ 和 $[r,b]$ 是三个两两相交大小为 1 的框段！</strong></p>
 <p><strong>也就是说任意两个相交大小大于 1 的框段，我们可以拆成三个两两相交大小为 1 的框段。</strong>证毕。</p>
 </blockquote>
-<p>先想想一个框段 $[l,r]$ 的充要条件。一通搞可以得到这个式子：<br>$$<br>a_{l}=\min(a_{l\to r}),a_r=\max(a_{l\to r})\<br>a_l-l=a_r-r<br>$$<br>一、考虑一种 $n^2$ 的暴力。</p>
+<p>先想想一个框段 $[l,r]$ 的充要条件。一通搞可以得到这个式子：<br>$$<br>a_{l}=\min(a_{l\to r}),a_r=\max(a_{l\to r})\\<br>a_l-l=a_r-r<br>$$<br>一、考虑一种 $n^2$ 的暴力。</p>
 <p>枚举障碍段的左端点 $l$，从左端点开始向右扩展右端点。然后套这个式子。</p>
 <p>但是这样会做到非障碍段的框段。固然可以全搞下来去重，更好的方法是从后往前枚举 $l$。</p>
 <p>这样的话第一个找到的框段一定是障碍段。我们可以将变量 $Rlimit$ 赋值为第一个框段的左端点。</p>
@@ -408,7 +408,7 @@
 <p>这下子就好转移了，分为 $i$ 填红还是黑。然后乘上选这第 $i$ 个的方法数。</p>
 <p>如果当前填红色（最高奇偶性为奇），上一步应当填了 $j-1$ 个红色，这一步有 $qwq-(j-1)$ 个红色可选。</p>
 <p>上一步奇偶差加上 $a_i$ 等于 $k$，上一步奇偶差为 $k-a_i$。</p>
-<p>黑色类似。<br>$$<br>f_{i,j,k}=<br>\begin{cases}<br>f_{i-1,j-1,k-a_i}\times(qwq-(j-1))+\<br>f_{i-1,j,k+a_i}\times(ovo-(i-j)+1)<br>\end{cases}<br>$$<br>接着我们将 $n2$ 个偶数长度的数字<strong>加上去</strong>。</p>
+<p>黑色类似。<br>$$<br>f_{i,j,k}=<br>\begin{cases}<br>f_{i-1,j-1,k-a_i}\times(qwq-(j-1))+\\<br>f_{i-1,j,k+a_i}\times(ovo-(i-j)+1)<br>\end{cases}<br>$$<br>接着我们将 $n2$ 个偶数长度的数字<strong>加上去</strong>。</p>
 <p>考虑第一张图，偶数长度的数字跟右边第一个奇数长度的数字最高奇偶性一致。</p>
 <ul>
 <li><p>我们可以把第 $i$ 个加到一个奇数长度的数字之前，$i$ 的最高奇偶性与这个数字一致。</p>
@@ -425,7 +425,7 @@
 <li>已加入的、为正的数字有 $j-1$ 个。（算上 $i$ 共 $j$ 个）</li>
 <li>若奇数长度数字是偶数个。</li>
 </ul>
-<p>偶类似。<br>$$<br>g_{i,j,k}=<br>\begin{cases}<br>g_{i-1,j-1,k-b_i}\times(j-1+qwq+[n1\bmod2==0])+\<br>g_{i-1,j,k+b_i}\times(i-1-j+ovo+[n1\bmod 2==1])<br>\end{cases}<br>$$<br>答案即<br>$$<br>\sum_{i=0}^{n2} g_{n2,i,0}<br>$$</p>
+<p>偶类似。<br>$$<br>g_{i,j,k}=<br>\begin{cases}<br>g_{i-1,j-1,k-b_i}\times(j-1+qwq+[n1\bmod2==0])+\\<br>g_{i-1,j,k+b_i}\times(i-1-j+ovo+[n1\bmod 2==1])<br>\end{cases}<br>$$<br>答案即<br>$$<br>\sum_{i=0}^{n2} g_{n2,i,0}<br>$$</p>
 <hr>
 <h2 id="ARC068C"><a href="#ARC068C" class="headerlink" title="ARC068C"></a>ARC068C</h2><blockquote>
 <p>有长为 $m$ 的数轴，上面有点 $0,1,…,m$。有 $n$ 个区间，第 $i$ 个区间覆盖点 $[l_i,r_i]$。</p>
@@ -484,7 +484,7 @@
 <p>进行一次实验，这个独立事件发生的概率显然是 $\dfrac{\sum_{i\in T} c_i}{n}$。</p>
 <blockquote>
 <p>独立事件发生概率为 $p$，第一次发生期望次数 $E=\frac{1}{p}$。</p>
-<p>证明：<br>$$<br>\begin{aligned}<br>q&amp;=1-p\<br>E&amp;=\sum_{i=1}^\inf iq^{i-1}p=\sum_{i=1}^\inf (i-1+1)q^{i-1}p=\sum_{i=1}^\inf(i-1)q^{i-1}p+\sum_{i=1}^\inf q^{i-1}p\<br>&amp;=(\sum_{i=1}^\inf iq^ip)+1=(q\sum_{i=1}^\inf iq^{i-1}p)+1=qE+1=(1-p)E+1\<br>&amp;\because E=(1-p)E+1\<br>&amp;\therefore E=\frac{1}{p}(p\neq 0)<br>\end{aligned}<br>$$</p>
+<p>证明：<br>$$<br>\begin{aligned}<br>q&amp;=1-p\\<br>E&amp;=\sum_{i=1}^\inf iq^{i-1}p=\sum_{i=1}^\inf (i-1+1)q^{i-1}p=\sum_{i=1}^\inf(i-1)q^{i-1}p+\sum_{i=1}^\inf q^{i-1}p\\<br>&amp;=(\sum_{i=1}^\inf iq^ip)+1=(q\sum_{i=1}^\inf iq^{i-1}p)+1=qE+1=(1-p)E+1\\<br>&amp;\because E=(1-p)E+1\\<br>&amp;\therefore E=\frac{1}{p}(p\neq 0)<br>\end{aligned}<br>$$</p>
 </blockquote>
 <p>期望就是<br>$$<br>\dfrac{n}{\sum_{i\in T} c_i}<br>$$</p>
 <p>我们的式子变成了<br>$$<br>E(\max_{i\in U} S_i)=\sum_{T\subseteq U}(-1)^{|T|-1}\times\dfrac{n}{\sum_{i\in T} c_i}<br>$$<br>使用一个常见的拆贡献方法，设 $\sum_{i\in T} c_i=x$，则原式变为<br>$$<br>\sum_{x=1}^n F(x)\times\frac{n}{x}<br>$$<br>$F(x)$ 是一个负或正的整数。因为原式中全部 $\frac{n}{x}$ 相等的项可以合并同类项。$F(x)$ 就是合并完以后他们的系数。</p>
@@ -556,7 +556,7 @@
 <p>我没有想到低于 $O(n^2)$ 的做法。继续考虑，枚举极长段的右端点。</p>
 <p>那么左端点一直可以延伸到上一个 ‘x’ 出现的位置 +1。</p>
 <p>然后有一些位置是不能当作左端点的，比如：<code>...oo...</code>，此时右边这个 <code>o</code> 不行。</p>
-<p>紧接着感受一下，右端点是可以从 $i$ 移动到 $i+1$ 的。维护：<br>$$<br>\begin{aligned}<br>s=()^2\times(\frac{1}{2})^{()}+()^2\times(\frac{1}{2})^{()}+…\<br>f=()\times(\frac{1}{2})^{()}+()\times(\frac{1}{2})^{()}+…\<br>p=(\frac{1}{2})^{()}+(\frac{1}{2})^{()}+…\<br>\end{aligned}<br>$$<br>小力分讨就好了。</p>
+<p>紧接着感受一下，右端点是可以从 $i$ 移动到 $i+1$ 的。维护：<br>$$<br>\begin{aligned}<br>s=()^2\times(\frac{1}{2})^{()}+()^2\times(\frac{1}{2})^{()}+…\\<br>f=()\times(\frac{1}{2})^{()}+()\times(\frac{1}{2})^{()}+…\\<br>p=(\frac{1}{2})^{()}+(\frac{1}{2})^{()}+…\\<br>\end{aligned}<br>$$<br>小力分讨就好了。</p>
 <hr>
 <h2 id="CF858F"><a href="#CF858F" class="headerlink" title="CF858F"></a>CF858F</h2><blockquote>
 <p>$n$ 个点 $m$ 条边简单无向图，求最大的三元组数量，记三元组为 $(a,b,c)$。</p>
@@ -816,23 +816,23 @@
 <li>${n\choose m}={n+1\choose m+1}-{n\choose m+1}$</li>
 </ul>
 <p>但是，第二个此时会使得组合数出现 $a+1$。不行。</p>
-<p>所以把 ${n\choose m}={n+1\choose m}-{n\choose m-1}$ 套到 $n-i-1\choose a$ 上。等于：<br>$$<br>\begin{aligned}<br>&amp;F(a,b-1)+\sum_{i=0}^{b-1}{b-1\choose i}{n-i\choose a}-\sum_{i=0}^{b-1}{b-1\choose i}{n-i-1\choose a-1}\<br>=&amp;2F(a,b-1)-\sum_{i=0}^{b-1}{b-1\choose i}{n-i-1\choose a-1}<br>\end{aligned}<br>$$<br>此时出现了 $a-1$。而 $n-i-1$ 消不掉。</p>
+<p>所以把 ${n\choose m}={n+1\choose m}-{n\choose m-1}$ 套到 $n-i-1\choose a$ 上。等于：<br>$$<br>\begin{aligned}<br>&amp;F(a,b-1)+\sum_{i=0}^{b-1}{b-1\choose i}{n-i\choose a}-\sum_{i=0}^{b-1}{b-1\choose i}{n-i-1\choose a-1}\\<br>=&amp;2F(a,b-1)-\sum_{i=0}^{b-1}{b-1\choose i}{n-i-1\choose a-1}<br>\end{aligned}<br>$$<br>此时出现了 $a-1$。而 $n-i-1$ 消不掉。</p>
 <p>那走 $a-1$ 的道路。注意右上角是 $n-(i+1)$。所以可以让左下角同样变成 $i+1$。</p>
 <p>套 ${n\choose m}={n+1\choose m+1}-{n\choose m+1}$ 到 ${b-1\choose i}$ 上。得到：<br>$$<br>2F(a,b-1)-\sum_{i=0}^{b-1}{b\choose i+1}{n-i-1\choose a-1}+\sum_{i=0}^{b-1}{b-1\choose i+1}{n-i-1\choose a-1}<br>$$<br>左侧将 $i+1$ 换为 $i$，并令 $i$ 从零开始，最后减去 $i=0$ 的式子。</p>
-<p>右侧类似。得到：<br>$$<br>\begin{aligned}<br>&amp;2F(a,b-1)-[\sum_{i=0}^{b}{b\choose i}{n-i\choose a-1}-{n\choose a-1}]+[\sum_{i=0}^{b-1}{b-1\choose i}{n-i\choose a-1}-{n\choose a-1}]\<br>=&amp;2F(a,b-1)-F(a-1,b)+F(a-1,b-1)<br>\end{aligned}<br>$$<br>就做完了。</p>
+<p>右侧类似。得到：<br>$$<br>\begin{aligned}<br>&amp;2F(a,b-1)-[\sum_{i=0}^{b}{b\choose i}{n-i\choose a-1}-{n\choose a-1}]+[\sum_{i=0}^{b-1}{b-1\choose i}{n-i\choose a-1}-{n\choose a-1}]\\<br>=&amp;2F(a,b-1)-F(a-1,b)+F(a-1,b-1)<br>\end{aligned}<br>$$<br>就做完了。</p>
 <hr>
 <h2 id="P6667"><a href="#P6667" class="headerlink" title="P6667"></a>P6667</h2><p>$f(x)$ 是一个关于 $x$ 的 $m$ 次多项式。</p>
 <h3 id="推导一："><a href="#推导一：" class="headerlink" title="推导一："></a>推导一：</h3><p>为防混乱，将题面中的 $x$ 换做 $z$。</p>
 <p>设 $h_{1\to m}$ 满足：<br>$$<br>f(x)=\sum_{i=0}^m{x\choose i}h_i<br>$$<br>之所以可以换成组合数，并求和，是因为 ${n\choose m}=\frac{\Pi_{i=1}^m(n-i+1)}{m!}$，可以理解为一个关于 $n$ 的 $m$ 次多项式。</p>
 <p>当 $i&gt;x$ 时，$x\choose i$ 为零。所以枚举上界可以换成 $x$。当 $x&gt;m$ 时一些 $h_i$ 不存在，视作零。</p>
-<p>并且可以用二项式反演得到 $h$。<br>$$<br>f(x)=\sum_{i=0}^x{x\choose i}h_i{\color{red}\Rightarrow} h_x=\sum_{i=0}^x(-1)^{x-i}{x\choose i}f(i)<br>$$<br>但直接算 $h$ 要 $O(m^2)$ 的时间。注意式子中有 $x-i$ 又有 $i$。故化为卷积。<br>$$<br>\begin{aligned}<br>h_x&amp;=\sum_{i=0}^x(-1)^{x-i}{x\choose i}f(i)\<br>\frac{h_x}{x!}&amp;=\sum_{i=0}^x\frac{f(i)}{i!}\times \frac{(-1)^{x-i}}{(x-i)!}<br>\end{aligned}<br>$$<br>把求完的 $f$ 用 $h$ 表示，带回原式。<br>$$<br>\begin{align}<br>Q(f,n,z)&amp;=\sum_{k=0}^n\sum_{i=0}^m h_i{k\choose i}{n\choose k}z^k(1-z)^{n-k}\tag 1\<br>&amp;=\sum_{i=0}^mh_i\sum_{k=0}^n {n\choose i}{n-i\choose k-i}z^k(1-z)^{n-k}\tag 2<br>\end{align}<br>$$<br>把 $n\choose i$ 提到第一个 $\sum$，接着因为 $k&lt;i$ 时 ${n-i\choose k-i}$ 为零，所以第二个 $\sum$ 下界是 $i$。<br>$$<br>\begin{align}<br>=&amp;\sum_{i=0}^mh_i{n\choose i}\sum_{k=i}^n {n-i\choose k-i}z^k(1-z)^{n-k}\tag 3\<br>=&amp;\sum_{i=0}^mh_i{n\choose i}z^i\sum_{k=i}^n {n-i\choose k-i}z^{k-i}(1-z)^{n-k}\tag 4<br>\end{align}<br>$$<br>再把 $k-i$ 替换为 $i$，惊喜地发现右边变成了 $(z+1-z)^{n-i}$ 的展开式，即等于 $1$。<br>$$<br>\begin{align}<br>=&amp;\sum_{i=0}^mh_i{n\choose i}z^i\sum_{k=0}^{n-i}{n-i\choose k}z^{k}(1-z)^{n-i-k}\tag 5\<br>=&amp;\sum_{i=0}^mh_i{n\choose i}z^i<br>\end{align}<br>$$<br>至此，可以 $O(m)$ 计算。要 $O(m\log m)$ 的卷积。</p>
+<p>并且可以用二项式反演得到 $h$。<br>$$<br>f(x)=\sum_{i=0}^x{x\choose i}h_i{\color{red}\Rightarrow} h_x=\sum_{i=0}^x(-1)^{x-i}{x\choose i}f(i)<br>$$<br>但直接算 $h$ 要 $O(m^2)$ 的时间。注意式子中有 $x-i$ 又有 $i$。故化为卷积。<br>$$<br>\begin{aligned}<br>h_x&amp;=\sum_{i=0}^x(-1)^{x-i}{x\choose i}f(i)\\<br>\frac{h_x}{x!}&amp;=\sum_{i=0}^x\frac{f(i)}{i!}\times \frac{(-1)^{x-i}}{(x-i)!}<br>\end{aligned}<br>$$<br>把求完的 $f$ 用 $h$ 表示，带回原式。<br>$$<br>\begin{align}<br>Q(f,n,z)&amp;=\sum_{k=0}^n\sum_{i=0}^m h_i{k\choose i}{n\choose k}z^k(1-z)^{n-k}\tag 1\\<br>&amp;=\sum_{i=0}^mh_i\sum_{k=0}^n {n\choose i}{n-i\choose k-i}z^k(1-z)^{n-k}\tag 2<br>\end{align}<br>$$<br>把 $n\choose i$ 提到第一个 $\sum$，接着因为 $k&lt;i$ 时 ${n-i\choose k-i}$ 为零，所以第二个 $\sum$ 下界是 $i$。<br>$$<br>\begin{align}<br>=&amp;\sum_{i=0}^mh_i{n\choose i}\sum_{k=i}^n {n-i\choose k-i}z^k(1-z)^{n-k}\tag 3\\<br>=&amp;\sum_{i=0}^mh_i{n\choose i}z^i\sum_{k=i}^n {n-i\choose k-i}z^{k-i}(1-z)^{n-k}\tag 4<br>\end{align}<br>$$<br>再把 $k-i$ 替换为 $i$，惊喜地发现右边变成了 $(z+1-z)^{n-i}$ 的展开式，即等于 $1$。<br>$$<br>\begin{align}<br>=&amp;\sum_{i=0}^mh_i{n\choose i}z^i\sum_{k=0}^{n-i}{n-i\choose k}z^{k}(1-z)^{n-i-k}\tag 5\\<br>=&amp;\sum_{i=0}^mh_i{n\choose i}z^i<br>\end{align}<br>$$<br>至此，可以 $O(m)$ 计算。要 $O(m\log m)$ 的卷积。</p>
 <p>总时间复杂度 $O(m\log m)$。</p>
 <hr>
 <h3 id="推导二："><a href="#推导二：" class="headerlink" title="推导二："></a>推导二：</h3><p>学完多项式连续点值表达与下降幂的转换来补一发。</p>
 <p>原理是类似的。只不过式子有一步比较难推。</p>
-<p>设 $f(x)$ 的下降幂形式，然后用二项式反演推 $b$。化成卷积即可求 $b$。<br>$$<br>\begin{aligned}<br>&amp;f(x)=\sum_{i=0}^mb_ix^{\underline{i}}{\color{red}\Rightarrow} b_x=\sum_{i=0}^{x}(-1)^{x-i}{x\choose i}f(i)\<br>&amp;{\color{red}\Rightarrow}b_x=\sum_{i=0}^x\frac{(-1)^{x-i}}{(x-i)!}\frac{a_i}{i!}<br>\end{aligned}<br>$$<br>带入原式，得：<br>$$<br>\begin{align}<br>Q(f,n,x)&amp;=\sum_{k=0}^n\sum_{i=0}^mb_ik^{\underline{i}}{n\choose k}x^k(1-x)^{n-k}\tag 1\<br>&amp;=\sum_{i=0}^{m}b_i\sum_{k=0}^n\frac{n!}{(k-i)!(n-k)!}x^k(1-x)^{n-k}\tag 2<br>\end{align}<br>$$<br>看起来推不了了。观察式一，$k$ 要大于等于 $i$ 式子才不为零。所以第二行 $k$ 下界是 $i$。</p>
+<p>设 $f(x)$ 的下降幂形式，然后用二项式反演推 $b$。化成卷积即可求 $b$。<br>$$<br>\begin{aligned}<br>&amp;f(x)=\sum_{i=0}^mb_ix^{\underline{i}}{\color{red}\Rightarrow} b_x=\sum_{i=0}^{x}(-1)^{x-i}{x\choose i}f(i)\\<br>&amp;{\color{red}\Rightarrow}b_x=\sum_{i=0}^x\frac{(-1)^{x-i}}{(x-i)!}\frac{a_i}{i!}<br>\end{aligned}<br>$$<br>带入原式，得：<br>$$<br>\begin{align}<br>Q(f,n,x)&amp;=\sum_{k=0}^n\sum_{i=0}^mb_ik^{\underline{i}}{n\choose k}x^k(1-x)^{n-k}\tag 1\\<br>&amp;=\sum_{i=0}^{m}b_i\sum_{k=0}^n\frac{n!}{(k-i)!(n-k)!}x^k(1-x)^{n-k}\tag 2<br>\end{align}<br>$$<br>看起来推不了了。观察式一，$k$ 要大于等于 $i$ 式子才不为零。所以第二行 $k$ 下界是 $i$。</p>
 <p>然后再改变 $k$ 的范围，上界是 $n-i$，而 $1-x$ 的指数是 $n-k-i$。</p>
-<p>为了凑成二项式定理，提 $x^i$ 出来，再上下同时乘以 $n-i$ 凑出定理的组合数。<br>$$<br>\begin{align}<br>&amp;=\sum_{i=0}^{m}b_i\sum_{k=i}^{n-i}\frac{n!}{k!(n-k-i)!}x^{k+i}(1-x)^{n-k-i}\tag 3\<br>&amp;=\sum_{i=0}^{m}b_ix^i\sum_{k=i}^{n-i}\frac{n!}{(n-i)!}\frac{(n-i)!}{k!(n-k-i)!}x^k(1-x)^{n-k-i}\tag 4\<br>&amp;=\sum_{i=0}^{m}b_ix^in^{\underline{i}}\sum_{k=i}^{n-i}{n-i\choose k}x^k(1-x)^{n-k-i}\tag 5\<br>&amp;=\sum_{i=0}^{m}b_ix^in^{\underline{i}}\tag 6<br>\end{align}<br>$$<br>看别人有 $O(m^2)$ 卷积的过了。厉害。</p>
+<p>为了凑成二项式定理，提 $x^i$ 出来，再上下同时乘以 $n-i$ 凑出定理的组合数。<br>$$<br>\begin{align}<br>&amp;=\sum_{i=0}^{m}b_i\sum_{k=i}^{n-i}\frac{n!}{k!(n-k-i)!}x^{k+i}(1-x)^{n-k-i}\tag 3\\<br>&amp;=\sum_{i=0}^{m}b_ix^i\sum_{k=i}^{n-i}\frac{n!}{(n-i)!}\frac{(n-i)!}{k!(n-k-i)!}x^k(1-x)^{n-k-i}\tag 4\\<br>&amp;=\sum_{i=0}^{m}b_ix^in^{\underline{i}}\sum_{k=i}^{n-i}{n-i\choose k}x^k(1-x)^{n-k-i}\tag 5\\<br>&amp;=\sum_{i=0}^{m}b_ix^in^{\underline{i}}\tag 6<br>\end{align}<br>$$<br>看别人有 $O(m^2)$ 卷积的过了。厉害。</p>
 <p>这两种办法本质都是把函数的连续点值表达化为下降幂。</p>
 <p>差异在于分母的阶乘。有时会带来推式子的难度不同。要灵活选择。</p>
 <hr>
@@ -840,14 +840,14 @@
 <blockquote>
 <p>upd on 2024.02.27：很简单消。和【如何优雅地求和】推导过程类似。<br>$$<br>\sum_{j=1}^k{k\brace j}\sum_{i=1}^n{n\choose i}i^{\underline{j}}=\sum_{j=1}^k{k\brace j}\sum_{i=1}^n\frac{n!}{(n-i)!(i-j)!}<br>$$<br>显然 $i$ 可以从 $j$ 开始，然后再换出来组合数。<br>$$<br>=\sum_{j=1}^k{k\brace j}\sum_{i=j}^n\frac{n!}{(n-i)!(i-j)!}=\sum_{j=1}^k{k\brace j}n^{\underline{j}}\sum_{i=0}^{n-j}\frac{(n-j)!}{(n-j-i)!i!}=\sum_{j=1}^k{k\brace j}n^{\underline{j}}2^{n-j}<br>$$</p>
 </blockquote>
-<p>可以乘上 $\frac{1}{j!}$ 使它变成可以进一步化简的组合数。<br>$$<br>\begin{align}<br>\sum_{j=1}^k{k\brace j}\sum_{i=1}^n{n\choose i}i^{\underline{j}}&amp;=\sum_{j=1}^k{k\brace j}\sum_{i=1}^n{n\choose i}{i\choose j}j!\tag 2\<br>&amp;=\sum_{j=1}^k{k\brace j}j!\sum_{i=1}^n{n\choose j}{n-j\choose i-j}\tag 3\<br>&amp;=\sum_{j=1}^k{k\brace j}j!{n\choose j}\sum_{i=0}^{n-j}{n-j\choose i}\tag 4\<br>&amp;=\sum_{j=1}^k{k\brace j}j!{n\choose j}2^{n-j}\tag 5<br>\end{align}<br>$$<br>于是做完了。第二类斯特林数可以 $O(k^2)$ 递推。组合数也是暴力求。</p>
+<p>可以乘上 $\frac{1}{j!}$ 使它变成可以进一步化简的组合数。<br>$$<br>\begin{align}<br>\sum_{j=1}^k{k\brace j}\sum_{i=1}^n{n\choose i}i^{\underline{j}}&amp;=\sum_{j=1}^k{k\brace j}\sum_{i=1}^n{n\choose i}{i\choose j}j!\tag 2\\<br>&amp;=\sum_{j=1}^k{k\brace j}j!\sum_{i=1}^n{n\choose j}{n-j\choose i-j}\tag 3\\<br>&amp;=\sum_{j=1}^k{k\brace j}j!{n\choose j}\sum_{i=0}^{n-j}{n-j\choose i}\tag 4\\<br>&amp;=\sum_{j=1}^k{k\brace j}j!{n\choose j}2^{n-j}\tag 5<br>\end{align}<br>$$<br>于是做完了。第二类斯特林数可以 $O(k^2)$ 递推。组合数也是暴力求。</p>
 <p>$O(k^2+k\log n)$。</p>
 <hr>
 <h2 id="CF1559E"><a href="#CF1559E" class="headerlink" title="CF1559E"></a>CF1559E</h2><p>只考虑前两个限制的话，设 $f_{i,j}$ 表示前 $i$ 个，和为 $j$ 的方案数。</p>
 <p>$$<br>f_{i,j}=\sum_{k=l_i}^{r_i}f_{i-1,j-k}<br>$$</p>
 <p>显然可以前缀和优化至 $O(m)$。</p>
 <p>对于第三个限制，直接套莫比乌斯反演的结论，然后套路地把式子拆开：（设 $c(a)$ 表示数列 $a$ 是否满足前两个限制。）</p>
-<p>$$<br>\begin{aligned}<br>&amp;\sum_{a}c(a)[\gcd(a_1,a_2,…,a_n)=1]\<br>=&amp;\sum_{a}c(a)\sum_{x|a_1,x|a_2,…,x|a_n}\mu(x)\<br>=&amp;\sum_{x=1}^m\mu(x)\sum_{x|a_1}\sum_{x|a_2}…\sum_{x|a_n}c(a)<br>\end{aligned}<br>$$</p>
+<p>$$<br>\begin{aligned}<br>&amp;\sum_{a}c(a)[\gcd(a_1,a_2,…,a_n)=1]\\<br>=&amp;\sum_{a}c(a)\sum_{x|a_1,x|a_2,…,x|a_n}\mu(x)\\<br>=&amp;\sum_{x=1}^m\mu(x)\sum_{x|a_1}\sum_{x|a_2}…\sum_{x|a_n}c(a)<br>\end{aligned}<br>$$</p>
 <p>右边这个相当于一个 $m’=\frac{m}{x}$ 的满足前两个条件的子问题。可以 $O(nm/x)$ 求解。</p>
 <p>总时间就是 $O(nm\ln m)$。结合不计算 $\mu(x)=0$ 优化即可。</p>
 <hr>
@@ -896,7 +896,7 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2024-07-30 21:17:16
+              2024-11-17 19:52:22
             </span>
             
                   <span class="post-categories">
