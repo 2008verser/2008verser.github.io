@@ -1,1545 +1,451 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en" color-mode="light">
+
+  <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="John Doe" />
+  <!-- Open Graph Description 简短摘要-->
   
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://2008verser.github.io/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+  <!-- 用于搜索引擎的文章摘要 -->
   
   
   
-<link rel="stylesheet" href="/css/style.css">
-
-  
+  <title>
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+     Hexo
+  </title>
 
   
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
   
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
 <meta name="generator" content="Hexo 7.3.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
       
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">2008verser</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">Categories</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <div class="container index">
+  <div class="post-list">
+    <!-- 遍历渲染文章 -->
+    
+      <div class="post-item" title="总结10">
+        <div class="time-m-d">2024-07-30</div>
+        <div class="title">
+          <a href="/2024/07/30/%E6%80%BB%E7%BB%9310/">
+            
+              
+                <span>总结10</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="总结11">
+        <div class="time-m-d">2024-07-30</div>
+        <div class="title">
+          <a href="/2024/07/30/%E6%80%BB%E7%BB%9311/">
+            
+              
+                <span>总结11</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="总结1">
+        <div class="time-m-d">2024-07-30</div>
+        <div class="title">
+          <a href="/2024/07/30/%E6%80%BB%E7%BB%931/">
+            
+              
+                <span>总结1</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="杂题1">
+        <div class="time-m-d">2024-07-30</div>
+        <div class="title">
+          <a href="/2024/07/30/%E6%9D%82%E9%A2%981/">
+            
+              
+                <span>杂题1</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="线性基">
+        <div class="time-m-d">2024-07-30</div>
+        <div class="title">
+          <a href="/2024/07/30/%E7%BA%BF%E6%80%A7%E5%9F%BA/">
+            
+              
+                <span>线性基</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="多项式全家桶">
+        <div class="time-m-d">2024-07-30</div>
+        <div class="title">
+          <a href="/2024/07/30/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%85%A8%E5%AE%B6%E6%A1%B6/">
+            
+              
+                <span>多项式全家桶</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+  </div>
+  <nav class="post-navigation">
+    
+    <span class="page-num">1 / 1</span>
+    
+  </nav>
+</div>
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          
+              <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+                <i class="iconfont icon-github"></i>
+              </a>
+              
+        </li>
+        
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2024 Oranges</a>
+        
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
         
-          <a class="main-nav-link" href="/">Home</a>
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
         
-      </nav>
-      <nav id="sub-nav">
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
         
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://2008verser.github.io"></form>
+
       </div>
     </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-总结10" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/07/30/%E6%80%BB%E7%BB%9310/" class="article-date">
-  <time class="dt-published" datetime="2024-07-30T13:18:39.000Z" itemprop="datePublished">2024-07-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/30/%E6%80%BB%E7%BB%9310/">总结10</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        Here's something encrypted, password is required to continue reading.
-        
-          <p class="article-more-link">
-            <a href="/2024/07/30/%E6%80%BB%E7%BB%9310/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://2008verser.github.io/2024/07/30/%E6%80%BB%E7%BB%9310/" data-id="cm3l49jgn000c38feedsf0286" data-title="总结10" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-总结11" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/07/30/%E6%80%BB%E7%BB%9311/" class="article-date">
-  <time class="dt-published" datetime="2024-07-30T13:18:01.000Z" itemprop="datePublished">2024-07-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/30/%E6%80%BB%E7%BB%9311/">总结11</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        Here's something encrypted, password is required to continue reading.
-        
-          <p class="article-more-link">
-            <a href="/2024/07/30/%E6%80%BB%E7%BB%9311/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://2008verser.github.io/2024/07/30/%E6%80%BB%E7%BB%9311/" data-id="cm3l49jgk000638fe6qlgbf0o" data-title="总结11" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-总结1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/07/30/%E6%80%BB%E7%BB%931/" class="article-date">
-  <time class="dt-published" datetime="2024-07-30T13:17:52.000Z" itemprop="datePublished">2024-07-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/30/%E6%80%BB%E7%BB%931/">总结1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        Here's something encrypted, password is required to continue reading.
-        
-          <p class="article-more-link">
-            <a href="/2024/07/30/%E6%80%BB%E7%BB%931/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://2008verser.github.io/2024/07/30/%E6%80%BB%E7%BB%931/" data-id="cm3l49jgg000338fe1o0mey8m" data-title="总结1" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-杂题1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/07/30/%E6%9D%82%E9%A2%981/" class="article-date">
-  <time class="dt-published" datetime="2024-07-30T13:16:19.000Z" itemprop="datePublished">2024-07-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/30/%E6%9D%82%E9%A2%981/">杂题1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>$$<br>\clubsuit\bigstar\blacksquare\maltese\blacklozenge\spadesuit<br>$$</p>
-<h2 id="ARC162F-Montage"><a href="#ARC162F-Montage" class="headerlink" title="ARC162F Montage"></a>ARC162F Montage</h2><p>分讨可以先把题目限制转化为任意一个子矩形，若它的左上和右下都是 1，则它的左下和右上必须是 1。</p>
-<p>我一开始想的是不断把一些矩形的四个角的 1 “按”上去，但是很难处理两个矩形端点形成的矩形是否合法。</p>
-<p>然后想着“挖”一些零。如果挖一个零，则它向上和向右必须有一个全都是 0，向左和向下同理。</p>
-<p>但是，这一些全都是 0 的部分也会产生不合法。感受一下，是有一对 1 在这一行或列导致的非法。</p>
-<p>所以应该把以这个 0 为中心的十字都变成 0。</p>
-<p>那么现在就是要不断放一些矩形上来，每个矩形都是通过全 1 矩形用上述规则挖 0 得出的。</p>
-<p>矩阵与矩阵之间的合法性好办，让一个矩阵上边的另一个矩阵不能到这个矩阵的左边就好了（大概意思）。</p>
-<p>然后这样就会得到从右上到左下的一溜矩阵。发现每行至多有一个连续段，所以直接 dp。</p>
-<p>设 $f_{i,l,r}$ 表示第 $i$ 行的连续段是 $[l,r]$，$1\to i$ 行合法的方案数。</p>
-<p>空行呢？不 dp 空行，用每个状态 $f_{i,l,r}$，把 $n-i$ 个空行和 $l-1$ 个空列插进去的方案数做系数贡献答案。</p>
-<p>这个系数相当于 $n$ 行选 $i$ 行和 $m$ 列选 $m-l+1$ 列。</p>
-<hr>
-<h2 id="CF1830B"><a href="#CF1830B" class="headerlink" title="CF1830B"></a>CF1830B</h2><blockquote>
-<p>给出两个长度为 $n$ 的序列 $a,b$。</p>
-<p>求有序数对 $(i,j)$ 的数量满足 $a_i\times a_j&#x3D;b_i+b_j$。</p>
-<p>$1\leq n\leq2e5,1\leq a_i,b_i\leq n$。</p>
-</blockquote>
-<p>既然 $a_i,b_i\leq n$，所以 $a_i\times a_j&#x3D;b_i+b_j\leq2n$。</p>
-<p>观察一下这个等式的大小 $s$，$a_i$ 和 $a_j$ 相乘是 $s$，$a_i$ 和 $a_j$ 都是 $s$ 的因数。</p>
-<p>一开始想到 $O(n)$ 枚举 $s$，$O(\sqrt n)$ 枚举因数。但是没办法 $O(1)$ 去计算出 $a_i$ 和 $a_j$ 为某个已知值时合法的 $(i,j)$ 数量。</p>
-<p>那换方法。观察到 $a_i$ 和 $a_j$ 要么同时小于 $\sqrt n$，要么一个大于 $\sqrt n$ 一个小于 $\sqrt n$。</p>
-<p>那么枚举一个 $i$，如果 $a_i$ 大于 $\sqrt n$，那么枚举变量 $aj\leq\sqrt n$ 且 $a_i\times aj\leq 2n$，此时要求 $a_j&#x3D;aj$ 时 $b_j&#x3D;a_i\times aj-b_i$ 的 $j$ 的数量。</p>
-<p>这个想办法预处理就好。</p>
-<p>如果 $a_i$ 小于 $\sqrt n$，其实可以也只枚举 $aj\leq\sqrt n$。因为大于 $\sqrt n$ 的会在 $a_{i’}&#x3D;aj$ 时统计。</p>
-<p>思路已经很明朗了：$a_i$ 和 $a_j$ 都小于 $\sqrt n$ 的 $(i,j)$ 数对，会在 $i$ 统计一次 $j$ 统计一次，算重一次（最终除以 2）。</p>
-<p>$a_i$ 和 $a_j$ 一个小于一个大于 $\sqrt n$ 的，会在大于 $\sqrt n$ 那里统计一次。</p>
-<p>还要留意把自己和自己匹配这一种多余情况。</p>
-<p>时间 $O(n\sqrt n)$。</p>
-<hr>
-<h2 id="ABC269G"><a href="#ABC269G" class="headerlink" title="ABC269G"></a>ABC269G</h2><blockquote>
-<p>给出 $n$ 张卡牌和一个数字 $m$。第 $i$ 张正面写着 $a_i$，背面写着 $b_i$。$\sum(a_i+b_i)&#x3D;m$。</p>
-<p>初始牌都是正面朝上。你可以把某些牌翻面。</p>
-<p>记 $s$ 为每张牌朝上的面的数字之和。输出 $m+1$ 行，第 $i$ 行表示 $s&#x3D;i-1$ 时最小翻面次数。</p>
-<p>$1\leq n\leq2e5,0\leq m\leq 2e5,0\leq a_i,b_i$。</p>
-</blockquote>
-<p>一开始想的是判定性。把全部牌的较小值翻到上面。那么最小的 $s$ 就是此时上面数字之和。</p>
-<p>接下来再翻的话，意义就是在 $s$ 的基础上加一个非负数。翻第 $i$ 张加的就是 $|a_i-b_i|$。</p>
-<p>这个玩意不可能很快做出来。观察一下性质：既然和为 $m$，那 $\sum|a_i-b_i|\leq m$。</p>
-<p>不同的 $|a_i-b_i|$ 不超过 $\sqrt m$ 个。可以用单调队列优化（多重背包）或二进制拆分优化。</p>
-<p>加上最小翻牌次数的话，一开始全翻上去了，$ans_0&#x3D;\sum[a_i&gt;b_i]$。</p>
-<p>如果要翻一个牌，如果一开始就是小在上，代价就是 1。</p>
-<p>否则，相当于翻成较小的面又翻回来了，代价是 -1（因为在 $ans_0$ 里加了一个 1）。</p>
-<p>这样固然可以做。但不如……</p>
-<p>每个 $i$，可以用 $1$ 的代价加上 $b_i-a_i$。</p>
-<p>然后直接单调队列优化 dp。时间 $O(n\sqrt m)$。</p>
-<hr>
-<h2 id="ABC215G"><a href="#ABC215G" class="headerlink" title="ABC215G"></a>ABC215G</h2><blockquote>
-<p>给一个长度为 $n$ 的序列 $a$。输出 $n$ 行，</p>
-<p>第 $k$ 行表示等概率随机在 $a$ 中取一个长度为 $k$ 的子序列，序列里面值不同的元素个数的期望。</p>
-</blockquote>
-<p>遇到期望题，先列式子，然后拆贡献，然后优化。</p>
-<p>这个第 $k$ 行就是 $\dfrac{\sum_{每一种子序列}值不同的元素个数}{C_n^k}$。考虑求上边的这玩意。</p>
-<p>有两种拆贡献方法：一是算出算出对于每个“……个数”有多少种子序列满足是这个个数。这个完全看起来不可做。</p>
-<p>二是观察一个子序列的“值不同的元素个数”是包括好多种元素的，有多少种元素就是几。好多子序列的“值不同的元素个数”之和是包括好多种元素，每种元素有好多次。</p>
-<p>求出对于第 $i$ 种元素，在全部子序列中它会被计算多少次。也就是有多少个子序列，第 $i$ 种元素出现在这个子序列里。</p>
-<p>容斥。设第 $i$ 种元素出现了 $a_i$ 次。</p>
-<p>若要求有多少个子序列，这种元素不出现在这个子序列里，当然是 $C_{n-a_i}^k$。那么它就出现在剩余的 $C_n^k-C_{n-a_i}^k$ 里。</p>
-<p>前面写的上边那玩意（设有 $m$ 种元素）就是 $\sum_{i&#x3D;1}^m C_n^k-C_{n-a_i}^k$。</p>
-<p>考虑优化。如果两种元素出现次数相等（$a_i&#x3D;a_j$），那他们上边这玩意是一样的，可以算一次用两次。</p>
-<p>那到底要算几次？$a$ 有多少个不同就算几次。</p>
-<p>又因为 $a$ 所表示的是原序列每种元素的出现次数（$\sum a_i&#x3D;n$），所以不同的 $a$ 最多有 $\sqrt n$ 种。</p>
-<p>剩下就很简单了。时间 $O(n\sqrt n)$。</p>
-<hr>
-<h2 id="ABC319G"><a href="#ABC319G" class="headerlink" title="ABC319G"></a>ABC319G</h2><blockquote>
-<p>一个 $n$ 阶无向完全图删掉 $m$ 条给定边。问 $1\to n$ 最短路数量。</p>
-<p>$n,m\leq2e5$。</p>
-</blockquote>
-<p>首先考虑朴素暴力。bfs 求出 $dis[x]$ 表示 $1\to x$ 的最短长度。</p>
-<p>然后求出 $f[x]$ 表示 $1\to x$ 最短路数量。是 $f[x]&#x3D;\sum_{dis[y]+1&#x3D;dis[x]}f[y]$。</p>
-<p>分别优化。观察第一部分，第一个优化是维护一个没到达的点集 $uv$，每次在这里找新点。</p>
-<p>接着对于每个想要扩张的点 $x$，不可能去遍历真图上的边，于是遍历删掉的边 $(x,y)$，此时要加入队列的就是全部不与 $x$ 相连、属于 $uv$ 的点。</p>
-<p>那可以先把全部与 $x$ 相连、属于 $uv$ 的点从 $uv$ 里取出，然后遍历 $uv$，清空 $uv$，加回去。不难发现这样是 $(n+m)\log n$ 的。</p>
-<p>第二部分类似，画个分层图然后每个点就是上一层全部点的 $f$ 之和减去一些 $f$。好办。</p>
-<p>这道题的核心就是因为不可能遍历真图边，然后就遍历删的边，再想对策。时间 $O((n+m)\log n)$。</p>
-<hr>
-<h2 id="P6078-CEOI2004"><a href="#P6078-CEOI2004" class="headerlink" title="P6078 [CEOI2004]"></a>P6078 [CEOI2004]</h2><blockquote>
-<p>$n$ 种糖果，第 $i$ 种有 $m_i$ 个。问有多少种吃糖方案，满足吃掉的糖果数属于 $[a,b]$？</p>
-<p>$1\leq n\leq 10,1\leq m_i\leq 1e6,1\leq a,b\leq 1e7$。时限 $0.1s$。</p>
-</blockquote>
-<p>记号：多项式 $F(x)$ 里 $x^i$ 的系数是 $[x^i]F(x)$。</p>
-<p>首先可以构造 $n$ 个多项式，第 $i$ 个多项式 $x^0\to x^{m_i}$ 的系数都是 1，其余系数是 0。</p>
-<p>那么全部卷起来，结果多项式里 $x^i$ 的系数就是吃 $i$ 个糖果的方案数。</p>
-<p>时间肯定过不去。用生成函数凑一凑。设普通型生成函数 $F_i(x)&#x3D;1+x+x^2+…+x^{m_i}$。</p>
-<p>可以得到 $F_i(x)$ 的封闭形式<br>$$<br>F_i(x)&#x3D;\frac{1-x^{m_i+1}}{1-x}<br>$$</p>
-<p>全部乘起来<br>$$<br>\frac{\Pi(1-x^{m_i+1})}{(1-x)^n}&#x3D;(1-x)^{-n}\Pi(1-x^{m_i+1})<br>$$<br>记 $\Pi(1-x^{m_i+1})$ 的结果为多项式 $G(x)$。虽然它的最高次数很大，但是项数很少，不超过 $2^n$ 个，可以 dfs 求出 $G(x)$。</p>
-<p>定义广义组合数<br>$$<br>{n\choose m}&#x3D;\frac{n(n-1)…(n-m+1)}{m!}<br>$$<br>根据牛顿二项式定理把 $(1-x)^{-n}$ 展开<br>$$<br>\begin{aligned}<br>(1-x)^{-n}&amp;&#x3D;\sum_{i&#x3D;0}^{\infty}{-n\choose i}(-x)^i\<br>&amp;&#x3D;\sum_{i&#x3D;0}^{\infty}\frac{(-n)(-n-1)…(-n-i+1)}{i!}(-x)^i<br>\end{aligned}<br>$$<br>分子里可以拿 $(-1)^i$ 出来，右侧 $(-x)^i&#x3D;((-1)x)^i&#x3D;(-1)^ix^i$。两个 $(-1)^i$ 相乘等于 $(-1)^{2i}&#x3D;1$。原式变为<br>$$<br>\sum_{i&#x3D;0}^{\infty}\frac{n(n+1)…(n+i-1)}{i!}x^i&#x3D;\sum_{i&#x3D;0}^{\infty}{n+i-1\choose i}x^i<br>$$<br>先把这个东西放着，记为多项式 $S(x)$。看一下答案求的是啥，是两个多项式卷起来后 $x^a$ 到 $x^b$ 的系数之和，即<br>$$<br>\sum_{i+j\in[a,b]}[x^i]S(x)\times[x^j]G(x)<br>$$<br>我们不考虑分别求出 $x^a$ 到 $x^b$ 的每一个系数。转而计算全部系数的和。</p>
-<p>因为 $G(x)$ 可以算出来，那就枚举 $G(x)$ 的里的项。记枚举 $x^k$ 的系数。</p>
-<p>我们知道，$x^k$ 的系数会和 $S(x)$ 里的某几项相乘、求和、加到结果多项式里的 $x^a\to x^b$ 之间，</p>
-<p>哪几项呢？当然是 $x^{a-k}\to x^{b-k}$ 项啦。</p>
-<p>$x^k$ 的系数和 $S(x)$ 里的 $x^{a-k}\to x^{b-k}$ 项相乘、求和的结果就是下面这个式子<br>$$<br>[x^k]G(x)\sum_{i&#x3D;a-k}^{b-k}{n+i-1\choose i}<br>$$</p>
-<p>好！那考虑这样一种式子的结果。<br>$$<br>\sum_{i&#x3D;l}^r{n+i-1\choose i}&#x3D;\sum_{i&#x3D;l}^r{n+i-1\choose i}+{n+l-1\choose l-1}-{n+l-1\choose l-1}<br>$$<br>又根据 ${n\choose m}&#x3D;{n-1\choose m}+{n-1\choose m-1}$，当 $i&#x3D;l$ 的时候 $\sum$ 里头的那个组合数可以和 ${n+l-1\choose l-1}$ 加起来变成一个新的数 $P$。</p>
-<p>然后 $P$ 又能和 $i&#x3D;l+1$ 加起来……直到最后，变成了<br>$$<br>\sum_{i&#x3D;l}^r{n+i-1\choose i}&#x3D;{n+r\choose r}-{n+l-1\choose l-1}<br>$$</p>
-<p>总结一下，我们要求 $(S\cdot G)(x)$ 的 $x^a\to x^b$ 的系数之和。我们枚举 $G(x)$ 的次数 $k$，$S(x)$ 中参与贡献的是 $x^{a-k}\to x^{b-k}$ 项。</p>
-<p>然后我们把这个贡献式子列出来，提出公因数 $[x^k]G(x)$，用它乘上一堆组合数的求和。我们又把这一堆组合数变成了两个组合数相减。</p>
-<p>先 $O(2^n)$ 算出 $G(x)$，然后 $O(2^n)$ 枚举 $G(x)$ 里的项，$O(1)$ 算组合数，相乘，累加答案。总共是 $O(2^n)$。</p>
-<p>好！结束了吗？没有！注意到模数是 2004！算不了组合数！</p>
-<p>有一个 Trick 可以当作结论记：<br>$$<br>\frac{a}{b}\mod M&#x3D;\frac{a\mod bM}{b}<br>$$<br>此时 $n+r\choose r$ 可以转化为 $n+r\choose n$，进而：<br>$$<br>\frac{(n+r)(n+r-1)…(n+r-n+1)}{n!}<br>$$<br>分子暴力乘，对 $n!\times2004$ 取模。</p>
-<hr>
-<h2 id="P2797-CF626E"><a href="#P2797-CF626E" class="headerlink" title="P2797 &amp; CF626E"></a>P2797 &amp; CF626E</h2><blockquote>
-<p>给出长度为 $n$ 的序列，你可以选若干个数，求选出数的平均数减中位数最大值。</p>
-<p>$1\leq n\leq1e6,0\leq a_i\leq 1e6$。</p>
-</blockquote>
-<p>既然有中位数，考虑分奇偶求。首先升序排序。</p>
-<p>对于一个长度为奇数的子序列，枚举它中间的点。那剩下一定是紧挨 $x$ 左侧和 $n$ 的。总长为 $2i+1$。</p>
-<p><img src="D:\2008verser\PiCForp\1.png" alt="1"></p>
-<p>暴力枚举 $i$ 可以得到一个 $O(n^2)$ 的算法。太劣了。</p>
-<p>中位数不变，假设平均数为 $x$，如果 $i$ 增加 1，那么平均数的分母就加 2，分子就加两个 $a_?$（下标可以用 $n,x,i$ 表示出，这里不写了）。</p>
-<p>新的平均数记为 $x’$，也就是加上了 $\Delta x&#x3D;x’-x$。</p>
-<p>因为这两个 $a_?$ 之和的大小随着 $i$ 增加而减小。那么可以感受到，平均数增加的那个 $\Delta x$ 不断减小。</p>
-<p>那么 $x$ 就呈现先升后降。</p>
-<p><img src="D:\2008verser\PiCForp\2.png" alt="2"></p>
-<p>那么三分。奇数部分就搞定了。</p>
-<p>对于偶数的情况，我们没办法继续枚举中位数。设选了 $p_1,p_2,…p_k,p_{k+1},…,p_{2k}$。考虑枚举较左侧的那个中位数 $p_{k}$。</p>
-<p>再想想能不能证明偶数的每种选择方式都能纳归到一类特定、易求的方式。</p>
-<p>但是一通推导之后发现如果仅仅是移动某几个选择的位置的话，根本发现不了任何有用的结论。</p>
-<p>那就考虑加一个或者减一个位置……转化到奇数情况？一通（查看题解）之后就可以知道减掉 $p_{k+1}$ 不选时，答案不更劣。</p>
-<p>证明考虑把前后的答案相减，再利用答案永远非负的性质加以说明。</p>
-<p>即每种最优&#x2F;不最优的偶数选法可以转化为一种不更劣的奇数选法。奇数的选法一定包有答案。</p>
-<p>做做做就完事了。时间 $O(n\log n)$。</p>
-<hr>
-<h2 id="P5923-IOI2004"><a href="#P5923-IOI2004" class="headerlink" title="P5923 [IOI2004]"></a>P5923 [IOI2004]</h2><p>思考的时候我很好奇如果两个障碍段相交是什么情况。然后就有了这种情况：</p>
-<p><img src="D:\2008verser\PiCForp\3.png" alt="3"></p>
-<p>我一开始是想着构造上面这幅，答案应为 $[1,8]$ 和 $[4,11]$。</p>
-<p>然而我又看了一眼发现不对劲。正确的输出应当是下方这个。上方的深红色和浅红色是两个框段，下方这才是三个障碍段。</p>
-<p>依据题意，三个都要输出。我们猛然发现，两个相交段相交大小必须为 1。</p>
-<blockquote>
-<p>证明：设框段 $[l,r]$ 和 $[a,b]$（ $a\leq r$ ）。（可以结合上面打叉的那个图，直接看加粗字）</p>
-<ul>
-<li><p>首先我们先严格地证明 $[a,r]$ 的值域是连续的（下面略去写值域）。（想题的时候我直接相信了这个结论，因为感觉上很对，你也可以跳过）</p>
-</li>
-<li><p>可以反证，若 $[a,r]$ 不连续，因为 $[l,r]$ 连续，所以 $[a,r]$ 里缺的数<strong>出现在</strong> $[l,a]$。</p>
-</li>
-<li><p>若 $[a,r]$ 不连续，因为 $[a,b]$ 连续，所以 $[a,r]$ 里缺的数<strong>出现在</strong> $[r,b]$。</p>
-</li>
-<li><p>那它又不可能出现在两个地方。所以与已知事实相悖，$[l,r]$ 连续。</p>
-</li>
-</ul>
-<p>既然 $a_r$ 是 $a_{l\to r}$ 的 $\max$，那 $a_r$ 当然也是 $a_{a\to r}$ 的 $\max$。</p>
-<p>既然 $a_a$ 是 $a_{a\to b}$ 的 $\min$，那 $a_a$ 当然也是 $a_{a\to r}$ 的 $\min$。</p>
-<p>结合这两点以及 $[a,r]$ 值域连续，所以 $[a,r]$ 是一个框段。</p>
-<p>类似地，<strong>你一共可以证明 $[l,a]$ 和 $[a,r]$ 和 $[r,b]$ 是三个两两相交大小为 1 的框段！</strong></p>
-<p><strong>也就是说任意两个相交大小大于 1 的框段，我们可以拆成三个两两相交大小为 1 的框段。</strong>证毕。</p>
-</blockquote>
-<p>先想想一个框段 $[l,r]$ 的充要条件。一通搞可以得到这个式子：<br>$$<br>a_{l}&#x3D;\min(a_{l\to r}),a_r&#x3D;\max(a_{l\to r})\<br>a_l-l&#x3D;a_r-r<br>$$<br>一、考虑一种 $n^2$ 的暴力。</p>
-<p>枚举障碍段的左端点 $l$，从左端点开始向右扩展右端点。然后套这个式子。</p>
-<p>但是这样会做到非障碍段的框段。固然可以全搞下来去重，更好的方法是从后往前枚举 $l$。</p>
-<p>这样的话第一个找到的框段一定是障碍段。我们可以将变量 $Rlimit$ 赋值为第一个框段的左端点。</p>
-<p>接下来再枚举新的 $l$，此时的右端点就有了一个小于 $n$ 的枚举上界 $Rlimit$。时间大大减小。</p>
-<p><del>然后就<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/134126844">过</a>了？ Hack 见<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/discuss/728080">这里</a>。</del></p>
-<p>二、观察上边那个 $a_l-l&#x3D;a_r-r$。不妨将每个位置 $i$ 的 $a_i-i$ 求出来。每次把 $a_i-i$ 相同的那些挖出来做。</p>
-<p>仿照暴力的枚举顺序。枚举左端点 $l$，现在就是要找到最小的 $r\gt l$，满足 $l,r$ 分别是 $a_{l\to r}$ 的 $\min,\max$。</p>
-<p><img src="D:\2008verser\PiCForp\4.png" alt="4"></p>
-<p>我们设 $f_i$ 是 $i$ 向左最远到哪里 $a_i$ 还是最大值。$g_i$ 是 $i$ 向右最远到哪里 $a_i$ 还是最小值。</p>
-<p>那就是要让 $f_r\leq l,g_l\geq r$。注意到那些 $r$ 是被我的 $l$ 遍历过的，考虑沿途用 DS 做些手脚。</p>
-<p>每次查询“小于等于 $g_l$、$f$ 值小于等于 $l$ 的“、最小的 $r$。把 $[l,r]$ 算入答案。按照 $r,f_r$ 投到平面上就是一个矩形查询的问题。</p>
-<hr>
-<h2 id="CF1120C"><a href="#CF1120C" class="headerlink" title="CF1120C"></a>CF1120C</h2><blockquote>
-<p>给定长为 $n$ 字符串 $s$，有一个打字机，每次你可以花费 $a$ 的代价打出一个字符，或花费 $b$ 的代价打出一个已打出的字符串的子串，求打出 $s$ 的最小代价。</p>
-<p>$1\leq n,a,b\leq 5e3$。</p>
-</blockquote>
-<p>一种简单的 dp，设 $f_{i}$ 表示做完 $[1,i]$ 的最小代价。</p>
-<p>那要么是 $f_{i-1}+a$ 转移过来，要么是 $f_{j}+b$ 转移过来，其中 $[j+1,i]$ 是 $[1,j]$ 的字串。</p>
-<p>观察一下，发现随着 $j$ 的减小，第二种转移从可以到不可以。严格来讲，</p>
-<ul>
-<li>如果 $j$ 可以，那么 $\forall j\lt j’\leq i$，$j’$ 可以。</li>
-<li>如果 $j$ 不可以，那么 $\forall 1\leq j’\lt j$，$j’$ 不可以。</li>
-</ul>
-<p>很容易证。那么设 $g_i$ 表示从 $i$ 往左延伸多少是可以的。即最长的后缀 $[j,i]$ 的长度，满足在 $[1,j-1]$ 内出现。</p>
-<p>处理 $s_{i,j}$ 表示 $[1,i]$ 和 $[1,j]$ 的最长公共后缀。然后就有 $g$ 了。</p>
-<p>做完了。$f$ 的转移可以优化成 $O(n)$，但没必要了。$s$ 的转移是 $O(n^2)$ 的。</p>
-<p>这个优化是是发现 $f$ 单调不下降，所以直接取最左侧的点转移过来就好了。</p>
-<hr>
-<h2 id="CF520C"><a href="#CF520C" class="headerlink" title="CF520C"></a>CF520C</h2><blockquote>
-<p>给一个 $n$ 位的十位数，在数字间加 $k$ 个 ‘+’ 号使形成一个加法表达式。</p>
-<p>求全部可能的加法表达式的值之和。$1\leq n\leq1e5$。</p>
-</blockquote>
-<p>暴力枚举 $i,j$，计算 $[i,j]$ 作为整段在全部可能的表达式中的出现次数。用 $[i,j]$ 的值乘上这个次数加进答案。</p>
-<p>次数是个组合数。这是 $O(n^2)$ 的。 感觉不太好优化，这个暴力限制太多了，要求两侧都是加号。</p>
-<p>计划计算 $a_i$ 对答案的贡献。$a_i$ 作为一个数字的某一位只跟右侧的加号有关。</p>
-<p>枚举 $i\lt j\leq n$ 表示在 $j$ 前边加 ‘+’。其余 $[i,j]$ 以内不准填。</p>
-<p>此时剩下了 $n-1-j+i$ 个随便填的位置，剩 $k-1$ 个加号要填。</p>
-<p>所以此时 $a_i$ 对答案的贡献是：<br>$$<br>\sum_{j&#x3D;i+1}^n 10^{j-i-1}\times a_i\times {n-1-j+i\choose k-1}<br>$$<br>把 $a_i$ 提到左侧，发现右侧的这个可以直接预处理。$O(n)$ 做完。</p>
-<hr>
-<h2 id="CF519E"><a href="#CF519E" class="headerlink" title="CF519E"></a>CF519E</h2><p>发现答案可以用倍增 LCA 维护。然后稍加分讨即可。</p>
-<hr>
-<h2 id="CF768D"><a href="#CF768D" class="headerlink" title="CF768D"></a>CF768D</h2><blockquote>
-<p>共 $n$ 种物品，每种有无限个，一天会等概率获得一种物品。求最早在第几天获得全部 $n$ 种的概率不小于 $\frac{p}{2000}$。</p>
-<p>$q$ 组询问，每组询问给定 $p$。$1\leq n,q,p\leq 1000$。</p>
-</blockquote>
-<p>看了题解吓我一跳。</p>
-<p>容易想到一个依赖天数的 dp。设 $f_{i,j}$ 表示前 $i$ 天获得 $j$ 种的概率。<br>$$<br>f_{i,j}&#x3D;f_{i-1,j-1}\times\frac{k-j+1}{k}+f_{i-1,j}\times\frac{j}{k}<br>$$<br>我发现，如果终止概率很接近 1 时，天数非常非常大！然后我开始根据 dp 的图开始考虑加速……</p>
-<p>不会！一看题解，$p\leq 1000$？就是说终止概率不大于 $1&#x2F;2$！</p>
-<p>暴力得到，当 $n&#x3D;1000$ 时，$f_{7303,n}\gt0.51$。就是说天数小于 $7303$。根据这个特性直接 dp 即可。 </p>
-<p>一个<strong>经验</strong>：感觉题不可做时看看数据范围。</p>
-<hr>
-<h2 id="CF856C"><a href="#CF856C" class="headerlink" title="CF856C"></a>CF856C</h2><blockquote>
-<p>$T$ 组数据，每组数据给出 $n$ 和长为 $n$ 的序列。</p>
-<p>定义一个序列是否是 11 的倍数为这个序列全部数字首尾相接构成的数字是否是 11 的倍数。</p>
-<p>求给出序列的全部排列中是 11 的倍数的排列个数。</p>
-<p>$1\leq T\leq 100,1\leq n\leq 2000,1\leq a_i\leq 10^9,\sum n\leq 2000$。</p>
-</blockquote>
-<p>如果一个数是 11 的倍数，当它的<strong>奇数数位上的数字之和</strong>与<strong>偶数位上的数字之和</strong>之差（奇偶差）是 11 的整数倍。</p>
-<p>那么我们关注的只是每个数的奇偶差，以及每个数的最高位在序列中算作奇数数位还是偶数数位（记作最高奇偶性）。</p>
-<p>奇偶差可以在输入的时候求出。记 $a_i$ 是第 $i$ 个数字奇数位减偶数位的值。</p>
-<p><strong>我们可以根据最高奇偶性和 $a_i$算序列的奇偶差。</strong>这是后面的前提。</p>
-<p>我们可以设一个 dp，$f_{i,j}$ 表示在序列前 $i$ 个数构成的全部排列中奇偶差为 $j$ 的排列个数。（如果奇偶差为负就加成正的，方便 dp）</p>
-<p>考虑分讨第 $i$ 个数的最高奇偶性转移。</p>
-<p>这玩意转移不了。状态是关于前 $i$ 个数的排列，而这个排列毫无规律可言。</p>
-<p>那么我们观察一下最终答案的构成。</p>
-<p>长度偶数的 $a_i$ 是不影响后面数字最高奇偶性的，奇偶性的变化出现在全部长度为奇数的数字。</p>
-<p>每个奇数长度的数字的左边好多的数字跟它最高奇偶性一样，直到另一个奇数长度的数字。（红点是奇数长度，黑点是偶数的）</p>
-<p><img src="D:\2008verser\PiCForp\6.png" alt="6"></p>
-<p>那么我们可以先求出全部奇数长度的数字构成的序列的满足某一奇偶差的排列数量，然后把偶数长度的数字一个个加上去。</p>
-<p>设 $f_{i,j}$ 表示前 $i$ 个奇数长度数字构成的序列，奇偶差为 $j$ 的排列数。还是缺乏信息不好转移。</p>
-<p>再观察一下这一问题的答案构成。设有 $n1$ 个奇数长度数字。</p>
-<p>这些数字里面，第一个最高奇偶性为奇、第二个为偶、第三个为奇……</p>
-<p>有 $\lceil \frac{n1}{2}\rceil$ 个最高奇偶性为奇，$\lfloor \frac{n1}{2}\rfloor$ 个偶。记为 $qwq,ovo$。</p>
-<p>像下边这张图，这是 $n1$ 个奇数长度的数字，红色最高奇偶性是奇，黑色是偶。</p>
-<p><img src="D:\2008verser\PiCForp\7.png" alt="7"></p>
-<p>原本这个转移不了的 dp 蠢死了！</p>
-<p>我们现在就是要让 $n1$ 个数填进这些空里！上一个 dp 中每次我们只关注前 $i$ 个空。此时我们不妨直接考虑全部空。</p>
-<p>设 $f_{i,j,k}$ 表示考虑到 $n1$ 个数的前 $i$ 个，填了 $j$ 个红色（最高奇偶性为奇）（黑色就是 $i-j$ 个咯），奇偶差为 $k$ 的排列个数。</p>
-<p>这下子就好转移了，分为 $i$ 填红还是黑。然后乘上选这第 $i$ 个的方法数。</p>
-<p>如果当前填红色（最高奇偶性为奇），上一步应当填了 $j-1$ 个红色，这一步有 $qwq-(j-1)$ 个红色可选。</p>
-<p>上一步奇偶差加上 $a_i$ 等于 $k$，上一步奇偶差为 $k-a_i$。</p>
-<p>黑色类似。<br>$$<br>f_{i,j,k}&#x3D;<br>\begin{cases}<br>f_{i-1,j-1,k-a_i}\times(qwq-(j-1))+\<br>f_{i-1,j,k+a_i}\times(ovo-(i-j)+1)<br>\end{cases}<br>$$<br>接着我们将 $n2$ 个偶数长度的数字<strong>加上去</strong>。</p>
-<p>考虑第一张图，偶数长度的数字跟右边第一个奇数长度的数字最高奇偶性一致。</p>
-<ul>
-<li><p>我们可以把第 $i$ 个加到一个奇数长度的数字之前，$i$ 的最高奇偶性与这个数字一致。</p>
-</li>
-<li><p>也可以加到一个已加入的偶数长度的数字之前，$i$ 的最高奇偶性和这个偶数长度的数字一致。</p>
-</li>
-<li><p>特别地，它可以加到最末尾。</p>
-</li>
-</ul>
-<p>设 $g_{i,j,k}$ 表示前 $i$ 个加进去，有 $j$ 个最高奇偶性为奇，奇偶差为 $k$ 的方案数。<br>$$<br>g_{0,0,i}&#x3D;f_{n1,qwq,i}<br>$$<br>分讨第 $i$ 个的奇偶性转移。</p>
-<p>以奇为例，对应上面三点：</p>
-<ul>
-<li>这个奇数长度的数字有 $qwq$ 种可选。</li>
-<li>已加入的、为正的数字有 $j-1$ 个。（算上 $i$ 共 $j$ 个）</li>
-<li>若奇数长度数字是偶数个。</li>
-</ul>
-<p>偶类似。<br>$$<br>g_{i,j,k}&#x3D;<br>\begin{cases}<br>g_{i-1,j-1,k-b_i}\times(j-1+qwq+[n1\bmod2&#x3D;&#x3D;0])+\<br>g_{i-1,j,k+b_i}\times(i-1-j+ovo+[n1\bmod 2&#x3D;&#x3D;1])<br>\end{cases}<br>$$<br>答案即<br>$$<br>\sum_{i&#x3D;0}^{n2} g_{n2,i,0}<br>$$</p>
-<hr>
-<h2 id="ARC068C"><a href="#ARC068C" class="headerlink" title="ARC068C"></a>ARC068C</h2><blockquote>
-<p>有长为 $m$ 的数轴，上面有点 $0,1,…,m$。有 $n$ 个区间，第 $i$ 个区间覆盖点 $[l_i,r_i]$。</p>
-<p>一个点从 $0$ 开始跳，每隔 $d$ 跳一下，经过 $0,d,2d,3d,…$，超出 $m$ 停止。</p>
-<p>输出 $m$ 行，第 $d$ 行表示每隔 $d$ 跳一下，一共会经过多少不同的区间。</p>
-<p>$1\leq n\leq 3e5,1\leq m\leq 1e5,1\leq l_i\leq r_i\leq m$。</p>
-</blockquote>
-<p>首先暴力做法，枚举 $d$ 然后跳。这样需要知道每个点被哪些区间覆盖了。枚举区间的话是 $O(nm\ln m)$，把区间加到点上很耗空间。</p>
-<p>接着分析，如果每个区间都加满的话，每个 $d$ 的答案都是 $n$。此时答案的总和是 $nm$，所以如果想正解的话不可能每次 +1。</p>
-<p>然后我束手无策了，然后开始乱想。</p>
-<p>另一个很显然的结论是如果一个区间长度大于等于 $d$，它一定会贡献到 $d$。但是感觉没啥用。</p>
-<p>然后看了题解。</p>
-<p>解法一</p>
-<p>考虑用数学表示出来。如果一个区间 $[l,r]$ 贡献到 $d$，则<br>$$<br>l\leq k\times d\leq r<br>$$<br>变形<br>$$<br>\lfloor\frac{l-1}{d}\rfloor\neq\lfloor\frac{r}{d}\rfloor<br>$$<br>意味着我们可以枚举每个区间，随着 $d$ 的增加，看看有哪些 $d$ 满足这个条件，然后加到 $ans[d]$ 上。</p>
-<p>根据数论分块的经验，满足条件的 $d$ 呈一段一段，段个数的数量级是 $\sqrt m$。</p>
-<p>那么就可以数论分块+差分完成了。</p>
-<p>时间 $O(n\sqrt m)$。</p>
-<p>解法二</p>
-<p>观察上面的暴力。</p>
-<p>我们之所以要枚举区间，而不能一开始用差分算出每个位置被多少个区间覆盖然后跳的时候直接加，是因为有可能连续的两次跳动在同一个块内。算重。</p>
-<p>能否避免连续跳动在同一块内？</p>
-<p>联系另一个结论，长度大于等于 $d$ 的区间一定贡献到 $d$。长度小于 $d$ 的区间不会连续两次跳动都在。</p>
-<p>那么对于每个 $d$ 我们可以把区间分为两类：长度大于等于 $d$ 的、小于 $d$ 的。</p>
-<p>大于 $d$ 的一定算。</p>
-<p>小于 $d$ 的可以像第二句话那样做。</p>
-<p>随着 $d$ 的增加，长度小于 $d$ 的区间不变少。那么用一个树状数组维护差分的区改单查即可。</p>
-<p>时间 $O(n\log m+m\ln m\log m)$。</p>
-<hr>
-<h2 id="CF853C"><a href="#CF853C" class="headerlink" title="CF853C"></a>CF853C</h2><p>挺板的一道 DS。</p>
-<p>直接用可持久化权值线段树维护一个区间内的关键点数量。</p>
-<p>然后一堆东西乘起来。注意不要漏和重即可。</p>
-<hr>
-<h2 id="CF785D"><a href="#CF785D" class="headerlink" title="CF785D"></a>CF785D</h2><blockquote>
-<p>给长为 $n$ 的由 ‘(‘、’)’ 构成的序列，求有多少个长为 $2m$ 的子序列满足：前 $m$ 个和后 $m$ 个分别都是 ‘(‘ 和 ‘)’。</p>
-<p>$1\leq n\leq 2\times10^5$。</p>
-</blockquote>
-<p>首先有一种很简单的方法：钦定一个 ‘(‘ 必选，枚举再选 $i$ 个 ‘(‘，然后组合数。</p>
-<p>如果位置 $i$ 是 ‘(‘，设 $1\to i$、$i+1\to n$ 分别有 $s1$ 个 ‘(‘、$s2$ 个 ‘)’。<br>$$<br>\sum_{i&#x3D;0}^{\min(s1-1,s2-1)}{s1-1\choose i}{s2\choose i+1}<br>$$<br>观察这个式子。联系范德蒙德卷积公式<br>$$<br>\sum_{i&#x3D;0}^k{n\choose i}{m\choose k-i}&#x3D;{n+m\choose k}<br>$$<br>当 $s1-1\leq s2-1$，原式为<br>$$<br>\sum_{i&#x3D;0}^{s1-1}{s1-1\choose i}{s2\choose i+1}<br>$$<br>把左边选 $i$ 替换为 $s1-1-i$，再把枚举的 $i$ 换成 $i+1$<br>$$<br>\sum_{i&#x3D;1}^{s1}{s1-1\choose s1-i}{s2\choose i}<br>$$<br>凑成公式的形式<br>$$<br>\sum_{i&#x3D;0}^{s1}{s1-1\choose s1-i}{s2\choose i}-{s1-1\choose s1}{s2\choose 0}<br>$$<br>右边的值为 $0$。所以答案就是<br>$$<br>{s1-1+s2\choose s1}<br>$$<br>$s1-1\gt s2-1$ 的情况类似。然后就可以直接求了。</p>
-<p>使用线性求逆元可以做到 $O(n)$。</p>
-<hr>
-<h2 id="ABC331G"><a href="#ABC331G" class="headerlink" title="ABC331G"></a>ABC331G</h2><blockquote>
-<p>盒子里有 $n$ 张 $m$ 种卡片，第 $i$ 种卡片有 $c_i$ 张。$\sum c_i&#x3D;n$。</p>
-<p>每次均匀随机选一张，再放回去。求拿出过的卡片包含全部种类所需要的取出次数的期望。</p>
-<p>对 $998244353$ 取模。</p>
-<p>$1\leq n,m\leq 2e5,c_i\gt0$。</p>
-</blockquote>
-<p>首先观察到，对于任意终止局面，最后取出的卡片的种类，一定是第一次被取出。</p>
-<p>那么我们只需要知道每种卡片第一次被取出的时间 $S_i$，剩下每个空位置都可以选前面任意一种卡片。</p>
-<p>这个思路是行不通的。</p>
-<p>发现答案等于“每个卡片第一次被取出的时间”之中的最大值。即 $\max S_i$。</p>
-<p>因为 $S$ 是不确定的。即，求 $S$ 里面最大值的期望。</p>
-<p>联系 Min-Max 容斥：</p>
-<p>设 $U&#x3D;{1,2,…,m}$。$U$ 是全部种类的集合。<br>$$<br>E(\max_{i\in U} S_i)&#x3D;\sum_{T\subseteq U}(-1)^{|T|-1}E(\min_{i\in T} S_i)<br>$$<br>此时我们要算的就是，任选一个种类集合 $T$，（接着我们开始对全部卡牌进行游戏，每种卡牌都会有一个 $S$ 值），求出这些种类里面<strong>最早被取出的那个种类的取出时间</strong>（即最小的 $S$）<strong>的期望</strong>，求和。</p>
-<p>当然还有系数 $(-1)^{|T|-1}$。我们先考虑上面那个怎么求。</p>
-<p>上面那个就是计算独立事件第一次发生的期望次数。</p>
-<p>进行一次实验，这个独立事件发生的概率显然是 $\dfrac{\sum_{i\in T} c_i}{n}$。</p>
-<blockquote>
-<p>独立事件发生概率为 $p$，第一次发生期望次数 $E&#x3D;\frac{1}{p}$。</p>
-<p>证明：<br>$$<br>\begin{aligned}<br>q&amp;&#x3D;1-p\<br>E&amp;&#x3D;\sum_{i&#x3D;1}^\inf iq^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf (i-1+1)q^{i-1}p&#x3D;\sum_{i&#x3D;1}^\inf(i-1)q^{i-1}p+\sum_{i&#x3D;1}^\inf q^{i-1}p\<br>&amp;&#x3D;(\sum_{i&#x3D;1}^\inf iq^ip)+1&#x3D;(q\sum_{i&#x3D;1}^\inf iq^{i-1}p)+1&#x3D;qE+1&#x3D;(1-p)E+1\<br>&amp;\because E&#x3D;(1-p)E+1\<br>&amp;\therefore E&#x3D;\frac{1}{p}(p\neq 0)<br>\end{aligned}<br>$$</p>
-</blockquote>
-<p>期望就是<br>$$<br>\dfrac{n}{\sum_{i\in T} c_i}<br>$$</p>
-<p>我们的式子变成了<br>$$<br>E(\max_{i\in U} S_i)&#x3D;\sum_{T\subseteq U}(-1)^{|T|-1}\times\dfrac{n}{\sum_{i\in T} c_i}<br>$$<br>使用一个常见的拆贡献方法，设 $\sum_{i\in T} c_i&#x3D;x$，则原式变为<br>$$<br>\sum_{x&#x3D;1}^n F(x)\times\frac{n}{x}<br>$$<br>$F(x)$ 是一个负或正的整数。因为原式中全部 $\frac{n}{x}$ 相等的项可以合并同类项。$F(x)$ 就是合并完以后他们的系数。</p>
-<p>如果把 $F(x)$ 求出来就可以 $O(n\log n)$ 计算答案了。之所以带 $\log$ 是因为我不会线性求逆元。</p>
-<p>现在考虑求 $F(x)$。因为 $F(x)$ 表示的是若干个 $c$ 相加为 $x$ 的一些系数，考虑卷积。</p>
-<p>一开始我们有 $n$ 个数列，第 $k$ 个数列为：<br>$$<br>[0,0,…,0,1,0,0,…0,0]<br>$$<br>第 $c_k$ 项是 1，其余是 0。</p>
-<p>数列第 $x$ 项代表在 ${k}$ 这一个集合的全部子集 $T\subseteq{k}$ 中，$\frac{n}{x}$ 那一项的系数，也就是 $F(x)$，只不过我们此时的 $U&#x3D;{k}$。</p>
-<p>那么显然，此时 $T$ 只有 ${k}$ 一种取法，而 $(-1)^{|T|-1}&#x3D;1,\sum_{i\in T} c_i&#x3D;c_k$，所以第 $c_k$ 项是 1，其余是 0。</p>
-<p>这一部分的关键在于，每个多项式都有隐含的一个意义：$U$ 的元素（就是上面式子里那个 $U$，最终 $U$ 应当为全集，初始第 $k$ 个多项式 $U&#x3D;{k}$）。</p>
-<p>当我们把两个数列（多项式）卷起来。设这两个数列的 $U$ 分别等于 $A,B$，成绩结果为 $C$。</p>
-<p>乘积多项式的意义<strong>应当</strong>是当 $U&#x3D;A\cup B$ 时的 $F(x)$。</p>
-<p>但我们发现这两个卷起来以后得到的结果是把 $T\subseteq A$ 和 $T\subseteq B$ 排除在外的！</p>
-<p>所以我们要让 $C&#x3D;A\times B+A+B$。</p>
-<p>但我们发现，对于 $-1$ 的处理，在 $A$ 中一个因子是 $(-1)^{|T1|-1}$，在 $B$ 中一个因子是 $(-1)^{|T2|-1}$，两个合起来应当为 $(-1)^{|T1|+|T2|-1}$。</p>
-<p>但是我们做的运算是 $(-1)^{|T1|-1}\times (-1)^{|T2|-1}&#x3D;(-1)^{|T1|+|T2|-1}$。</p>
-<p>所以 $C$ 应当等于 $-(A\times B)+A+B$。</p>
-<p>总结一下：</p>
-<p>我们要求<br>$$<br>\sum_{x&#x3D;1}^n F(x)\times\frac{n}{x}<br>$$<br>所以要求 $F$。每个多项式第 $x$ 项代表对于它的 $U$ 的全部子集 $T\subseteq U$，对 $(-1)^{|T|-1}\times\dfrac{n}{\sum_{i\in T} c_i(&#x3D;x)}$ 求和，$\frac{n}{x}$ 那一项的系数。</p>
-<p>此时我们把这 $n$ 个多项式启发式卷起来。卷不是正常的卷，$F$ 卷 $G$ 等于 $-(F\times G)+F+G$。</p>
-<p>最终的多项式就是要求的 $F(x)$。</p>
-<p>时间 $O(n\log^2n)$。</p>
-<hr>
-<h2 id="ABC325G"><a href="#ABC325G" class="headerlink" title="ABC325G"></a>ABC325G</h2><blockquote>
-<p>给出一个长为 $n$ 的字符串和非负整数 $k$。你可以进行以下操作若干次，使得最终字符串长度最小。</p>
-<p>选择一个字串 <code>of</code>。然后删掉 <code>of</code> 以及这之后的 $i$ 个字符。$i$ 由你决定，但要满足 $0\leq i\leq k$。</p>
-<p>输出这个最小长度。$1\leq n,k\leq 300$。</p>
-</blockquote>
-<p>做完以后感觉很简单。但是做的时候绕了个大大大大大的弯。</p>
-<p>观察最终局面。在原字符串中的表现就是有若干连续段被删除。</p>
-<p><img src="D:\2008verser\PiCForp\8.png" alt="8"></p>
-<p>设 $F(l,r)$ 为子串 $[l,r]$ 的答案。</p>
-<p>如果 $F(l,r)$ 不能全部被删完（也就是有黑色部分），则一定存在一个 $i$，$F(l,r)&#x3D;F(l,i)+F(i+1,r)$。</p>
-<p>那做法就很显然了：</p>
-<ul>
-<li>判断 $[l,r]$ 能否被删完。若能，$F(l,r)&#x3D;0$。</li>
-<li>否则，$F(l,r)&#x3D;\min{F(l,i)+F(i+1,r)}$。</li>
-</ul>
-<p>然后我一开始将这两个视作完全独立的问题。结果试了很久都没有试出咋判断。</p>
-<p><del>后来啊，我有些绝望了。直到那一秒，我灵光一现。</del></p>
-<p>我现在要找到对于可以完全删完的串的必要条件。观察 $l$，它一定要是 ‘o’。</p>
-<p>后面要有一个 ‘f’ 与它匹配。设第 $i(a_i&#x3D;f)$ 位与 $l$ 匹配。</p>
-<p>那么 $[l+1,i-1]$ 需要删完。$[i+1,r]$ 里有一些是这一次匹配顺便删的，剩下要删完。</p>
-<p>想到这里我才明白。</p>
-<p>第一个条件意味 $F(l+1,i-1)&#x3D;0$。第二个意味 $F(i+1,r)\leq k$。</p>
-<blockquote>
-<p>本来我使用了一个新的函数描述能否删干净。完全没有想到用第二个 $\leq k$ 这个东西。</p>
-</blockquote>
-<p>判断的方法已经很显然了。枚举 $i$，然后判断 $F$。</p>
-<p>时间 $O(n^3)$。</p>
-<hr>
-<h2 id="ABC326E"><a href="#ABC326E" class="headerlink" title="ABC326E"></a>ABC326E</h2><blockquote>
-<p>有一个 $n$ 面骰子，写着 $1\to n$，每个面朝上概率相等。</p>
-<p>进行一种游戏，投若干次骰子，如果一次投出的点数小于等于此轮中前面投出的任意一次，结束游戏。</p>
-<p>得分为除了最后一次全部的点数之和。求期望得分。$1\leq n\leq 3e5$。对 $998244353$ 取模。</p>
-</blockquote>
-<p>很能体现我思路的缺陷，陷入一种方法一直出不来。</p>
-<p>一种结束局面一定是一个上升子序列，并且最后一次是在最后一位之前的。</p>
-<p>然后我的思路就是枚举最后一位是什么，那么就可以表示出以这一位结束时对答案的贡献。然后考虑优化。</p>
-<p>优化过程中有这样一种式子我一直没办法 $O(1)$ 求<br>$$<br>\sum_{i&#x3D;0}^n{n\choose i}k^i<br>$$<br>然后就不会做了。事实上这一题的方法非常简单。<del>（要不然他是 E 题）</del></p>
-<p>答案是每个 $A_i$ 乘概率加起来得到的。直接求这个概率。是“$i$ 做出贡献的概率”。<br>$$<br>p_i&#x3D;\frac{1}{n}\sum_{i&#x3D;1}^{i-1}p_i<br>$$<br>就好了。</p>
-<hr>
-<h2 id="P1365"><a href="#P1365" class="headerlink" title="P1365"></a>P1365</h2><blockquote>
-<p>给定由 ‘o’,’x’,’?’ 构成的长度为 $n$ 的字符串。’?’ 分别有 0.5 的概率变成 ‘x’,’o’。</p>
-<p>一个字符串的价值为每个极长 ‘o’ 段的长度的平方之和。求给出字符串期望价值。</p>
-<p>$1\leq n\leq 3e5$。</p>
-</blockquote>
-<p>一个字符串的价值为：$()^2\times(\frac{1}{2})^{()}+()^2\times(\frac{1}{2})^{()}+…$。</p>
-<p>考虑枚举这个长度，然后计算全部系数之和，相乘。</p>
-<p>我没有想到低于 $O(n^2)$ 的做法。继续考虑，枚举极长段的右端点。</p>
-<p>那么左端点一直可以延伸到上一个 ‘x’ 出现的位置 +1。</p>
-<p>然后有一些位置是不能当作左端点的，比如：<code>...oo...</code>，此时右边这个 <code>o</code> 不行。</p>
-<p>紧接着感受一下，右端点是可以从 $i$ 移动到 $i+1$ 的。维护：<br>$$<br>\begin{aligned}<br>s&#x3D;()^2\times(\frac{1}{2})^{()}+()^2\times(\frac{1}{2})^{()}+…\<br>f&#x3D;()\times(\frac{1}{2})^{()}+()\times(\frac{1}{2})^{()}+…\<br>p&#x3D;(\frac{1}{2})^{()}+(\frac{1}{2})^{()}+…\<br>\end{aligned}<br>$$<br>小力分讨就好了。</p>
-<hr>
-<h2 id="CF858F"><a href="#CF858F" class="headerlink" title="CF858F"></a>CF858F</h2><blockquote>
-<p>$n$ 个点 $m$ 条边简单无向图，求最大的三元组数量，记三元组为 $(a,b,c)$。</p>
-<p>三元组要满足：$a$ 到 $b$、$b$ 到 $c$ 有边。并且对于任意两个三元组，它们一共有四条边，这四条边两两不同。</p>
-<p>$1\leq n,m\leq 2e5$。</p>
-</blockquote>
-<p>挺好想的。wtc 曾经说过，没有部分分的题要创造部分分。</p>
-<p>对于图上题，考虑它的 dfs 生成树。</p>
-<p>先想想一棵树怎么做。手玩一下发现能覆盖到的边还是挺多的，最多剩一条。</p>
-<p>为了证明这个结论，考虑叶子的父亲，如果它的全部儿子和他的连边都能算入答案的话，必定是两两儿子相连，因为他向父亲只有一条边。</p>
-<p>我们发现，如果他儿子数量为奇数，多出来的要和他和他父亲那条边配对。而对父亲的影响仅仅是少了一个儿子。</p>
-<p>那做法就呼之欲出了。从下往上做上去即可。每次找出一个点全部儿子（如果与他的边已经占用就不要），然后两两匹配即可。</p>
-<p>放到 dfs 树。dfs 树是没有横叉边的。刚才是在上（父亲）计算下面（儿子），类似，此时考虑对于每个非树边在深度较浅的点计算。</p>
-<p>我们发现刚才的那套理论可以照搬过来！</p>
-<p>这题就做完了。时间是 $O(n+m)$ 的。</p>
-<p>同时我们找到了一个没用性质：任意图中，不能算入答案的边数不超过 1。</p>
-<hr>
-<h2 id="ABC332G"><a href="#ABC332G" class="headerlink" title="ABC332G"></a>ABC332G</h2><blockquote>
-<p>第 $i$ 种球有 $a_i$ 个，共 $n$ 种。</p>
-<p>第 $i$ 种箱子最多共装 $b_i$ 个球。共 $m$ 种。</p>
-<p>第 $i$ 种球在第 $j$ 种箱子里至多放 $ij$ 个。</p>
-<p>问所有箱子放的球数最多是多少。</p>
-<p>$1\leq n\leq 500,1\leq m\leq 5e5,0\leq a_i,b_i\leq 1e12$。</p>
-</blockquote>
-<p>很容易建出网络流模型。从上至下依次有 $1,n,m,1$ 个点。但是图实在太大了。</p>
-<p>考虑求最小割。那就是要把上下共 $n+m$ 个点划分为两类。</p>
-<p>将它表示出来。设上下的全集分别为 $X&#x3D;{1,2,…,n},Y&#x3D;{1,2,…,m}$。</p>
-<p>上下分别选了 $P\subseteq X,Q\subseteq Y$ 归于源点集合。（以下所有式子所有求和条件略去这两个）<br>$$<br>\sum_{i\in X&#x2F;P}a_i+\sum_{i\in P}i\sum_{j\in Y&#x2F;Q}j+\sum_{i\in Q}b_i<br>$$<br>这个东西的最小值不好求。因为既要考虑 $P$ 也要考虑 $Q$。</p>
-<p>观察到数据范围很小，考虑枚举一点东西来把问题划分成独立的两个问题。枚举中间项左侧的 $k&#x3D;\sum_{i\in X}i$。</p>
-<p>有 $0\leq k\leq n(n+1)&#x2F;2$。</p>
-<p>那么对最左项的限制就是选一些求和为 $k$ 的 $i$，作为 $P$。剩下的 $a_i$ 加起来作为这一项。</p>
-<p>写在求和的条件上就是：<br>$$<br>\sum_{i\in X&#x2F;P,k&#x3D;\sum_{i\in X&#x2F;P} i}a_i+k\sum_{i\in Y&#x2F;Q}i+\sum_{i\in Q}b_i<br>$$<br>下面一行要么纳入源点集合，在第三项计算。否则在第二项计算。</p>
-<p>发现此时下面一行对于是否纳入源点集合不受约束。贪心地让它取较小的，使得整个式子最小。<br>$$<br>\sum_{i\in X&#x2F;P,k&#x3D;\sum_{i\in X&#x2F;P} i}a_i+\sum_{1\leq i\leq m}\min(ik,b_i)<br>$$<br>那么可以分别求出左侧和右侧对于每个 $k$ 的最小值，相加。</p>
-<p>左侧可以用 $O(n^3)$ 的 DP 算出，右侧可以发挥智慧写出 $O(n^2+m)$。这部分比较简单。</p>
-<p>总时间复杂度为 $O(n^3+m)$。</p>
-<hr>
-<h2 id="ARC125E"><a href="#ARC125E" class="headerlink" title="ARC125E"></a>ARC125E</h2><blockquote>
-<p>第 $i$ 种糖果有 $a_i$ 个，共 $n$ 种。</p>
-<p>第 $i$ 个小朋友对于每种糖果都最多吃 $b_i$ 个，全部糖果一共最多吃 $c_i$ 个，共 $m$ 个小朋友。</p>
-<p>求每个小朋友吃到糖果数量之和的最大值。</p>
-<p>$1\leq n,m\leq 2\times 10^5,1\leq a_i,c_i\leq 10^{12},1\leq b_i\leq 10^7$。</p>
-</blockquote>
-<p>从上一题过来的。做法一致。</p>
-<p>式子是：<br>$$<br>\sum_{i\in X&#x2F;P}a_i+\sum_{1\leq i\leq m}\min(b_i\times |P|,c_i)<br>$$<br>此时左项排序后贪心选，右项和上一题一致。时间复杂度 $O(n\log{n}+m\log{m})$。</p>
-<hr>
-<h2 id="ABC311G"><a href="#ABC311G" class="headerlink" title="ABC311G"></a>ABC311G</h2><blockquote>
-<p>给出 $n\times m$ 的矩阵 $a$。求权值最大子矩形的权值。</p>
-<p>一个矩形的权值定义为它里面全部数的和乘上最小值。</p>
-<p>$n,m\leq 300,0\leq a_{i,j}\leq 300$。</p>
-</blockquote>
-<p>枚举最小的数 $a_{i,j}$。则在满足 $a_{i,j}$ 是最小值时，包含 $(i,j)$ 的矩形一定是极大的。</p>
-<p>这些矩形不好枚举，也难以计算究竟有多少个。</p>
-<p>考虑添加一些限制。</p>
-<p>枚举上下边界。那么我们枚举列，以这一列的最小值为待定矩形的最小值，然后向左右拓展为一个极大的矩形。</p>
-<p>发现这样拓展出的矩形与上面做法的矩形形成双射。</p>
-<p>拓展可以采用二维 ST 表+二分实现。时间复杂度 $O(n^3\log{n})$。</p>
-<p>哦还可以单调栈。时间是 $O(n^3)$。</p>
-<hr>
-<h2 id="CF1292B"><a href="#CF1292B" class="headerlink" title="CF1292B"></a>CF1292B</h2><p>观察到关键点的生成在两个坐标上独立，且类似于一次函数。</p>
-<p>再次观察数据范围发现关键点的两个坐标每次都会增加，并且至少扩大到自身的一倍。所以最终关键点数量不超过 64 个。</p>
-<p>那么枚举起始点和拓展方向即可。</p>
-<p>时间复杂度 $O(\log^2{B})$。$B$ 指值域。</p>
-<hr>
-<h2 id="CF1304C"><a href="#CF1304C" class="headerlink" title="CF1304C"></a>CF1304C</h2><p>考虑映射到平面。现在从左至右若干个区间，从 $y&#x3D;m$ 开始向右走，每次 $y$ 可以加一或减一或不变。能否经过全部区间。</p>
-<p>直接维护每个时刻可以到的 $y$ 值。在平面上看一看容易知道它一是一段区间。那么不断维护这个区间就好了。</p>
-<p>$O(Tn)$。</p>
-<hr>
-<h2 id="CF1313D"><a href="#CF1313D" class="headerlink" title="CF1313D"></a>CF1313D</h2><p>跟联考的一道题做法类似。</p>
-<p>观察到覆盖每个点的区间很少。设 $f_{i,s}$ 表示 dp 到第 $i$ 个小朋友，覆盖它的区间的选择状态为 $s$，前 $i$ 个小朋友最多开心数。</p>
-<p>那么如果枚举了 $s$，转移过来的 $f_{i-1,t}$ 必须满足 $t$ 和 $s$ 有一些位置相同（这些位置所代表的区间覆盖了 $i$ 和 $i-1$）。</p>
-<p>用一个辅助数组预先处理一下，转移就可以不用枚举两次压缩的状态。</p>
-<p>小朋友数量虽然是 $10^9$，但是可以把一些连续、相同的区间打包计算。这里要开动一下脑筋，按差分类似的东西搞一搞。</p>
-<p>容易证明打包过后小朋友数量是 $O(m)$ 级别的。</p>
-<p>时间 $O(mk2^k)$。</p>
-<hr>
-<h2 id="CF1322B"><a href="#CF1322B" class="headerlink" title="CF1322B"></a>CF1322B</h2><blockquote>
-<p>给出 $n$ 和长为 $n$ 的非负整数序列 $a$。</p>
-<p>输出<br>$$<br>\oplus_{i&#x3D;1}^{n-1}\oplus_{j&#x3D;i+1}^n(a_i+a_j)<br>$$<br>$1\leq n\leq 4\times 10^5,1\leq a_i\leq 10^7$。</p>
-</blockquote>
-<p>挺好玩的题。想了半个多小时最后总算做出来了。</p>
-<p>考虑按位计算贡献。枚举第 $k$ 位，习惯性从零开始，考虑计算有多少对 $(i,j)$ 满足 $a_i+a_j$ 的第 $k$ 位是 1。</p>
-<p>根据这个对数的奇偶性可以算贡献。</p>
-<p>初始我计划从 $k-1$ 转移一些信息过来，深入想了想感觉不会。</p>
-<p>再考虑表示出满足条件的数学式子，看看能否用数据结构维护。</p>
-<p>此时只保留每个数低 $0\to k$ 位。</p>
-<p>若 $a_i+a_j$ 的第 $k$ 位是 1，根据此时的数字都只有后 $k$ 位，得出，两个数的和必须落在 $[2^k,2^{k+1})$ 和 $[2^{k+1}+2^k,2^{k+2})$ 之间。</p>
-<p>那么可以枚举 $i$，把这个不等式解一下，用权值线段树回答。时间是 $O(n\log^2{V})$。</p>
-<p>题解都是 $O(n\log{n}\log{V})$。因为各个 $a$ 先后顺序无影响，可以排序后双指针。xht 的博客讲的很明白：</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/xht37/solution-CF1322b">https://www.luogu.com.cn/blog/xht37/solution-CF1322b</a></p>
-<hr>
-<h2 id="CF1322C"><a href="#CF1322C" class="headerlink" title="CF1322C"></a>CF1322C</h2><p>考虑只有边 $(i,i)$ 是什么情况。根据 $\gcd$ 的交换律结合律，把 $S$ 分类，再分别考虑。</p>
-<p>对于 $S&#x3D;{1},{2},{3},…,{n}$，这一些 $f(S)$ 的 $\gcd$ 是全部 $c_i$ 的 $\gcd$。设这一部分答案为 $x$。</p>
-<p>那么对于每个 $i$，$c_i$ 可以改写成 $c’_i\times x$。</p>
-<p>此时对于任意一个大小大于 $1$ 的 $|S|$，$f(S)$ 可以提出公因数 $x$。即 $\forall |S|&gt;1,x|\gcd f(S)$。</p>
-<p>那么答案就是 $x$。</p>
-<p>转化到一般二分图。它跟上面的区别在于左侧点的出点集合或许有交。</p>
-<p>再思考一个简单情况，两个左侧的点出点集合有交。设不交、交、不交三部分的 $c$ 值和为 $A,B,C$。</p>
-<p><img src="D:\2008verser\PiCForp\9.png" alt="9"></p>
-<p>此时答案应为 $\gcd(A+B,B+C,A+B+C)$。设答案为 $x$。则应有 $x|(A+B),x|(B+C),x|(A+B+C)$。</p>
-<p>想一会发现并没有什么进展。但因为这题肯定有解，对着样例猜测一些结论性的东西。</p>
-<p>比如把一个连通块里全部 $c_i$ 直接 $\gcd$ 起来。样例一说明这是错的。</p>
-<p>为什么错呢？我们把样例一的全部 $S$ 写出来，发现 $c_1,c_2$ 一直是作为整体出现的，两者不能只出现一个。</p>
-<p>然后对着样例三一通补丁，发现只要把这些作为整体出现的数加起来合并成一个数，然后把全部数 $\gcd$ 起来很有道理。</p>
-<p>因为如果不整体出现的两个数，一定存在两个集合分别包含这两个数，然后这两个集合是要 $\gcd$ 一下的，根据前面提公因数的方法感觉很对。</p>
-<blockquote>
-<p>设这两个数为 $a,b$。则必然存在有一个点连了 $a$ 没连 $b$。</p>
-<p>还有另一个点：</p>
-<ul>
-<li>连了 $b$ 没连 $a$，此时答案包含 $\gcd(a,b)$。</li>
-<li>既连了 $b$ 也连了 $a$。此时答案包含 $\gcd(a,a+b)&#x3D;\gcd(a,b)$。</li>
-</ul>
-<p>所以答案一定有 $\gcd(a,b)$。</p>
-</blockquote>
-<p>上面那个图中间两个就是要合并起来的。</p>
-<p>写完发现是对的。时间 $O(n+m)$。</p>
-<hr>
-<h2 id="CF1325D"><a href="#CF1325D" class="headerlink" title="CF1325D"></a>CF1325D</h2><blockquote>
-<p>输出长度最短的序列，元素异或和为 $u$，和为 $v$。</p>
-<p>$0\leq u,v\leq 10^{18}$</p>
-</blockquote>
-<p>虽然是绿题，看了题解才会。一直以为是按位考虑。想了很久没有想出当 $u$ 某一位为 1，$v$ 这一位为 0 怎么处理。</p>
-<p>一些题可以从显然的一些情况入手分析。</p>
-<p>当 $u\gt v$，显然是 -1。当 $u&#x3D;v&#x3D;0$，构造空集。当 $u&#x3D;v$，直接构造 ${u}$。</p>
-<p>接下来观察若干个数进行运算的最低位。发现他们异或起来的最低位和加起来的最低位必定相等。</p>
-<p>意味着 $u,v$ 的奇偶性应当一致。不一致时是 -1。</p>
-<p>剩下的情况，考虑先从 $v$ 里面拿一个 $u$ 放进答案。然后把剩下 $v-u$ 个 $1$ 合并成一些东西，并且让合并完以后的全部东西异或和为 0。<br>$$<br>v&#x3D;u+1+…+1<br>$$<br>如果 $1$ 的个数是奇数，则不可能。</p>
-<p>如果 $1$ 的个数是偶数，可以刚好分为两半。</p>
-<p>最终答案数组长度小于等于 3。如果有两个数与起来是 0 还可以合并。</p>
-<p>看起来就很对。</p>
-<hr>
-<h2 id="CF1338B"><a href="#CF1338B" class="headerlink" title="CF1338B"></a>CF1338B</h2><blockquote>
-<p>给出大小为 $n$ 的树，请给每条边赋正整数权，满足任意两个叶子的路径上全部权异或起来为 0。</p>
-<p>输出两个数，代表不同权值数量的最小值和最大值。权值大小无限制。</p>
-<p>$3\leq n\leq 10^5$。</p>
-</blockquote>
-<p>首先随便找个度数大于 2 的点做根。</p>
-<p>套路地，将树上两点之间的异或和拆成两点到根的异或和的异或和。</p>
-<p>限制转化为，全部叶子到根的异或和相等。</p>
-<p>先想第一问，如果全部叶子深度奇偶性相等，我可以把全部边赋为同一个值。</p>
-<p>如果深度奇偶性有差异。考虑先把整棵树赋为同一个值然后开始调整。</p>
-<p>我先把整棵树赋为 2。</p>
-<p>然后对于一个深度为偶数的叶子，把它连向父亲的边赋为 1。这样，它到根的异或和就是奇数个 2 和一个 1 异或的结果，为 3。</p>
-<p>对于深度为奇数的叶子，把它连向父亲的边赋为 3。类似的道理，我们发现它到根的异或和也为 3。</p>
-<p>这样整棵树只需要 3 种不同的权值。能否更少呢？一种肯定不行。</p>
-<p>如果是两种，设为 $x,y$。对于深度为奇数的叶子，它到根的路径上，$x,y$ 一定是一个出现奇数次一个偶数次。到根的异或和为 $x$ 或 $y$。</p>
-<p>对于深度偶数的叶子，我们容易发现，它到根的异或和要么是 $x\oplus y$ 要么是 $0$。我们证明了深度为偶数和奇数的叶子到根的异或和不同。所以两种也不行。</p>
-<p>对于第二问，我们考虑一开始把整棵树赋为两两不同的权值。</p>
-<p>然后对于每个叶子，调整它连向父亲的边权。显然全部叶子到根的异或和可以调整为一致的。</p>
-<p>此时，父亲相同的叶子，连向父亲的边权一致。父亲不同的叶子，如果它们到根的异或和相等，一定是因为他们父亲到根的异或和相等。</p>
-<p>但是我们仍然可以把全部这样的父亲到根的异或和调整成不一致的。所以父亲不同的叶子到根的异或和不等。</p>
-<p>那就做完了。时间 $O(n)$。</p>
-<hr>
-<h2 id="CF1338C"><a href="#CF1338C" class="headerlink" title="CF1338C"></a>CF1338C</h2><blockquote>
-<p>用以下方式构造无穷数列 $S$：</p>
-<ul>
-<li>选择字典序最小的有序三元组 $(a,b,c)$，满足 $a,b,c\not\in S$ 且 $a\oplus b\oplus c&#x3D;0$。</li>
-<li>将 $a,b,c$ 按顺序加入 $S$。</li>
-</ul>
-<p>$q$ 次询问 $S$ 的第 $n$ 项。</p>
-<p>$1\leq q\leq 10^5,1\leq n\leq 10^{16}$。</p>
-</blockquote>
-<p>遇到这种题，想 10 分钟想不出来应当打暴力找规律。</p>
-<p>还有，暴力的输出格式一定程度上影响了找出规律的速度和强度。</p>
-<p>输出完发现每组的第一个数是 $1,4,5,6,7,16,17,…31,64,65,…$。递增是显然的。</p>
-<p>即，$2^k\to 2^{k+1}-1$，这里 $k$ 要是偶数。</p>
-<p>紧接着我发现，第二个、第三个数按照上面的写法，分别位于 $2^{k+1}\to 2^{k+1}+2^k-1$ 以及 $2^{k+1}+2^{k}\to 2^{k+2}-1$。</p>
-<p>结论一就是，对于 $k&#x3D;0,2,4,…$，依次都存在 $2^k$ 个三元组，三元组的三个元素分别位于下面这三段长度相等的区间内。</p>
-<p><img src="D:\2008verser\PiCForp\10.png" alt="10"></p>
-<p>那么对于 $n\bmod 3&#x3D;1$ 的询问，我们已经可以做了。</p>
-<p>对于 $n\bmod 3&#x3D;2$ 的询问，它一定在棕色的区间里面。再次观察暴力的输出结果，我们发现棕色内部有一些规律：</p>
-<p>随着第一个元素在红色区间内右移，第二个元素在棕色区间里的出现顺序是：</p>
-<p>先在第一个 $\frac{1}{4}$ 内出现，再在第三个 $\frac{1}{4}$ 内出现，再在第四个 $\frac{1}{4}$ 内出现，再在第二个 $\frac{1}{4}$ 内出现。</p>
-<p>有点抽象。打出表还是可以理解的。</p>
-<p>那么我可以用 $\log_4{n}$ 的递归完成这一询问。哦对了，第一个的时间复杂度也是 $\log_4{n}$。</p>
-<p>对于 $n\bmod 3&#x3D;0$ 的询问，有类似的规律。</p>
-<p>总时间是 $O(T\log_4{n})$。</p>
-<hr>
-<h2 id="CF1349B"><a href="#CF1349B" class="headerlink" title="CF1349B"></a>CF1349B</h2><blockquote>
-<p>定义长为 $n$ 区间 $a$ 位数为 $a_{\lfloor\frac{n+1}{2}\rfloor}$。</p>
-<p>给出正整数 $n$，区间 $a$。</p>
-<p>询问区间 $a$ 能否通过多次将一段子区间赋值为这段子区间的中位数的操作，把全部元素变为 $k$。</p>
-<p>多测。</p>
-<p>$1\leq\sum n\leq 10^5,1\leq a_i,k\leq 10^9$。</p>
-</blockquote>
-<p>我的思路想偏了。没绕回来。</p>
-<p>观察到如果有两个相邻的 $k$，则答案为 yes。</p>
-<p>所以想办法搞出两个相邻的 $k$。我大胆猜测如果可以把一个 $k$ “拓展”成两个，则不需要选跨过两个 $k$ 的区间。</p>
-<p>事实上 <code>k=3,a[]=&#123;3,1,3&#125;</code> 就是一个反例。但是我没发现。</p>
-<p>按照我的猜想，我可以对于每个 $k$ 都向左向右枚举区间左右端点。列一下符合条件的式子发现可以先用 map 记录一边的信息，再枚举另一边。</p>
-<p>结论是错的，不能用它。观察发现如果存在两个相邻的 $\geq k$ 的数，则可以把他们一直拓展直到遇见一个 $k$。此时是 yes。</p>
-<p>那我们可以进一步讨论 $\geq k$ 的数的分布。如果 $a_{i-1}\geq k,a_{i+1}\geq k$，这也是可以的。</p>
-<p>如果隔了两个小于 $k$ 的数呢？但是我们很容易证明，当一个区间操作后元素大小 $\geq k$，则有大于一半的 $\geq k$。根据鸽巢原理，上述两种一定存在。而这一种一定不存在。</p>
-<p>或者可以这么理解，如果我们一直隔两个放一个 $\geq k$ 的数，在不出现上面两种情况的前提下，是无法做到操作完以后元素大小 $\geq k$ 的。</p>
-<p>所以只需判断是否存在相邻两个 $\geq k$ 的数相隔不超过 1 个 $\lt k$ 的数即可。还有一些边界要注意。</p>
-<p>时间 $O(\sum n)$。</p>
-<hr>
-<h2 id="P3857"><a href="#P3857" class="headerlink" title="P3857"></a>P3857</h2><p>刚学线性基。</p>
-<p>因为线性基的张成等于原集合的张成。并且一组线性基是线性无关的。</p>
-<p>所以线性基里每个元素都可以独立地选或不选。总方案数就是 2 的线性基大小次方。</p>
-<hr>
-<h2 id="P4151"><a href="#P4151" class="headerlink" title="P4151"></a>P4151</h2><p>懒得粘贴回来了，请看我的另一篇文章《线性基》。</p>
-<hr>
-<h2 id="ABC341G"><a href="#ABC341G" class="headerlink" title="ABC341G"></a>ABC341G</h2><p>设 $s_n&#x3D;\sum_{i&#x3D;1}^na_i$。</p>
-<p>设 $f_i$ 为 $i$ 的答案。则 $f_i&#x3D;\max(\frac{1}{j-i+1}(s_j-s_{i-1})),j\geq i$。</p>
-<p>换个表述使式子好看些。设 $f_i$ 是 $i+1$ 的答案，则 $f_i&#x3D;\max(\frac{1}{j-i}(s_j-s_i)),j\gt i$。</p>
-<p><strong>注意到</strong>如果把每个数映射为二维平面上的一个点 $(i,s_i)$，这个式子就是求过 $i$ 和 $i+1$、过 $i$ 和 $i+2$ ……的这些直线的斜率的最大值。</p>
-<p>这就是一个比较经典的问题了。</p>
-<ul>
-<li>$i+1\sim n$ 这些点形成的上凸壳包含决策点 $j$。</li>
-</ul>
-<p>那么大到小枚举 $i&#x3D;n…0$（注意状态），然后把 $i$ 加入凸壳。</p>
-<p>找决策点就是找最小的凸壳上的 $j$，满足过 $i$ 和 $j$ 的直线斜率小于过 $j$ 和”$j$ 在凸壳上的下一个点”的斜率。</p>
-<p>暴力找到这个 $j$，这个过程同样是将 $i$ 加入凸壳的过程。</p>
-<p>每个点至多一进一出凸壳。时间复杂度 $O(n)$。</p>
-<hr>
-<h2 id="CF1545B"><a href="#CF1545B" class="headerlink" title="CF1545B"></a>CF1545B</h2><p>题目给出的移动方式，是选择一个连续的 $11$，左移或右移一位。</p>
-<p>考虑一堆不相邻的 $1$，以及，一个相邻的 $11$。<br>$$<br>010010…0{\color{red}11}00…01001<br>$$<br>此时，仅有 $11$ 是自由的。它可以乱动。</p>
-<p>发现什么了吗？</p>
-<p>1、所经之处的 $1$ 都会向左&#x2F;右移两格。</p>
-<p>2、不论任何时候，整个序列仅有一个 $11$。$11$ 的数量不因 $11$ 的移动改变。如果出现 $111$，我们认为它也是一个 $11$。</p>
-<p>但这样不好计数啊。</p>
-<p>刚才一直仅关注着 $1$ 和 $11$。但 $11$ 的一次移动，其实是一次相邻的 $11$ 和 $0$ 的交换。</p>
-<p>这样一来，（设有 $c0$ 个 $0$ ）就相当于把 $11$ 插入若干个 $0$ 形成的 $c0+1$ 个空隙里。</p>
-<p>3、单个 $1$ 的相对顺序是不变的，不对答案产生影响。</p>
-<p>对于多个 $11$，容易验证上述 2、3 结论都是正确的。</p>
-<p>设此时有 $c11$ 个 $11$，则答案为 $c0+s11\choose c0$。</p>
-<hr>
-<h2 id="P6475"><a href="#P6475" class="headerlink" title="P6475"></a>P6475</h2><p>分讨 $x,y$ 的大小，枚举 $a_x&#x3D;a_y&#x3D;i$，则答案就变成了若干个独立的子问题答案的乘积。</p>
-<p>子问题是，长为 $n$，值域 $[1,m]$ 的不降序列个数。</p>
-<p>打表出来发现答案是 $m+n-1\choose n$。</p>
-<p>证明考虑，让序列和插板问题形成双射。</p>
-<p>放置 $m$ 个小球代表数字 $1\to m$。插 $n$ 个板，板的数字是该板左边第一个小球的数字。</p>
-<p>第一个小球左边不能插板。也即，$m$ 个空位随意插 $n$ 个板的数量，$m+n-1\choose n$。</p>
-<hr>
-<h2 id="P7044"><a href="#P7044" class="headerlink" title="P7044"></a>P7044</h2><p>对于 $K&#x3D;1$，即求全部的 $S(i,j)$ 之和。</p>
-<p>当 $K&gt;1$，每个 $S(i,j)$ 会有一个系数代表在答案中算了几次。先想 $K&#x3D;1$ 咋做。</p>
-<p>观察一个串如何变得合法。插入和删除是等价的。我们只用删除。</p>
-<p>要删的是，偏左的一些 $)$，偏右的一些 $($。</p>
-<p>用红色表示，在给出串中无法配对的括号，也即要删的。<br>$$<br>[]{\color{red})}[]{\color{red})}[][][]{\color{red}(}[]{\color{red}((}[][]<br>$$<br>在每个 $j$ 计算 $(\ast,j)$ 的贡献。利用 $j-1$ 的 $\sum_{i&#x3D;1}^jS(i,j)$ 计算 $j$ 的。</p>
-<ul>
-<li>$a_j&#x3D;($，或者 $a_j&#x3D;\color{red})$，则对于全部的 $S(\ast,j)$，都要加一。</li>
-<li>$a_j&#x3D;)$，则，对于与这个右括号配对的左括号（设位置为 $x$ ）之前的全部 $S(\leq x,j)$，都要减一。剩下的加一。</li>
-</ul>
-<p>动脑筋用变量维护一下这些，$K&#x3D;1$ 就做完了。</p>
-<p>当 $K&gt;1$，一个 $(i,j)$，它外层要套 $K$ 个串。最外层的串是 $[1,n]$，也就是，要套 $K-1$ 个串。</p>
-<p>$[1,i]$ 和 $[j,n]$ 分别选 $K-1$ 个可重的位置，这样，唯一对应一种 $K-1$ 个串的选择。并且每种 $K-1$ 个串的选择唯一对应这些位置。</p>
-<p>也就是 $S(i,j)$ 会算 ${i+k-2\choose k-1}\times{n-i+k-1\choose k-1}$ 次。</p>
-<p>用上面类似的维护方式，再维护这些组合数的前缀和即可。</p>
-<hr>
-<h2 id="P7481"><a href="#P7481" class="headerlink" title="P7481"></a>P7481</h2><p>$$<br>F(a,b)&#x3D;\sum_{i&#x3D;0}^b{b\choose i}{n-i\choose a}<br>$$</p>
-<p>递推 $F(a,b)$。</p>
-<p>$b$ 在求和上界，根据 ${b\choose i}&#x3D;{b-1\choose i-1}+{b-1\choose i}$ 把组合数里的 $b$ 降下去。<br>$$<br>\sum_{i&#x3D;0}^b{b\choose i}{n-i\choose a}&#x3D;\sum_{i&#x3D;0}^b{b-1\choose i}{n-i\choose a}+\sum_{i&#x3D;0}^b{b-1\choose i-1}{n-i\choose a}<br>$$<br>左项当 $i$ 枚举到上界 $b$ 时为零，所以上界为 $b-1$，左侧即 $F(a,b-1)$。</p>
-<p>注意右项第一个组合数的 $i$ 最大用到 $b-1$。将 $i-1$ 替换为 $i$，得到：<br>$$<br>F(a,b-1)+\sum_{i&#x3D;0}^{b-1}{b-1\choose i}{n-i-1\choose a}<br>$$<br>不小心把右上角变成 $n-i-1$ 了。试让它加 $1$ 换成 $n-i$。</p>
-<p>我们有两个式子可以套到第二个组合数上：</p>
-<ul>
-<li>${n\choose m}&#x3D;{n+1\choose m}-{n\choose m-1}$</li>
-<li>${n\choose m}&#x3D;{n+1\choose m+1}-{n\choose m+1}$</li>
-</ul>
-<p>但是，第二个此时会使得组合数出现 $a+1$。不行。</p>
-<p>所以把 ${n\choose m}&#x3D;{n+1\choose m}-{n\choose m-1}$ 套到 $n-i-1\choose a$ 上。等于：<br>$$<br>\begin{aligned}<br>&amp;F(a,b-1)+\sum_{i&#x3D;0}^{b-1}{b-1\choose i}{n-i\choose a}-\sum_{i&#x3D;0}^{b-1}{b-1\choose i}{n-i-1\choose a-1}\<br>&#x3D;&amp;2F(a,b-1)-\sum_{i&#x3D;0}^{b-1}{b-1\choose i}{n-i-1\choose a-1}<br>\end{aligned}<br>$$<br>此时出现了 $a-1$。而 $n-i-1$ 消不掉。</p>
-<p>那走 $a-1$ 的道路。注意右上角是 $n-(i+1)$。所以可以让左下角同样变成 $i+1$。</p>
-<p>套 ${n\choose m}&#x3D;{n+1\choose m+1}-{n\choose m+1}$ 到 ${b-1\choose i}$ 上。得到：<br>$$<br>2F(a,b-1)-\sum_{i&#x3D;0}^{b-1}{b\choose i+1}{n-i-1\choose a-1}+\sum_{i&#x3D;0}^{b-1}{b-1\choose i+1}{n-i-1\choose a-1}<br>$$<br>左侧将 $i+1$ 换为 $i$，并令 $i$ 从零开始，最后减去 $i&#x3D;0$ 的式子。</p>
-<p>右侧类似。得到：<br>$$<br>\begin{aligned}<br>&amp;2F(a,b-1)-[\sum_{i&#x3D;0}^{b}{b\choose i}{n-i\choose a-1}-{n\choose a-1}]+[\sum_{i&#x3D;0}^{b-1}{b-1\choose i}{n-i\choose a-1}-{n\choose a-1}]\<br>&#x3D;&amp;2F(a,b-1)-F(a-1,b)+F(a-1,b-1)<br>\end{aligned}<br>$$<br>就做完了。</p>
-<hr>
-<h2 id="P6667"><a href="#P6667" class="headerlink" title="P6667"></a>P6667</h2><p>$f(x)$ 是一个关于 $x$ 的 $m$ 次多项式。</p>
-<h3 id="推导一："><a href="#推导一：" class="headerlink" title="推导一："></a>推导一：</h3><p>为防混乱，将题面中的 $x$ 换做 $z$。</p>
-<p>设 $h_{1\to m}$ 满足：<br>$$<br>f(x)&#x3D;\sum_{i&#x3D;0}^m{x\choose i}h_i<br>$$<br>之所以可以换成组合数，并求和，是因为 ${n\choose m}&#x3D;\frac{\Pi_{i&#x3D;1}^m(n-i+1)}{m!}$，可以理解为一个关于 $n$ 的 $m$ 次多项式。</p>
-<p>当 $i&gt;x$ 时，$x\choose i$ 为零。所以枚举上界可以换成 $x$。当 $x&gt;m$ 时一些 $h_i$ 不存在，视作零。</p>
-<p>并且可以用二项式反演得到 $h$。<br>$$<br>f(x)&#x3D;\sum_{i&#x3D;0}^x{x\choose i}h_i{\color{red}\Rightarrow} h_x&#x3D;\sum_{i&#x3D;0}^x(-1)^{x-i}{x\choose i}f(i)<br>$$<br>但直接算 $h$ 要 $O(m^2)$ 的时间。注意式子中有 $x-i$ 又有 $i$。故化为卷积。<br>$$<br>\begin{aligned}<br>h_x&amp;&#x3D;\sum_{i&#x3D;0}^x(-1)^{x-i}{x\choose i}f(i)\<br>\frac{h_x}{x!}&amp;&#x3D;\sum_{i&#x3D;0}^x\frac{f(i)}{i!}\times \frac{(-1)^{x-i}}{(x-i)!}<br>\end{aligned}<br>$$<br>把求完的 $f$ 用 $h$ 表示，带回原式。<br>$$<br>\begin{align}<br>Q(f,n,z)&amp;&#x3D;\sum_{k&#x3D;0}^n\sum_{i&#x3D;0}^m h_i{k\choose i}{n\choose k}z^k(1-z)^{n-k}\tag 1\<br>&amp;&#x3D;\sum_{i&#x3D;0}^mh_i\sum_{k&#x3D;0}^n {n\choose i}{n-i\choose k-i}z^k(1-z)^{n-k}\tag 2<br>\end{align}<br>$$<br>把 $n\choose i$ 提到第一个 $\sum$，接着因为 $k&lt;i$ 时 ${n-i\choose k-i}$ 为零，所以第二个 $\sum$ 下界是 $i$。<br>$$<br>\begin{align}<br>&#x3D;&amp;\sum_{i&#x3D;0}^mh_i{n\choose i}\sum_{k&#x3D;i}^n {n-i\choose k-i}z^k(1-z)^{n-k}\tag 3\<br>&#x3D;&amp;\sum_{i&#x3D;0}^mh_i{n\choose i}z^i\sum_{k&#x3D;i}^n {n-i\choose k-i}z^{k-i}(1-z)^{n-k}\tag 4<br>\end{align}<br>$$<br>再把 $k-i$ 替换为 $i$，惊喜地发现右边变成了 $(z+1-z)^{n-i}$ 的展开式，即等于 $1$。<br>$$<br>\begin{align}<br>&#x3D;&amp;\sum_{i&#x3D;0}^mh_i{n\choose i}z^i\sum_{k&#x3D;0}^{n-i}{n-i\choose k}z^{k}(1-z)^{n-i-k}\tag 5\<br>&#x3D;&amp;\sum_{i&#x3D;0}^mh_i{n\choose i}z^i<br>\end{align}<br>$$<br>至此，可以 $O(m)$ 计算。要 $O(m\log m)$ 的卷积。</p>
-<p>总时间复杂度 $O(m\log m)$。</p>
-<hr>
-<h3 id="推导二："><a href="#推导二：" class="headerlink" title="推导二："></a>推导二：</h3><p>学完多项式连续点值表达与下降幂的转换来补一发。</p>
-<p>原理是类似的。只不过式子有一步比较难推。</p>
-<p>设 $f(x)$ 的下降幂形式，然后用二项式反演推 $b$。化成卷积即可求 $b$。<br>$$<br>\begin{aligned}<br>&amp;f(x)&#x3D;\sum_{i&#x3D;0}^mb_ix^{\underline{i}}{\color{red}\Rightarrow} b_x&#x3D;\sum_{i&#x3D;0}^{x}(-1)^{x-i}{x\choose i}f(i)\<br>&amp;{\color{red}\Rightarrow}b_x&#x3D;\sum_{i&#x3D;0}^x\frac{(-1)^{x-i}}{(x-i)!}\frac{a_i}{i!}<br>\end{aligned}<br>$$<br>带入原式，得：<br>$$<br>\begin{align}<br>Q(f,n,x)&amp;&#x3D;\sum_{k&#x3D;0}^n\sum_{i&#x3D;0}^mb_ik^{\underline{i}}{n\choose k}x^k(1-x)^{n-k}\tag 1\<br>&amp;&#x3D;\sum_{i&#x3D;0}^{m}b_i\sum_{k&#x3D;0}^n\frac{n!}{(k-i)!(n-k)!}x^k(1-x)^{n-k}\tag 2<br>\end{align}<br>$$<br>看起来推不了了。观察式一，$k$ 要大于等于 $i$ 式子才不为零。所以第二行 $k$ 下界是 $i$。</p>
-<p>然后再改变 $k$ 的范围，上界是 $n-i$，而 $1-x$ 的指数是 $n-k-i$。</p>
-<p>为了凑成二项式定理，提 $x^i$ 出来，再上下同时乘以 $n-i$ 凑出定理的组合数。<br>$$<br>\begin{align}<br>&amp;&#x3D;\sum_{i&#x3D;0}^{m}b_i\sum_{k&#x3D;i}^{n-i}\frac{n!}{k!(n-k-i)!}x^{k+i}(1-x)^{n-k-i}\tag 3\<br>&amp;&#x3D;\sum_{i&#x3D;0}^{m}b_ix^i\sum_{k&#x3D;i}^{n-i}\frac{n!}{(n-i)!}\frac{(n-i)!}{k!(n-k-i)!}x^k(1-x)^{n-k-i}\tag 4\<br>&amp;&#x3D;\sum_{i&#x3D;0}^{m}b_ix^in^{\underline{i}}\sum_{k&#x3D;i}^{n-i}{n-i\choose k}x^k(1-x)^{n-k-i}\tag 5\<br>&amp;&#x3D;\sum_{i&#x3D;0}^{m}b_ix^in^{\underline{i}}\tag 6<br>\end{align}<br>$$<br>看别人有 $O(m^2)$ 卷积的过了。厉害。</p>
-<p>这两种办法本质都是把函数的连续点值表达化为下降幂。</p>
-<p>差异在于分母的阶乘。有时会带来推式子的难度不同。要灵活选择。</p>
-<hr>
-<h2 id="CF932E"><a href="#CF932E" class="headerlink" title="CF932E"></a>CF932E</h2><p>整数幂和下降幂的转换：<br>$$<br>x^n&#x3D;\sum_{i&#x3D;1}^n{n\brace i}x^{\underline{i}}<br>$$<br>于是把 $i^k$ 拆成与组合数相关的，然后让那几个组合数化学反应。<br>$$<br>\sum_{i&#x3D;1}^n{n\choose i}i^k&#x3D;\sum_{j&#x3D;1}^k{k\brace j}\sum_{i&#x3D;1}^n{n\choose i}i^{\underline{j}}\tag 1<br>$$<br>若此时把下降幂和组合数搞起来，那就消不掉了。</p>
-<blockquote>
-<p>upd on 2024.02.27：很简单消。和【如何优雅地求和】推导过程类似。<br>$$<br>\sum_{j&#x3D;1}^k{k\brace j}\sum_{i&#x3D;1}^n{n\choose i}i^{\underline{j}}&#x3D;\sum_{j&#x3D;1}^k{k\brace j}\sum_{i&#x3D;1}^n\frac{n!}{(n-i)!(i-j)!}<br>$$<br>显然 $i$ 可以从 $j$ 开始，然后再换出来组合数。<br>$$<br>&#x3D;\sum_{j&#x3D;1}^k{k\brace j}\sum_{i&#x3D;j}^n\frac{n!}{(n-i)!(i-j)!}&#x3D;\sum_{j&#x3D;1}^k{k\brace j}n^{\underline{j}}\sum_{i&#x3D;0}^{n-j}\frac{(n-j)!}{(n-j-i)!i!}&#x3D;\sum_{j&#x3D;1}^k{k\brace j}n^{\underline{j}}2^{n-j}<br>$$</p>
-</blockquote>
-<p>可以乘上 $\frac{1}{j!}$ 使它变成可以进一步化简的组合数。<br>$$<br>\begin{align}<br>\sum_{j&#x3D;1}^k{k\brace j}\sum_{i&#x3D;1}^n{n\choose i}i^{\underline{j}}&amp;&#x3D;\sum_{j&#x3D;1}^k{k\brace j}\sum_{i&#x3D;1}^n{n\choose i}{i\choose j}j!\tag 2\<br>&amp;&#x3D;\sum_{j&#x3D;1}^k{k\brace j}j!\sum_{i&#x3D;1}^n{n\choose j}{n-j\choose i-j}\tag 3\<br>&amp;&#x3D;\sum_{j&#x3D;1}^k{k\brace j}j!{n\choose j}\sum_{i&#x3D;0}^{n-j}{n-j\choose i}\tag 4\<br>&amp;&#x3D;\sum_{j&#x3D;1}^k{k\brace j}j!{n\choose j}2^{n-j}\tag 5<br>\end{align}<br>$$<br>于是做完了。第二类斯特林数可以 $O(k^2)$ 递推。组合数也是暴力求。</p>
-<p>$O(k^2+k\log n)$。</p>
-<hr>
-<h2 id="CF1559E"><a href="#CF1559E" class="headerlink" title="CF1559E"></a>CF1559E</h2><p>只考虑前两个限制的话，设 $f_{i,j}$ 表示前 $i$ 个，和为 $j$ 的方案数。</p>
-<p>$$<br>f_{i,j}&#x3D;\sum_{k&#x3D;l_i}^{r_i}f_{i-1,j-k}<br>$$</p>
-<p>显然可以前缀和优化至 $O(m)$。</p>
-<p>对于第三个限制，直接套莫比乌斯反演的结论，然后套路地把式子拆开：（设 $c(a)$ 表示数列 $a$ 是否满足前两个限制。）</p>
-<p>$$<br>\begin{aligned}<br>&amp;\sum_{a}c(a)[\gcd(a_1,a_2,…,a_n)&#x3D;1]\<br>&#x3D;&amp;\sum_{a}c(a)\sum_{x|a_1,x|a_2,…,x|a_n}\mu(x)\<br>&#x3D;&amp;\sum_{x&#x3D;1}^m\mu(x)\sum_{x|a_1}\sum_{x|a_2}…\sum_{x|a_n}c(a)<br>\end{aligned}<br>$$</p>
-<p>右边这个相当于一个 $m’&#x3D;\frac{m}{x}$ 的满足前两个条件的子问题。可以 $O(nm&#x2F;x)$ 求解。</p>
-<p>总时间就是 $O(nm\ln m)$。结合不计算 $\mu(x)&#x3D;0$ 优化即可。</p>
-<hr>
-<h2 id="ARC124D"><a href="#ARC124D" class="headerlink" title="ARC124D"></a>ARC124D</h2><p>观察置换环。</p>
-<ul>
-<li><p>整个环只有一种颜色。那么可以利用另一种颜色完成 $size+1$ 代价的归位。</p>
-</li>
-<li><p>整个环有两种颜色。第一种思路是用 1 代价断成两个同色环。总代价就是 $1+size+2$。</p>
-<p>或者一直以一个分界点为交换位置之一进行交换。最后会剩下同色环。也是同样代价。</p>
-<p>但可以保留两个分界点。利用分界点将环的大小变成 2，且是跨越了黑白的，代价是 $size-1$。</p>
-</li>
-</ul>
-<p>显然地，一色环可以花 1 代价变成大小加一的二色环，但 1 代价加上还原新的二色环的代价等于还原一色环的代价。</p>
-<p>因此这两种情况是无交的。</p>
-<p>直接找出所有一色环、二色环，然后把这两种代价加起来即可。</p>
-<p>但还有一种情况：两个异色的一色环。设大小为 $x,y$。则原花费是 $x+1+y+1&#x3D;x+y+2$。</p>
-<p>可以花 1 代价把他们变成 $x+y$ 的二色环，复原这个二色环的代价是 $x+y-1$。加上 1 代价就是 $x+y$，比原先少了 2。</p>
-<p>两个异色一色环会变成一个二色环。且容易证明三个一色环是不更优的。</p>
-<p>所以答案还要减去较小的一色环个数乘 2 的值。</p>
-<hr>
-<h2 id="P5505"><a href="#P5505" class="headerlink" title="P5505"></a>P5505</h2><p>设 $f(n)$ 表示这些分给 $n$ 个人（不可以有人没有）的方案数。</p>
-<p>$g(n)$ 表示可以有人没有的方案数。</p>
-<p>则<br>$$<br>g(n)&#x3D;\sum_{i&#x3D;0}^n\binom{n}{i}f(i)<br>$$<br>得到<br>$$<br>f(n)&#x3D;\sum_{i&#x3D;0}^n(-1)^{n-i}\binom{n}{i}g(i)<br>$$<br>$g$ 是好求的。对于每种特产插板即可。</p>
-<p>时间 $O(nm)$。</p>
-<hr>
-<h2 id="P6620"><a href="#P6620" class="headerlink" title="P6620"></a>P6620</h2><p>先转下降幂。<br>$$<br>\sum_{k&#x3D;0}^n\sum_{i&#x3D;0}^mb_ik^{\underline{i}}x^k\binom{n}{k}<br>$$<br>交换求和顺序，然后把阶乘消一下，剩下就是套路了。<br>$$<br>\sum_{i&#x3D;0}^mb_i\sum_{k&#x3D;i}^n\frac{n!}{(k-i)!(n-k)!}x^k&#x3D;\sum_{i&#x3D;0}^mb_in^{\underline{i}}x^i\sum_{k&#x3D;0}^{n-i}\frac{(n-i)!}{k!(n-i-k)!}x^k&#x3D;\sum_{i&#x3D;0}^mb_in^{\underline{i}}x^i\sum_{k&#x3D;0}^{n-i}\binom{n-i}{k}x^k<br>$$<br>如果你想把 $x^k$ 用第二类斯特林数拆开，那就掉进死胡同了。</p>
-<p>它恰是 $(x+1)^{n-i}$。</p>
-<p>所以答案为：<br>$$<br>\sum_{i&#x3D;0}^mb_in^{\underline{i}}x^i(x+1)^{n-i}<br>$$</p>
-<blockquote>
-<p>一般式转下降幂：<br>$$<br>f(x)&#x3D;a_0+a_1x+a_2x^2+…+a_mx^m<br>$$</p>
-<p>$$<br>a_ix^i&#x3D;\sum_{j&#x3D;1}^ia_i{i\brace j}x^{\underline{j}}<br>$$</p>
-</blockquote>
-<p>时间复杂度 $O(m^2)$。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://2008verser.github.io/2024/07/30/%E6%9D%82%E9%A2%981/" data-id="cm3l49jgl000738fecam7fthq" data-title="杂题1" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-线性基" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/07/30/%E7%BA%BF%E6%80%A7%E5%9F%BA/" class="article-date">
-  <time class="dt-published" datetime="2024-07-30T12:02:40.000Z" itemprop="datePublished">2024-07-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/30/%E7%BA%BF%E6%80%A7%E5%9F%BA/">线性基</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>【少图预警！】【需要结合其他文章食用！】</p>
-<hr>
-<h2 id="？声明？"><a href="#？声明？" class="headerlink" title="？声明？"></a>？声明？</h2><p>这里不对线性代数相关概念和<strong>异或</strong>线性基做最基本的概述。</p>
-<p>上网搜大概可以搜到三篇高质的讲解线性基的博客：</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/command-block/xian-xing-ji-xiao-ji">线性基小记 - command_block 的博客 - 洛谷博客 (luogu.com.cn)</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/Troverld/xian-xing-ji-xue-xi-bi-ji">线性基学习笔记 - 拜傅里叶教总部 - 洛谷博客 (luogu.com.cn)</a></p>
-<p><a target="_blank" rel="noopener" href="https://oi.men.ci/linear-basis-notes/">线性基学习笔记 | Menci’s OI Blog</a></p>
-<p>下面两篇适合入门。上面那个没点线性代数基础感觉看不太懂。</p>
-<p>最下面这一篇介绍的线性基构建方法比较麻烦。</p>
-<p>它保证了每一个存在于线性基的位置 $i$，仅有 $a_i$ 的第 $i$ 位为 1。</p>
-<p>但这个性质完全可以在构建完线性基后，扫一遍来完成。将在模板习题给出。</p>
-<ul>
-<li></li>
-</ul>
-<p>文章中习题包括但不限于 11251 号题单。</p>
-<p>与其说一篇关于线性基的描述，不如算是对许多博客未加证明的结论的补充，或是隐藏的结论的点明。</p>
-<p>速成顺序建议：【模板】【前缀】【实数】【CF1163E】。</p>
-<ul>
-<li></li>
-</ul>
-<p>线性基的性质，除了常说的，基最小、基线性无关、基的张成等于原集合的张成、原集合元素的唯一表示以外，还有很多，我们将在例题逐一分析。</p>
-<p>读者注意留意题目中各种映射关系，有助于理解。</p>
-<p>为防不知道有没有的读者和我用的循环压缩不一致，下面的代码默认有这两行 <code>#define</code>：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> rp(i,r,l) for(int i=(r);i&gt;=(l);--i)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,l,r) for(int i=(l);i&lt;=(r);++i)</span></span><br></pre></td></tr></table></figure>
-
-<p>全文 <code>w</code> 定义为 $\log V$。</p>
-<hr>
-<h2 id="模板线性基：P3812-【模板】线性基"><a href="#模板线性基：P3812-【模板】线性基" class="headerlink" title="模板线性基：P3812 【模板】线性基"></a>模板线性基：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3812">P3812 【模板】线性基</a></h2><p>这里补充一个构造线性基时需要用到的结论，或有助理解：</p>
-<ul>
-<li>将基中的任意一个元素异或上基中的另外一个元素，基仍是基。</li>
-</ul>
-<blockquote>
-<p>证明考虑，设是 $x$ 异或上了 $y$ 变成 $x’&#x3D;x\oplus y$，把原张成的每个含 $x$ 的元素，替换成 $x’\oplus y$ 即可。</p>
-</blockquote>
-<p>根据「基的张成等于原集合的张成」，我们可以对输入的全部数求基。</p>
-<p>那么问题变成了，我们在基里面选若干元素使异或和最大。</p>
-<p>到这里，可以使用前两篇博客中的构造方法，写出这样的代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">rp</span>(i,w,<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(x&amp;(<span class="number">1ll</span>&lt;&lt;i)) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!a[i]) &#123; a[i]=x;<span class="keyword">return</span>; &#125;</span><br><span class="line">			x^=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">query</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ll ret=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rp</span>(i,w,<span class="number">0</span>) <span class="keyword">if</span>((ret^a[i])&gt;ret) ret^=a[i];</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是这样丝毫不能体现我们对线性基的高超技艺。</p>
-<p>我们可以使用第三篇博客的构造方法，这样构造出的基，如果第 $i$ 位存在，那么第 $i$ 列仅这一个为 $1$。（可以去 Menci 博客里好好看看，这里不详细讲）</p>
-<p>也就意味着一个非零的行，我们选他，一定更优。</p>
-<p>那么全部异或起来就对了。</p>
-<p>事实上，Menci 博客里面的构造方式有些繁琐。我们可以按照前两篇博客的构造方式先构造一组线性基。</p>
-<p>因为线性基里的数随便异或不会改变任何事情。我们可以不断异或，使得这组线性基具有 Menci 博客中提到的性质。如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">rp</span>(i,w,<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(x&amp;(<span class="number">1ll</span>&lt;&lt;i)) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!a[i]) &#123;</span><br><span class="line">				a[i]=x;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			x^=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">0</span>,w) &#123;</span><br><span class="line">		<span class="built_in">rp</span>(j,i<span class="number">-1</span>,<span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&amp;(<span class="number">1ll</span>&lt;&lt;j)) a[i]^=a[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">query</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">prepare</span>();</span><br><span class="line">	ll ret=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rp</span>(i,w,<span class="number">0</span>) ret^=a[i];</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>第二种方法，我们的 <code>prepare()</code> 操作就是 command_block 博客里提到的：“将三角基进一步消成对角基”。（虽然我也不知道这俩是啥。）</p>
-<p>在执行完 <code>prepare()</code> 以后，我们的基就有 Menci 博客里介绍的全部性质了。</p>
-<p>模板题到这里就结束了。时间复杂度，三角基是 $O(n\log V)$。消成对角基要多一个 $\log V$。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/22tccolk">Code for this.</a></p>
-<hr>
-<h2 id="P3857-TJOI2008-彩灯"><a href="#P3857-TJOI2008-彩灯" class="headerlink" title="P3857 [TJOI2008] 彩灯"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3857">P3857 [TJOI2008] 彩灯</a></h2><p>即，计算给定集合的张成与 ${0}$ 的并的大小。</p>
-<p>直接对原集合求张成大小是不会的。所以我们先求基。</p>
-<p>根据「原集合元素的唯一表示」以及「基线性无关」，我们知道基的每个元素选，或不选，组合成的数于原数组都是<strong>不重不漏</strong>的。</p>
-<p>那么一共能组合出 $2^k$ 次方个数。$k$ 是基的大小。</p>
-<p>至于零，输出时加一就好了。</p>
-<p>时间 $O(mn)$。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/w5alxn07">Code for this.</a></p>
-<hr>
-<h2 id="P4301-CQOI2013-新Nim游戏"><a href="#P4301-CQOI2013-新Nim游戏" class="headerlink" title="P4301 [CQOI2013] 新Nim游戏"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4301">P4301 [CQOI2013] 新Nim游戏</a></h2><p>首先我们要熟知经典 Nim 游戏的结论：当一个局面全部石子个数的异或和为零，必败。否则必胜。</p>
-<p>在这道题中，第一回合我们需要拿走若干堆石子，使得无论对手取哪几堆石子，都会送我们一个必胜局面。</p>
-<p>也就是说，使得对手不能将局面变为，全部石子个数异或为零。</p>
-<p>也就是说，我们拿完第一次，剩下的石子<strong>不存在一个非空的子集</strong>（因为对手可以不拿，所以不是真子集），使得<strong>异或和为零</strong>。</p>
-<p>也就是说，剩下的石子<strong>线性无关</strong>。</p>
-<p>注意基的定义，基没有异或和为零的子集。</p>
-<p>且，「基，是原集合全部<strong>线性无关</strong>子集中，集合大小最大的」。</p>
-<p>因为我们要最小化第一回合我们取的石子数量，所以剩下的石子要大。那么我们留一个基就好了。</p>
-<p>为了最大化基，我们降序排序，顺序枚举，能选就选。</p>
-<blockquote>
-<p>如果向 $a_{1\to i-1}$ 形成的基中加入 $a_i$，变得线性相关，说明 $a_i$ 可以被 $a_{1\to i-1}$ 一些表示出来。</p>
-<p>此时我们要么保留原本的基，要么从原本的基删掉一个元素，加入 $a_i$。</p>
-<p>注意到，这两种基都是由 $a_{1\to i-1}$ 形成的基，<strong>张成一样。即完全等价。</strong></p>
-<p>那么，对于两种等价的基，我们保留原本的基，答案不会更劣。</p>
-<p>所以这是对的。</p>
-</blockquote>
-<p>这种，「选取线性无关子集，最大化求和」或是「留下线性无关子集，最小化选取求和」的问题，以后还会遇到很多次，都可以用这种方式解决。</p>
-<p>时间 $O(k\log V)$。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/xo61mipn">Code for this.</a></p>
-<hr>
-<h2 id="P4570-BJWC2011-元素"><a href="#P4570-BJWC2011-元素" class="headerlink" title="P4570 [BJWC2011] 元素"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4570">P4570 [BJWC2011] 元素</a></h2><p>做过【P4301】这道题就算裸了。请读者自行完成。</p>
-<hr>
-<h2 id="P3292-SCOI2016-幸运数字"><a href="#P3292-SCOI2016-幸运数字" class="headerlink" title="P3292 [SCOI2016] 幸运数字"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3292">P3292 [SCOI2016] 幸运数字</a></h2><p>若我们得到两点间的线性基，事情就很典了。</p>
-<p>注意线性基大小是 $\log V$ 级别的。那么我们可以通过把一个线性基里的数加入另一个完成时间为 $O(\log^2V)$ 的合并。</p>
-<p>那我们有两种方法：</p>
-<ul>
-<li>获得 $(x,lca)$ 和 $(y,lca)$ 的线性基，合并。</li>
-<li>树剖+线段树或者倍增维护线性基。</li>
-</ul>
-<p>询问是不确定的，所以第一种方法不行。（可以使用前缀线性基 $O(q\log^2V)$，但这里先不提前介绍）</p>
-<p>从线段树询问区间线性基，会拆成 $\log n$ 个区间，合并这些要 $\log^2V\times\log n$。</p>
-<p>树剖需要 $\log n$ 次线段树询问。所以时间是 $O(q\log^2V\log^2n)$ 的。</p>
-<p>注意线性基是<strong>可重复贡献</strong>的。可以用 ST 表维护某个点向上 $2^i$ 的线性基。$O(n\log^2V\log n+q\log ^2V)$。</p>
-<p>$n$ 比 $q$ 小一些，第二个做法较优。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/epx7nkne">Code for this.</a>（这里是树剖+线段树，ST 表的代码可以去题解区找）</p>
-<hr>
-<h2 id="P4151-WC2011-最大XOR和路径"><a href="#P4151-WC2011-最大XOR和路径" class="headerlink" title="P4151 [WC2011] 最大XOR和路径"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4151">P4151 [WC2011] 最大XOR和路径</a></h2><p>这次变成图了。没环的话跟上一题一样。</p>
-<p>如果从一个点开始，走到一个环，绕一圈，原路回来，此时获得的贡献仅是环的。意思是<strong>每个环都可以随便选</strong>。</p>
-<p>记由「若干返祖边和返祖边跨过的边形成的环」为<strong>特殊环</strong>。</p>
-<p>建出 dfs 树。那么<strong>每个环</strong>都可以由<strong>若干特殊环通过异或</strong>组成。如下图，再归纳即可。</p>
-<p><img src="/a.jpg"></p>
-<p>那么我们此时要选一条从 $1$ 到 $n$ 的最优的路径，最优是指它选一些环异或起来最大。</p>
-<p>当我们知道哪一条最优以后，问题就变成了已知的路径异或和（第一步），要任选一些 $a_i$ 异或异或起来最大（第二步）。$a_i$ 就是各个环的异或和。</p>
-<p>既然<strong>每个环都在特殊环的张成里</strong>，我们对特殊环建线性基。那问题就是第一步。</p>
-<p>总不能枚举全部路径。观察两条从 $1$ 到 $n$ 的路径。它们构成了一个环。</p>
-<p>那么，如果我选了一条 $1\to n$ 的路径 $A$，然而 $1\to n$ 的最优路径是一条不等于 $A$ 的路径 $B$。</p>
-<p>那么在我选一些环使得异或和最大的时候，我会选出 $1\to n\to 1$ 这一个环，且这个环由 $A,B$ 构成。</p>
-<p>此时我的第一部分异或就变成了 $B$。</p>
-<p>所以<strong>第二步会令第一步最优</strong>。第一步随便找就好了。</p>
-<p>时间 $O(n+(m-n)\log V)$。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/hxmmb3od">Code for this.</a></p>
-<hr>
-<h2 id="前缀线性基：CF1100F-Ivan-and-Burgers"><a href="#前缀线性基：CF1100F-Ivan-and-Burgers" class="headerlink" title="前缀线性基：CF1100F Ivan and Burgers"></a>前缀线性基：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1100F">CF1100F Ivan and Burgers</a></h2><p>提醒：<code>a[i]</code> 指基元素，$a_i$ 指序列。</p>
-<p>这，就是上上题提到的，前缀线性基！</p>
-<p>我们对于每个 $i$ 维护一个 $a_{1\to i}$ 形成的线性基。</p>
-<p>这个基，由<strong>尽可能靠后</strong>的数组成。</p>
-<blockquote>
-<p>什么意思？</p>
-<p>我们要理解两件事：</p>
-<ul>
-<li>基不唯一，且可以是原集合的子集。</li>
-</ul>
-<p>（如果你是线代大师会觉得这很显然）</p>
-<p>举个例子，$a&#x3D;{1,2,3}$，一个合法的基是 ${2,3}$。<br>$$<br>\begin{aligned}<br>10\<br>11\<br>\end{aligned}<br>$$<br>但是这种基并不会被我们构造出来，因为他们的最高位都是 $2^1$ 位。</p>
-<p>我们构造的应是：<br>$$<br>\begin{aligned}<br>01\<br>10\<br>\end{aligned}<br>$$<br>这两种基<strong>本质是相同</strong>的。我们可以对第一个基进行<strong>内部异或运算</strong>。它一定可以变成第二个。<strong>（全部基都可以这样，证明考虑【模板】的证明）</strong></p>
-<ul>
-<li>常见的线性基，由<strong>尽可能靠前</strong>的元素组成。</li>
-</ul>
-<p>因为我们是贪心构造：如果能加就加了。</p>
-<ul>
-<li>综上，「构造线性基」得到的<strong>结果</strong>（后面两句不是流程！只是结果一样！），是选最靠前的<strong>基</strong>，再进行基内部异或使得不存在两个最高位相同的元素。</li>
-</ul>
-<p>内部异或不会异或出零，因为我们选了<strong>基</strong>。</p>
-<p>这两条性质很重要。影响到后面题目的完成。</p>
-</blockquote>
-<p>那么，选尽可能靠后的数构成线性基，即从后往前做 <code>insert()</code>。</p>
-<p>那对于每个位置 $i$ 处理出 $a_{1\to i}$ 尽可能靠后的元素形成的线性基，下意识记录基元素 <code>a[i]</code> 在原数组下标，记 <code>p[i]</code>。</p>
-<p>询问时不要算 <code>p[i]&lt;l</code> 的 <code>a[i]</code> 就好了。</p>
-<p>我们发现它 <a target="_blank" rel="noopener" href="https://codeforces.com/contest/1100/submission/239765131">TLE</a> 了（而非 WA ）。所以分析是对的。</p>
-<p>考虑利用好 $i-1$ 的信息，令 $i$ 的线性基从 $i-1$ 复制过来。接着想办法把 $a_i$ <strong>正确加入</strong>。</p>
-<p>使 $a_i$ 必须加入。</p>
-<ul>
-<li>若加入 $a_i$ 基仍线性无关，则代码会自己顺序执行并插入 $a_i$。</li>
-<li>否则会冲突。</li>
-</ul>
-<p>有一种很自然的解决方式，如代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> id)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">rp</span>(i,w,<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!x) <span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span>(x&amp;(<span class="number">1</span>&lt;&lt;i)) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!a[i]) &#123; a[i]=x;p[i]=id;<span class="keyword">return</span>; &#125;</span><br><span class="line">			<span class="keyword">if</span>(id&gt;p[i]) <span class="built_in">swap</span>(p[i],id),<span class="built_in">swap</span>(a[i],x);</span><br><span class="line">			x^=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们<strong>遍历过的</strong> <code>a[i]</code> 已经是尽可能靠后，并且<strong>当前</strong> <code>a[i]</code> 尽可能靠后，并且<strong>最终</strong>基的张成不变，归纳可证<strong>新基由尽可能靠后的元素形成</strong>。（信息量很大）</p>
-<p>请你联系引用框段，好好思考。</p>
-<blockquote>
-<p>你会明白此时的基，<code>a[i]</code>，是原序列第 <code>p[i]</code> 位经基内异或得到的结果。</p>
-<p>虽然对这题无意义。</p>
-</blockquote>
-<p>那么我们成功得到了第 $i$ 位的基。</p>
-<p>时间 $O(n\log V+q\log V)$。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/5l1542ab">Code for this.</a></p>
-<hr>
-<h2 id="CF845G-Shortest-Path-Problem"><a href="#CF845G-Shortest-Path-Problem" class="headerlink" title="CF845G Shortest Path Problem?"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF845G">CF845G Shortest Path Problem?</a></h2><p>与 WC2011 一样。请读者自己思考。</p>
-<hr>
-<h2 id="实数线性基：P3265-JLOI2015-装备购买"><a href="#实数线性基：P3265-JLOI2015-装备购买" class="headerlink" title="实数线性基：P3265 [JLOI2015] 装备购买"></a>实数线性基：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3265">P3265 [JLOI2015] 装备购买</a></h2><p>事情变得稍稍有点意思了。</p>
-<p>这次，线性组合不再是常见的 Xor 运算，而是线代中的「线性组合」，也即，<strong>向量的缩放和加法</strong>。</p>
-<p>将 $n$ 件武器视作 $n$ 个 $m$ 维<strong>向量</strong>。</p>
-<p>如果我们能维护这样子的「线性组合」意义下的「线性基」，这道题就变得很经典了——排序。</p>
-<p>照葫芦画瓢，我们重新思考异或线性基中各个部分的意义。</p>
-<blockquote>
-<ul>
-<li>基、张成，很显然。</li>
-<li>内部异或，张成不变。</li>
-</ul>
-<p>内部异或→内部线性组合→矩阵的行初等变换。</p>
-<p>即，矩阵做行初等变换，张成不变。证明与先前类似。</p>
-<ul>
-<li><code>insert()</code> 时，$i$ 从 <code>w</code> 向 <code>0</code> 枚举，<strong>空</strong>就赋值，<strong>非空</strong>就异或。</li>
-</ul>
-<p>空，指没有最高位为 $2^i$ 的基元素。</p>
-<p>异或，指消掉待加入数的 $2^i$ 位。</p>
-<p>变为：从最高维开始，向最低维枚举，若基中<strong>没有最高维是第 $i$ 维的变量</strong>，赋值；否则<strong>将待加入的向量第 $i$ 维消为零</strong>。</p>
-<p>P.S. 为了和异或线性基一致，定义属性从 $1$ 到 $m$ 为从高到低。</p>
-</blockquote>
-<p>那就会做了。</p>
-<p>可以联系<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/xrr/solution-p3265">这篇博客</a>的图。</p>
-<p>为了实现常数，我们不真的像原本那样建立新数组存基，转而记录<strong>最高维是第 $i$ 维的变量</strong>在原数组的下标。并在原数组进行消元。</p>
-<p>时间 $O(nm^2)$。</p>
-<p>同时我们发现，这才是线性基真正的复杂度。</p>
-<p><img src="/b.jpg"></p>
-<p>平时的异或线性基为什么少了个 $m$ 呢？因为消元运算被异或运算优化成 $O(1)$ 的了。</p>
-<p>@Tangninghaha 做过一道可删线性基《八纵八横》。这里维度很高，可以用 <code>bitset</code> 优化。$\frac{m^2}{\omega}$。</p>
-<p>你也可以理解为平时 $V$ 在 <code>long long</code> 以内的是除了个 $\omega$。</p>
-<p>这道题精度开 <code>1e-5</code> 即可。不然会 WA。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/lf9b5alx">Code for this.</a></p>
-<hr>
-<h2 id="P5556-圣剑护符"><a href="#P5556-圣剑护符" class="headerlink" title="P5556 圣剑护符"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5556">P5556 圣剑护符</a></h2><p>询问两点间点权是否线性相关。</p>
-<p>基元素最高位不得相同。因此，<strong>基的元素不超过 $\log V$ （ <code>w</code> ）个。</strong></p>
-<p>当原集合大小大于 <code>w</code> 时，必有元素无法插入，即<strong>线性相关</strong>。</p>
-<p>所以选择性暴力回答询问或输出 <code>YES</code>。</p>
-<p>修改我选择了利用 dfn 序差分。或许还有别的做法。</p>
-<p>这是 $O(n\log V+q\log^2 V)$。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/whq0sskm">Code for this.</a></p>
-<hr>
-<h2 id="CF724G-Xor-matic-Number-of-the-Graph"><a href="#CF724G-Xor-matic-Number-of-the-Graph" class="headerlink" title="CF724G Xor-matic Number of the Graph"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF724G">CF724G Xor-matic Number of the Graph</a></h2><p>像 WC2011 那题一样构造特殊环的线性基 $circle$。先表示出来答案。</p>
-<p>就是对于全部的 $u,v$，对 $\sum_{x\in\text{span}(circle)} dis(u,v)\oplus x$ 求和。</p>
-<p>任意建生成树，设 $d_x$ 为 $x$ 到根的异或和。$dis(u,v)$ 就变成了 $d_u\oplus d_v$。</p>
-<p><img src="/c.jpg"></p>
-<p>枚举 $u$，此时我们有三组数，第一组是 $d_u$ 一个，第二组是 $v$ 大于 $u$ 的 $d_v$（为了不算重），第三组是特殊环的基。</p>
-<p>我们要做的就是<strong>每组任选一个</strong>，Xor 起来，求和。</p>
-<p>这里我们可以<strong>按位贡献</strong>。统计下面两组每个位置 0&#x2F;1 数量。</p>
-<p>用简单的组合数学做。就不细讲了。</p>
-<p>注意图不一定联通。</p>
-<p>时间 $O(n\log V)$。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/hxxfrsm2">Code for this.</a>（我当时写的时候每个 $(u,v)$ 算了两次，最后除以 $2$，懒得改了。）</p>
-<hr>
-<h2 id="CF895C-Square-Subsets"><a href="#CF895C-Square-Subsets" class="headerlink" title="CF895C Square Subsets"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF895C">CF895C Square Subsets</a></h2><p>注意 $70$ 以内质数共有 $19$ 个。</p>
-<p>某个数是完全平方数，当且仅当，它每个素因子的次数为偶数。</p>
-<p>我们可以把每个 $a_i$ 变成一个长 $19$ 的二进制串，代表 $a_i$ 中每个素因子次数的奇偶性。</p>
-<p>非空子集乘积为完全平方数，当且仅当，这些二进制串 Xor 为零。</p>
-<h3 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h3><p>那么我们状压。$f_{i,j}$ 前 $i$ 个二进制串，Xor 等于 $j$ 的非空子集数量。转移很显然。</p>
-<p>怎么优化？注意 $1\leq a_i\leq 70$，所以本质不同的二进制串至多 $70$ 个。</p>
-<p>可以把若干个相同的压起来，dp 时乘一乘即可。</p>
-<p>时间 $O(2^{19}V)$。（不要跟我争是 $O(V)$。）</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/wzoo8uj1">Code for this,312ms.</a></p>
-<h3 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h3><p>线性基！「非空子集异或和为零」是「非空子集线性相关」充要条件。</p>
-<p><strong>求有多少非空子集线性相关。</strong>延续前面几题的思想，一个基对应着若干个原序列的元素。（你忘了的话请看「前缀线性基」的引用段落）</p>
-<p>剩下的元素的任意非空子集都有一个 Xor 值，且我们可以<strong>唯一选取</strong>选基的一个子集（可为空）使得它的异或和异或上 Xor 等于零。</p>
-<p>哦！</p>
-<p>我们每选取剩下元素的一种非空子集，对应着<strong>一种</strong>不同的选取方案（基里唯一选取）。</p>
-<p>且，每一种合法选取，必对应上面这里的一种选取。</p>
-<p><strong>他们是双射！</strong></p>
-<p>答案就是 $2^{n-l}-1$！（$l$ 是基大小）</p>
-<p>减一你猜。</p>
-<p>时间 $O(19n)$。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/xii0lch2">Code for this,46ms.</a></p>
-<hr>
-<h2 id="CF1163E-Magical-Permutation"><a href="#CF1163E-Magical-Permutation" class="headerlink" title="CF1163E Magical Permutation"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1163E">CF1163E Magical Permutation</a></h2><p>我们可以先枚举 $x$，判断是否存在相邻两个数的 Xor 属于 $S$ 的、$0\to 2^x-1$ 的排列。简记 $n&#x3D;2^x-1$。</p>
-<p>设排列的第一个数为 $\alpha$，第二个为 $\beta$。设排列相邻两两异或值为 $S_{i_1\to i_{n-1}}$。</p>
-<p>则 $\alpha\oplus\beta&#x3D;S_{i_1}$，即 $\beta&#x3D;\alpha\oplus S_{i_1}$。</p>
-<p>那可以表示出整个排列：<br>$$<br>\begin{aligned}<br>&amp;\alpha\<br>&amp;\alpha\oplus s_{i_1}\<br>&amp;\alpha\oplus s_{i_1}\oplus s_{i_2}\<br>&amp;……<br>\end{aligned}<br>$$<br>$\alpha$ 不知道哎！没关系！把排列每个数异或上 $\alpha$，得到的还是一个排列。<br>$$<br>\begin{aligned}<br>&amp;0\<br>&amp;s_{i_1}\<br>&amp;s_{i_1}\oplus s_{i_2}\<br>&amp;……<br>\end{aligned}<br>$$<br>现在要解决：不断从 $S$ 里选数，和上一个数异或，得出新一个数。重复这个操作，要构造排列。</p>
-<p>我们设想一下，如果新选的数没被选过，那构造出的一定是新数。</p>
-<p>否则，新选的数会和原先选过的异或相消，<strong>相当于删了一个数。</strong></p>
-<p>所以，这其实是不断在集合中加数、减数的一个过程。</p>
-<p>我们用到的是全部最高位不超过 $2^x$ 的 $S$。这些元素的张成<strong>是</strong> $[0,2^x-1]$，是有解的充要条件。</p>
-<p>假设现在有解。</p>
-<p>我们对这些元素建线性基，并提取出**在基中的 $S$ **，记为 $in$。</p>
-<p>则 $in$ 大小等于 $x$。我们要构造一个二进制数的排列，相邻两个不同位置恰为 $1$，<strong>每个数都代表选择 $in$ 里的哪些</strong>。</p>
-<p>输出时可以用二进制数算出答案。</p>
-<p>构造二进制数排列方法打个暴力找规律就会了。也可以去看别的题解。</p>
-<p>$in$ 这里讲的有些简陋。但如果你对前缀线性基里的引用段落完全理解，这一部分会很显然！</p>
-<p>时间 $O(\log^2 V\log n+V\log V)$。</p>
-<p><strong>我们发现，许多题都是从 $in$ 这种思想开始思考的，通常会有双射，这也是线性基强大之处之一。</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/9gvu19bq">Code for this.</a></p>
-<hr>
-<h2 id="P4869-albus就是要第一个出场"><a href="#P4869-albus就是要第一个出场" class="headerlink" title="P4869 albus就是要第一个出场"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4869">P4869 albus就是要第一个出场</a></h2><p>求 $a$ 全部非空子集异或和组成的可重集里 $q$ 的排名。</p>
-<p>排名，即小于它的个数+1。</p>
-<p>想象这样的画面，$n$ 个点排成一行，其中有 $l$ 个是黑的，剩下都是白色，这 $l$ 个是 $a$ 的一组基。</p>
-<p>这些黑点有多少子集的异或和小于 $q$ 是很好算的。</p>
-<p>我们思考是否关于每一种黑点的、异或和小于 $q$ 的选择方案，都有等数量的、整个序列的选择方案与其<strong>对应</strong>（可以理解为一对多的映射“黑 $\to$ 黑白”）。</p>
-<p>如果有的话，我们直接用黑点的方案乘上这个等数量即可。</p>
-<p>在选择一组异或和小于 $q$ 的黑点方案<strong>前提</strong>下（设异或和是 $y$），随便画一种白点的选择方案（设 $x$）。</p>
-<p>此时我们不能保证整个序列选择的异或和 $x\oplus y$ 小于 $q$。</p>
-<p>但我们若能令此时序列异或和再异或上 $x$，则 $y$ 是小于 $q$ 的。</p>
-<p>注意 $y$ 可以被黑点<strong>唯一表示</strong>。也就是<strong>再“选”一些黑点！</strong></p>
-<p>但如果黑点贡献到 $y$ 了呢？我们不选它。因为<strong>删它和选两次它</strong>效果是一样的。</p>
-<p>因此，每种黑点的、异或和小于 $q$ 的选择方案，我们可以<strong>通过调整黑点的选择</strong>，<strong>使得</strong>任意一组白点的选择方案（共 $2^{n-l}$ 组）合法。</p>
-<p>直接乘起来？</p>
-<p>若两种黑点的选择方案所拓展出的选择方案有重复呢？</p>
-<p>这显然不存在，因为对于一种黑点方案拓展出的 $2^{n-l}$ 种序列选择方案，异或和相等，且等于黑点方案异或和。</p>
-<p>又因为黑点方案不相等，故不重复。</p>
-<p>（至于求 $k$ 大、求排名，可以消成对角基后当作一种特殊进制做。）</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/9mcyz8hu">Code for this.</a></p>
-<hr>
-<h2 id="P4839-P-哥的桶"><a href="#P4839-P-哥的桶" class="headerlink" title="P4839 P 哥的桶"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4839">P4839 P 哥的桶</a></h2><p>这么靠后的还有板题？！</p>
-<p>你自己想怎么做吧。时间 $O(q\log n\log^2V)$ 就过了。</p>
-<hr>
-<h2 id="P5607-Ynoi2013-无力回天-NOI2017"><a href="#P5607-Ynoi2013-无力回天-NOI2017" class="headerlink" title="P5607 [Ynoi2013] 无力回天 NOI2017"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5607">P5607 [Ynoi2013] 无力回天 NOI2017</a></h2><p>这题很妙啊。</p>
-<p>构一个数组 $b_i&#x3D;a_i\oplus a_{i-1}$。</p>
-<p>则 $a_i&#x3D;b_1\oplus b_2\oplus …\oplus b_i—-[1]$。</p>
-<p>而且，$a_{l+1}&#x3D;a_l\oplus b_{l+1},a_{l+2}&#x3D;a_l\oplus b_{l+1}\oplus b_{l+2}$。以此类推。</p>
-<p>所以 $a_{l\to r}$ 可以被 $a_l,b_{l+1\to r}$ 异或得出。</p>
-<p>与「基内部异或，张成不变」类似，「集合内部异或，张成不变」。所以这两个东西张成一致。</p>
-<p>所以可以建立 $b$ 的基，并用式 $[1]$ 得到 $a_l$，回答询问。</p>
-<p>同时我们惊讶地发现，对 $a$ 的区间操作，由于异或相消的性质，在 $b$ 上是单点操作。</p>
-<p>那么就做完了。时间 $O(n\log^2 V+q\log n\log^2 V)$。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/14tgkk7c">Code for this.</a></p>
-<p>ix35_ 提到了一种不用前缀的做法。搞明白再回来补。</p>
-<hr>
-<h2 id="CF959F-Mahmoud-and-Ehab-and-yet-another-xor-task"><a href="#CF959F-Mahmoud-and-Ehab-and-yet-another-xor-task" class="headerlink" title="CF959F Mahmoud and Ehab and yet another xor task"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF959F">CF959F Mahmoud and Ehab and yet another xor task</a></h2><p>对前 $l$ 个建立线性基。</p>
-<p>与 P4869 一样进行黑白染色。（这题感觉是 P4869 弱化版）</p>
-<p>当 $x$ 在前 $l$ 个数的张成里，那么对于白点的每一种方案（设异或和为 $y$）（可知 $x\oplus y$ 在张成里），</p>
-<p>根据「原集合元素的唯一表示」，可以唯一选黑点使得黑点异或和为 $x\oplus y$。</p>
-<p>答案和白点方案双射。那就做完了。</p>
-<p>$O(n\log V+q(\log V+\log n))$。不同写法会有略微差别。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/jwo2p8t5">Code for this.</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://2008verser.github.io/2024/07/30/%E7%BA%BF%E6%80%A7%E5%9F%BA/" data-id="cm3l49jgm000838fe0bhqeffv" data-title="线性基" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%82%E6%88%96/" rel="tag">异或</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E7%9B%B8%E5%85%B3/" rel="tag">线性相关</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-多项式全家桶" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/07/30/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%85%A8%E5%AE%B6%E6%A1%B6/" class="article-date">
-  <time class="dt-published" datetime="2024-07-30T11:32:27.000Z" itemprop="datePublished">2024-07-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/30/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%85%A8%E5%AE%B6%E6%A1%B6/">多项式全家桶</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>目前只有一些偏简单常用的部分。</p>
-<hr>
-<ul>
-<li><p>多项式的逆元是一对	乘积为乘法单位元的多项式。乘法单位元显然是 $F(x)&#x3D;1$。</p>
-</li>
-<li><p>对于多项式 $F(x)$，$\ln F(x)&#x3D;G(x)$ 是指 $e^{G(x)}&#x3D;F(x)$。</p>
-</li>
-</ul>
-<p>$e^{G(x)}$ 是一个多项式（幂级数）（的封闭形式）！对 $e^{G(x)}$ 进行麦克劳林展开得到它的幂级数（多项式）：<br>$$<br>e^{G(x)}&#x3D;\sum_{n\geq 0}\frac{G(x)^n}{n!}<br>$$</p>
-<ul>
-<li>多项式 $\exp$ 的定义如上。</li>
-<li>多项式求导、积分与普通函数相同。</li>
-</ul>
-<hr>
-<h2 id="多项式乘法（FFT-NTT）"><a href="#多项式乘法（FFT-NTT）" class="headerlink" title="多项式乘法（FFT&amp;NTT）"></a>多项式乘法（FFT&amp;NTT）</h2><ul>
-<li>FFT</li>
-</ul>
-<p>求出 $F(x)$ 和 $G(x)$ 在 $\omega_{n}^0,\omega_{n}^1,…\omega_{n}^{n-1}$ 处的点值，相乘，再插值。</p>
-<p>求点值（DFT）：将多项式系数按次数奇偶分开求点值，利用单位根性质划分为两个规模为一半的相同子问题。分治求解。</p>
-<p>插值（IDFT）：单位根反演后，左侧是 $n$ 乘上 $i$ 次项系数，右侧是把求出的点值当作系数成为一个多项式，求 $\omega_{n}^{-i}$ 的点值的式子。套用 DFT 求解。</p>
-<p>FFT 是在复数上的实现，在代码中使用浮点数。</p>
-<ul>
-<li>NTT</li>
-</ul>
-<p>设 $g$ 是质数 $p$ 的原根之一。</p>
-<p>将 $g^{0},g^{(p-1)&#x2F;n},g^{2(p-1)&#x2F;n},…,g^{(n-1)(p-1)&#x2F;n}$ 替换掉单位根。</p>
-<p>可以完成多项式乘法在数论上的实现。</p>
-<hr>
-<h2 id="多项式求逆"><a href="#多项式求逆" class="headerlink" title="多项式求逆"></a>多项式求逆</h2><p>给出 $F(x)$，要求 $G(x)$ 满足 $G(x)F(x)\equiv1\pmod{x^n}$。</p>
-<p>设 $R_0(x)F(x)\equiv1\pmod{x^{n&#x2F;2}},R(x)F(x)\equiv1\pmod{x^n}$。</p>
-<p>假设已知 $R_0(x)$，试求 $R(x)$。</p>
-<p>因为 $R(x)F(x)$ 在模 $x^{n&#x2F;2}$ 意义下也是 $1$。所以有 $R_0(x)\equiv R(x)\pmod{x^{n&#x2F;2}}$。</p>
-<p>相减后做平方，则模数就升到 $x^n$，两侧再同时乘以 $F(x)$ 消去两个 $R(x)$，得到递推式。<br>$$<br>\begin{aligned}<br>R_0(x)^2-2R(x)R_0(x)+R(x)^2&amp;\equiv0\pmod{x^n}\<br>R_0(x)^2F(x)-2R_0(x)+R(x)&amp;\equiv0\pmod{x^n}\<br>R(x)&amp;\equiv 2R_0(x)-R_0(x)^2F(x)\pmod{x^n}<br>\end{aligned}<br>$$<br>先把次数补到 $2$ 的整幂再倍增即可。</p>
-<p>边界即一个整数求逆。</p>
-<p>时间复杂度 $T(n)&#x3D;T(n&#x2F;2)+O(n\log n)&#x3D;O(n\log n)$。</p>
-<hr>
-<h2 id="多项式对数函数（取-ln-）（含求导、积分）"><a href="#多项式对数函数（取-ln-）（含求导、积分）" class="headerlink" title="多项式对数函数（取 $\ln$）（含求导、积分）"></a>多项式对数函数（取 $\ln$）（含求导、积分）</h2><p>给出 $F(x)$，要求 $n$ 次多项式 $G(x)$ 满足 $G(x)&#x3D;\ln F(x)$。</p>
-<p>设 $f(x)&#x3D;\ln x$。则题目变成了复合函数 $G(x)&#x3D;f(F(x))$。</p>
-<p>先导再积。</p>
-<p>复合函数求导为：$f(g(x))’&#x3D;f’(g(x))g’(x)$。</p>
-<p>结合 $(\ln x)’&#x3D;\frac{1}{x}$ 可以化简。<br>$$<br>G’(x)&#x3D;f(F(x))’&#x3D;f’(F(x))F’(x)&#x3D;\frac{F’(x)}{F(x)}<br>$$</p>
-<p>$$<br>G(x)&#x3D;\int G’(x)dx<br>$$</p>
-<p>就差求导和积分了。</p>
-<p>它俩满足：</p>
-<p>【多个单项式的和】的导数（积分）等于【多个单项式的导数（积分）】的和。</p>
-<p>【系数乘未知数】的导数（积分）等于系数乘【未知数的导数（积分）】。</p>
-<p>利用<br>$$<br>(x^a)’&#x3D;ax^{a-1},\int x^{a}dx&#x3D;\frac{1}{a+1}x^{a+1}<br>$$<br>可以 $O(n)$ 求出给定多项式的导数和积分。</p>
-<p>综上，求 $\ln$ 时间显然 $O(n\log n)$。</p>
-<hr>
-<h2 id="多项式牛顿迭代"><a href="#多项式牛顿迭代" class="headerlink" title="多项式牛顿迭代"></a>多项式牛顿迭代</h2><p>若已知 $g(x)$，且有 $g(f(x))&#x3D;0$，可以倍增求得 $f$。</p>
-<p>设 $f_0(x)$ 满足在模 $x^{n&#x2F;2}$ 意义下 $g(f_0(x))&#x3D;0$。</p>
-<p>求在模 $x^n$ 意义下的 $f$ 有如下公式：<br>$$<br>f(x)&#x3D;f_0(x)-\frac{g(f_0(x))}{g’(f_0(x))}<br>$$<br>通过手动构造不同的 $g$，可以很简单地求出一些 $f$。如多项式求逆。</p>
-<p>证明：鸽鸽鸽鸽鸽。（我只挑难的鸽！）看看今年能不能补上。</p>
-<hr>
-<h2 id="多项式指数函数（取-exp-）"><a href="#多项式指数函数（取-exp-）" class="headerlink" title="多项式指数函数（取 $\exp$）"></a>多项式指数函数（取 $\exp$）</h2><p>给定 $n-1$ 次多项式 $F(x)$，求 $e^{F(x)}$ 在模 $x^n$ 意义下值。（满足 $[x^0]F(x)&#x3D;0$）</p>
-<p>直接构造使得 $g(e^{F(x)})&#x3D;0$ 的 $g(x)&#x3D;\ln x-F(x)$。</p>
-<p>$g’(x)&#x3D;(\ln x)’-(F(x))’&#x3D;\frac{1}{x}$。</p>
-<p>设倍增的多项为 $h(x)$，套公式即可：<br>$$<br>h(x)&#x3D;h_0(x)-\frac{g(h_0(x))}{g’(h_0(x))}&#x3D;h_0(x)-\frac{\ln h_0(x)-F(x)}{\frac{1}{h_0(x)}}&#x3D;h_0(x)(1-\ln h_0(x)+F(x))<br>$$<br>初始值是 $e^{F(x)}\bmod x&#x3D;\sum_{n\geq 0}\frac{F(x)^n}{n!}\bmod x$，因为 $F(x)^n$ 大于零次项全都模掉了，而 $a_0$ 又是零，</p>
-<p>所以仅当 $n&#x3D;0$ 时有 $1$ 的贡献。初始值是 $1$。</p>
-<ul>
-<li>如果不保证 $a_0&#x3D;0$？</li>
-</ul>
-<p>设 $f_i&#x3D;[x^i]F(x)$，初值就是<br>$$<br>\sum_{n\geq 0}\frac{f_0^n}{n!}&#x3D;e^{f_0}<br>$$<br>而 $e$ 在模意义下无意义。这是算不了的。吧？（应该没有什么还不懂的东西能算这个了吧……如果有请教我）</p>
-<p>（$e$ 在模意义下无意义，是因为它等于 $\sum_{n\geq 0}\frac{1}{n!}\bmod p$，分母迟早要模成零，出现除以零错误 ×）</p>
-<p>写代码的时候需要注意，$\ln h_0(x)$ 需要在模 $x^n$ 的意义下求，$\ln$ 里面套的那个求逆也要求在 $x^n$ 意义下的！！！</p>
-<p>写 <code>vector</code> 尤其容易写错，还难调。（我就傻了好久）</p>
-<hr>
-<h2 id="多项式开根"><a href="#多项式开根" class="headerlink" title="多项式开根"></a>多项式开根</h2><p>给定 $F(x)$，求 $G(x)$ 满足 $G(x)^2\equiv F(x)\pmod{x^n}$。要求零次项系数最小。$[x^0]F(x)&#x3D;1$。</p>
-<p>类似上一道题，零次项系数保证的是倍增初值是 $1$。</p>
-<p>直接多项式牛顿迭代：<br>$$<br>g(x)&#x3D;x^2-F(x)<br>$$</p>
-<p>$$<br>h(x)&#x3D;\frac{h_0(x)^2+F(x)}{2h_0(x)}<br>$$</p>
-<p>继续注意分母的精度即可。</p>
-<hr>
-<h2 id="下降幂多项式乘法"><a href="#下降幂多项式乘法" class="headerlink" title="下降幂多项式乘法"></a>下降幂多项式乘法</h2><p>给出两个下降幂多项式，求它们乘积的多项式的下降幂表示。</p>
-<p>直接用下降幂和连续点值的相互转换做就好了。</p>
-<p>具体地，求出多项式的连续点值，然后相乘，然后插值。</p>
-<p>求点值是：（直接把解析式化成卷积形式）<br>$$<br>\frac{f(x)}{x!}&#x3D;\sum_{i&#x3D;0}^xa_i\frac{1}{(x-i)!}<br>$$<br>插值是：（把解析式化出一个组合数然后二项式反演，再化成卷积形式）<br>$$<br>a_x&#x3D;\sum_{i&#x3D;0}^x\frac{f(i)}{i!}\frac{(-1)^{x-i}}{(x-i)!}<br>$$</p>
-<hr>
-<h2 id="多项式快速幂"><a href="#多项式快速幂" class="headerlink" title="多项式快速幂"></a>多项式快速幂</h2><p>法一：快速幂。$O(n\log n\log k)$。</p>
-<p>法二：$F(x)^k&#x3D;(e^{\ln F(x)})^k&#x3D;e^{k\ln F(x)}$。$O(n\log n+n\log(k\bmod 998244353))$。</p>
-<p>两种方法的指数都是可以取模的。下面证明抄的<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/solution/P5245">【这里】</a>：</p>
-<p>设 $p$ 为一个质数模数，当计算 $f(x)^p\bmod x^n$ 时，根据 $(a+b)^n\equiv a^n+b^n\pmod{x^n}$，</p>
-<p>把每个单项式取 $p$ 次方，又因为 $p$ 大于 $n$，所以只有零次项没被模掉，所以 $f(x)^p\bmod x^n&#x3D;a_0^p&#x3D;1$。</p>
-<p>故可以将次数取模。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://2008verser.github.io/2024/07/30/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%85%A8%E5%AE%B6%E6%A1%B6/" data-id="cm3l49jgd000138fe1zw9ffy0" data-title="多项式全家桶" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" rel="tag">多项式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" rel="tag">多项式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E6%88%96/" rel="tag">异或</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E7%9B%B8%E5%85%B3/" rel="tag">线性相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" style="font-size: 10px;">多项式</a> <a href="/tags/%E5%BC%82%E6%88%96/" style="font-size: 10px;">异或</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 15px;">总结</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">线性相关</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2024/07/30/%E6%80%BB%E7%BB%9310/">总结10</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/30/%E6%80%BB%E7%BB%9311/">总结11</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/30/%E6%80%BB%E7%BB%931/">总结1</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/30/%E6%9D%82%E9%A2%981/">杂题1</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/30/%E7%BA%BF%E6%80%A7%E5%9F%BA/">线性基</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2024 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
+  </body>
 </html>
