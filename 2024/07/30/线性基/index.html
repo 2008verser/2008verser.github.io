@@ -60,7 +60,9 @@
       document.documentElement.setAttribute('color-mode', colorMode)
     }
   </script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
 
   <body>
@@ -153,14 +155,20 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2024-07-30 21:10:50
+          2024-11-17 13:41:30
         </span>
         
               <span class="post-categories">
                 <i class="iconfont icon-bookmark" title="Categories"></i>
                 
                 <span class="span--category">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">
+                    <b>#</b> 数学
+                  </a>
+                </span>
+                
+                <span class="span--category">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
                     <b>#</b> 数据结构
                   </a>
                 </span>
@@ -197,15 +205,11 @@
 <p>最下面这一篇介绍的线性基构建方法比较麻烦。</p>
 <p>它保证了每一个存在于线性基的位置 $i$，仅有 $a_i$ 的第 $i$ 位为 1。</p>
 <p>但这个性质完全可以在构建完线性基后，扫一遍来完成。将在模板习题给出。</p>
-<ul>
-<li></li>
-</ul>
+<p>-</p>
 <p>文章中习题包括但不限于 11251 号题单。</p>
 <p>与其说一篇关于线性基的描述，不如算是对许多博客未加证明的结论的补充，或是隐藏的结论的点明。</p>
 <p>速成顺序建议：【模板】【前缀】【实数】【CF1163E】。</p>
-<ul>
-<li></li>
-</ul>
+<p>-</p>
 <p>线性基的性质，除了常说的，基最小、基线性无关、基的张成等于原集合的张成、原集合元素的唯一表示以外，还有很多，我们将在例题逐一分析。</p>
 <p>读者注意留意题目中各种映射关系，有助于理解。</p>
 <p>为防不知道有没有的读者和我用的循环压缩不一致，下面的代码默认有这两行 <code>#define</code>：</p>
@@ -218,7 +222,7 @@
 <li>将基中的任意一个元素异或上基中的另外一个元素，基仍是基。</li>
 </ul>
 <blockquote>
-<p>证明考虑，设是 $x$ 异或上了 $y$ 变成 $x’&#x3D;x\oplus y$，把原张成的每个含 $x$ 的元素，替换成 $x’\oplus y$ 即可。</p>
+<p>证明考虑，设是 $x$ 异或上了 $y$ 变成 $x’=x\oplus y$，把原张成的每个含 $x$ 的元素，替换成 $x’\oplus y$ 即可。</p>
 </blockquote>
 <p>根据「基的张成等于原集合的张成」，我们可以对输入的全部数求基。</p>
 <p>那么问题变成了，我们在基里面选若干元素使异或和最大。</p>
@@ -238,7 +242,7 @@
 <p>模板题到这里就结束了。时间复杂度，三角基是 $O(n\log V)$。消成对角基要多一个 $\log V$。</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/22tccolk">Code for this.</a></p>
 <hr>
-<h2 id="P3857-TJOI2008-彩灯"><a href="#P3857-TJOI2008-彩灯" class="headerlink" title="P3857 [TJOI2008] 彩灯"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3857">P3857 [TJOI2008] 彩灯</a></h2><p>即，计算给定集合的张成与 ${0}$ 的并的大小。</p>
+<h2 id="P3857-TJOI2008-彩灯"><a href="#P3857-TJOI2008-彩灯" class="headerlink" title="P3857 [TJOI2008] 彩灯"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3857">P3857 [TJOI2008] 彩灯</a></h2><p>即，计算给定集合的张成与 $\{0\}$ 的并的大小。</p>
 <p>直接对原集合求张成大小是不会的。所以我们先求基。</p>
 <p>根据「原集合元素的唯一表示」以及「基线性无关」，我们知道基的每个元素选，或不选，组合成的数于原数组都是<strong>不重不漏</strong>的。</p>
 <p>那么一共能组合出 $2^k$ 次方个数。$k$ 是基的大小。</p>
@@ -286,7 +290,7 @@
 <p>如果从一个点开始，走到一个环，绕一圈，原路回来，此时获得的贡献仅是环的。意思是<strong>每个环都可以随便选</strong>。</p>
 <p>记由「若干返祖边和返祖边跨过的边形成的环」为<strong>特殊环</strong>。</p>
 <p>建出 dfs 树。那么<strong>每个环</strong>都可以由<strong>若干特殊环通过异或</strong>组成。如下图，再归纳即可。</p>
-<p><img src="/a.jpg"></p>
+<p><img src="a.jpg" alt=""></p>
 <p>那么我们此时要选一条从 $1$ 到 $n$ 的最优的路径，最优是指它选一些环异或起来最大。</p>
 <p>当我们知道哪一条最优以后，问题就变成了已知的路径异或和（第一步），要任选一些 $a_i$ 异或异或起来最大（第二步）。$a_i$ 就是各个环的异或和。</p>
 <p>既然<strong>每个环都在特殊环的张成里</strong>，我们对特殊环建线性基。那问题就是第一步。</p>
@@ -309,7 +313,7 @@
 <li>基不唯一，且可以是原集合的子集。</li>
 </ul>
 <p>（如果你是线代大师会觉得这很显然）</p>
-<p>举个例子，$a&#x3D;{1,2,3}$，一个合法的基是 ${2,3}$。<br>$$<br>\begin{aligned}<br>10\<br>11\<br>\end{aligned}<br>$$<br>但是这种基并不会被我们构造出来，因为他们的最高位都是 $2^1$ 位。</p>
+<p>举个例子，$a=\{1,2,3\}$，一个合法的基是 $\{2,3\}$。<br>$$<br>\begin{aligned}<br>10\<br>11\<br>\end{aligned}<br>$$<br>但是这种基并不会被我们构造出来，因为他们的最高位都是 $2^1$ 位。</p>
 <p>我们构造的应是：<br>$$<br>\begin{aligned}<br>01\<br>10\<br>\end{aligned}<br>$$<br>这两种基<strong>本质是相同</strong>的。我们可以对第一个基进行<strong>内部异或运算</strong>。它一定可以变成第二个。<strong>（全部基都可以这样，证明考虑【模板】的证明）</strong></p>
 <ul>
 <li>常见的线性基，由<strong>尽可能靠前</strong>的元素组成。</li>
@@ -371,7 +375,7 @@
 <p>为了实现常数，我们不真的像原本那样建立新数组存基，转而记录<strong>最高维是第 $i$ 维的变量</strong>在原数组的下标。并在原数组进行消元。</p>
 <p>时间 $O(nm^2)$。</p>
 <p>同时我们发现，这才是线性基真正的复杂度。</p>
-<p><img src="/b.jpg"></p>
+<p><img src="b.jpg" alt=""></p>
 <p>平时的异或线性基为什么少了个 $m$ 呢？因为消元运算被异或运算优化成 $O(1)$ 的了。</p>
 <p>@Tangninghaha 做过一道可删线性基《八纵八横》。这里维度很高，可以用 <code>bitset</code> 优化。$\frac{m^2}{\omega}$。</p>
 <p>你也可以理解为平时 $V$ 在 <code>long long</code> 以内的是除了个 $\omega$。</p>
@@ -389,10 +393,10 @@
 <h2 id="CF724G-Xor-matic-Number-of-the-Graph"><a href="#CF724G-Xor-matic-Number-of-the-Graph" class="headerlink" title="CF724G Xor-matic Number of the Graph"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF724G">CF724G Xor-matic Number of the Graph</a></h2><p>像 WC2011 那题一样构造特殊环的线性基 $circle$。先表示出来答案。</p>
 <p>就是对于全部的 $u,v$，对 $\sum_{x\in\text{span}(circle)} dis(u,v)\oplus x$ 求和。</p>
 <p>任意建生成树，设 $d_x$ 为 $x$ 到根的异或和。$dis(u,v)$ 就变成了 $d_u\oplus d_v$。</p>
-<p><img src="/c.jpg"></p>
+<p><img src="c.jpg" alt=""></p>
 <p>枚举 $u$，此时我们有三组数，第一组是 $d_u$ 一个，第二组是 $v$ 大于 $u$ 的 $d_v$（为了不算重），第三组是特殊环的基。</p>
 <p>我们要做的就是<strong>每组任选一个</strong>，Xor 起来，求和。</p>
-<p>这里我们可以<strong>按位贡献</strong>。统计下面两组每个位置 0&#x2F;1 数量。</p>
+<p>这里我们可以<strong>按位贡献</strong>。统计下面两组每个位置 0/1 数量。</p>
 <p>用简单的组合数学做。就不细讲了。</p>
 <p>注意图不一定联通。</p>
 <p>时间 $O(n\log V)$。</p>
@@ -419,16 +423,16 @@
 <p>时间 $O(19n)$。</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/xii0lch2">Code for this,46ms.</a></p>
 <hr>
-<h2 id="CF1163E-Magical-Permutation"><a href="#CF1163E-Magical-Permutation" class="headerlink" title="CF1163E Magical Permutation"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1163E">CF1163E Magical Permutation</a></h2><p>我们可以先枚举 $x$，判断是否存在相邻两个数的 Xor 属于 $S$ 的、$0\to 2^x-1$ 的排列。简记 $n&#x3D;2^x-1$。</p>
+<h2 id="CF1163E-Magical-Permutation"><a href="#CF1163E-Magical-Permutation" class="headerlink" title="CF1163E Magical Permutation"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1163E">CF1163E Magical Permutation</a></h2><p>我们可以先枚举 $x$，判断是否存在相邻两个数的 Xor 属于 $S$ 的、$0\to 2^x-1$ 的排列。简记 $n=2^x-1$。</p>
 <p>设排列的第一个数为 $\alpha$，第二个为 $\beta$。设排列相邻两两异或值为 $S_{i_1\to i_{n-1}}$。</p>
-<p>则 $\alpha\oplus\beta&#x3D;S_{i_1}$，即 $\beta&#x3D;\alpha\oplus S_{i_1}$。</p>
+<p>则 $\alpha\oplus\beta=S_{i_1}$，即 $\beta=\alpha\oplus S_{i_1}$。</p>
 <p>那可以表示出整个排列：<br>$$<br>\begin{aligned}<br>&amp;\alpha\<br>&amp;\alpha\oplus s_{i_1}\<br>&amp;\alpha\oplus s_{i_1}\oplus s_{i_2}\<br>&amp;……<br>\end{aligned}<br>$$<br>$\alpha$ 不知道哎！没关系！把排列每个数异或上 $\alpha$，得到的还是一个排列。<br>$$<br>\begin{aligned}<br>&amp;0\<br>&amp;s_{i_1}\<br>&amp;s_{i_1}\oplus s_{i_2}\<br>&amp;……<br>\end{aligned}<br>$$<br>现在要解决：不断从 $S$ 里选数，和上一个数异或，得出新一个数。重复这个操作，要构造排列。</p>
 <p>我们设想一下，如果新选的数没被选过，那构造出的一定是新数。</p>
 <p>否则，新选的数会和原先选过的异或相消，<strong>相当于删了一个数。</strong></p>
 <p>所以，这其实是不断在集合中加数、减数的一个过程。</p>
 <p>我们用到的是全部最高位不超过 $2^x$ 的 $S$。这些元素的张成<strong>是</strong> $[0,2^x-1]$，是有解的充要条件。</p>
 <p>假设现在有解。</p>
-<p>我们对这些元素建线性基，并提取出**在基中的 $S$ **，记为 $in$。</p>
+<p>我们对这些元素建线性基，并提取出*<em>在基中的 $S$ *</em>，记为 $in$。</p>
 <p>则 $in$ 大小等于 $x$。我们要构造一个二进制数的排列，相邻两个不同位置恰为 $1$，<strong>每个数都代表选择 $in$ 里的哪些</strong>。</p>
 <p>输出时可以用二进制数算出答案。</p>
 <p>构造二进制数排列方法打个暴力找规律就会了。也可以去看别的题解。</p>
@@ -460,9 +464,9 @@
 <p>你自己想怎么做吧。时间 $O(q\log n\log^2V)$ 就过了。</p>
 <hr>
 <h2 id="P5607-Ynoi2013-无力回天-NOI2017"><a href="#P5607-Ynoi2013-无力回天-NOI2017" class="headerlink" title="P5607 [Ynoi2013] 无力回天 NOI2017"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5607">P5607 [Ynoi2013] 无力回天 NOI2017</a></h2><p>这题很妙啊。</p>
-<p>构一个数组 $b_i&#x3D;a_i\oplus a_{i-1}$。</p>
-<p>则 $a_i&#x3D;b_1\oplus b_2\oplus …\oplus b_i—-[1]$。</p>
-<p>而且，$a_{l+1}&#x3D;a_l\oplus b_{l+1},a_{l+2}&#x3D;a_l\oplus b_{l+1}\oplus b_{l+2}$。以此类推。</p>
+<p>构一个数组 $b_i=a_i\oplus a_{i-1}$。</p>
+<p>则 $a_i=b_1\oplus b_2\oplus …\oplus b_i—-[1]$。</p>
+<p>而且，$a_{l+1}=a_l\oplus b_{l+1},a_{l+2}=a_l\oplus b_{l+1}\oplus b_{l+2}$。以此类推。</p>
 <p>所以 $a_{l\to r}$ 可以被 $a_l,b_{l+1\to r}$ 异或得出。</p>
 <p>与「基内部异或，张成不变」类似，「集合内部异或，张成不变」。所以这两个东西张成一致。</p>
 <p>所以可以建立 $b$ 的基，并用式 $[1]$ 得到 $a_l$，回答询问。</p>
@@ -493,14 +497,20 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2024-07-30 21:10:50
+              2024-11-17 13:41:30
             </span>
             
                   <span class="post-categories">
                     <i class="iconfont icon-bookmark" title="Categories"></i>
                     
                     <span class="span--category">
-                      <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
+                      <a href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">
+                        <b>#</b> 数学
+                      </a>
+                    </span>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
                         <b>#</b> 数据结构
                       </a>
                     </span>
